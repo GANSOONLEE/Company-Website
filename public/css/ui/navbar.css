@@ -1,0 +1,134 @@
+.navbar {
+    width: 100%;
+    height: 7rem;
+    padding: 4rem 4rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    margin-bottom: -.1rem;
+    z-index: 2;
+}
+
+.logo-container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar .logo {
+    width: 14rem;
+    height: auto;
+}
+.navbar .logo:active{
+    transform: scale(0.9);
+}
+
+.menu {
+    padding-top: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar-links {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    column-gap: 9rem;
+}
+
+.menubtn {
+    display: none;
+    position: absolute;
+    cursor: pointer;
+    top: 1.7rem;
+    right: 2rem;
+    border-radius: 50%;
+    padding: 1.4rem;
+    transition: all .2s ease-out;
+}
+
+.icon {
+    height: 2rem;
+    width: 2rem;
+}
+
+.navbar-link {
+    text-decoration: none;
+    font-size: var(--font-h6);
+    letter-spacing: .6rem;
+}
+
+.navbar-link::after {
+    content: "";
+    display: block;
+    background: linear-gradient(to right, red, blue);
+    margin: .2rem 0;
+    width: 0;
+    height: 2px;
+    transition: all .2s ease;
+}
+
+.navbar-link:hover::after {
+    width: 100%;
+}
+
+@media only screen and (max-width: 972px) {
+    .navbar {
+        flex-direction: column;
+        width: 100%;
+        padding: 0 4rem;
+        justify-content: start
+    }
+
+    .navbar .logo {
+        justify-self: center;
+    }
+
+    .menu {
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        left: -120%;
+        margin-top: 3rem;
+        transition: all .2s ease-in-out;
+        justify-content: start;
+    }
+
+    .btn:checked+.menu {
+        left: 0;
+    }
+    .btn:checked ~ .menubtn {
+        background-color: rgb(207, 207, 207);
+    }
+    .menubtn:hover{background-color: rgb(233, 233, 233);}
+    .menubtn:active{background-color: rgb(170, 170, 170);}
+    .menubtn{background-color: transparent;}
+
+    .navbar-links {
+        flex-direction: column;
+        z-index: 1;
+        background-color: white;
+        row-gap: 3rem;
+        margin-top: 2rem;
+        padding: 1.2rem 2rem;
+        width: 100vw;
+        box-shadow: 1px 0 1px #000;
+    }
+
+    .navbar-link {
+        padding: .9rem 2rem;
+    }
+
+    .menubtn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

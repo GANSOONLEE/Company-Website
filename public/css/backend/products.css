@@ -1,0 +1,44 @@
+body{
+    display: flex;
+}
+.content{
+    width: 100%;
+    padding: 2rem 5rem;
+}
+.split{
+    width: 100%;
+    border: 1px solid blue;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.2rem;
+}
+.form .container{
+    display: flex;
+    column-gap: .9rem;
+    flex-wrap: wrap;
+}
+input[type="checkbox"].model{
+    /* display: block; */
+}
+.selectedArea{
+    padding: 2rem 3rem;
+}
+.label{
+    color: blue;
+    font-size: var(--font-h6);
+}
+.modelArea{
+    cursor: pointer;
+}
+.modelBox{
+    border-radius: 10px;
+    padding: .4rem .9rem;
+    transition: all .12s ease-in-out;
+}
+.model:checked + .modelBox{
+    background-color: blue;
+    color: #fdfdfd;
+}

@@ -1,0 +1,19 @@
+body{
+    overflow-y: none;
+}
+
+.main{
+    display: flex;
+    width: 100vw;
+    height: 93vh;
+}
+
+/* CHILD OF .main */
+.org{
+    background-color: rgba(0, 0, 255, 0.1);
+    width: 50%;
+}
+.china{
+    background-color: rgba(255, 0, 0, 0.1);
+    width: 50%;
+}

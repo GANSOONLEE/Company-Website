@@ -1,0 +1,72 @@
+
+/* import font-family */
+
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Khand:wght@600&display=swap');
+
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+html{
+    overflow-x: hidden;
+    overflow-y: auto;
+    font-size: 67.5%;
+    font-family: 'Itim';
+}
+a{
+    text-decoration: none;
+    color: inherit;
+}
+a:focus, a:hover{text-decoration: none;}
+ul{list-style: none;}
+button, input, area{outline: none;}
+input[type="checkbox"]{display: none;}
+
+/* variable */
+:root{
+    --font-biggest: 3.6rem;
+    --font-bigger: 3.4rem;
+    --font-big: 3.2rem;
+
+    --font-h1: 3rem;
+    --font-h2: 2.8rem;
+    --font-h3: 2.6rem;
+    --font-h4: 2.3rem;
+    --font-h5: 2rem;
+    --font-h6: 1.6rem;
+
+    --font-small: 1.4rem;
+    --font-smaller: 1.1rem;
+    --font-smallest: .8rem;
+}
+@media only screen and (max-width: 1170px){
+    html{
+        font-size: 57.5%;
+    }
+}
+@media only screen and (max-width: 972px){
+    html{
+        font-size: 45.5%;
+    }
+}
+@media only screen and (max-width: 972px){
+    html{
+        font-size: 40%;
+    }
+}
+
+/* cover Bootstrap 5 */
+body{
+    margin: 0; 
+    font-family: 'Itim' ,'Khand';
+    font-size: inherit;
+    font-weight: initial;
+    line-height: initial;
+    color: inherit;
+    background-color: inherit;
+    -webkit-text-size-adjust: initial;
+    -webkit-tap-highlight-color: initial;
+}
