@@ -16,12 +16,12 @@ use Intervention\Image\ImageManagerStatic as Image;
 class ProductController extends Controller{
 
     
-    public function index($type, $productCatelog){
+    public function index($productType, $productCatelog){
         // 查詢現有的車款
         $models = productModel::orderBy('modelName', 'asc')->get();
 
         $productsData = Product::where('productCatelog', $productCatelog)
-            ->where('productType', $type)
+            ->where('productType', $productType)
             ->orderBy('productModel', 'asc')
             ->get(['productImage', 'productName', 'productCode', 'productModel']);
 
@@ -33,10 +33,10 @@ class ProductController extends Controller{
             return redirect(route('catelog'));
         }
 
-        return view('frontend.products', ['products' => $productsData, 'models' => $models, 'productCatelog' => $productCatelog]);
+        return view('frontend.products', ['productType' => $productType, 'products' => $productsData, 'models' => $models, 'productCatelog' => $productCatelog]);
     }
 
-    public function model($type, $productCatelog, $productModel){
+    public function model($productType, $productCatelog, $productModel){
 
         // 查詢現有的車款
         $models = productModel::orderBy('modelName', 'asc')->get();
@@ -47,7 +47,7 @@ class ProductController extends Controller{
         // 查詢同時符合 $productCatelog 和 $productModel 記錄的貨品
         $productsData = Product::where('productCatelog', $productCatelog)
             ->where('productModel', 'like', '%' . $productModel . '%')
-            ->where('productType', $type)
+            ->where('productType', $productType)
             ->orderBy('productName', 'asc')
             ->get(['productImage', 'productName', 'productCode']);
 
@@ -59,10 +59,10 @@ class ProductController extends Controller{
             return redirect(route('catelog'));
         }
 
-        return view('frontend.products', ['products' => $productsData, 'models' => $models, 'productCatelog' => $productCatelog]);
+        return view('frontend.products', ['productType' => $productType, 'products' => $productsData, 'models' => $models, 'productCatelog' => $productCatelog]);
     }
 
-    public function search(Request $request){
+    public function search(Request $request, $productType='all'){
 
         // 查詢現有的車款
         $models = productModel::orderBy('modelName', 'asc')->get();
@@ -81,22 +81,60 @@ class ProductController extends Controller{
             $searchQuery .= '%'.$term.'%';
         }
 
-        // 搜尋車款
-        $modelSearch = Product::where('productModel', 'like', $searchQuery)
-            ->orderBy('productModel', 'asc')
-            ->get(['productImage', 'productName', 'productCode']);
+        if($productType==='all'){
 
-        // 搜尋名稱
-        $nameSearch = Product::where('productName', 'like', $searchQuery)
-            ->orderBy('productName', 'asc')
-            ->get(['productImage', 'productName', 'productCode']);
+            // 搜尋車款
+            $modelSearch = Product::where('productModel', 'like', $searchQuery)
+                ->orderBy('productModel', 'asc')
+                ->get(['productImage', 'productName', 'productCode']);
 
-        // 搜尋編號
-        $codeSearch = Product::where('productCode', 'like', $searchQuery)
-            ->orderBy('productCode', 'asc')
-            ->get(['productImage', 'productName', 'productCode']);
+            // 搜尋名稱
+            $nameSearch = Product::where('productName', 'like', $searchQuery)
+                ->orderBy('productName', 'asc')
+                ->get(['productImage', 'productName', 'productCode']);
 
-        return view('frontend.search', ['modelSearch' => $modelSearch, 'nameSearch' => $nameSearch, 'codeSearch' => $codeSearch, 'models' => $models, 'searchbarText' => $searchbarText]);
+            // 搜尋編號
+            $codeSearch = Product::where('productCode', 'like', $searchQuery)
+                ->orderBy('productCode', 'asc')
+                ->get(['productImage', 'productName', 'productCode']);
+
+            // 搜尋編號
+            $codeSearch = Product::where('productBrand', 'like', $searchQuery)
+                ->orderBy('productCode', 'asc')
+                ->get(['productImage', 'productName', 'productCode']);
+
+            // 搜尋型号
+            $brandSearch = Product::where('productBrand', 'like', $searchQuery)
+                ->orderBy('productCode', 'asc')
+                ->get(['productImage', 'productName', 'productCode']);
+
+        }else{
+            // 搜尋車款
+            $modelSearch = Product::where('productModel', 'like', $searchQuery)
+                ->where('productType', $productType)
+                ->orderBy('productModel', 'asc')
+                ->get(['productImage', 'productName', 'productCode']);
+
+            // 搜尋名稱
+            $nameSearch = Product::where('productName', 'like', $searchQuery)
+                ->where('productType', $productType)
+                ->orderBy('productName', 'asc')
+                ->get(['productImage', 'productName', 'productCode']);
+
+            // 搜尋編號
+            $codeSearch = Product::where('productCode', 'like', $searchQuery)
+                ->where('productType', $productType)
+                ->orderBy('productCode', 'asc')
+                ->get(['productImage', 'productName', 'productCode']);
+
+            // 搜尋型号
+            $brandSearch = Product::where('productBrand', 'like', $searchQuery)
+                ->where('productType', $productType)
+                ->orderBy('productCode', 'asc')
+                ->get(['productImage', 'productName', 'productCode']);
+        }
+
+        return view('frontend.search', ['productType' => $productType,'modelSearch' => $modelSearch, 'nameSearch' => $nameSearch, 'codeSearch' => $codeSearch, 'models' => $models, 'searchbarText' => $searchbarText, 'brandSearch' => $brandSearch]);
     }
 
 
@@ -111,7 +149,7 @@ class ProductController extends Controller{
         $photo = $request->file('productImage');
 
         // 目标高度
-        $targetHeight = 300;
+        $targetHeight = 900;
 
         // 打开图像并等比例缩小
         $image = Image::make($photo)->heighten($targetHeight, function ($constraint) {

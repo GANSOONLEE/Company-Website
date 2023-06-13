@@ -22,8 +22,9 @@ class ViewController extends Controller
     public function catelog(){
 
         $catelogs = ProductCatelog::orderBy('catelogName', 'asc')->get();
-
+        
         return view('frontend.catelog',compact('catelogs'));
+        
     }
 
     public function contact(){

@@ -5,9 +5,12 @@
     @endpush
 
     @section('title',__('Home'))
+
+   
     
     @section('content')
     
+        {{-- @include('ui.searchbar') --}}
         {{-- <div class="header carousel slide">
             <img src="{{asset('image/promotion-1.png')}}" alt="" class="carousel-inner">
         </div> --}}

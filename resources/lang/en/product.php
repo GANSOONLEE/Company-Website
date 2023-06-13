@@ -2,7 +2,7 @@
 
     return [
         'title' => 'Product',
-        'name' => 'Product Name',
+        'name' => 'Car Model',
         'code' => 'Product Code',
         'catelog' => 'Catelog',
         'type' => 'Type',

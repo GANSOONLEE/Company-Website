@@ -2,18 +2,37 @@
 .search{
     display: flex;
     flex-direction: column;
-    width: 100%;
+    /* width: 100%; */
     justify-content: start;
     align-items: center;
 }
 .products-table{
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
+    width: 65vw;
 }
 .products-table> p{
     font-size: var(--font-h4);
 }
+.products-table > .section{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    flex-wrap: wrap;
+    align-items: space-evenly;
+    column-gap: 2rem;
+    row-gap: 2rem;
+    width: 100%;
+}
 .alert{
     width: 90%;
     font-size: var(--font-h5);
+}
+
+@media only screen and (max-width: 972px) {
+    .products-table > .section{
+        flex-direction: column;
+        row-gap: 2rem;
+    }
 }

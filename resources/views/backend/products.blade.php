@@ -19,22 +19,13 @@
     @if($models->isEmpty() || $catelogs->isEmpty())
         @include('ui.alert')
     @endif
+    
     <div class="content">
         <h1>{{ trans('product.title') }}</h1>
         <hr class="split">
 
         <form action="/products" method="POST" enctype="multipart/form-data" class="form">
             @csrf
-        
-            <div class="container">
-                <label for="productName" class="label">{{trans('product.name')}}</label>
-                <input class="inputText"  type="text" name="productName" id="productName" autocomplete="off" required>
-            </div>
-        
-            <div class="container">
-                <label for="productCode" class="label">{{trans('product.code')}}</label>
-                <input class="inputText"  type="text" name="productCode" id="productCode" autocomplete="off" required>
-            </div>
         
             <div class="container">
                 <div>
@@ -49,7 +40,7 @@
                     @endforeach
                 </div>
             </div>
-        
+
             <div class="container">
                 <div>
                     <label for="productModel" class="label">{{trans('product.model')}}</label>
@@ -64,18 +55,13 @@
                 </div>
             </div>
 
-            <div class="container">
-                <label for="productBrand" class="label">{{trans('product.brand')}}</label>
-                <input type="text" class="inputText" name="productBrand" id="productBrand" autocomplete="off" required>
-            </div>
-
             <div class="container brand">
                 <div>
                     <label for="productType" class="label">{{trans('product.type')}}</label>
                 </div>
                 <div class="selectedArea">
                     <label class="typeArea">
-                        <input type="radio" value="Origin" class="type" name="productType">
+                        <input type="radio" value="Origin" class="type" name="productType" required>
                         <p class="typeBox">Origin</p>
                     </label>
                     <label class="typeArea">
@@ -84,7 +70,23 @@
                     </label>
                 </div>
             </div>
+
+            <div class="container">
+                <label for="productName" class="label">{{trans('product.name')}}</label>
+                <textarea  class="inputText" rows="25" name="productName" id="productName" autocomplete="off" required></textarea>
+            </div>
+
+        
             
+            <div class="container">
+                <label for="productBrand" class="label">{{trans('product.brand')}}</label>
+                <input type="text" class="inputText" name="productBrand" id="productBrand" autocomplete="off" required>
+            </div>
+            
+            <div class="container">
+                <label for="productCode" class="label">{{trans('product.code')}}</label>
+                <input class="inputText"  type="text" name="productCode" id="productCode" autocomplete="off" required>
+            </div>
         
             <div class="container">
                 <label for="productImage" class="label">{{trans('product.image')}}</label>
@@ -93,17 +95,6 @@
         
             <button type="submit" class="submitBtn">{{trans('product.submit')}}</button>
         </form> 
-{{-- 
-        <form action="{{ route('model.store') }}" method="POST">
-            @csrf
-        
-            <textarea name="productModel" rows="5"></textarea>
-        
-            <button type="submit">提交</button>
-        </form> --}}
-        @php
-            echo $serializedModels = session('serializedModels');   
-        @endphp
     </div>
 </body>
 </html>

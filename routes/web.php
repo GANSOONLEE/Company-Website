@@ -25,8 +25,11 @@ Route::get('/about-us', [ViewController::class, 'about'])->name('about');
 Route::get('/type', [ViewController::class, 'type'])->name('type');
 Route::get('/contact', [ViewController::class, 'contact'])->name('contact');
 
-Route::get('{type}/catelog', [ViewController::class, 'catelog'])->name('catelog');
-
+// Catelog 物品种类
+Route::get('{productType}/catelog', [ViewController::class, 'catelog'])->name('catelog');
+Route::get('{productType}/catelog/{catelogName}',[ProductController::class, 'index'])->name('catelog.index');
+Route::get('{productType}/catelog/{catelogName}/{modelName}',[ProductController::class, 'model'])->name('catelog.model');
+Route::post('{productType?}/search', [ProductController::class, 'search'])->name('product.search');
 
 // Product
 Route::get('/products', [ProductController::class, 'index'])->name('products');
@@ -35,13 +38,6 @@ Route::post('/products', [ProductController::class, 'store'])->name('products.st
 Route::get('/products/{productID}/edit', [ProductController::class, 'edit'])->name('products.edit');
 Route::put('/products/{productID}', [ProductController::class, 'update'])->name('products.update');
 Route::delete('/products/{productID}', [ProductController::class, 'destroy'])->name('products.destroy');
-
-Route::post('/refresh', [ProductController::class, 'refresh'])->name('refresh');
-
-// Catelog
-Route::get('{type}/catelog/{catelogName}',[ProductController::class, 'index'])->name('catelog.index');
-Route::get('{type}/catelog/{catelogName}/{modelName}',[ProductController::class, 'model'])->name('catelog.model');
-Route::post('/catelog/search', [ProductController::class, 'search'])->name('product.search');
 
 // Admin
 Route::get('/admin/product', [AdminController::class, 'products'])->name('/admin/products');

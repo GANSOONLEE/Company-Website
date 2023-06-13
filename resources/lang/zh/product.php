@@ -2,7 +2,7 @@
 
     return [
         'title' => '产品',
-        'name' => '产品名称',
+        'name' => '车款型号',
         'code' => '产品编号',
         'catelog' => '物品种类',
         'model' => '车款',
