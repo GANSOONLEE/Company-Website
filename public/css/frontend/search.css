@@ -1,0 +1,19 @@
+
+.search{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: start;
+    align-items: center;
+}
+.products-table{
+    display: flex;
+    flex-direction: column;
+}
+.products-table> p{
+    font-size: var(--font-h4);
+}
+.alert{
+    width: 90%;
+    font-size: var(--font-h5);
+}

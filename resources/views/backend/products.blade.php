@@ -28,53 +28,70 @@
         
             <div class="container">
                 <label for="productName" class="label">{{trans('product.name')}}</label>
-                <input type="text" name="productName" id="productName" autocomplete="off" required>
+                <input class="inputText"  type="text" name="productName" id="productName" autocomplete="off" required>
             </div>
         
             <div class="container">
                 <label for="productCode" class="label">{{trans('product.code')}}</label>
-                <input type="text" name="productCode" id="productCode" autocomplete="off" required>
+                <input class="inputText"  type="text" name="productCode" id="productCode" autocomplete="off" required>
             </div>
         
             <div class="container">
-                <label for="productCatelog" class="label">{{trans('product.catelog')}}</label>
-                {{-- <select name="productCatelog" id="productCatelog" required>
+                <div>
+                    <label for="productCatelog" class="label">{{trans('product.catelog')}}</label>
+                </div>
+                <div class="selectedArea">
                     @foreach ($catelogs as $option)
-                        <option value="{{ $option['catelogID'] }}">{{ $option['catelogName'] }}</option>
+                        <label class="modelArea">
+                            <input type="radio" value="{{ $option['catelogName'] }}" class="catelog" name="productCatelog">
+                            <p class="catelogBox">{{ $option['catelogName'] }}</p>
+                        </label>
                     @endforeach
-                </select> --}}
-                @foreach ($catelogs as $option)
-                    <label>
-                        <input type="radio" value="{{ $option['catelogName'] }}" class="catelog" name="productCatelog">
-                        {{ $option['catelogName'] }}
-                    </label>
-                @endforeach
+                </div>
             </div>
         
             <div class="container">
                 <div>
                     <label for="productModel" class="label">{{trans('product.model')}}</label>
                 </div>
-                {{-- @foreach ($models as $option)
-                <option value="{{ $option['modelID'] }}">{{ $option['modelName'] }}</option>
-                @endforeach --}}
                 <div class="selectedArea">
                     @foreach ($models as $option)
                         <label class="modelArea">
-                            <input type="checkbox" name="productModel[]" value="{{ $option['modelName'] }}" class="model">
+                            <input type="radio" name="productModel" value="{{ $option['modelName'] }}" class="model">
                             <p class="modelBox">{{ $option['modelName'] }}</p>
                         </label>
                     @endforeach
                 </div>
-
             </div>
+
+            <div class="container">
+                <label for="productBrand" class="label">{{trans('product.brand')}}</label>
+                <input type="text" class="inputText" name="productBrand" id="productBrand" autocomplete="off" required>
+            </div>
+
+            <div class="container brand">
+                <div>
+                    <label for="productType" class="label">{{trans('product.type')}}</label>
+                </div>
+                <div class="selectedArea">
+                    <label class="typeArea">
+                        <input type="radio" value="Origin" class="type" name="productType">
+                        <p class="typeBox">Origin</p>
+                    </label>
+                    <label class="typeArea">
+                        <input type="radio" value="Non-Origin" class="type" name="productType">
+                        <p class="typeBox">Non-Origin</p>
+                    </label>
+                </div>
+            </div>
+            
         
             <div class="container">
                 <label for="productImage" class="label">{{trans('product.image')}}</label>
                 <input type="file" name="productImage" id="productImage" required accept=".jpg, .png, .jpeg">
             </div>
         
-            <button type="submit">{{trans('product.submit')}}</button>
+            <button type="submit" class="submitBtn">{{trans('product.submit')}}</button>
         </form> 
 {{-- 
         <form action="{{ route('model.store') }}" method="POST">

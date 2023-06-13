@@ -5,20 +5,19 @@
     align-items: start;
     align-content: flex-start;
     column-gap: 2rem;
-    row-gap: 2rem;
-    padding: 7rem 10vw;
+    row-gap: 4rem;
+    padding: 2rem 10vw;
 }
 .main .card{
     cursor: pointer;
-    padding: 2rem;
     width: calc((80vw)/4);
     min-width: 250px;
     max-width: calc((80vw)/4);
-    transition: all .2s ease;
+    transition: all .17s ease;
 }
 .main .card:hover{
-    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 1px 1px 10px rgba(0, 106, 255, 0.2);
 }
 .main .card .card-body .card-title{
-    font-size: var(--font-h6);
+    font-size: var(--font-h5);
 }

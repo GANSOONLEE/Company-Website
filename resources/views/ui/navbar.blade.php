@@ -11,7 +11,7 @@
                 <ul class="navbar-links" class="menubtn">
                     <li class="navbar-link"><a href="{{route('index')}}">HOME</a></li>
                     <li class="navbar-link"><a href="{{route('about')}}">ABOUT US</a></li>
-                    <li class="navbar-link"><a href="{{route('catelog')}}">PRODUCT</a></li>
+                    <li class="navbar-link"><a href="{{route('type')}}">PRODUCT</a></li>
                     <li class="navbar-link"><a href="{{route('contact')}}">CONTACT</a></li>
                 </ul>
             </div>

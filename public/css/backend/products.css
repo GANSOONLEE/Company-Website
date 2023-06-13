@@ -1,9 +1,14 @@
 body{
     display: flex;
+    
 }
 .content{
     width: 100%;
     padding: 2rem 5rem;
+}
+.content > h1{
+    font-family: 'vistol sans',sans-serif;
+    font-weight: 500;
 }
 .split{
     width: 100%;
@@ -19,26 +24,41 @@ body{
     display: flex;
     column-gap: .9rem;
     flex-wrap: wrap;
-}
-input[type="checkbox"].model{
-    /* display: block; */
+    font-size: var(--font-h6);
+    font-family: 'vistol sans',sans-serif;
 }
 .selectedArea{
     padding: 2rem 3rem;
+}
+.container.brand > .selectedArea{
+    padding: 2rem 1rem;
 }
 .label{
     color: blue;
     font-size: var(--font-h6);
 }
+
 .modelArea{
     cursor: pointer;
 }
-.modelBox{
-    border-radius: 10px;
+.modelBox, .catelogBox, .typeBox{
+    border-radius: 6px;
     padding: .4rem .9rem;
     transition: all .12s ease-in-out;
 }
-.model:checked + .modelBox{
+.model:checked + .modelBox, .catelog:checked + .catelogBox, .type:checked + .typeBox{
     background-color: blue;
     color: #fdfdfd;
 }
+
+.inputText{
+    padding: .9rem 1.2rem;
+    height: 30px;
+}
+
+.submitBtn{
+    padding: .9rem 1.2rem;
+    font-size: var(--font-h6);
+}
+/* debug */
+input[type="radio"]{display: none;}

@@ -19,13 +19,14 @@ use App\Http\Controllers\Backend\ModelController;
 |
 */
 
+// navbar 鏈接
 Route::get('/', [ViewController::class, 'index'])->name('index');
 Route::get('/about-us', [ViewController::class, 'about'])->name('about');
-
 Route::get('/type', [ViewController::class, 'type'])->name('type');
-Route::get('/type/catelog', [ViewController::class, 'catelog'])->name('catelog');
-
 Route::get('/contact', [ViewController::class, 'contact'])->name('contact');
+
+Route::get('{type}/catelog', [ViewController::class, 'catelog'])->name('catelog');
+
 
 // Product
 Route::get('/products', [ProductController::class, 'index'])->name('products');
@@ -38,8 +39,9 @@ Route::delete('/products/{productID}', [ProductController::class, 'destroy'])->n
 Route::post('/refresh', [ProductController::class, 'refresh'])->name('refresh');
 
 // Catelog
-Route::get('/catelog/{catelogName}',[ProductController::class, 'index'])->name('catelog.index');
-// Route::get('/a/',[ProductController::class, 'index'])->name('catelog.show');
+Route::get('{type}/catelog/{catelogName}',[ProductController::class, 'index'])->name('catelog.index');
+Route::get('{type}/catelog/{catelogName}/{modelName}',[ProductController::class, 'model'])->name('catelog.model');
+Route::post('/catelog/search', [ProductController::class, 'search'])->name('product.search');
 
 // Admin
 Route::get('/admin/product', [AdminController::class, 'products'])->name('/admin/products');

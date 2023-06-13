@@ -16,22 +16,87 @@ use Intervention\Image\ImageManagerStatic as Image;
 class ProductController extends Controller{
 
     
-    public function index($productCatelog){
+    public function index($type, $productCatelog){
         // 查詢現有的車款
         $models = productModel::orderBy('modelName', 'asc')->get();
 
         $productsData = Product::where('productCatelog', $productCatelog)
+            ->where('productType', $type)
             ->orderBy('productModel', 'asc')
             ->get(['productImage', 'productName', 'productCode', 'productModel']);
 
         $catelog = ProductCatelog::where('catelogName', $productCatelog)->first();
 
         if (!$catelog) {
-            // 不存在匹配的产品目录记录，重定向到指定路由
+
+            // 若不存在匹配的物品種類记录，重定向至指定路由
             return redirect(route('catelog'));
         }
 
         return view('frontend.products', ['products' => $productsData, 'models' => $models, 'productCatelog' => $productCatelog]);
+    }
+
+    public function model($type, $productCatelog, $productModel){
+
+        // 查詢現有的車款
+        $models = productModel::orderBy('modelName', 'asc')->get();
+
+        // 支持模糊查询
+        $productModel = '%'.$productModel.'%';
+
+        // 查詢同時符合 $productCatelog 和 $productModel 記錄的貨品
+        $productsData = Product::where('productCatelog', $productCatelog)
+            ->where('productModel', 'like', '%' . $productModel . '%')
+            ->where('productType', $type)
+            ->orderBy('productName', 'asc')
+            ->get(['productImage', 'productName', 'productCode']);
+
+        $catelog = ProductCatelog::where('catelogName', $productCatelog)->first();
+
+        if (!$catelog) {
+
+            // 若不存在匹配的物品種類记录，重定向至指定路由
+            return redirect(route('catelog'));
+        }
+
+        return view('frontend.products', ['products' => $productsData, 'models' => $models, 'productCatelog' => $productCatelog]);
+    }
+
+    public function search(Request $request){
+
+        // 查詢現有的車款
+        $models = productModel::orderBy('modelName', 'asc')->get();
+
+        $searchbarText = $request->input('searchbarText');
+
+        /*
+         *
+         * 將使用者輸入的字進行拆分
+         * 
+         */
+        $searchTerms = explode(' ', $searchbarText);
+        $searchQuery = '';
+
+        foreach ($searchTerms as $term) {
+            $searchQuery .= '%'.$term.'%';
+        }
+
+        // 搜尋車款
+        $modelSearch = Product::where('productModel', 'like', $searchQuery)
+            ->orderBy('productModel', 'asc')
+            ->get(['productImage', 'productName', 'productCode']);
+
+        // 搜尋名稱
+        $nameSearch = Product::where('productName', 'like', $searchQuery)
+            ->orderBy('productName', 'asc')
+            ->get(['productImage', 'productName', 'productCode']);
+
+        // 搜尋編號
+        $codeSearch = Product::where('productCode', 'like', $searchQuery)
+            ->orderBy('productCode', 'asc')
+            ->get(['productImage', 'productName', 'productCode']);
+
+        return view('frontend.search', ['modelSearch' => $modelSearch, 'nameSearch' => $nameSearch, 'codeSearch' => $codeSearch, 'models' => $models, 'searchbarText' => $searchbarText]);
     }
 
 
@@ -61,17 +126,20 @@ class ProductController extends Controller{
             'productName' => $request->input('productName'),
             'productCode' => $request->input('productCode'),
             'productCatelog' => $request->input('productCatelog'),
-            'productModel' => json_encode($request->input('productModel',[])), // 序列化 productModel 字段
+            // 'productModel' => json_encode($request->input('productModel',[])), // 序列化 productModel 字段
+            'productModel' => $request->input('productModel'),
+            'productType' => $request->input('productType'),
+            'productBrand' => $request->input('productBrand'),
             'productImage' => $encodedImage, // 上传的产品图像文件
         ];
 
         // 将 $data 存储到数据库中
         Product::createProduct($data);
 
-        $dataOrigin = ($request->input('productModel',[]));
-        $data =  implode(', ', $dataOrigin);
+        // $dataOrigin = ($request->input('productModel',[]));
+        // $data =  implode(', ', $dataOrigin);
         // 重定向到产品列表页面或其他适当的页面
-        return back()->with('serializedModels', $data);
+        return back();
 
     }
 
