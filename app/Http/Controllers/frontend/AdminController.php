@@ -14,6 +14,8 @@ class AdminController extends Controller{
 
     public function products(){
 
+        
+
         // 查询所有产品数据
         $products = Product::all();
 

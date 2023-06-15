@@ -25,8 +25,8 @@
             </ul>            
         </div>
         <div class="sidebar-footer">
-            <a href="{{ url()->current() }}?language=en">English</a>
-            <a href="{{ url()->current() }}?language=zh">中文</a>
+            <a href="{{ route('locale.change', ['lang' => 'en']) }}">English</a>
+            <a href="{{ route('locale.change', ['lang' => 'zh']) }}">中文</a>
         </div>
     </div>
 </body>

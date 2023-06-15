@@ -16,7 +16,7 @@ class Kernel extends HttpKernel
 
     protected $routeMiddleware = [
         // ...
-        'admin.language' => \App\Http\Middleware\SetAdminLanguage::class,
+        'locale.set' => \App\Http\Middleware\LocaleMiddleware::class,
         'ssl' => \App\Http\Middleware\GenerateSSLCertificateMiddleware::class,
     ];
     protected $middleware = [
@@ -37,7 +37,6 @@ class Kernel extends HttpKernel
     protected $middlewareGroups = [
         'web' => [
             \App\Http\Middleware\EncryptCookies::class,
-            \App\Http\Middleware\LanguageMiddleware::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
             \Illuminate\Session\Middleware\StartSession::class,
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,

@@ -7,6 +7,8 @@ use App\Http\Controllers\frontend\AdminController;
 use App\Http\Controllers\backend\ProductController;
 use App\Http\Controllers\Backend\ModelController;
 use App\Http\Controllers\backend\AjaxDataController;
+use App\Http\Controllers\LocaleController;
+require_once app_path('Helpers\Global\SystemHelper.php');
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +20,25 @@ use App\Http\Controllers\backend\AjaxDataController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+// Switch between the included languages
+Route::get('lang/{lang}', [LocaleController::class, 'change'])->name('locale.change')->middleware('locale.set');
+
+/*
+ * Frontend Routes
+ */
+// Route::group(['as' => 'frontend.'], function () {
+//     includeRouteFiles(__DIR__ . '/frontend/');
+// });
+
+/*
+ * Backend Routes
+ *
+ * These routes can only be accessed by users with type `admin`
+ */
+// Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], function () {
+//     includeRouteFiles(__DIR__ . '/backend/');
+// });
 
 // Navbar 鏈接
 Route::get('/', [ViewController::class, 'index'])->name('index');
@@ -39,17 +60,16 @@ Route::get('/products/{productID}/edit', [ProductController::class, 'edit'])->na
 Route::put('/products/{productID}', [ProductController::class, 'update'])->name('products.update');
 Route::delete('/products/{productID}', [ProductController::class, 'destroy'])->name('products.destroy');
 
-// Admin 後臺系統
-Route::get('/admin/product', [AdminController::class, 'products'])->name('/admin/products');
-Route::get('/admin/dashboard', [AdminController::class, 'product'])->name('/admin/product');
-Route::post('/models', [ModelController::class, 'create'])->name('model.store');
-Route::post('/catelogs', [CatelogController::class, 'create'])->name('catelog.store');
+
 
 // Ajax 數據請求
 Route::get('/ajax-product',[AjaxDataController::class,'productData']);
 
 
-Route::group(['prefix' => 'admin', 'middleware' => 'web'], function () {
-    Route::get('/{language?}', [AdminController::class, 'index']); // 将语言作为可选参数传递给控制器
-    // 其他路由...
+Route::group(['prefix' => 'admin', 'middleware' => 'locale.set'], function () {
+   // Admin 後臺系統
+    Route::get('/product', [AdminController::class, 'products'])->name('/admin/products');
+    Route::post('/models', [ModelController::class, 'create'])->name('model.store');
+    Route::post('/catelogs', [CatelogController::class, 'create'])->name('catelog.store');
+        // 其他路由...
 });
