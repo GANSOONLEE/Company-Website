@@ -25,6 +25,10 @@
     row-gap: 2rem;
     width: 100%;
 }
+.menu{
+    position: sticky;
+    top: 5rem;
+}
 .alert{
     width: 90%;
     font-size: var(--font-h5);

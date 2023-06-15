@@ -87,7 +87,7 @@
                 <a href="#model" class="model-link">{{ 'Search "' . $searchbarText . '" By Model' }}</a>
             @endif
             @if($name)
-                <a href="#model" class="model-link">{{ 'Search "' . $searchbarText . '" By Name' }}</a>
+                <a href="#name" class="model-link">{{ 'Search "' . $searchbarText . '" By Name' }}</a>
             @endif
             @if($code)
                 <a href="#code" class="model-link">{{ 'Search "' . $searchbarText . '" By Code' }}</a>
@@ -168,7 +168,7 @@
                 </div>
             @endif
             @if($brand)
-                <p class="title" id="code">Search Brand By '{{$searchbarText}}'</p>
+                <p class="title" id="brand">Search Brand By '{{$searchbarText}}'</p>
                 <div class="section">
                     @foreach ($brandSearch as $brand)
                         <div class="product-card">

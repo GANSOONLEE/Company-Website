@@ -25,6 +25,10 @@ class AdminController extends Controller{
 
         return view('backend.products',compact('products','models','catelogs'));
     }
+
+    public function product(){
+        return view('backend.product');
+    }
 }
 
 ?>
