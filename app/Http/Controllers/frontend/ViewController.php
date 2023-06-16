@@ -30,6 +30,14 @@ class ViewController extends Controller
     public function contact(){
         return view('frontend.contact');
     }
+
+    public function register(){
+        return view('frontend.register');
+    }
+
+    public function login(){
+        return view('frontend.login');
+    }
 }
 
 

@@ -7,6 +7,7 @@ use App\Http\Controllers\frontend\AdminController;
 use App\Http\Controllers\backend\ProductController;
 use App\Http\Controllers\Backend\ModelController;
 use App\Http\Controllers\backend\AjaxDataController;
+use App\Http\Controllers\frontend\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,12 @@ Route::get('/about-us', [ViewController::class, 'about'])->name('about');
 Route::get('/type', [ViewController::class, 'type'])->name('type');
 Route::get('/contact', [ViewController::class, 'contact'])->name('contact');
 
+Route::get('/login', [ViewController::class, 'login'])->name('login');
+Route::get('/register', [ViewController::class, 'register'])->name('register');
+
+Route::post('/login/data', [AuthController::class, 'login'])->name('login.post');
+Route::post('/register/data', [AuthController::class, 'register'])->name('register.post');
+
 // Catelog 物品處理路由
 Route::get('{productType}/catelog', [ViewController::class, 'catelog'])->name('catelog');
 Route::get('{productType}/catelog/{catelogName}',[ProductController::class, 'index'])->name('catelog.index');
@@ -39,17 +46,17 @@ Route::get('/products/{productID}/edit', [ProductController::class, 'edit'])->na
 Route::post('/products/{productID}', [ProductController::class, 'update'])->name('products.update');
 Route::delete('/products/{productID}', [ProductController::class, 'destroy'])->name('products.destroy');
 
-// Admin 後臺系統
-Route::get('/admin/product', [AdminController::class, 'products'])->name('/admin/products');
-Route::get('/admin/dashboard', [AdminController::class, 'product'])->name('/admin/product');
-Route::post('/models', [ModelController::class, 'create'])->name('model.store');
-Route::post('/catelogs', [CatelogController::class, 'create'])->name('catelog.store');
+
 
 // Ajax 數據請求
 Route::get('/ajax-product',[AjaxDataController::class,'productData']);
 
 
-Route::group(['prefix' => 'admin', 'middleware' => 'web'], function () {
+Route::group(['middleware' => ['web', 'admin']], function () {
     Route::get('/{language?}', [AdminController::class, 'index']); // 将语言作为可选参数传递给控制器
-    // 其他路由...
+   // Admin 後臺系統
+    Route::get('/admin/product', [AdminController::class, 'products'])->name('/admin/products');
+    Route::get('/admin/dashboard', [AdminController::class, 'product'])->name('admin.dashboard');
+    Route::post('/models', [ModelController::class, 'create'])->name('model.store');
+    Route::post('/catelogs', [CatelogController::class, 'create'])->name('catelog.store');
 });

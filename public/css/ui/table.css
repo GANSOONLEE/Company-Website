@@ -17,6 +17,9 @@ body{
 .refreshButton:active{
     background-color: hsl(120, 100%, 23%);
 }
+#wrapper .gridjs-table .gridjs-tbody .gridjs-tr{
+    cursor: pointer;
+}
 #wrapper .gridjs-table .gridjs-tbody .gridjs-tr:nth-child(odd) > .gridjs-td {
     background-color: rgb(237, 237, 237); /* 淺灰色 */
 }

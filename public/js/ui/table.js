@@ -50,28 +50,12 @@ async function refreshGrid() {
         
         const wrapper = document.getElementById("wrapper");
         while (wrapper.firstChild) {
-            console.log('清空内容')
             wrapper.removeChild(wrapper.firstChild);
         }
 
         if (window.grid) {
-            console.log('清空内容')
             window.grid.destroy();
         }
-
-        // window.grid = new gridjs.Grid({
-        //     sort: true,
-        //     resizable: true,
-        //     search: true,
-        //     fixedHeader: true,
-        //     height: '520px',
-        //     columns: columnNames,
-        //     pagination: {
-        //         limit: 10
-        //     },
-        //     data: data,
-        // });
-        // window.grid.render(document.getElementById("wrapper"));
 
         await createGrid(data);
 
@@ -95,25 +79,23 @@ document.addEventListener('DOMContentLoaded', async () => {
 document.addEventListener('DOMContentLoaded', refreshGrid);
 document.getElementById("refreshButton").addEventListener("click", refreshGrid);
 
-// observer.observe(document.getElementById("wrapper"), { childList: true, subtree: true });
-
-function editEventListener(){
-    var tr = document.getElementsByClassName("gridjs-tr");
-    console.log('開始：', tr.length)
-    for (let i = 0; i < tr.length; i++) {
-        tr[i].addEventListener("dblclick", (event) => {
-            console.log('中間：', event)
+function editEventListener() {
+    var parentElement = document.querySelector('.gridjs-tbody');
+  
+    parentElement.addEventListener('dblclick', function(event) {
+        
+        if (event.target.classList.contains('gridjs-td')) {
             const rowData = {
-                productId: event.currentTarget.querySelector('[data-column-id="productId"]').textContent,
-                productName: event.currentTarget.querySelector('[data-column-id="productName"]').textContent,
-                productCode: event.currentTarget.querySelector('[data-column-id="productCode"]').textContent,
-                productType: event.currentTarget.querySelector('[data-column-id="productType"]').textContent,
-                productCatelog: event.currentTarget.querySelector('[data-column-id="productCatelog"]').textContent,
-                productModel: event.currentTarget.querySelector('[data-column-id="productModel"]').textContent,
-                productBrand: event.currentTarget.querySelector('[data-column-id="productBrand"]').textContent,
-                // 其他列数据...
+            productId: event.target.parentNode.querySelector('[data-column-id="productId"]').textContent,
+            productName: event.target.parentNode.querySelector('[data-column-id="productName"]').textContent,
+            productCode: event.target.parentNode.querySelector('[data-column-id="productCode"]').textContent,
+            productType: event.target.parentNode.querySelector('[data-column-id="productType"]').textContent,
+            productCatelog: event.target.parentNode.querySelector('[data-column-id="productCatelog"]').textContent,
+            productModel: event.target.parentNode.querySelector('[data-column-id="productModel"]').textContent,
+            productBrand: event.target.parentNode.querySelector('[data-column-id="productBrand"]').textContent,
+            // 其他列数据...
             };
-
+    
             // 填充表单数据
             document.getElementById("productName").value = rowData.productName;
             document.getElementById("productCode").value = rowData.productCode;
@@ -121,18 +103,58 @@ function editEventListener(){
             document.getElementById("productCatelog").value = rowData.productCatelog;
             document.getElementById("productModel").value = rowData.productModel;
             document.getElementById("productBrand").value = rowData.productBrand;
-            
+    
             // 替换form action中的占位符
             const form = document.getElementById("productForm");
             const productID = rowData.productId;
             form.action = form.action.replace('__PRODUCT_ID__', productID);
-
+    
             var modal = new bootstrap.Modal(document.querySelector("#productModal"));
             modal.show();
-            console.log('結束：', event[rowData.productBrand])
-        });
-    }
-}
+        }
+    });
+  }
+  
+
+
+
+// observer.observe(document.getElementById("wrapper"), { childList: true, subtree: true });
+
+// function editEventListener(){
+//     var tr = document.getElementsByClassName("gridjs-tr");
+//     console.log('開始：', tr.length)
+//     for (let i = 0; i < tr.length; i++) {
+//         tr[i].addEventListener("dblclick", (event) => {
+//             const rowData = {
+//                 productId: event.currentTarget.querySelector('[data-column-id="productId"]').textContent,
+//                 productName: event.currentTarget.querySelector('[data-column-id="productName"]').textContent,
+//                 productCode: event.currentTarget.querySelector('[data-column-id="productCode"]').textContent,
+//                 productType: event.currentTarget.querySelector('[data-column-id="productType"]').textContent,
+//                 productCatelog: event.currentTarget.querySelector('[data-column-id="productCatelog"]').textContent,
+//                 productModel: event.currentTarget.querySelector('[data-column-id="productModel"]').textContent,
+//                 productBrand: event.currentTarget.querySelector('[data-column-id="productBrand"]').textContent,
+//                 // 其他列数据...
+//             };
+
+//             // 填充表单数据
+//             document.getElementById("productName").value = rowData.productName;
+//             document.getElementById("productCode").value = rowData.productCode;
+//             document.getElementById("productType").value = rowData.productType;
+//             document.getElementById("productCatelog").value = rowData.productCatelog;
+//             document.getElementById("productModel").value = rowData.productModel;
+//             document.getElementById("productBrand").value = rowData.productBrand;
+            
+//             // 替换form action中的占位符
+//             const form = document.getElementById("productForm");
+//             const productID = rowData.productId;
+//             form.action = form.action.replace('__PRODUCT_ID__', productID);
+
+//             var modal = new bootstrap.Modal(document.querySelector("#productModal"));
+//             modal.show();
+//             console.log('結束：', event[rowData.productBrand])
+//         });
+//     }
+// }
 
 // Bootstrap 5 Modal
 

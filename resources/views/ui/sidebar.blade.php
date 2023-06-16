@@ -28,6 +28,8 @@
             <a href="{{ url()->current() }}?language=en">English</a>
             <a href="{{ url()->current() }}?language=zh">中文</a>
         </div>
+        
+        <p class="user">{{ $user = session('user')->Name }}</p>
     </div>
 </body>
 <script src="{{asset('js\ui\sidebar.js')}}"></script>

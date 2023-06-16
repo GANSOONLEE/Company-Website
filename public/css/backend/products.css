@@ -3,7 +3,7 @@ body{
     
 }
 .content{
-    width: 100%;
+    width: 82vw;
     padding: 2rem 5rem;
 }
 .content > h1{
@@ -41,7 +41,7 @@ body{
     font-size: var(--font-h6);
 }
 .form-row > .form-check{
-    padding: .9rem 2rem;
+    padding: .9rem 4rem;
 }
 .form .form-column > .input-group.mb-3{
     display: flex;
@@ -51,4 +51,31 @@ body{
     column-gap: 3rem;
     padding: .9rem 4rem;
     font-size: var(--font-h6);
+}
+.form-control{
+    color: black;
+}
+#addInputBtn.form-control{
+    background-color: hsl(240, 20%, 90%);
+    box-shadow: none;
+    outline: none;
+    border: none;
+    width: 100%;
+}
+#addInputBtn.form-control:hover{
+    background-color: hsl(240, 40%, 90%);
+}
+#addInputBtn.form-control:active{
+    background-color: hsl(240, 60%, 90%);
+}
+.productCode, .productImage{
+    padding: 0.9rem 4rem;
+    width: 100%;
+}
+.form-check-label{
+    cursor: pointer;
+}
+
+.submitBtn{
+    padding: .9rem 4rem;
 }

@@ -18,6 +18,7 @@ class Kernel extends HttpKernel
         // ...
         'admin.language' => \App\Http\Middleware\SetAdminLanguage::class,
         'ssl' => \App\Http\Middleware\GenerateSSLCertificateMiddleware::class,
+        'admin' => \App\Http\Middleware\AdminMiddleware::class,
     ];
     protected $middleware = [
         // \App\Http\Middleware\TrustHosts::class,

@@ -18,10 +18,17 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+        'Name',
+        'Phone Number',
+        'Email',
+        'Birthday',
+        'Address',
+        'Profession',
+        'Store / Company Name',
+        'Password',
+        'AccessToken'
     ];
+
 
     /**
      * The attributes that should be hidden for serialization.
@@ -41,4 +48,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function isAdmin(){
+
+        // 根据你的用户模型中的字段来判断是否为管理员
+        return $this->Role == 'admin';
+    }
+
+    public static function updateUser($Email, $data)
+    {
+        return self::where('Email', $Email)->update($data);
+    }
+
 }

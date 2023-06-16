@@ -22,27 +22,27 @@
             <div class="modal-body">
               <div class="mb-3">
                 <label for="productName" class="form-label">{{trans('product.name')}}</label>
-                <input name="productName" type="text" class="form-control" id="productName" placeholder={{trans('product.name')}}>
+                <input required name="productName" type="text" class="form-control" id="productName" placeholder={{trans('product.name')}}>
               </div>
               <div class="mb-3">
                 <label for="productCode" class="form-label">{{trans('product.code')}}</label>
-                <input name="productCode" type="text" class="form-control" id="productCode" placeholder={{trans('product.code')}}>
+                <input required name="productCode" type="text" class="form-control" id="productCode" placeholder={{trans('product.code')}}>
               </div>
               <div class="mb-3">
                 <label for="productType" class="form-label">{{trans('product.type')}}</label>
-                <input name="productType" type="text" class="form-control" id="productType" placeholder={{trans('product.type')}}>
+                <input required name="productType" type="text" class="form-control" id="productType" placeholder={{trans('product.type')}}>
               </div>
               <div class="mb-3">
                 <label for="productCatelog" class="form-label">{{trans('product.catelog')}}</label>
-                <input name="productCatelog" type="text" class="form-control" id="productCatelog" placeholder={{trans('product.catelog')}}>
+                <input required name="productCatelog" type="text" class="form-control" id="productCatelog" placeholder={{trans('product.catelog')}}>
               </div>
               <div class="mb-3">
                 <label for="productModel" class="form-label">{{trans('product.model')}}</label>
-                <input name="productModel" type="text" class="form-control" id="productModel" placeholder={{trans('product.model')}}>
+                <input required name="productModel" type="text" class="form-control" id="productModel" placeholder={{trans('product.model')}}>
               </div>
               <div class="mb-3">
                 <label for="productBrand" class="form-label">{{trans('product.brand')}}</label>
-                <input name="productBrand" type="text" class="form-control" id="productBrand" placeholder={{trans('product.brand')}}>
+                <input required name="productBrand" type="text" class="form-control" id="productBrand" placeholder={{trans('product.brand')}}>
               </div>
             </div>
             <div class="modal-footer">

@@ -14,7 +14,7 @@ class LanguageMiddleware
         App::setLocale($language);
 
         if ($request->is('admin/*')) {
-            Cookie::queue(Cookie::make('language', $language, 0, '/admin'));
+            Cookie::queue(Cookie::make('language', $language, 60*24*180, '/admin'));
         }
 
         return $next($request);

@@ -34,7 +34,7 @@
                 {{-- 物品種類 --}}
                 @foreach ($catelogs as $option)
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="productCatelog" id="{{ $option['catelogName'] }}" value="{{ $option['catelogName'] }}">
+                        <input required class="form-check-input" type="radio" name="productCatelog" id="{{ $option['catelogName'] }}" value="{{ $option['catelogName'] }}">
                         <label class="form-check-label" for="{{ $option['catelogName'] }}">{{ $option['catelogName'] }}</label>
                     </div>
                 @endforeach
@@ -45,49 +45,44 @@
             <div class="form-row">
                 {{-- 類型 --}}
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="productType" value="Non-Origin">
-                    <label class="form-check-label" for="exampleRadios1">Non-Original</label>
+                    <input class="form-check-input" id="Non-Origin" type="radio" name="productType" value="Non-Origin" required>
+                    <label class="form-check-label" for="Non-Origin">Non-Original</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="productType" value="Origin">
-                    <label class="form-check-label" for="exampleRadios1">Original</label>
+                    <input class="form-check-input" id="Origin" type="radio" name="productType" value="Origin">
+                    <label class="form-check-label" for="Origin">Original</label>
                 </div>
             </div>
 
 
-            <label class="row-title">主要车款和车款型号：</label>
+            <label class="row-title">{{trans('product.brand')}} {{trans('product.model')}}</label>
             <div class="form-column" id="inputContainer">
                 {{-- 车款和型号 --}}
 
                 {{-- 主要 --}}
                 <div class="input-group mb-3" style="display: flex; flex-direction: row;" id="primaryInputGroup">
-                    <input style="text-transform: uppercase;" class="form-control primary-input" list="primaryBrandList" id="primaryBrand" placeholder={{trans('product.model')}} name="primaryBrand">
+                    <input required style="text-transform: uppercase;" class="form-control primary-input" list="primaryBrandList" id="primaryBrand" placeholder={{trans('product.brand')}} name="primaryBrand">
                     <datalist id="primaryBrandList">
                         @foreach ($models as $option)
                             <option value="{{ $option['modelName'] }}">
                         @endforeach
                     </datalist>
-                    <input style="text-transform: uppercase;" class="form-control primary-input" type="text" placeholder={{trans('product.brand')}} name="primaryModel">
-                    <button id="addInputBtn" type="button">添加输入框</button>
+                    <input required style="text-transform: uppercase;" class="form-control primary-input" type="text" placeholder={{trans('product.model')}} name="primaryModel">
+                    <button id="addInputBtn" type="button" class="form-control">添加输入框</button>
                 </div>
             </div>
 
             <label class="row-title">{{trans('product.code')}}</label>
             <div class="form-row">
                 {{-- 產品編號 --}}
-                <label for="productCode" class="label">{{trans('product.code')}}</label>
-                {{-- <input class="inputText"  type="text" name="productCode" id="productCode" autocomplete="off" required> --}}
-                <input name="productCode" id="productCode" class="form-control" type="text" placeholder={{trans('product.code')}} name="primaryModel" autocomplete="off" required>
+                <div class="productCode">
+                    <input name="productCode" id="productCode" class="form-control" type="text" placeholder={{trans('product.code')}} name="primaryModel" autocomplete="off" required>
+                </div>
             </div>
 
-
+            <label class="row-title">{{trans('product.image')}}</label>
             <div class="form-row">
-                {{-- 產品圖片 --}}
-                {{-- <div class="input-group mb-3">
-                    <input type="file" class="form-control" id="productImage">
-                    <label class="input-group-text" for="productImage" name="productImage" required>Upload</label>
-                </div> --}}
-                <div class="container">
+                <div class="container productImage">
                     <input type="file" name="productImage" id="productImage" required accept=".jpg, .png, .jpeg">
                     <label for="productImage" class="label">{{trans('product.image')}}</label>
                 </div>
@@ -117,7 +112,7 @@ addInputBtn.addEventListener('click', function() {
   newSecondaryBrand.classList.add('secondary-input');
   newSecondaryBrand.setAttribute('list', 'secondaryBrandList');
   newSecondaryBrand.id = 'secondaryBrand';
-  newSecondaryBrand.placeholder = 'Type to search...';
+  newSecondaryBrand.placeholder = `{{trans('product.brand')}}`;
   newSecondaryBrand.name = 'secondaryBrand[]';
 
   const newSecondaryBrandList = document.createElement('datalist');
@@ -134,7 +129,7 @@ addInputBtn.addEventListener('click', function() {
   newSecondaryModel.classList.add('form-control');
   newSecondaryModel.classList.add('secondary-input');
   newSecondaryModel.type = 'text';
-  newSecondaryModel.placeholder = 'Default input';
+  newSecondaryModel.placeholder = `{{trans('product.model')}}`;
   newSecondaryModel.name = 'secondaryModel[]';
 
   // 将新的输入框添加到容器中
