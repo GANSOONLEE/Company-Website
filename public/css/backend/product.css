@@ -1,5 +1,10 @@
 
 .main{
+    position: absolute;
+    top: 0;
     margin-left: 16vw;
     padding: 2rem;
+}
+.section .section-title{
+    font-size: 2.6rem;
 }

@@ -105,6 +105,16 @@
                     </div>
                     <div class="product-card-body">
                         <h3 class="product-name">{{ $product->productName }}</h3>
+                        @php
+                            $subnames = json_decode($product->productSubname, true);
+                        @endphp
+                        @if (is_array($subnames))
+                            @foreach ($subnames as $subname)
+                                <h5 class="product-subname">{{ $subname['brand'] }} {{ $subname['model'] }}</h5>
+                            @endforeach
+                        @else
+                            <h5 class="product-subname">{{ $product->productSubname }}</h5>
+                        @endif
                         <p class="product-code">{{ $product->productCode }}</p>
                     </div>
                     <div class="product-card-footer">

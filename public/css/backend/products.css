@@ -19,46 +19,36 @@ body{
     display: flex;
     flex-direction: column;
     row-gap: 1.2rem;
+    font-family: 'vistol sans',sans-serif;
 }
-.form .container{
+.form .row-title{
+    font-size: var(--font-h5);
+    font-weight: normal;
+}
+.form .form-row{
     display: flex;
     column-gap: .9rem;
     flex-wrap: wrap;
-    font-size: var(--font-h6);
-    font-family: 'vistol sans',sans-serif;
-}
-.selectedArea{
-    padding: 2rem 3rem;
-}
-.container.brand > .selectedArea{
-    padding: 2rem 1rem;
-}
-.label{
-    color: blue;
+    padding: .9rem 4rem;
     font-size: var(--font-h6);
 }
-
-.modelArea{
-    cursor: pointer;
-}
-.modelBox, .catelogBox, .typeBox{
-    border-radius: 6px;
-    padding: .4rem .9rem;
-    transition: all .12s ease-in-out;
-}
-.model:checked + .modelBox, .catelog:checked + .catelogBox, .type:checked + .typeBox{
-    background-color: blue;
-    color: #fdfdfd;
-}
-
-.inputText{
-    padding: .9rem 1.2rem;
-    height: 30px;
-}
-
-.submitBtn{
-    padding: .9rem 1.2rem;
+.form .form-column{
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.2rem;
+    flex-wrap: wrap;
+    padding: .9rem 4rem;
     font-size: var(--font-h6);
 }
-/* debug */
-input[type="radio"]{display: none;}
+.form-row > .form-check{
+    padding: .9rem 2rem;
+}
+.form .form-column > .input-group.mb-3{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: start;
+    column-gap: 3rem;
+    padding: .9rem 4rem;
+    font-size: var(--font-h6);
+}

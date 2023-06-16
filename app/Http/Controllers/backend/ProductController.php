@@ -23,7 +23,8 @@ class ProductController extends Controller{
         $productsData = Product::where('productCatelog', $productCatelog)
             ->where('productType', $productType)
             ->orderBy('productModel', 'asc')
-            ->get(['productImage', 'productName', 'productCode', 'productModel']);
+            ->get(['productImage', 'productName', 'productCode', 'productModel', 'productSubname']);
+
 
         $catelog = ProductCatelog::where('catelogName', $productCatelog)->first();
 
@@ -33,7 +34,113 @@ class ProductController extends Controller{
             return redirect(route('catelog'));
         }
 
-        return view('frontend.products', ['productType' => $productType, 'products' => $productsData, 'models' => $models, 'productCatelog' => $productCatelog]);
+        // $jsonData = '[{"brand":"Brand1","model":"Model1"},{"brand":"Brand2","model":"Model2"}]';
+
+        // 解析 JSON 数据
+
+        // foreach ($parsedData as $item) {
+        //     // 组合品牌和型号，并添加空行
+        //     // dd($item['productSubname']);
+        //     $productSubname = json_decode($item['productSubname']);
+        //     $productSubnameList[] = $productSubname;
+        //     // 将处理后的数据存入 productSubname 数组
+        // };
+        
+
+
+        // $jsonData = '[
+        //     {
+        //         "brand": "自行車自行車",
+        //         "model": "走下去"
+        //     },
+        //     {
+        //         "brand": "sd法大師傅大師傅",
+        //         "model": "受到廣汎"
+        //     },
+        //     {
+        //         "brand": "的風格",
+        //         "model": "第三方"
+        //     }
+        // ]';
+
+        // $productsData = json_decode($jsonData, true);
+
+        $parsedDataList = []; // 创建用于存储解析后数据的数组
+
+        foreach ($productsData as $data) {
+            $parsedDataList[] = json_decode($data->productSubname, true);
+        }
+
+        // $formattedData = [];
+
+        // var_dump($parsedDataList);
+
+        $formattedData = [];
+
+        foreach ($parsedDataList as $index => $item) {
+            if (is_array($item)) {
+                foreach ($item as $subItem) {
+                    if (is_array($subItem)) {
+                        $brand = $subItem['brand'];
+                        $model = $subItem['model'];
+                        $formattedData[$index] = $brand . ' ' . $model;
+                    } else {
+                        $formattedData[$index] = $subItem;
+                    }
+                }
+            } else {
+                $formattedData[$index] = $item;
+            }
+        }
+
+        $result = implode("<br>", $formattedData);
+
+
+        
+
+
+        // foreach($productsData as $item){
+        //     $productSubnameList[] = $item->productSubname;
+        // };
+
+        // $productSubnameList = [
+        //     [
+        //         'brand' => 'Proton',
+        //         'model' => 'Saga'
+        //     ],
+        //     [
+        //         'brand' => 'Nissan',
+        //         'model' => 'Myvi'
+        //     ]
+        // ];
+        
+
+        // 创建用于存储处理后数据的数组
+        // 遍历解析后的数组
+        
+        // $formattedItem = $productSubnameList['brand'] . ' ' . $productSubnameList['model'] ;
+        // 将处理后的数据存入 productSubname 数组
+        // $productSubname[] = $formattedItem;
+        // dd($formattedItem);
+        
+        // foreach ($productSubnameList as $product) {{
+        //     // 组合品牌和型号，并添加空行
+        //     $formattedItem = $product['brand'] . ' ' . $item['model'] ;
+        //     // 将处理后的数据存入 productSubname 数组
+        //     $productSubname[] = $formattedItem;
+        // }
+        
+
+        // 将处理后的数据以 JSON 格式返回
+        // }
+
+        return view('frontend.products', [
+            'productType' => $productType,
+            'products' => $productsData,
+            'models' => $models,
+            'productCatelog' => $productCatelog,
+            // 'productSubname' => $result
+        ]);
     }
 
     public function model($productType, $productCatelog, $productModel){
@@ -86,52 +193,63 @@ class ProductController extends Controller{
             // 搜尋車款
             $modelSearch = Product::where('productModel', 'like', $searchQuery)
                 ->orderBy('productModel', 'asc')
-                ->get(['productImage', 'productName', 'productCode']);
+                ->get(['productImage', 'productName', 'productCode', 'productSubname']);
 
             // 搜尋名稱
             $nameSearch = Product::where('productName', 'like', $searchQuery)
                 ->orderBy('productName', 'asc')
-                ->get(['productImage', 'productName', 'productCode']);
+                ->get(['productImage', 'productName', 'productCode', 'productSubname']);
+
+            // 搜尋名稱
+            $nameSearch = Product::where('productSubname', 'like', $searchQuery)
+                ->orderBy('productSubname', 'asc')
+                ->get(['productImage', 'productName', 'productCode', 'productSubname']);
 
             // 搜尋編號
             $codeSearch = Product::where('productCode', 'like', $searchQuery)
                 ->orderBy('productCode', 'asc')
-                ->get(['productImage', 'productName', 'productCode']);
+                ->get(['productImage', 'productName', 'productCode', 'productSubname']);
 
             // 搜尋編號
             $codeSearch = Product::where('productBrand', 'like', $searchQuery)
                 ->orderBy('productCode', 'asc')
-                ->get(['productImage', 'productName', 'productCode']);
+                ->get(['productImage', 'productName', 'productCode', 'productSubname']);
 
             // 搜尋型号
             $brandSearch = Product::where('productBrand', 'like', $searchQuery)
                 ->orderBy('productCode', 'asc')
-                ->get(['productImage', 'productName', 'productCode']);
+                ->get(['productImage', 'productName', 'productCode', 'productSubname']);
 
         }else{
             // 搜尋車款
             $modelSearch = Product::where('productModel', 'like', $searchQuery)
                 ->where('productType', $productType)
                 ->orderBy('productModel', 'asc')
-                ->get(['productImage', 'productName', 'productCode']);
+                ->get(['productImage', 'productName', 'productCode', 'productSubname']);
 
             // 搜尋名稱
             $nameSearch = Product::where('productName', 'like', $searchQuery)
                 ->where('productType', $productType)
                 ->orderBy('productName', 'asc')
-                ->get(['productImage', 'productName', 'productCode']);
+                ->get(['productImage', 'productName', 'productCode', 'productSubname']);
+
+            // 搜尋名稱
+            $nameSearch = Product::where('productSubname', 'like', $searchQuery)
+                ->where('productType', $productType)
+                ->orderBy('productName', 'asc')
+                ->get(['productImage', 'productName', 'productCode', 'productSubname']);
 
             // 搜尋編號
             $codeSearch = Product::where('productCode', 'like', $searchQuery)
                 ->where('productType', $productType)
                 ->orderBy('productCode', 'asc')
-                ->get(['productImage', 'productName', 'productCode']);
+                ->get(['productImage', 'productName', 'productCode', 'productSubname']);
 
             // 搜尋型号
             $brandSearch = Product::where('productBrand', 'like', $searchQuery)
                 ->where('productType', $productType)
                 ->orderBy('productCode', 'asc')
-                ->get(['productImage', 'productName', 'productCode']);
+                ->get(['productImage', 'productName', 'productCode', 'productSubname']);
         }
 
         return view('frontend.search', ['productType' => $productType,'modelSearch' => $modelSearch, 'nameSearch' => $nameSearch, 'codeSearch' => $codeSearch, 'models' => $models, 'searchbarText' => $searchbarText, 'brandSearch' => $brandSearch]);
@@ -145,6 +263,29 @@ class ProductController extends Controller{
 
     public function store(Request $request){
 
+        // 組合數據
+        $primaryBrand = $request->input('primaryBrand');
+        $primaryModel = $request->input('primaryModel');
+        $productName = $primaryBrand . ' ' . $primaryModel;
+
+        $secondaryBrand = $request->input('secondaryBrand');
+        $secondaryModel = $request->input('secondaryModel');
+        
+        $combinedArray = [];
+        if (isset($secondaryBrand, $secondaryModel)) {
+            // 遍历数组并将每个元素组合在一起
+            foreach ($secondaryBrand as $key => $brand) {
+                $model = $secondaryModel[$key];
+                $combinedArray[] = [
+                    'brand' => strtoupper($brand),
+                    'model' => strtoupper($model)
+                ];
+            }
+            $jsonData = json_encode($combinedArray);
+        } else {
+            $jsonData = '';
+        }
+        
         // 获取上传的照片文件
         $photo = $request->file('productImage');
 
@@ -161,13 +302,13 @@ class ProductController extends Controller{
 
         // 从请求中获取用户输入的值并创建新产品
         $data = [
-            'productName' => $request->input('productName'),
+            'productName' => strtoupper($productName),
             'productCode' => $request->input('productCode'),
             'productCatelog' => $request->input('productCatelog'),
-            // 'productModel' => json_encode($request->input('productModel',[])), // 序列化 productModel 字段
-            'productModel' => $request->input('productModel'),
+            'productSubname' => $jsonData,
+            'productModel' => $primaryModel,
+            'productBrand' => $primaryBrand,
             'productType' => $request->input('productType'),
-            'productBrand' => $request->input('productBrand'),
             'productImage' => $encodedImage, // 上传的产品图像文件
         ];
 
@@ -190,16 +331,17 @@ class ProductController extends Controller{
     public function update(Request $request, $productID){
         // 从请求中获取用户输入的值并更新指定的产品
         $data = [
-            'productName' => $request->input('productName'),
-            'productCode' => $request->input('productCode'),
+            'productName' => substr($request->input('productName'), 0, 255), // 截取前 255 个字符
+            'productCode' => substr($request->input('productCode'), 0, 255), // 截取前 255 个字符
             'productCatelog' => $request->input('productCatelog'),
             'productModel' => $request->input('productModel'),
-            'productImage' => $request->file('productImage') // 更新后的产品图像文件
+            'productBrand' => $request->input('productBrand'),
+            'productType' => $request->input('productType'),
         ];
         Product::updateProduct($productID, $data);
 
         // 重定向到产品列表页面或其他适当的页面
-        return redirect()->route('products.index');
+        return redirect()->back();
     }
 
     public function destroy($productID){

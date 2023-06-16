@@ -18,10 +18,10 @@ class AdminController extends Controller{
         $products = Product::all();
 
         // 查询所有车款数据
-        $models = productModel::all();
+        $models = productModel::orderBy('modelName', 'asc')->get();
 
         // 查询所有种类数据
-        $catelogs = productCatelog::all();
+        $catelogs = productCatelog::orderBy('catelogName', 'asc')->get();
 
         return view('backend.products',compact('products','models','catelogs'));
     }

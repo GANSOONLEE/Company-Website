@@ -10,6 +10,10 @@
         'model' => 'Model',
         'image' => 'Image',
         'submit' => 'Submit',
+        'refresh' => 'Refresh',
+        'edit' => 'Edit Product',
+        'save' => 'Save',
+        'cancel' => 'Cancel',
     ];
 
 ?>

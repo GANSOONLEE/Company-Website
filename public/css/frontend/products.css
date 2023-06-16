@@ -53,9 +53,9 @@
     object-fit: contain;
     transition: all .12s ease-in-out;
     border-radius: 10px;
-    width: calc((100% - 60px) / 3);
-    min-width: calc((100% - 60px) / 3);
-    max-width: calc((100% - 60px) / 3);
+    width: calc((100% - 60px) / 2);
+    min-width: calc((100% - 60px) / 2);
+    max-width: calc((100% - 60px) / 2);
     padding-bottom: auto;
     outline: 1px solid #8b8b8b;
     /* width: 200px; */
@@ -72,13 +72,14 @@
 }
 .product-card-body > .product-name{
     margin-top: .3rem;
-    font-size: var(--font-h4);
+    font-size: var(--font-h1);
     font-weight: 400;   
 }
 .product-card-body > .product-code{
     margin-top: -.2rem;
     color: blue;
-    font-size: var(--font-h6);
+    font-size: var(--font-h3);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .product-card img {
@@ -88,7 +89,10 @@
 .product-name{
     color: rgb(173, 0, 0);
 }
-
+.product-subname{
+    
+    font-size: 2.4rem;
+}
 @media only screen and (max-width: 972px) {
     .main {
         display: flex;

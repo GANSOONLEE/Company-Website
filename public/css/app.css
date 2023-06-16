@@ -71,3 +71,6 @@ body{
     -webkit-text-size-adjust: initial;
     -webkit-tap-highlight-color: initial;
 }
+ol, ul {
+    padding-left: 0;
+}

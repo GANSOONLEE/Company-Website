@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class AjaxDataController extends Controller
 {
     function productData(){
-        $products = Product::select('productId', 'productName', 'productCode', 'productType', 'productCatelog', 'productModel', 'productBrand')
+        $products = Product::select('productId', 'productName', 'productCode', 'productType', 'productCatelog', 'productModel', 'productBrand','productSubname')
         ->get();
 
         return response()->json($products); // 将產品数据以JSON格式返回

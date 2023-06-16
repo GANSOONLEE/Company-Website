@@ -162,11 +162,6 @@
                 </div>
             @endif
 
-            @if(empty($model) && empty($name) && empty($code))
-                <div class="alert alert-warning" role="alert">
-                    Could not find any records related to '{{ $searchbarText }}'
-                </div>
-            @endif
             @if($brand)
                 <p class="title" id="brand">Search Brand By '{{$searchbarText}}'</p>
                 <div class="section">
@@ -192,6 +187,8 @@
                     Could not find any records related to '{{ $searchbarText }}'
                 </div>
             @endif
+
+           
         </div>
     </div>
 

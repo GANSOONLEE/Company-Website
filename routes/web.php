@@ -36,7 +36,7 @@ Route::get('/products', [ProductController::class, 'index'])->name('products');
 Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
 Route::post('/products', [ProductController::class, 'store'])->name('products.store');
 Route::get('/products/{productID}/edit', [ProductController::class, 'edit'])->name('products.edit');
-Route::put('/products/{productID}', [ProductController::class, 'update'])->name('products.update');
+Route::post('/products/{productID}', [ProductController::class, 'update'])->name('products.update');
 Route::delete('/products/{productID}', [ProductController::class, 'destroy'])->name('products.destroy');
 
 // Admin 後臺系統

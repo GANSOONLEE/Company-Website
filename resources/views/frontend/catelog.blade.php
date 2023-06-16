@@ -6,8 +6,10 @@
     <link rel="stylesheet" href="{{asset('css\frontend\catelog.css')}}">
 @endpush
 
-@section('content')
 
+
+@section('content')
+    {{-- @include('ui.searchbar') --}}
     @foreach( $catelogs as $catelog)
         <a href="catelog/{{ $catelog->catelogName}}">
             <div class="card">
