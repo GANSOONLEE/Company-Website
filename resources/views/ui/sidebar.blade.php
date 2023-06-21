@@ -16,17 +16,18 @@
         </div>
         <div class="sidebar-body">
             <ul class="sidebar-links">
-                <a href="#" class="sidebar-link {{ request()->is('admin/dashboard') ? 'active' : '' }}">
+                <a href="/admin/dashboard" class="sidebar-link {{ request()->is('admin/dashboard') ? 'active' : '' }}">
                     <li>{{ trans('sidebar.dashboard') }}</li>
                 </a>
-                <a href="#" class="sidebar-link {{ request()->is('admin/product') ? 'active' : '' }}">
+                <a href="/admin/product" class="sidebar-link {{ request()->is('admin/product') ? 'active' : '' }}">
                     <li>{{ trans('sidebar.product') }}</li>
+                    <div class="notifiaction"></div>
                 </a>
             </ul>            
         </div>
         <div class="sidebar-footer">
-            <a href="{{ url()->current() }}?language=en">English</a>
-            <a href="{{ url()->current() }}?language=zh">中文</a>
+            <a href="{{ route('locale.change', ['lang' => 'en']) }}">English</a>
+            <a href="{{ route('locale.change', ['lang' => 'zh']) }}">中文</a>
         </div>
         
         <p class="user">{{ $user = session('user')->Name }}</p>

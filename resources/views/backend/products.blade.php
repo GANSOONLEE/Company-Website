@@ -15,10 +15,6 @@
 </head>
 <body>
     @include('ui.sidebar')
-
-    @if($models->isEmpty() || $catelogs->isEmpty())
-        @include('ui.alert')
-    @endif
     
     <div class="content">
 
@@ -26,9 +22,8 @@
         <hr class="split">
 
         <form action="/products" method="POST" enctype="multipart/form-data" class="form">
+            
             @csrf
-
-
             <label class="row-title">{{trans('product.catelog')}}</label>
             <div class="form-row catelog">
                 {{-- 物品種類 --}}

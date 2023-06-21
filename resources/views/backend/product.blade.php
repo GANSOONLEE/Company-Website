@@ -21,7 +21,18 @@
 
 @section('content')
 
+    
+
     <div class="section">
+        @php
+            $alertType = session()->get('alertType');
+            $message = session()->get('message');
+        @endphp
+
+        @if(isset($alertType, $message))
+            @include('ui.alert')
+        @endif
+        
         <p class="section-title">{{trans('product.title')}}</p>
         @include('ui.table')
 

@@ -16,8 +16,6 @@
         </div> --}}
 
         @include('ui.carousel')
-        
-
 
         
         <div class="content">

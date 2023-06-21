@@ -41,9 +41,20 @@
     text-align: center;
     padding: 1rem 2rem;
     width: 100%;
+    position: relative;
 }
 .sidebar-body .sidebar-links .sidebar-link.active{
     background-color: rgb(10, 0, 88);
     color: white;
 }
 
+.notifiaction.active{
+    --size: 16px;
+    position: absolute;
+    top: -6px;
+    right:  -6px;
+    height: var(--size);
+    width: var(--size);
+    background-color: red;
+    border-radius: 50%;
+}

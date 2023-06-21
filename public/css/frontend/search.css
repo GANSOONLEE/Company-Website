@@ -8,9 +8,16 @@
 }
 .products-table{
     display: flex;
-    flex-direction: column;
     flex-wrap: wrap;
+    flex-direction: row;
+    column-gap: 2.6rem;
+    row-gap: 2rem;
     width: 65vw;
+    align-content: flex-start;
+    justify-content: flex-start;
+    align-items: start;
+
+    padding: .9rem 2rem;
 }
 .products-table> p{
     font-size: var(--font-h4);
@@ -24,6 +31,11 @@
     column-gap: 2rem;
     row-gap: 2rem;
     width: 100%;
+}
+.product-card{
+    width: calc((100% - 60px) / 2);
+    min-width: calc((100% - 60px) / 2);
+    max-width: calc((100% - 60px) / 2);
 }
 .menu{
     position: sticky;

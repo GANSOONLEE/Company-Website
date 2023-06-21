@@ -14,6 +14,11 @@
         'edit' => 'Edit Product',
         'save' => 'Save',
         'cancel' => 'Cancel',
+        'success' => 'Product information modified successfully !',
+        'warning' => 'Warning ! ',
+        'duplicate' => 'The Products Code is <b> Duplicate </b>!',
+        'display' => '(<b>The inform will be display</b>!)',
+        'non-display' => "(<b>The inform will <span style='color: red;'>not</span> be display</b>!)",
     ];
 
 ?>

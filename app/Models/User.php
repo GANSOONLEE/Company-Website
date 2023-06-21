@@ -52,7 +52,13 @@ class User extends Authenticatable
     public function isAdmin(){
 
         // 根据你的用户模型中的字段来判断是否为管理员
-        return $this->Role == 'admin';
+        return $this->Role === 'admin';
+    }
+
+    public function isUser(){
+
+        // 根据你的用户模型中的字段来判断是否为管理员
+        return $this->Role === 'user';
     }
 
     public static function updateUser($Email, $data)

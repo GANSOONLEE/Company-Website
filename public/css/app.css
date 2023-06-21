@@ -1,7 +1,7 @@
 
 /* import font-family */
 
-@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Itim&display=swap'); */
 @import url('https://fonts.googleapis.com/css2?family=Khand:wght@600&display=swap');
 @import url('https://fonts.cdnfonts.com/css/vistol-sans');
 
@@ -15,7 +15,7 @@ html{
     overflow-x: hidden;
     overflow-y: auto;
     font-size: 67.5%;
-    font-family: 'Itim';
+    font-family: 'vistol-sans';
 }
 a{
     text-decoration: none;

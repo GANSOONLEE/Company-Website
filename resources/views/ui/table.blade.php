@@ -21,28 +21,36 @@
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="modal-body">
               <div class="mb-3">
-                <label for="productName" class="form-label">{{trans('product.name')}}</label>
-                <input required name="productName" type="text" class="form-control" id="productName" placeholder={{trans('product.name')}}>
-              </div>
-              <div class="mb-3">
-                <label for="productCode" class="form-label">{{trans('product.code')}}</label>
+                <label for="productCode" class="form-label">{{trans('product.code')}} {!! trans('product.display') !!}</label>
                 <input required name="productCode" type="text" class="form-control" id="productCode" placeholder={{trans('product.code')}}>
               </div>
               <div class="mb-3">
-                <label for="productType" class="form-label">{{trans('product.type')}}</label>
+                <label for="productType" class="form-label">{{trans('product.type')}} {!! trans('product.non-display') !!}</label>
                 <input required name="productType" type="text" class="form-control" id="productType" placeholder={{trans('product.type')}}>
               </div>
               <div class="mb-3">
-                <label for="productCatelog" class="form-label">{{trans('product.catelog')}}</label>
-                <input required name="productCatelog" type="text" class="form-control" id="productCatelog" placeholder={{trans('product.catelog')}}>
+                <label for="productCatelog" class="form-label">{{trans('product.catelog')}} {!! trans('product.non-display') !!}</label>
+                <select required name="productCatelog" class="form-select form-control" id="productCatelog" >
+                  @foreach ($catelogs as $catelog)
+                  <option value='{{ $catelog->catelogName }}'>{{ $catelog->catelogName }}</option>
+                  @endforeach
+                </select>
               </div>
               <div class="mb-3">
-                <label for="productModel" class="form-label">{{trans('product.model')}}</label>
-                <input required name="productModel" type="text" class="form-control" id="productModel" placeholder={{trans('product.model')}}>
+                <label for="productModel" class="form-label">{{trans('product.model')}} {!! trans('product.non-display') !!}</label>
+                <select required class="form-select form-control" id="productModel" name="productModel" >
+                  @foreach ($models as $model)
+                  <option value='{{ $model->modelName }}'>{{ $model->modelName }}</option>
+                  @endforeach
+                </select>
               </div>
               <div class="mb-3">
-                <label for="productBrand" class="form-label">{{trans('product.brand')}}</label>
+                <label for="productBrand" class="form-label">{{trans('product.brand')}} {!! trans('product.non-display') !!}</label>
                 <input required name="productBrand" type="text" class="form-control" id="productBrand" placeholder={{trans('product.brand')}}>
+              </div>
+              <div class="mb-3">
+                <label for="productName" class="form-label">{{trans('product.name')}} {!!trans('product.display') !!}</label>
+                <input required name="productName" type="text" class="form-control" id="productName" placeholder={{trans('product.name')}}>
               </div>
             </div>
             <div class="modal-footer">

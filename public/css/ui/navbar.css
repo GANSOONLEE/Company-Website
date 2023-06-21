@@ -60,9 +60,13 @@
 }
 
 .navbar-link {
+    font-family: 'vistol-sans';
     text-decoration: none;
     font-size: var(--font-h6);
     letter-spacing: .6rem;
+}
+.navbar-link.active{
+    color: blue;
 }
 
 .navbar-link::after {
@@ -125,6 +129,7 @@
     .navbar-link {
         padding: .9rem 2rem;
     }
+
 
     .menubtn {
         display: flex;

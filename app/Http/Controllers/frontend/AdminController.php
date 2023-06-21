@@ -27,7 +27,15 @@ class AdminController extends Controller{
     }
 
     public function product(){
-        return view('backend.product');
+
+        // 查询所有车款数据
+        $models = productModel::orderBy('modelName', 'asc')->get();
+
+        // 查询所有种类数据
+        $catelogs = productCatelog::orderBy('catelogName', 'asc')->get();
+
+
+        return view('backend.product',compact('models','catelogs'));
     }
 }
 

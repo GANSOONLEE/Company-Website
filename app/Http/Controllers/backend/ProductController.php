@@ -4,17 +4,16 @@ namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use App\Models\Product;
 use App\Models\productCatelog;
 use App\Models\productModel;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
+use \Illuminate\Database\QueryException;
 
 use Intervention\Image\ImageManagerStatic as Image;
 
 class ProductController extends Controller{
-
     
     public function index($productType, $productCatelog){
         // 查詢現有的車款
@@ -31,49 +30,14 @@ class ProductController extends Controller{
         if (!$catelog) {
 
             // 若不存在匹配的物品種類记录，重定向至指定路由
-            return redirect(route('catelog'));
+            return redirect(route('frontend.catelog'));
         }
-
-        // $jsonData = '[{"brand":"Brand1","model":"Model1"},{"brand":"Brand2","model":"Model2"}]';
-
-        // 解析 JSON 数据
-
-        // foreach ($parsedData as $item) {
-        //     // 组合品牌和型号，并添加空行
-        //     // dd($item['productSubname']);
-        //     $productSubname = json_decode($item['productSubname']);
-        //     $productSubnameList[] = $productSubname;
-        //     // 将处理后的数据存入 productSubname 数组
-        // };
-        
-
-
-        // $jsonData = '[
-        //     {
-        //         "brand": "自行車自行車",
-        //         "model": "走下去"
-        //     },
-        //     {
-        //         "brand": "sd法大師傅大師傅",
-        //         "model": "受到廣汎"
-        //     },
-        //     {
-        //         "brand": "的風格",
-        //         "model": "第三方"
-        //     }
-        // ]';
-
-        // $productsData = json_decode($jsonData, true);
 
         $parsedDataList = []; // 创建用于存储解析后数据的数组
 
         foreach ($productsData as $data) {
             $parsedDataList[] = json_decode($data->productSubname, true);
         }
-
-        // $formattedData = [];
-
-        // var_dump($parsedDataList);
 
         $formattedData = [];
 
@@ -93,53 +57,11 @@ class ProductController extends Controller{
             }
         }
 
-        $result = implode("<br>", $formattedData);
-
-
-        
-
-
-        // foreach($productsData as $item){
-        //     $productSubnameList[] = $item->productSubname;
-        // };
-
-        // $productSubnameList = [
-        //     [
-        //         'brand' => 'Proton',
-        //         'model' => 'Saga'
-        //     ],
-        //     [
-        //         'brand' => 'Nissan',
-        //         'model' => 'Myvi'
-        //     ]
-        // ];
-        
-
-        // 创建用于存储处理后数据的数组
-        // 遍历解析后的数组
-        
-        // $formattedItem = $productSubnameList['brand'] . ' ' . $productSubnameList['model'] ;
-        // 将处理后的数据存入 productSubname 数组
-        // $productSubname[] = $formattedItem;
-        // dd($formattedItem);
-        
-        // foreach ($productSubnameList as $product) {{
-        //     // 组合品牌和型号，并添加空行
-        //     $formattedItem = $product['brand'] . ' ' . $item['model'] ;
-        //     // 将处理后的数据存入 productSubname 数组
-        //     $productSubname[] = $formattedItem;
-        // }
-        
-
-        // 将处理后的数据以 JSON 格式返回
-        // }
-
         return view('frontend.products', [
             'productType' => $productType,
             'products' => $productsData,
             'models' => $models,
             'productCatelog' => $productCatelog,
-            // 'productSubname' => $result
         ]);
     }
 
@@ -315,9 +237,6 @@ class ProductController extends Controller{
         // 将 $data 存储到数据库中
         Product::createProduct($data);
 
-        // $dataOrigin = ($request->input('productModel',[]));
-        // $data =  implode(', ', $dataOrigin);
-        // 重定向到产品列表页面或其他适当的页面
         return back();
 
     }
@@ -325,23 +244,50 @@ class ProductController extends Controller{
     public function edit($productID){
         // 返回编辑产品的表单页面
         $product = Product::find($productID);
-        return view('products.edit', compact('product'));
+        return view('frontend.products.edit', compact('product'));
     }
 
     public function update(Request $request, $productID){
-        // 从请求中获取用户输入的值并更新指定的产品
-        $data = [
-            'productName' => substr($request->input('productName'), 0, 255), // 截取前 255 个字符
-            'productCode' => substr($request->input('productCode'), 0, 255), // 截取前 255 个字符
-            'productCatelog' => $request->input('productCatelog'),
-            'productModel' => $request->input('productModel'),
-            'productBrand' => $request->input('productBrand'),
-            'productType' => $request->input('productType'),
-        ];
-        Product::updateProduct($productID, $data);
 
-        // 重定向到产品列表页面或其他适当的页面
-        return redirect()->back();
+
+        try {
+            // 从请求中获取用户输入的值并更新指定的产品
+            
+            $auth = Product::where('productID', $productID)
+                    ->get('productCode');
+
+            if($auth != substr($request->input('productCode'), 0, 255)){
+                
+            }
+
+            $data = [
+                'productName' => substr($request->input('productName'), 0, 255),
+                'productCode' => substr($request->input('productCode'), 0, 255),
+                'productCatelog' => $request->input('productCatelog'),
+                'productModel' => $request->input('productModel'),
+                'productBrand' => $request->input('productBrand'),
+                'productType' => $request->input('productType'),
+            ];
+            Product::updateProduct($productID, $data);
+        
+            $alertType = 'success';
+            $message = trans("product.success");
+
+        } catch (QueryException $err) {
+
+            $alertType = 'warning';
+
+            $errorCode = $err->getCode();
+            if ($errorCode === '23000') {
+                $errorMsg = trans("product.duplicate");
+            }else{
+                $errorMsg = $err->getMessage();
+            }
+            
+            $message = trans("product.warning") . $errorMsg;
+        }
+        
+        return redirect()->back()->with('alertType', $alertType)->with('message', $message);       
     }
 
     public function destroy($productID){
@@ -349,7 +295,7 @@ class ProductController extends Controller{
         Product::deleteProduct($productID);
 
         // 重定向到产品列表页面或其他适当的页面
-        return redirect()->route('products.index');
+        return redirect()->route('frontend.products.index');
     }
 
     public function refresh(Request $request){

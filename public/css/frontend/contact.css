@@ -1,0 +1,28 @@
+.main{
+    padding: 0.9rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-content: space-around;
+    flex-wrap: wrap;
+}
+
+.contact-row{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.tiktok-embed{
+    margin: 0;
+}
+
+.text-section{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    padding: 2rem 3rem;
+    font-size: 3.4rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}

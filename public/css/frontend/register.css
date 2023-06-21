@@ -1,0 +1,98 @@
+
+.main{
+    padding: 2rem 0 0;
+    height: 75vh;
+    display: flex;
+    justify-content: center;
+    align-items: self-start;
+}
+
+.form{
+    width: 40%;
+    display: flex;
+}
+
+.part{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.2rem;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.section-form{
+    display: flex;
+    flex-direction: column;
+    row-gap: .7rem;
+}
+
+.section-form label{
+    font-size: 1.2rem;
+}
+
+.section-form input, .section-form textarea{ 
+    width: 100%;
+    color: blue;
+    font-size: 1.4rem;
+    outline: 0;
+    border: 1px solid #ccc;;
+    padding: .9rem 2rem;
+    transition: all .2s ease-in-out;
+}
+.section-form input:focus, textarea:focus{ 
+    border-color: #66afe9;
+    
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+}
+
+.requird::before{
+    content: '*';
+    color: red;
+}
+
+.part[data-visible = 'false']{
+    display: none;
+}
+
+.button-area{
+    display: flex;
+    justify-content: space-between;
+    margin: 2rem 0 0;
+}
+
+.button-area button{
+    outline: none;
+    border: none;
+    font-size: 1.2rem;
+    padding: .7rem 2rem;
+    font-weight: bold;
+}
+
+button[data-button-identify="next"], button[data-button-identify="previous"]{
+    transition: all .12s ease-in-out;
+    background-color: rgb(99, 99, 255);
+    color: #fff;
+}
+
+button[data-button-identify="next"]:hover, button[data-button-identify="previous"]:hover{
+    background-color: rgb(119, 119, 255);
+}
+
+button[data-button-identify="next"]:active, button[data-button-identify="previous"]:active{
+    background-color: rgb(79, 79, 255);
+}
+
+button[data-button-identify="submit"]{
+    transition: all .12s ease-in-out;
+    background-color: rgb(99, 180, 99);
+    color: #fff;
+}
+
+button[data-button-identify="submit"]:hover{
+    background-color: rgb(119, 180, 119);
+}
+
+button[data-button-identify="submit"]:active{
+    background-color: rgb(79, 180, 79);
+}
