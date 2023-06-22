@@ -2,8 +2,9 @@
 
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\frontend\ViewController;
-use App\Http\Controllers\frontend\AdminController;
+use App\Domains\Product\Events\Product\CreatedProductEvent;
+use App\Domains\Product\Events\Product\UpdatedProductEvent;
+use App\Domains\Product\Events\Product\DeletedProductEvent;
 use App\Http\Controllers\backend\ProductController;
 
 
@@ -48,9 +49,9 @@ Route::group(['prefix' => 'admin', 'as' => 'backend.admin.', 'middleware' => 'ad
 
 
 // Product 產品處理路由
+Route::post('/products', [CreatedProductEvent::class, 'createProduct'])->name('products.store');
+Route::post('/products/{productID}', [UpdatedProductEvent::class, 'updateProduct'])->name('products.update');
+
 Route::get('/products', [ProductController::class, 'index'])->name('products');
 Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
-Route::post('/products', [ProductController::class, 'store'])->name('products.store');
-Route::get('/products/{productID}/edit', [ProductController::class, 'edit'])->name('products.edit');
-Route::post('/products/{productID}', [ProductController::class, 'update'])->name('products.update');
-Route::delete('/products/{productID}', [ProductController::class, 'destroy'])->name('products.destroy');
+Route::post('/product/{productID}/delete', [DeletedProductEvent::class, 'destroy'])->name('products.destroy');

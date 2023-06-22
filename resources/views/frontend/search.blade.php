@@ -83,7 +83,7 @@
                    
         </label>
         <div class="menu">
-            @if($model)
+            {{-- @if($model)
                 <a href="#model" class="model-link">{{ 'Search "' . $searchbarText . '" By Model' }}</a>
             @endif
             @if($name)
@@ -94,7 +94,7 @@
             @endif
             @if($brand)
                 <a href="#brand" class="model-link">{{ 'Search "' . $searchbarText . '" By Brand' }}</a>
-            @endif
+            @endif --}}
         </div>
     </div>
 
@@ -123,7 +123,7 @@
                 </div>
             @endif
             
-            @if($name)
+            {{--@if($name)
                 <p class="title" id="name">Search Name By '{{$searchbarText}}'</p>
                 <div class="section">
                     @foreach ($nameSearch as $name)
@@ -136,7 +136,7 @@
                                 <p class="product-code">{{ $name->productCode }}</p>
                             </div>
                             <div class="product-card-footer">
-                                {{-- 下單功能 --}}
+                               
                             </div>
                         </div>
                     @endforeach
@@ -155,7 +155,7 @@
                                 <p class="product-code">{{ $code->productCode }}</p>
                             </div>
                             <div class="product-card-footer">
-                                {{-- 下單功能 --}}
+                               
                             </div>
                         </div>
                     @endforeach
@@ -175,12 +175,12 @@
                                 <p class="product-code">{{ $brand->productCode }}</p>
                             </div>
                             <div class="product-card-footer">
-                                {{-- 下單功能 --}}
+                                
                             </div>
                         </div>
                     @endforeach
                 </div>
-            @endif
+            @endif --}}
 
             @if(empty($model) && empty($name) && empty($code) && empty($brand))
                 <div class="alert alert-warning" role="alert">

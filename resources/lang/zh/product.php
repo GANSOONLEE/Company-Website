@@ -19,6 +19,7 @@
         'duplicate' => '产品编号<b>出现重复！</b>',
         'display' => '(<b>该资料将会被显示</b>！)',
         'non-display' => "(<b>该资料<span style='color:red'>不会</span>被显示</b>！)",
+        'delete' => '<b>刪除</b>'
     ];
 
 ?>

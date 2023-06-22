@@ -7,8 +7,6 @@ use App\Http\Controllers\backend\ProductController;
 use App\Models\Product;
 use App\Models\productModel;
 use App\Models\productCatelog;
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Lang;
 
 class AdminController extends Controller{
 
@@ -33,7 +31,6 @@ class AdminController extends Controller{
 
         // 查询所有种类数据
         $catelogs = productCatelog::orderBy('catelogName', 'asc')->get();
-
 
         return view('backend.product',compact('models','catelogs'));
     }

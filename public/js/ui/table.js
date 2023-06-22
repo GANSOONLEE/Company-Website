@@ -95,6 +95,8 @@ function editEventListener() {
             productBrand: event.target.parentNode.querySelector('[data-column-id="productBrand"]').textContent,
             // 其他列数据...
             };
+
+            console.log(rowData);
     
             // 填充表单数据
             document.getElementById("productName").value = rowData.productName;
@@ -103,6 +105,7 @@ function editEventListener() {
             document.getElementById("productCatelog").value = rowData.productCatelog;
             document.getElementById("productModel").value = rowData.productModel;
             document.getElementById("productBrand").value = rowData.productBrand;
+            document.querySelector("button[data-button-type='delete']").value = rowData.productId;
     
             // 替换form action中的占位符
             const form = document.getElementById("productForm");
@@ -114,3 +117,44 @@ function editEventListener() {
         }
     });
   }
+
+//   var deleteBtn = document.querySelector('button[data-button-type="delete"]');
+
+//   deleteBtn.addEventListener('click', () => {
+//       var productId = deleteBtn.getAttribute('value');
+//       // 发送AJAX请求到控制器的路由
+//       var url = `/products/${productId}/delete`;
+//       console.log(url);
+//       var xhr = new XMLHttpRequest();
+//       xhr.open('POST', url, true);
+//       xhr.setRequestHeader('X-CSRF-TOKEN', '{{ csrf_token() }}'); // 如果使用了CSRF保护，请添加CSRF令牌
+//       xhr.setRequestHeader('Content-Type', 'application/json');
+//       xhr.onreadystatechange = function () {
+//           if (xhr.readyState === 4 && xhr.status === 200) {
+//               // 请求成功，执行相应操作
+//               console.log(xhr.responseText);
+//           }
+//       };
+//       xhr.send();
+//   });
+  
+var deleteButton = document.querySelector('button[data-button-type="delete"]');
+
+deleteButton.addEventListener('click', function () {
+    var productId = deleteButton.getAttribute('value');
+    var url = '/product/' + productId + '/delete';
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', url, true);
+    xhr.setRequestHeader('X-CSRF-TOKEN', '{{ csrf_token() }}');
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            var modal = document.getElementById('productModal');
+            var modalInstance = bootstrap.Modal.getInstance(modal);
+            modalInstance.hide();
+            refreshGrid();
+        }
+    };
+    xhr.send();
+});

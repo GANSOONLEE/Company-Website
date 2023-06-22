@@ -19,6 +19,7 @@
         'duplicate' => 'The Products Code is <b> Duplicate </b>!',
         'display' => '(<b>The inform will be display</b>!)',
         'non-display' => "(<b>The inform will <span style='color: red;'>not</span> be display</b>!)",
+        'delete' => '<b>Delete</b>'
     ];
 
 ?>

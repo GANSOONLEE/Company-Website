@@ -46,3 +46,12 @@ body{
     padding: .7rem 2rem;
     font-size: 1.4rem;
 }
+.modal-footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.btn-danger{
+    justify-self: self-start;
+    align-self: flex-start;
+}
