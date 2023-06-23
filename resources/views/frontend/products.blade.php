@@ -36,7 +36,10 @@
                 width: 100vw;
                 top: 25%;
                 margin: 0;
-                display: block;
+                
+            }
+            .model-menu{
+                display: none;
             }
         }
     </style>
@@ -83,9 +86,9 @@
     <div class="sidebar">
         <input type="checkbox" id="menuBtn" class='menuBtn'>
         <label class="btn" for="menuBtn">
-                   
+            +
         </label>
-        <div class="menu">
+        <div class="model-menu">
             @foreach($models as $model)
                 @php
                     $isActive = request()->is("catelog/$productCatelog/$model->modelName") ? 'active' : '';

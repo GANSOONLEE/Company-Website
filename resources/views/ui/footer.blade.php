@@ -20,7 +20,7 @@
                 </a>
             </ul>
         </div>
-
+        <hr>
         <div class="map-section">
             <div class="map-section-title">Pages</div>
             <ul class="links">
@@ -38,14 +38,14 @@
                 </a>
             </ul>
         </div>
-
+        <hr>
         <div class="map-section">
             <div class="map-section-title">Info</div>
             <ul class="links">
                 {{-- <li>Whatapps</li> --}}
                 {{-- <li>Email</li> --}}
-                <li>
-                    <b style="font-size:2rem">Frozen Air Cond Sdn Bhd</b><br>
+                <li style="line-height: 3rem">
+                    <b style="font-size: 2.4rem">Frozen Air Cond Sdn Bhd</b><br>
                     No.5 ,Jalan Emas 5,<br>
                     Taman Emas, Hulu Yam, <br>
                     44300 Hulu Yam, Selangor.

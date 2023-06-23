@@ -13,7 +13,7 @@
     
     background-color: beige;
 }
-.sidebar .menu{
+.sidebar .model-menu{
     width: 20vw;
     text-align: left;
     display: flex;
@@ -101,8 +101,8 @@
     .sidebar{
         flex-direction: column;
     }
-    .menu{
-        flex-direction: column;
+    .sidebar .model-menu{
+        width: 100%;
     }
     .sidebar .btn{
         width: 4rem;
@@ -110,8 +110,8 @@
         display: block;
         transition: all .12s ease-in-out;
     }
-    .menuBtn:checked + .btn{
-        transform: rotateZ(135deg);
+    .menuBtn:checked ~ .model-menu{
+        display: block;
     }
 
     .products-table {
@@ -124,6 +124,6 @@
     }
 
     .product-card {
-        width: 100%;
+        min-width: 100%;
     }
 }
