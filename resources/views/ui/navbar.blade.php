@@ -13,6 +13,7 @@
                     <li class="navbar-link {{ request()->is('about')? 'active' : ''}}"><a href="{{route('frontend.about')}}">ABOUT US</a></li>
                     <li class="navbar-link {{ request()->is('type')? 'active' : ''}}"><a href="{{route('frontend.type')}}">PRODUCT</a></li>
                     <li class="navbar-link {{ request()->is('contact')? 'active' : ''}}"><a href="{{route('frontend.contact')}}">CONTACT</a></li>
+                    {{-- @if() --}}
                     <li class="navbar-link {{ request()->is('register')? 'active' : ''}}"><a href="{{route('frontend.register')}}">REGISTER</a></li>
                     <li class="navbar-link {{ request()->is('login')? 'active' : ''}}"><a href="{{route('frontend.login')}}">LOGIN</a></li>
                 </ul>
