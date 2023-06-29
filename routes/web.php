@@ -10,7 +10,7 @@ use App\Http\Controllers\backend\ProductController;
 
 use App\Http\Controllers\LocaleController;
 
-require_once app_path('Helpers\Global\SystemHelper.php');
+require_once app_path('Helpers/Global/SystemHelper.php');
 
 /*
 |--------------------------------------------------------------------------
