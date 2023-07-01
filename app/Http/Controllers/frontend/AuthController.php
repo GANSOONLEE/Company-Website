@@ -63,7 +63,7 @@ class AuthController extends Controller
 
             return redirect()->route('backend.admin.dashboard');
         } else {
-            return redirect()->route('login')->with('error', 'Invalid credentials');
+            return redirect()->route('frontend.login')->with('error', 'Invalid credentials');
         }
     }
 

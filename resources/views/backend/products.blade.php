@@ -67,6 +67,7 @@
                 </div>
             </div>
 
+            
             <label class="row-title">{{trans('product.code')}}</label>
             <div class="form-row">
                 {{-- 產品編號 --}}

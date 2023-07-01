@@ -38,16 +38,16 @@
               </div>
               <div class="mb-3">
                 <label for="productModel" class="form-label">{{trans('product.model')}} {!! trans('product.non-display') !!}</label>
-                <select required class="form-select form-control" id="productBrand" name="productModel" >
+                <select required class="form-select form-control" id="productModel" name="productModel" >
                   @foreach ($models as $model)
-                  <option value='{{ $model->modelName }}'>{{ $model->modelName }}</option>
+                    <option value='{{ $model->modelName }}'>{{ $model->modelName }}</option>
                   @endforeach
                 </select>
                 
               </div>
               <div class="mb-3">
                 <label for="productBrand" class="form-label">{{trans('product.brand')}} {!! trans('product.non-display') !!}</label>
-                <input required name="productBrand" type="text" class="form-control" id="productModel" placeholder={{trans('product.brand')}}>
+                <input required name="productBrand" type="text" class="form-control" id="productBrand" placeholder={{trans('product.brand')}}>
               </div>
               <div class="mb-3">
                 <label for="productName" class="form-label">{{trans('product.name')}} {!!trans('product.display') !!}</label>

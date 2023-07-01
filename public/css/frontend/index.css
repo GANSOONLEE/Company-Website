@@ -32,7 +32,7 @@
 }
 
 .content .container .text .title {
-    font-size: var(--font-h1);
+    font-size: var(--font-h2);
     font-family: 'khand', sans-serif;
 }
 

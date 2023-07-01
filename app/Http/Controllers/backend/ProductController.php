@@ -65,7 +65,7 @@ class ProductController extends Controller{
         ]);
     }
 
-    public function model($productType, $productCatelog, $productModel){
+    public function model($productType, $productCatelog, $productModel, ){
 
         // 查詢現有的車款
         $models = productModel::orderBy('modelName', 'asc')->get();
