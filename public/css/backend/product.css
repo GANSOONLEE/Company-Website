@@ -2,8 +2,9 @@
 .main{
     position: absolute;
     top: 0;
-    margin-left: 16vw;
+    margin-left: 17vw;
     padding: 2rem;
+    color: #AEB1B8;
 }
 .section .section-title{
     font-size: 2.6rem;

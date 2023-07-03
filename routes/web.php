@@ -29,9 +29,13 @@ Route::get('lang/{lang}', [LocaleController::class, 'change'])->name('locale.cha
  * 前端頁面
  */
 
-Route::group(['as' => 'frontend.'], function () {
+Route::group(['as' => 'frontend.', 'middleware' => 'login'], function () {
     includeRouteFiles(__DIR__ . '/frontend/');
 });
+
+Route::get('/back',function(){
+    return redirect()->route('frontend.index');
+})->name('back');
 
 
 /**

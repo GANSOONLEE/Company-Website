@@ -19,6 +19,7 @@ class Kernel extends HttpKernel
         'ssl' => \App\Http\Middleware\GenerateSSLCertificateMiddleware::class,
         'admin' => \App\Http\Middleware\AdminMiddleware::class,
         'user' => \App\Http\Middleware\UserMiddleware::class,
+        'login' => \App\Http\Middleware\LoginMiddleware::class,
     ];
     protected $middleware = [
         // \App\Http\Middleware\TrustHosts::class,

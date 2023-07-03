@@ -21,7 +21,7 @@ class AdminController extends Controller{
         // 查询所有种类数据
         $catelogs = productCatelog::orderBy('catelogName', 'asc')->get();
 
-        return view('backend.products',compact('products','models','catelogs'));
+        return view('backend.admin.newProduct',compact('products','models','catelogs'));
     }
 
     public function product(){
@@ -32,7 +32,7 @@ class AdminController extends Controller{
         // 查询所有种类数据
         $catelogs = productCatelog::orderBy('catelogName', 'asc')->get();
 
-        return view('backend.product',compact('models','catelogs'));
+        return view('backend.admin.editProduct',compact('models','catelogs'));
     }
 }
 

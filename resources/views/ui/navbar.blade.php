@@ -13,9 +13,18 @@
                     <li class="navbar-link {{ request()->is('about')? 'active' : ''}}"><a href="{{route('frontend.about')}}">ABOUT US</a></li>
                     <li class="navbar-link {{ request()->is('type')? 'active' : ''}}"><a href="{{route('frontend.type')}}">PRODUCT</a></li>
                     <li class="navbar-link {{ request()->is('contact')? 'active' : ''}}"><a href="{{route('frontend.contact')}}">CONTACT</a></li>
-                    {{-- @if() --}}
-                    <li class="navbar-link {{ request()->is('register')? 'active' : ''}}"><a href="{{route('frontend.register')}}">REGISTER</a></li>
-                    <li class="navbar-link {{ request()->is('login')? 'active' : ''}}"><a href="{{route('frontend.login')}}">LOGIN</a></li>
+                    
+                    @guest
+                        <li class="navbar-link {{ request()->is('register')? 'active' : ''}}"><a href="{{route('frontend.register')}}">REGISTER</a></li>
+                        <li class="navbar-link {{ request()->is('login')? 'active' : ''}}"><a href="{{route('frontend.login')}}">LOGIN</a></li>
+                    @else
+                        @if (auth()->user()->isAdmin())
+                            <li class="navbar-link"><a href="{{ route('backend.admin.dashboard') }}" class="user-link">DASHBOARD</a></li>
+                        @else
+                            {{-- <li class="navbar-link"><a href="{{ route('backend.user.dashboard') }}" class="user-link">DASHBOARD</a></li> --}}
+                        @endif
+                            <li class="navbar-link"><a href="{{ route('frontend.logout') }}" class="user-link">LOGOUT</a></li>
+                    @endguest
                 </ul>
             </div>
             <label for="menubtn" class="menubtn"><img src="{{asset('image\menu.png')}}" alt="" class="icon"></label>

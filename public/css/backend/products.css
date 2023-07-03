@@ -2,6 +2,9 @@ body{
     display: flex;
     
 }
+.main{
+    margin-left: 17vw;
+}
 .content{
     width: 82vw;
     padding: 2rem 5rem;

@@ -11,8 +11,10 @@
         </style>
 
         <style>
+            .dark\:bg-gray-900{background-color: white;}
             body {
                 font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+                
             }
             .max-w-xl.mx-auto{
                 display: flex;
@@ -23,12 +25,20 @@
                 width: 40%;
                 height: auto;
             }
+            .relative{
+                display: flex;
+                flex-direction: column;
+                row-gap: 1.2rem
+            }
+            .link{
+                color: rgba(160,174,192,var(--text-opacity));
+            }
         </style>
     </head>
     <body class="antialiased">
         <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
             <div class="max-w-xl mx-auto sm:px-6 lg:px-8">
-                <embed src="{{asset('image/logo.png')}}" class="logo"></embed>
+                <img src="{{asset('image/logo.png')}}" class="logo">
                 <div class="flex items-center pt-8 sm:justify-start sm:pt-0">
                     <div class="px-4 text-lg text-gray-500 border-r border-gray-400 tracking-wider">
                         @yield('code')
@@ -39,6 +49,7 @@
                     </div>
                 </div>
             </div>
+            <a href={{ route('back') }} class="link"> Back</a>
         </div>
     </body>
 </html>

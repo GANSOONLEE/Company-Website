@@ -5,6 +5,8 @@ namespace App\Http\Controllers\frontend;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
@@ -52,14 +54,15 @@ class AuthController extends Controller
         if ($user && Hash::check($data['Password'], $user->Password)) {
 
             $newAccessToken = $this->generateAccessToken();
-            $updateData = [
-                'AccessToken' => $newAccessToken,
-            ];
+
+            $updateData = ['AccessToken' => $newAccessToken,];
 
             User::updateUser($request->input('email'), $updateData);
 
             cookie()->queue('accessToken', $newAccessToken, 60*24*180);
             cookie()->queue('email', $data['Email'], 60*24*180);
+
+            Auth::login($user, false);
 
             return redirect()->route('backend.admin.dashboard');
         } else {
@@ -87,5 +90,16 @@ class AuthController extends Controller
         } else {
             return redirect()->route('frontend.login');
         }
+    }
+
+    function logout(Request $request){
+
+        $response = back()
+            ->withCookie(Cookie::forget('email'))
+            ->withCookie(Cookie::forget('accessToken'));
+
+        Auth::logout();
+
+        return $response;
     }
 }

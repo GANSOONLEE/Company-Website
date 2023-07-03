@@ -1,7 +1,7 @@
 
 .sidebar{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    position: sticky;
+    position: fixed;
     top: 0;
     display: flex;
     flex-direction: column;
@@ -10,11 +10,20 @@
     height: 100vh;
     width: 16vw;
     min-width: 240px;
-    background-color: aliceblue;
+    background-color: #0E1420;
+    color: #AEB1B8;
+}
+.company{
+    font-size: var(--font-h5);
+    font-weight: bold;
+    margin-top: 1rem;
 }
 
 .sidebar-header{
-    padding: 2rem 0 4rem;
+    padding: 1rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .sidebar-header img.logo{
     min-width: 160px;
@@ -29,22 +38,37 @@
     align-items: center;
     width: 100%;
 }
+.title{
+    padding: .7rem 0;
+    margin: .7rem 2rem;
+    border-bottom: 1px solid #AEB1B8;
+}
+
 .sidebar-body .sidebar-links{
     display: flex;
     flex-direction: column;
     font-family: 'vistol sans',sans-serif;
-    font-weight: 600;
     font-size: var(--font-h6);
     width: 100%;
 }
 .sidebar-body .sidebar-links .sidebar-link{
     text-align: center;
-    padding: 1rem 2rem;
+    
     width: 100%;
     position: relative;
 }
+.sidebar-body .sidebar-links .sidebar-link li{
+    padding: 1rem 2rem;
+}
+.sidebar-body .sidebar-links .sidebar-link:hover > li{
+    background-color: hsl(220, 39%, 7%);
+    color: white;
+}
+.sidebar-body .sidebar-links .sidebar-link:active > li{
+    background-color: hsl(220, 39%, 6%);
+}
 .sidebar-body .sidebar-links .sidebar-link.active{
-    background-color: rgb(10, 0, 88);
+    background-color: hsl(220, 39%, 5%);
     color: white;
 }
 
