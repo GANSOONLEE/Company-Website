@@ -16,7 +16,7 @@
             <h5 class="modal-title" id="exampleModalLabel">{{trans('product.edit')}}</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <form action="{{ route('products.update', ['productID' => '__PRODUCT_ID__']) }}"  method="POST" enctype="multipart/form-data" id="productForm">
+          <form action="{{ route('backend.admin.updatedProduct', ['productID' => '__PRODUCT_ID__']) }}"  method="POST" enctype="multipart/form-data" id="productForm">
             @csrf
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="modal-body">
@@ -50,7 +50,7 @@
                 <input required name="productBrand" type="text" class="form-control" id="productBrand" placeholder={{trans('product.brand')}}>
               </div>
               <div class="mb-3">
-                <label for="productName" class="form-label">{{trans('product.name')}} {!!trans('product.display') !!}</label>
+                <label for="productName" class="form-label">{{trans('product.name')}} {!! trans('product.display') !!}</label>
                 <input required name="productName" type="text" class="form-control" id="productName" placeholder={{trans('product.name')}}>
               </div>
             </div>

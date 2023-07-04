@@ -1,20 +1,36 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\backend\CatelogController;
-use App\Http\Controllers\Backend\ModelController;
+
+/* Return View */
 use App\Http\Controllers\frontend\AdminController;
+
+/* Method */
+use App\Domains\Product\Events\Product\CreatedProductEvent;
+use App\Domains\Product\Events\Product\UpdatedProductEvent;
+use App\Domains\Product\Events\Product\DeletedProductEvent;
 
 // 後臺系統
 
-// 新增产品组
-    Route::get('/NewProduct', [AdminController::class, 'products'])->name('newProduct');
+/**
+ * sidebar 連接
+ * 
+ */
+Route::get('/dashboard', [AdminController::class,'dashboard'])->name('dashboard');
 
+Route::group(['prefix' => 'product'], function(){
+    Route::get('/newProduct', [AdminController::class,'newProduct'])->name('newProduct');
+    Route::get('/editProduct', [AdminController::class,'editProduct'])->name('editProduct');
 
-Route::post('/EditProduct', [AdminController::class, 'editProduct'])->name('editProduct');
+    Route::post('/newProduct', [CreatedProductEvent::class, 'createProduct'])->name('createdProduct');
+    Route::post('/editProduct/{productID}', [UpdatedProductEvent::class , 'updateProduct'])->name('updatedProduct');
+});
 
-Route::get('/dashboard',[AdminController::class,'product'])->name('dashboard');
-Route::get('/dashboard',[AdminController::class,'product'])->name('dashboard');
+Route::group(['prefix' => 'order'], function(){
+    Route::get('/viewOrder', [AdminController::class,'viewOrder'])->name('viewOrder');
+    Route::get('/editOrder', [AdminController::class,'editOrder'])->name('editOrder');
+});
 
-Route::post('/models', [ModelController::class, 'create'])->name('model.store');
-Route::post('/catelogs', [CatelogController::class, 'create'])->name('catelog.store');
+Route::group(['prefix' => 'user'], function(){
+    Route::get('/editUser', [AdminController::class,'editUser'])->name('editUser');
+});

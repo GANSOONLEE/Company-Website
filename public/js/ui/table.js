@@ -16,8 +16,8 @@ const columnNames = [
     { id: 'productCode', name: 'Code'},
     { id: 'productType', name: 'Type'},
     { id: 'productCatelog', name: 'Catelog'},
-    { id: 'productModel', name: 'Model'},
-    { id: 'productBrand', name: 'Brand'},
+    { id: 'productBrand', name: 'Model'},
+    { id: 'productModel', name: 'Brand'},
 ];
 
 // 渲染表格

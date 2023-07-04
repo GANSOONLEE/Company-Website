@@ -17,23 +17,39 @@ body{
 .refreshButton:active{
     background-color: hsl(120, 100%, 23%);
 }
+th.gridjs-th{
+    background-color: hsl(240, 30%, 4%);
+    border: black;
+}
+td.gridjs-td{
+    border: black;
+}
+.gridjs-footer{
+    color: white;
+    background-color: hsl(240, 30%, 4%);
+    border: black;
+}
+.gridjs-pagination .gridjs-pages button[disabled]{
+    border: black;
+    background-color: hsl(240, 30%, 14%);
+}
 #wrapper .gridjs-table .gridjs-tbody .gridjs-tr{
     cursor: pointer;
 }
-#wrapper .gridjs-table .gridjs-tbody .gridjs-tr:nth-child(odd) > .gridjs-td {
-    background-color: rgb(237, 237, 237); /* 淺灰色 */
-}
-
 #wrapper .gridjs-table .gridjs-tbody .gridjs-tr:nth-child(even) > .gridjs-td {
-    background-color: rgb(227, 227, 227); /* 深灰色 */
+    background-color: hsl(240, 30%, 12%);
+}
+#wrapper .gridjs-table .gridjs-tbody .gridjs-tr:nth-child(odd) > .gridjs-td {
+    background-color: hsl(240, 30%, 8%);
 }
 
 #wrapper .gridjs-table .gridjs-tbody .gridjs-tr:hover > .gridjs-td{
-    background-color: rgb(237, 248, 255);
+    background-color: hsl(240, 20%, 20%);
 }
 .modal-dialog{
     width: 80%;
     font-size: 1.6rem;
+    color: black;
 }
 .modal-title{
     font-size: 2rem;

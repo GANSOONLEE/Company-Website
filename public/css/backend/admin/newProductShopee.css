@@ -1,0 +1,83 @@
+body {
+  display: flex;
+}
+body > .main {
+  margin-left: 16vw;
+  background-color: hsla(240, 20%, 10%, 0.9);
+}
+
+.content {
+  width: 85vw;
+  padding: 2rem 7rem;
+}
+.content > .content-header {
+  margin-bottom: 2rem;
+}
+.content > .content-header > .content-title {
+  font-size: var(--font-h5);
+  font-weight: 500;
+}
+.content > .content-body {
+  padding: 0.9rem 4rem;
+}
+.content > .content-body .form .form-row .form-row-title-text {
+  font-size: calc(var(--font-h6));
+  font-weight: normal;
+}
+.content > .content-body .form .form-row .form-row-body .form-row-image {
+  --value: 100px;
+  display: flex;
+  flex-direction: row;
+  -moz-column-gap: 2rem;
+       column-gap: 2rem;
+}
+.content > .content-body .form .form-row .form-row-body .form-row-image .drop-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: var(--value);
+  width: var(--value);
+  font-size: calc(var(--font-h6) - 0.4rem);
+  color: hsl(0, 0%, 54%);
+  border: 1px solid;
+  box-shadow: 0 0 10px hsl(0, 0%, 66%);
+  transition: all 0.1s ease-in-out;
+}
+.content > .content-body .form .form-row .form-row-body .form-row-image .drop-box.active {
+  color: hsl(28, 46%, 54%);
+  border: 1px solid;
+  box-shadow: 0 0 10px hsl(28, 46%, 54%);
+}
+.content > .content-body .form .form-row .form-row-body .form-row-image .drop-image-list {
+  display: flex;
+  flex-direction: row;
+  -moz-column-gap: 1.2rem;
+       column-gap: 1.2rem;
+}
+.content > .content-body .form .form-row .form-row-body .form-row-image .drop-image-list > .drop-image-box {
+  width: var(--value);
+  height: var(--value);
+  border-radius: 2px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.content > .content-body .form .form-row .form-row-body .form-row-image .drop-image-list > .drop-image-box > img.thumble {
+  height: 100%;
+  width: 100%;
+}
+.content > .content-body .form .form-row .form-row-body .form-row-image .drop-image-list > .drop-image-box > .drop-image-delete {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  position: relative;
+  bottom: 25px;
+  height: 25%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  transition: all 0.1s ease;
+  font-size: calc(var(--font-h6) - 0.5rem);
+}
+.content > .content-body .form .form-row .form-row-body .form-row-image .drop-image-list > .drop-image-box > .drop-image-delete:hover {
+  background-color: rgba(0, 0, 0, 0.4);
+}

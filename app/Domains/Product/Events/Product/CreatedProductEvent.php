@@ -16,6 +16,8 @@ class CreatedProductEvent{
 
         $secondaryBrand = $request->input('secondaryBrand');
         $secondaryModel = $request->input('secondaryModel');
+
+        // dd($request);
         
         $combinedArray = [];
         if (isset($secondaryBrand, $secondaryModel)) {
@@ -32,21 +34,17 @@ class CreatedProductEvent{
             $jsonData = '';
         }
         
-        // 获取上传的照片文件
         $photo = $request->file('productImage');
 
         // 目标高度
         $targetHeight = 900;
 
-        // 打开图像并等比例缩小
         $image = Image::make($photo)->heighten($targetHeight, function ($constraint) {
             $constraint->upsize();
         });
 
-        // 将图像转换为 Base64 编码
         $encodedImage = $image->encode('data-url');
 
-        // 从请求中获取用户输入的值并创建新产品
         $data = [
             'productName' => strtoupper($productName),
             'productCode' => $request->input('productCode'),
@@ -57,9 +55,7 @@ class CreatedProductEvent{
             'productType' => $request->input('productType'),
             'productImage' => $encodedImage, // 上传的产品图像文件
         ];
-
-        // dd($data);
-
+        
         Product::createProduct($data);
 
         return back();

@@ -24,20 +24,20 @@
                             'section' => trans('sidebar.product'),
                             'link' => [
                                 ['url' => route('backend.admin.newProduct'), 'label' => trans('sidebar.newProduct')],
-                                ['url' => '/admin/EditProduct', 'label' => trans('sidebar.editProduct')],
+                                ['url' => route('backend.admin.editProduct'), 'label' => trans('sidebar.editProduct')],
                             ]
                         ],
                         [
                             'section' => trans('sidebar.order'),
                             'link' => [
-                                ['url' => '/admin/NewOrder', 'label' => trans('sidebar.viewOrder'), 'notification' => true],
-                                ['url' => '/admin/EditOrder', 'label' => trans('sidebar.editOrder'), 'notification' => true],
+                                ['url' => route('backend.admin.viewOrder'), 'label' => trans('sidebar.viewOrder'), 'notification' => true],
+                                ['url' => route('backend.admin.editOrder'), 'label' => trans('sidebar.editOrder'), 'notification' => true],
                             ]
                         ],
                         [
                             'section' => trans('sidebar.user'),
                             'link' => [
-                                ['url' => '/admin/UserManagement', 'label' => trans('sidebar.userManagement')],
+                                ['url' => route('backend.admin.editUser'), 'label' => trans('sidebar.userManagement')],
                             ]
                         ],
                         
@@ -77,8 +77,6 @@
             <a href="{{ route('locale.change', ['lang' => 'en']) }}">English</a>
             <a href="{{ route('locale.change', ['lang' => 'zh']) }}">中文</a>
         </div>
-        
-        <p class="user">{{ $user = session('user')->Name }}</p>
     </div>
 </body>
 <script src="{{asset('js\ui\sidebar.js')}}"></script>

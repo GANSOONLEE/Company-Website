@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible">
-    <title>Admin | @yield('title')</title>
+    <title>{{ trans('web.admin') }} | @yield('title')</title>
 
     <script src="https://js.pusher.com/7.2/pusher.min.js"></script>
 
@@ -13,8 +13,8 @@
     <link rel="stylesheet" href="{{asset('css\app.css')}}">
 
     <!-- Grid.js -->
-    <link href="https://cdn.jsdelivr.net/npm/gridjs/dist/theme/mermaid.min.css" rel="stylesheet" />
-
+    <link href="https://cdn.jsdelivr.net/npm/gridjs/dist/theme/mermaid.min.css" rel="stylesheet">
+    
     <link rel="stylesheet" href={{asset ('css\backend\app.css') }}>
     @stack('after-style')
 

@@ -2,7 +2,7 @@
 @extends('backend.layouts.app')
 
 
-@section('title', __('Products'))
+@section('title', trans('web.new_product'))
 
 
 @push('after-style')
@@ -10,8 +10,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-    <link href="{{asset('css\app.css')}}" rel="stylesheet">
-    <link href="{{asset('css\backend\products.css')}}" rel="stylesheet">
+    <link href={{ asset('css\backend\newProduct.css') }} rel="stylesheet">
     <title>{{trans('product.title')}}</title>
 @endpush
 
@@ -81,6 +80,7 @@
     });
     });
 </script>
+
 @endpush
 
 
@@ -91,7 +91,7 @@
         <h1>{{ trans('product.title') }}</h1>
         <hr class="split">
 
-        <form action="/products" method="POST" enctype="multipart/form-data" class="form">
+        <form action={{ route('backend.admin.createdProduct') }} method="POST" enctype="multipart/form-data" class="form">
             
             @csrf
             <label class="row-title">{{trans('product.catelog')}}</label>
@@ -126,13 +126,13 @@
 
                 {{-- 主要 --}}
                 <div class="input-group mb-3" style="display: flex; flex-direction: row;" id="primaryInputGroup">
-                    <input required style="text-transform: uppercase;" class="form-control primary-input" list="primaryBrandList" id="primaryBrand" placeholder={{trans('product.brand')}} name="primaryBrand">
+                    <input required style="text-transform: uppercase;" class="form-control primary-input" list="primaryBrandList" id="primaryBrand" placeholder={{trans('product.brand')}} name="primaryModel">
                     <datalist id="primaryBrandList">
                         @foreach ($models as $option)
                             <option value="{{ $option['modelName'] }}">
                         @endforeach
                     </datalist>
-                    <input required style="text-transform: uppercase;" class="form-control primary-input" type="text" placeholder={{trans('product.model')}} name="primaryModel">
+                    <input required style="text-transform: uppercase;" class="form-control primary-input" type="text" placeholder={{trans('product.model')}} name="primaryBrand">
                     <button id="addInputBtn" type="button" class="form-control">添加输入框</button>
                 </div>
             </div>
@@ -150,7 +150,6 @@
             <div class="form-row">
                 <div class="container productImage">
                     <input type="file" name="productImage" id="productImage" required accept=".jpg, .png, .jpeg">
-                    <label for="productImage" class="label">{{trans('product.image')}}</label>
                 </div>
             </div>
 

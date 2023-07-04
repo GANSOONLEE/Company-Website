@@ -1,11 +1,10 @@
 @extends('backend.layouts.app')
 
-
-@section('title', __('Dashboard'))
-
+@section('title', trans('web.edit_product'))
 
 @push('after-style')
-    <link rel="stylesheet" href="{{asset('css\backend\product.css')}}">
+    <link rel="stylesheet" href={{asset('css\backend\editProduct.css')}}>
+    
 @endpush
 
 

@@ -7,6 +7,9 @@ use App\Domains\Product\Events\Product\UpdatedProductEvent;
 use App\Domains\Product\Events\Product\DeletedProductEvent;
 use App\Http\Controllers\backend\ProductController;
 
+use App\Models\Product;
+use App\Models\productCatelog;
+use App\Models\productModel;
 
 use App\Http\Controllers\LocaleController;
 
@@ -42,6 +45,10 @@ Route::get('/back',function(){
  * 後端頁面
  */
 
+Route::group(['as' => 'backend.', 'middleware' => 'user'], function () {
+    includeRouteFiles(__DIR__ . '/backend/public/');
+});
+
 Route::group(['prefix' => 'user', 'as' => 'backend.user.', 'middleware' => 'user'], function () {
     includeRouteFiles(__DIR__ . '/backend/user/');
 });
@@ -50,11 +57,22 @@ Route::group(['prefix' => 'admin', 'as' => 'backend.admin.', 'middleware' => 'ad
     includeRouteFiles(__DIR__ . '/backend/admin/');
 });
 
+Route::get('/test',function(){
+    $products = Product::all();
+
+    // 查询所有车款数据
+    $models = productModel::orderBy('modelName', 'asc')->get();
+
+    // 查询所有种类数据
+    $catelogs = productCatelog::orderBy('catelogName', 'asc')->get();
+
+    return view('backend.admin.newProductShopee',compact('products','models','catelogs'));
+});
 
 
 // Product 產品處理路由
-Route::post('/products', [CreatedProductEvent::class, 'createProduct'])->name('products.store');
-Route::post('/products/{productID}', [UpdatedProductEvent::class, 'updateProduct'])->name('products.update');
+// Route::post('/products', [CreatedProductEvent::class, 'createProduct'])->name('products.store');
+// Route::post('/products/{productID}', [UpdatedProductEvent::class, 'updateProduct'])->name('products.update');
 
 Route::get('/products', [ProductController::class, 'index'])->name('products');
 Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
