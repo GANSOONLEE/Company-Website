@@ -3,12 +3,15 @@
 namespace App\Domains\Product\Events\Product;
 
 use App\Models\Product;
+use App\Models\Image;
+
+use App\Domains\Product\Services\Image\ImageGroupService;
 use Illuminate\Http\Request;
-use Intervention\Image\ImageManagerStatic as Image;
 
 class CreatedProductEvent{
 
     public function createProduct(Request $request){
+
 
         $primaryBrand = $request->input('primaryBrand');
         $primaryModel = $request->input('primaryModel');
@@ -16,8 +19,6 @@ class CreatedProductEvent{
 
         $secondaryBrand = $request->input('secondaryBrand');
         $secondaryModel = $request->input('secondaryModel');
-
-        // dd($request);
         
         $combinedArray = [];
         if (isset($secondaryBrand, $secondaryModel)) {
@@ -33,17 +34,6 @@ class CreatedProductEvent{
         } else {
             $jsonData = '';
         }
-        
-        $photo = $request->file('productImage');
-
-        // 目标高度
-        $targetHeight = 900;
-
-        $image = Image::make($photo)->heighten($targetHeight, function ($constraint) {
-            $constraint->upsize();
-        });
-
-        $encodedImage = $image->encode('data-url');
 
         $data = [
             'productName' => strtoupper($productName),
@@ -53,10 +43,19 @@ class CreatedProductEvent{
             'productModel' => strtoupper($primaryModel),
             'productBrand' => strtoupper($primaryBrand),
             'productType' => $request->input('productType'),
-            'productImage' => $encodedImage, // 上传的产品图像文件
         ];
         
-        Product::createProduct($data);
+        $product = Product::create($data);
+
+        /**
+         *  从数据库读取 productID 并回传给 createdImageGroupEvent 
+         * 
+         */
+        $retrievedProduct = Product::where('productCode', $data['productCode'])->first();
+        $retrievedProductID = $retrievedProduct->productID;
+
+        $createdImageGroupEvent = new ImageGroupService;
+        $createdImageGroupEvent->create($request, $retrievedProductID);
 
         return back();
 

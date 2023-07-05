@@ -2,9 +2,11 @@ let droptarget = document.getElementById('drop');
 let dropImageList = document.getElementById('dropImageList');
 let imageQuantity = document.querySelector('.count');
 let uploadButton = document.querySelector('#uploadButton');
+let uploadImagesInput = document.querySelector('#uploadImages');
 
 let fileArr = [];
 let fileBlodArr = [];
+let imagePaths = [];
 
 uploadButton.addEventListener('change', (event) => {
   let files = event.target.files;
@@ -14,6 +16,7 @@ uploadButton.addEventListener('change', (event) => {
     if (fileArr.length < 10) {
       fileArr.push(file);
       filesToBlod(file);
+      updateUploadedImagesInput(file);
       droptarget.classList.remove('disable');
       document.querySelector('.note').innerText = "Add Image";
     } else {
@@ -24,6 +27,16 @@ uploadButton.addEventListener('change', (event) => {
 
   // 重置 input 元素的值，清空选择的文件
   event.target.value = '';
+
+ 
+
+  function updateUploadedImagesInput(file) {
+    let imagePaths = file;
+    uploadImagesInput.value = imagePaths;
+    console.log(file);
+    console.log(file.type);
+    console.log(uploadImagesInput.value);
+  }
 })
 
 function handleEvent(event) {
