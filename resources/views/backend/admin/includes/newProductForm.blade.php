@@ -124,6 +124,7 @@
     {{-- 提交按鈕 --}}
     {{-- <button type="submit" class="submitBtn">{{trans('product.submit')}}</button> --}}
 
+{{-- Upload Image --}}
 <div class="form-row">
     <div class="form-row-title">
         <p class="form-row-title-text">
@@ -131,11 +132,12 @@
         </p>
     </div>
     <div class="form-row-body">
-        <div class="form-row-image" data-drop-id="image">  
-            <div id="drop" class="drop-box">
-                <p class="drop-text">Add Image<br>
-                    <span class="count">(0/0)</span>
-                    <span onclick="upload()"></span>
+        <div class="form-row-image" data-drop-id="image">
+            <div id="drop" class="drop-box" onclick="upload()">
+                <p class="drop-text">
+                    <p class="note">Add Image</p><br>
+                    <span class="count">(0/10)</span>
+                    <input type="file" multiple required accept=".png, .jpeg, .jpg, .gif" id="uploadButton">
                  </p>
             </div>
             <div class="drop-image-list" id="dropImageList">
@@ -143,30 +145,61 @@
         </div>
     </div>
 </div>
+
+{{-- Product Code --}}
 <div class="form-row">
     <div class="form-row-title">
-
+        <p class="form-row-title-text">
+            {{ trans('product.code') }}
+        </p>
     </div>
     <div class="form-row-body">
-        
+        <input type="text" class="form-control" name="productCode" id="productCode" placeholder={{ trans('product.code') }} required>
     </div>
 </div>
+
+{{-- Product Catelog --}}
 <div class="form-row">
     <div class="form-row-title">
-
+        <p class="form-row-title-text">
+            {{ trans('product.catelog') }}
+        </p>
     </div>
     <div class="form-row-body">
-        
+        <div class="form-row-body-radio">
+            @foreach ($catelogs as $option)
+                <label for="{{ $option['catelogName'] }}">
+                    <input required class="form-check-input" type="radio" name="productCatelog" id="{{ $option['catelogName'] }}" value="{{ $option['catelogName'] }}">
+                    <div required class="form-radio">{{ $option['catelogName'] }}</div>
+                </label>
+            @endforeach
+        </div>
     </div>
 </div>
+
+{{-- Product Type --}}
 <div class="form-row">
     <div class="form-row-title">
-
+        <p class="form-row-title-text">
+            {{ trans('product.type') }}
+        </p>
     </div>
     <div class="form-row-body">
-        
+        <div class="form-row-body-radio">
+            <label class="form-check-label" for="Origin">
+                <input class="form-check-input" id="Origin" type="radio" name="productType" value="Origin">
+                <div required class="form-radio">Original</div>
+            </label>
+                
+            <label class="form-check-label" for="Non-Origin">
+                <input class="form-check-input" id="Non-Origin" type="radio" name="productType" value="Non-Origin">
+                <div required class="form-radio">Non-Original</div>
+            </label>
+        </div>
     </div>
 </div>
+
+{{-- Product Model & Brand --}}
 <div class="form-row">
     <div class="form-row-title">
 
