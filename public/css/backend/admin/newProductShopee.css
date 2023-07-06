@@ -3,10 +3,13 @@ body {
 }
 body > .main {
   margin-left: 16vw;
-  background-color: hsla(240, 20%, 10%, 0.9);
+  background-color: rgb(238, 242, 255);
+  color: black;
 }
 
 .content {
+  background-color: azure;
+  border-radius: 10px;
   width: 85vw;
   padding: 2rem 7rem;
 }
@@ -41,28 +44,20 @@ body > .main {
   align-items: center;
   text-align: center;
   cursor: pointer;
+  border-radius: 4px;
   height: var(--value);
   min-width: var(--value);
   width: var(--value);
   font-size: calc(var(--font-h6) - 0.4rem);
-  color: hsl(0, 0%, 54%);
+  color: hsl(0, 0%, 23%);
   border: 1px solid;
-  box-shadow: 0 0 10px hsl(0, 0%, 66%);
-  transition: all 0.1s ease-in-out;
-}
-.content > .content-body .form .form-row .form-row-body .form-row-image .drop-box:hover {
-  box-shadow: 0 0 10px hsl(243, 10%, 65%);
-}
-.content > .content-body .form .form-row .form-row-body .form-row-image .drop-box:active {
-  box-shadow: 0 0 10px hsl(243, 30%, 66%);
 }
 .content > .content-body .form .form-row .form-row-body .form-row-image .drop-box.active {
-  color: hsl(28, 46%, 54%);
-  border: 1px solid;
-  box-shadow: 0 0 10px hsl(28, 46%, 54%);
+  border: 2px dashed darkorange;
+  color: darkorange;
+  background: rgba(0, 0, 0, 0.1);
 }
 .content > .content-body .form .form-row .form-row-body .form-row-image .drop-box.disable {
-  box-shadow: 0 0 10px hsl(0, 74%, 57%);
   color: red;
   animation: shake 0.4s 1.5;
   background-color: rgba(0, 0, 0, 0.2);
@@ -85,8 +80,11 @@ body > .main {
 .content > .content-body .form .form-row .form-row-body .form-row-image .drop-image-list > .drop-image-box {
   width: var(--value);
   height: var(--value);
-  border-radius: 2px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+.content > .content-body .form .form-row .form-row-body .form-row-image .drop-image-list > .drop-image-box:hover {
+  border: 2px dashed darkorange;
 }
 .content > .content-body .form .form-row .form-row-body .form-row-image .drop-image-list > .drop-image-box > .drop-image-delete {
   cursor: pointer;
@@ -98,6 +96,7 @@ body > .main {
   bottom: 25px;
   height: 25px;
   width: 100%;
+  color: white;
   background-color: rgba(0, 0, 0, 0.5);
   transition: all 0.1s ease;
   font-size: calc(var(--font-h6) - 0.5rem);
@@ -118,9 +117,10 @@ body > .main {
   display: none;
 }
 .content > .content-body .form .form-row .form-row-body-radio .form-check-input:checked + .form-radio {
-  text-shadow: 0 0 2.5px rgba(255, 255, 255, 0.4);
-  box-shadow: 0 0 20px hsla(240, 100%, 47%, 0.4);
-  background-color: rgba(0, 0, 0, 0.5);
+  text-shadow: 0 0 2.5px rgba(255, 255, 255, 0.3);
+  background-color: transparent;
+  color: rgb(255, 123, 0);
+  border-color: rgb(255, 123, 0);
 }
 .content > .content-body .form .form-row .form-row-body-radio .form-radio {
   flex: 1 0 50%;
@@ -128,19 +128,64 @@ body > .main {
   cursor: pointer;
   padding: 2rem 4rem;
   border-radius: 6px;
-  background-color: rgba(0, 0, 0, 0.2);
+  border: 2px solid black;
+  background-color: rgba(0, 0, 0, 0);
   font-size: var(--font-h6);
   transition: all 0.19s ease-in-out;
 }
 .content > .content-body .form .form-row .form-row-body-radio .form-radio:hover {
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.1);
 }
 .content > .content-body .form .form-row .form-row-body-radio .form-radio:active {
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.content > .content-body .form .form-row .form-row-body.buttonArea {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  -moz-column-gap: 0.9rem;
+       column-gap: 0.9rem;
+}
+.content > .content-body .form .form-row .submitButton {
+  border: none;
+  outline: none;
+  background-color: hsl(120, 49%, 42%);
+  border-radius: 4px;
+  color: white;
+  padding: 1rem 2rem;
+  font-size: var(--font-h6);
+  width: 100%;
+  transition: background-color 0.12s ease-in-out;
+}
+.content > .content-body .form .form-row .submitButton:hover {
+  background-color: hsl(120, 72%, 39%);
+}
+.content > .content-body .form .form-row .submitButton:active {
+  background-color: hsl(120, 100%, 28%);
+}
+.content > .content-body .form .form-row .resetButton {
+  border: none;
+  outline: none;
+  background-color: hsl(0, 49%, 42%);
+  border-radius: 4px;
+  color: white;
+  padding: 1rem 2rem;
+  font-size: var(--font-h6);
+  width: 100%;
+  transition: background-color 0.12s ease-in-out;
+}
+.content > .content-body .form .form-row .resetButton:hover {
+  background-color: hsl(0, 72%, 39%);
+}
+.content > .content-body .form .form-row .resetButton:active {
+  background-color: hsl(0, 100%, 28%);
 }
 img.thumble {
   height: var(--value);
   width: var(--value);
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 4px;
 }
 
 input[type=file] {
@@ -167,16 +212,18 @@ input[type=file] {
 .form-control {
   box-shadow: none;
   transition: all 0.12s ease-in-out;
-  border-color: rgba(0, 0, 48, 0.2);
-  background-color: rgba(0, 0, 0, 0.2);
+  border-color: rgba(0, 0, 48, 0.35);
+  background-color: rgba(0, 0, 0, 0.05);
 }
 .form-control[type=text] {
-  color: white;
+  color: black;
+}
+.form-control::-moz-placeholder {
+  color: rgb(90, 90, 90);
+}
+.form-control::placeholder {
+  color: rgb(90, 90, 90);
 }
 .form-control:focus {
-  background-color: rgba(0, 0, 0, 0.3);
-}
-.form-control:valid {
-  box-shadow: 0 0 20px hsla(136, 100%, 47%, 0.4);
-  border-color: green;
+  background-color: rgba(0, 0, 0, 0.1);
 }

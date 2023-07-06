@@ -19,7 +19,8 @@
 
 
 @push('after-script')
-
+    
+    <script src={{ asset('js\backend\admin\upload.js') }}></script>
 
 @endpush
 

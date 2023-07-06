@@ -10,8 +10,9 @@
     height: 100vh;
     width: 16vw;
     min-width: 240px;
-    background-color: #0E1420;
-    color: #AEB1B8;
+    /* background-color: #0E1420; */
+    background-color: #dbdbdb;
+    color: black;
 }
 .company{
     font-size: var(--font-h5);
@@ -24,6 +25,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    display: none;
 }
 .sidebar-header img.logo{
     min-width: 160px;
@@ -38,47 +40,65 @@
     align-items: center;
     width: 100%;
 }
-.title{
-    padding: .7rem 0;
-    margin: .7rem 2rem;
-    border-bottom: 1px solid #AEB1B8;
-}
-
-.sidebar-body .sidebar-links{
+.titleLabel{
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: .2rem .9rem;
+    width: 100%;
+}
+.title{
+    color: black;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    font-weight: normal;
+}
+.title>p{
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+ul.links{
+    display: none;
+}
+input[type="checkbox"]:checked ~ ul.links{
+    display: flex;
+    flex-direction: column;
+}
+.fa-solid.fa-chevron-down{
+    transition: all .2s ease;
+    color: #525252;
+}
+input[type="checkbox"]:checked + .titleLabel .fa-solid.fa-chevron-down{
+    transform: rotateZ(180deg);
+}
+.sidebar-body .sidebar-links{
+    padding: 0 1rem;
     flex-direction: column;
     font-family: 'vistol sans',sans-serif;
     font-size: var(--font-h6);
     width: 100%;
 }
+.sidebar-body .sidebar-links .section{
+    margin: 1.4rem 0;
+}
 .sidebar-body .sidebar-links .sidebar-link{
-    text-align: center;
-    
+    text-align: start;
     width: 100%;
     position: relative;
 }
 .sidebar-body .sidebar-links .sidebar-link li{
-    padding: 1rem 2rem;
+    padding: 1.4rem 3rem .8rem;
+    font-size: calc(var(--font-h6) - .2rem);
+    color: #525252;
 }
 .sidebar-body .sidebar-links .sidebar-link:hover > li{
-    background-color: hsl(220, 39%, 7%);
-    color: white;
+    color: blue;
 }
-.sidebar-body .sidebar-links .sidebar-link:active > li{
-    background-color: hsl(220, 39%, 6%);
-}
-.sidebar-body .sidebar-links .sidebar-link.active{
-    background-color: hsl(220, 39%, 5%);
-    color: white;
-}
-
-.notifiaction.active{
-    --size: 16px;
-    position: absolute;
-    top: -6px;
-    right:  -6px;
-    height: var(--size);
-    width: var(--size);
-    background-color: red;
-    border-radius: 50%;
+.sidebar-body .sidebar-links .sidebar-link.active > li{
+    color: rgb(255, 119, 0);
 }

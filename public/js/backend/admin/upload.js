@@ -10,7 +10,7 @@ var droptarget = document.getElementById('drop');
 var dropImageList = document.getElementById('dropImageList');
 var imageQuantity = document.querySelector('.count');
 var uploadButton = document.querySelector('#uploadButton');
-var uploadImagesInput = document.querySelector('#uploadImages');
+var uploadImagesInput = document.querySelector('#imgUpload');
 var fileArr = [];
 var fileBlodArr = [];
 var imagePaths = [];
@@ -26,7 +26,6 @@ uploadButton.addEventListener('change', function (event) {
       if (fileArr.length < 10) {
         fileArr.push(file);
         filesToBlod(file);
-        updateUploadedImagesInput(file);
         droptarget.classList.remove('disable');
         document.querySelector('.note').innerText = "Add Image";
       } else {
@@ -42,13 +41,6 @@ uploadButton.addEventListener('change', function (event) {
     _iterator.f();
   }
   event.target.value = '';
-  function updateUploadedImagesInput(file) {
-    var imagePaths = file;
-    uploadImagesInput.value = imagePaths;
-    console.log(file);
-    console.log(file.type);
-    console.log(uploadImagesInput.value);
-  }
 });
 function handleEvent(event) {
   event.preventDefault();
@@ -85,11 +77,9 @@ droptarget.addEventListener('click', function () {
   if (fileArr.length < 10) {
     var _uploadButton = document.getElementById('uploadButton');
     _uploadButton.click();
-    droptarget.classList.remove('disable');
-    document.querySelector('.note').innerText = "Add Image";
+    updateImageQuantityUploaded('remove', 'Add Image');
   } else {
-    droptarget.classList.add('disable');
-    document.querySelector('.note').innerText = "Max";
+    updateImageQuantityUploaded('add', 'Max');
   }
 });
 var fileInput = document.getElementById('fileInput');
@@ -99,6 +89,11 @@ fileInput.addEventListener('change', function (event) {
 });
 function upload() {
   fileInput.addEventListener('click', handleEvent);
+}
+function updateImageQuantityUploaded(type, text) {
+  imageQuantity.innerText = '(' + fileArr.length + '/10)';
+  type === "remove" ? droptarget.classList.remove('disable') : droptarget.classList.add('disable');
+  document.querySelector('.note').innerText = text;
 }
 function filesToBlod(file) {
   if (fileArr.length > 10) {
@@ -110,17 +105,20 @@ function filesToBlod(file) {
     newFunction();
     function newFunction() {
       if (fileArr.length <= 10) {
+        var updateUploadedImagesInput = function updateUploadedImagesInput(file) {
+          uploadImagesInput.value += JSON.stringify(file);
+        };
         fileBlodArr.push(e.target.result);
         var fileDiv = document.createElement('div');
         fileDiv.id = 'drop-image-box';
         fileDiv.classList.add('drop-image-box');
-        fileDiv.draggable = true; // 将元素设置为可拖拽
 
         // 文件名称
-        var fileName = document.createElement('p');
-        fileName.classList.add('drop-image-box-title');
-        fileName.innerHTML = file.name;
-        fileName.title = file.name;
+        // var fileName = document.createElement('p');
+        // fileName.classList.add('drop-image-box-title');
+        // fileName.innerHTML = file.name;
+        // fileName.title = file.name;
+
         var deleteBtn = document.createElement('div');
         deleteBtn.classList.add('drop-image-delete');
         deleteBtn.innerText = 'Delete';
@@ -130,21 +128,26 @@ function filesToBlod(file) {
         img.classList.add('thumble');
         img.draggable = true;
         img.src = e.target.result;
+        updateUploadedImagesInput(e.target.result);
         fileDiv.appendChild(img);
         fileDiv.appendChild(deleteBtn);
-        fileDiv.appendChild(fileName);
+        // fileDiv.appendChild(fileName);
         dropImageList.appendChild(fileDiv);
-        imageQuantity.innerText = '(' + fileArr.length + '/10)';
+        updateImageQuantityUploaded('remove', 'Add Image');
         deleteBtn.addEventListener('click', function () {
           deleteFile(file);
           dropImageList.removeChild(fileDiv);
-          imageQuantity.innerText = '(' + fileArr.length + '/10)';
-          droptarget.classList.remove('disable');
-          document.querySelector('.note').innerText = "Add Image";
+          updateImageQuantityUploaded('remove', 'Add Image');
         });
       }
     }
   };
+
+  /**
+   *  @method 更新數據
+   *  @return string
+   */
+
   reader.onerror = function () {
     switch (reader.error.code) {
       case '1':
@@ -167,5 +170,9 @@ function deleteFile(file) {
     fileBlodArr.splice(index, 1);
   }
 }
+
+/**
+ *  定義作用域和變量
+ */
 /******/ })()
 ;

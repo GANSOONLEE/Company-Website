@@ -3,29 +3,28 @@
 namespace App\Domains\Product\Events\Image;
 
 use App\Models\Image;
-use Illuminate\Http\File;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Intervention\Image\ImageManagerStatic;
 
 class CreatedImageGroupEvent
 {
     public function create(Request $request, $retrievedProductID): void
     {
         $catelog = $request->input('productCatelog');
-        // $primaryModel = $request->input('primaryModel');
-
         
-        $imageString = $request->images;
-
         $decodedArray = [];
-        foreach ($imageString as $item) {
-            $decodedArray[] = json_decode($item);
-        }
+        $imageString = $request->input('images');
 
+        $directory = "/$catelog/";
+        if (!Storage::exists($directory)) {
+            Storage::makeDirectory($directory);
+        }
+        
         // 遍历上传的照片
-        foreach ($decodedArray as $index => $image) {
+        foreach ($imageString as $index => $image) {
             $imageID = $this->imageIDGenerator();
             $isPrimaryImage = $index === 0 ? true : false;
 
@@ -39,19 +38,17 @@ class CreatedImageGroupEvent
             }
 
             // 将照片保存到磁盘，并获取照片的存储路径
-            $imagePath = Storage::putFile($directory, $image->property);
+            $imagePath = Storage::disk('public')->put($directory, $image, 'public');
         
             $imageData = [
                 'imageID' => $imageID,
-                'iamgePath' => $imagePath,
+                'imagePath' => $imagePath,
                 'isPrimaryImage' => $isPrimaryImage,
                 'productID' => $retrievedProductID,
             ];
         
             $imagesData[] = $imageData;
         }
-        
-        dd($imageData);
 
         // 批量插入照片数据
         Image::create($imagesData);

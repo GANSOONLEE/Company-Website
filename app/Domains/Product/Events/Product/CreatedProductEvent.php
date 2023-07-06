@@ -7,11 +7,22 @@ use App\Models\Image;
 
 use App\Domains\Product\Services\Image\ImageGroupService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CreatedProductEvent{
 
     public function createProduct(Request $request){
 
+        // dd($request->images, $request->input("images"), $request->file("images"));
+        $images = $request->images;
+        $img=[];
+        var_dump($images, is_object($images), is_array($images));
+        foreach($images as $index=>$image){
+            var_dump($index ,$image->getClientOriginalName());
+            $img = $image;
+        }
+
+        dd($img);
 
         $primaryBrand = $request->input('primaryBrand');
         $primaryModel = $request->input('primaryModel');

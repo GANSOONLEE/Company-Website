@@ -123,6 +123,12 @@
      --}}
     {{-- 提交按鈕 --}}
     {{-- <button type="submit" class="submitBtn">{{trans('product.submit')}}</button> --}}
+
+    {{-- @extends('includes.alert')
+
+    @section('alert-type', 'info')
+    @section('alert-message', 'test') --}}
+
     <form action={{ route('backend.admin.createdProduct') }} method="POST" enctype="multipart/form-data" class="form">
         @csrf
 
@@ -137,10 +143,10 @@
                 <div class="form-row-image" data-drop-id="image">
                     <div id="drop" class="drop-box" onclick="upload()">
                         <p class="drop-text">
-                            <p class="note">Add Image</p><br>
+                            <p class="note">{{ trans('product.addImage') }}</p><br>
                             <span class="count">(0/10)</span>
                             <input type="file" multiple accept=".png, .jpeg, .jpg, .gif" id="uploadButton">
-                            <input type="hidden" id="uploadImages" name="images[]">
+                            <input type="hidden" id="imgUpload" name="images[]"></a>
                         </p>
                     </div>
                     <div class="drop-image-list" id="dropImageList">
@@ -214,11 +220,9 @@
 
         {{-- --}}
         <div class="form-row">
-            <div class="form-row-body">
-                <button type="submit">提交</button>
+            <div class="form-row-body buttonArea">
+                <button type="submit" class="submitButton">提交</button>
+                <button type="reset" class="resetButton">重置</button>
             </div>
         </div>
     </form>
-
-<script src={{ asset('js\backend\admin\upload.js') }}></script>
-<script src={{ asset('js\backend\admin\submit.js') }}></script>

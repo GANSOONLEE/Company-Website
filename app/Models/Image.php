@@ -21,6 +21,7 @@ class Image extends Model
     
 
     protected $table = 'image';
+    public $timestamps = FALSE;
     protected $primaryKey = 'imageID';
     protected $fillable = [
         'imageID', 

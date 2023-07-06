@@ -18,8 +18,8 @@
             <ul class="sidebar-links">
                 @php
                     $links = [
-                        ['url' => '/admin/dashboard', 'label' => trans('sidebar.dashboard')],
                         ['url' => route('frontend.index'), 'label' => trans('sidebar.index')],
+                        ['url' => route('backend.admin.dashboard'), 'label' => trans('sidebar.dashboard')],
                         [
                             'section' => trans('sidebar.product'),
                             'link' => [
@@ -47,10 +47,16 @@
                 @foreach ($links as $link)
                 @if (isset($link['section']))
                     <div class="section">
-                        <p class="title">{{ $link['section'] }}</p>
+                        <input type="checkbox" name="" id="{{ $link['section'] }}">
+                        <label  class="titleLabel" for="{{ $link['section'] }}">
+                            <div class="title">
+                                <p>{{ $link['section'] }}</p>
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </div>
+                        </label>
                         <ul class="links">
                             @foreach ($link['link'] as $sublink)
-                                <a href="{{ $sublink['url'] }}" class="sidebar-link {{ request()->is(ltrim($sublink['url'], '/')) ? 'active' : '' }}">
+                            <a href="{{ $sublink['url'] }}" class="sidebar-link {{ request()->url() == url($sublink['url']) ? 'active' : '' }}">
                                     <li>{{ $sublink['label'] }}</li>
                                     @if ($sublink['notification'] ?? false)
                                         <div class="notification"></div>
@@ -60,7 +66,7 @@
                         </ul>
                     </div>
                 @else
-                    <a href="{{ $link['url'] }}" class="sidebar-link {{ request()->is(ltrim($link['url'], '/')) ? 'active' : '' }}">
+                    <a href="{{ $link['url'] }}" class="sidebar-link {{ request()->url() == $link['url'] ? 'active' : '' }}">
                         <li>{{ $link['label'] }}</li>
                         @if ($link['notification'] ?? false)
                             <div class="notification"></div>
@@ -68,8 +74,6 @@
                     </a>
                 @endif
                 @endforeach
-
-
 
             </ul>            
         </div>

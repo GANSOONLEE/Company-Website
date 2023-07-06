@@ -2,7 +2,7 @@ let droptarget = document.getElementById('drop');
 let dropImageList = document.getElementById('dropImageList');
 let imageQuantity = document.querySelector('.count');
 let uploadButton = document.querySelector('#uploadButton');
-let uploadImagesInput = document.querySelector('#uploadImages');
+let uploadImagesInput = document.querySelector('#imgUpload');
 
 let fileArr = [];
 let fileBlodArr = [];
@@ -16,7 +16,7 @@ uploadButton.addEventListener('change', (event) => {
     if (fileArr.length < 10) {
       fileArr.push(file);
       filesToBlod(file);
-      updateUploadedImagesInput(file);
+      
       droptarget.classList.remove('disable');
       document.querySelector('.note').innerText = "Add Image";
     } else {
@@ -25,18 +25,12 @@ uploadButton.addEventListener('change', (event) => {
     }
   }
 
+  
+
   // 重置 input 元素的值，清空选择的文件
   event.target.value = '';
 
- 
-
-  function updateUploadedImagesInput(file) {
-    let imagePaths = file;
-    uploadImagesInput.value = imagePaths;
-    console.log(file);
-    console.log(file.type);
-    console.log(uploadImagesInput.value);
-  }
+  
 })
 
 function handleEvent(event) {
@@ -65,12 +59,11 @@ droptarget.addEventListener('click', ()=>{
   if(fileArr.length < 10){
     let uploadButton = document.getElementById('uploadButton');
     uploadButton.click();
-    droptarget.classList.remove('disable');
-    document.querySelector('.note').innerText = "Add Image"
+    updateImageQuantityUploaded('remove','Max1')
   }else{
-    droptarget.classList.add('disable');
-    document.querySelector('.note').innerText = "Max"
+    updateImageQuantityUploaded('add','Max2')
   }
+  
 })
 
 let fileInput = document.getElementById('fileInput');
@@ -82,6 +75,12 @@ fileInput.addEventListener('change', (event) => {
 function upload() {
   fileInput.addEventListener('click', handleEvent);
 }
+
+function updateImageQuantityUploaded(type, text){
+  imageQuantity.innerText = '(' + fileArr.length + '/10)';
+  type === "remove" ? droptarget.classList.remove('disable') : droptarget.classList.add('disable');
+  document.querySelector('.note').innerText = text;
+} 
 
 function filesToBlod(file) {
 
@@ -102,7 +101,6 @@ function filesToBlod(file) {
         let fileDiv = document.createElement('div');
         fileDiv.id = 'drop-image-box';
         fileDiv.classList.add('drop-image-box');
-        fileDiv.draggable = true; // 将元素设置为可拖拽
 
 
         // 文件名称
@@ -120,23 +118,35 @@ function filesToBlod(file) {
         img.classList.add('thumble');
         img.draggable = true;
         img.src = e.target.result;
+        updateUploadedImagesInput(e.target.result);
+
+        function updateUploadedImagesInput(file) {
+          uploadImagesInput.value += JSON.stringify(file);
+        }
 
         fileDiv.appendChild(img);
         fileDiv.appendChild(deleteBtn);
         fileDiv.appendChild(fileName);
         dropImageList.appendChild(fileDiv);
-        imageQuantity.innerText = '(' + fileArr.length + '/10)';
+        updateImageQuantityUploaded('remove','Add Image3')
 
         deleteBtn.addEventListener('click', () => {
           deleteFile(file);
           dropImageList.removeChild(fileDiv);
-          imageQuantity.innerText = '(' + fileArr.length + '/10)';
-          droptarget.classList.remove('disable');
-          document.querySelector('.note').innerText = "Add Image";
+          updateImageQuantityUploaded('remove','Add Image4')
         });
+
+        
       }
     }
   };
+
+  /**
+   *  @method 更新數據
+   *  @return string
+   */
+
+  
 
   reader.onerror = () => {
     switch (reader.error.code) {
@@ -161,3 +171,7 @@ function deleteFile(file) {
     fileBlodArr.splice(index, 1);
   }
 }
+
+/**
+ *  定義作用域和變量
+ */
