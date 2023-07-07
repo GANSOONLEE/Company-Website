@@ -8,14 +8,14 @@
 
 @section('content')
 
-        <div class="org">
-            <img src="" alt="origin">
-            <a href="/origin/catelog"><button class="typeBtn">origin</button></a>
+        <div class="product-type org">
+            <a href="/origin/catelog"><button class="typeBtn">Original</button></a>
+            <img class="img-type" src={{ asset('image\original.png') }} alt="origin">
         </div>
-        <div class="china">
-            
-            <img src="" alt="china">
-            <a href="/non-origin/catelog"><button class="typeBtn">non-origin</button></a>
+        
+        <div class="product-type non-org">
+            <a href="/non-origin/catelog"><button class="typeBtn">Non-Original</button></a>
+            <img class="img-type" src={{ asset('image\non-original.png') }} alt="non-org">
         </div>
 
 @endsection

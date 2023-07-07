@@ -4,44 +4,9 @@
 @section('title', __('Products'))
 
 @push('after-style')
-    <link rel="stylesheet" href="{{asset('css\frontend\products.css')}}">
+    <link rel="stylesheet" href="{{asset('css\frontend\product.css')}}">
     <style>
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 9999;
-        }
-
-        .modal-content {
-            position: sticky;
-            top: 12.5%;
-            display: block;
-            max-width: 80%;
-            max-height: 80%;
-            margin: auto;
-            width: 60vw
-        }
-        .section{cursor: pointer;}
-        @media only screen and (max-width:972px){
-            .modal{
-                width: 100vw;
-            }
-            .modal-content {
-                max-width: 100vw;
-                width: 100vw;
-                top: 25%;
-                margin: 0;
-                
-            }
-            .model-menu{
-                display: none;
-            }
-        }
+        
     </style>
 @endpush
 
@@ -51,7 +16,7 @@
 
 
 @section('content')
-    @php
+    {{-- @php
         $url = parse_url(request()->url());
         $path = $url['path'];
         $segments = explode('/', $path);
@@ -81,25 +46,11 @@
             ";
             
         }
-    @endphp
+    @endphp --}}
 
-    <div class="sidebar">
-        <input type="checkbox" id="menuBtn" class='menuBtn'>
-        <label class="btn" for="menuBtn">
-            +
-        </label>
-        <div class="model-menu">
-            @foreach($models as $model)
-                @php
-                    $isActive = request()->is("catelog/$productCatelog/$model->modelName") ? 'active' : '';
-                @endphp
-    
-                <a href="/{{ $productType }}/catelog/{{ $productCatelog }}/{{ $model->modelName }}" class="model-link {{ $isActive }}">{{ ucwords($model->modelName) }}</a>
-            @endforeach
-        </div>
-    </div>
+    @include('includes.filter')
 
-    <div class="products-table">
+    {{-- <div class="products-table">
         @if (count($products) > 0)
             @foreach ($products as $product)
                 <div class="product-card">
@@ -131,7 +82,8 @@
                 <img src="{{asset('image\logo.png')}}" style="filter: opacity(0.1); width:20vw; height: auto; align-self: center">
             </div>
         @endif
-    </div>
+    </div> --}}
+    @include('frontend.includes.productList')
 
     <div id="myModal" class="modal">
         <img id="modalImg" class="modal-content">

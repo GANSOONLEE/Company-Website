@@ -1,0 +1,33 @@
+
+.contact-us{
+    padding: 2rem 0;
+    .contact-us-header{
+        font-size: var(--font-h4);
+        font-weight: bold;
+        text-align: center;
+    }
+    .contact-us-body{
+        padding: 2rem 6rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: start;
+        row-gap: 1.2rem;
+        text-align: center;
+        .social-media{
+            padding: .9rem 2rem;
+            .social-media-name{
+                font-size: var(--font-h5);
+            }
+            .social-media-content{
+                >*{
+                    width: 30vw;
+                    height: 60vh;
+                }
+            }
+        }
+    }
+    .contact-us-footer{
+
+    }
+}

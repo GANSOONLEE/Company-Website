@@ -13,6 +13,15 @@
     <link rel="stylesheet" href="{{asset('css\app.css')}}">
     @stack('after-style')
 
+    <!-- Font-aweson -->
+    <script src="https://kit.fontawesome.com/4fffedbe3d.js" crossorigin="anonymous"></script>
+
+    <!-- 引入 jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- 引入其他 AJAX 库的 CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+
     
 
 </head>
@@ -27,7 +36,7 @@
 
     @include('ui.footer')
     
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     @stack('after-script')
 </body>

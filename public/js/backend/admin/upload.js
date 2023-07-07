@@ -77,9 +77,9 @@ droptarget.addEventListener('click', function () {
   if (fileArr.length < 10) {
     var _uploadButton = document.getElementById('uploadButton');
     _uploadButton.click();
-    updateImageQuantityUploaded('remove', 'Add Image');
+    updateImageQuantityUploaded('remove', 'Max1');
   } else {
-    updateImageQuantityUploaded('add', 'Max');
+    updateImageQuantityUploaded('add', 'Max2');
   }
 });
 var fileInput = document.getElementById('fileInput');
@@ -114,11 +114,10 @@ function filesToBlod(file) {
         fileDiv.classList.add('drop-image-box');
 
         // 文件名称
-        // var fileName = document.createElement('p');
-        // fileName.classList.add('drop-image-box-title');
-        // fileName.innerHTML = file.name;
-        // fileName.title = file.name;
-
+        var fileName = document.createElement('p');
+        fileName.classList.add('drop-image-box-title');
+        fileName.innerHTML = file.name;
+        fileName.title = file.name;
         var deleteBtn = document.createElement('div');
         deleteBtn.classList.add('drop-image-delete');
         deleteBtn.innerText = 'Delete';
@@ -131,13 +130,13 @@ function filesToBlod(file) {
         updateUploadedImagesInput(e.target.result);
         fileDiv.appendChild(img);
         fileDiv.appendChild(deleteBtn);
-        // fileDiv.appendChild(fileName);
+        fileDiv.appendChild(fileName);
         dropImageList.appendChild(fileDiv);
-        updateImageQuantityUploaded('remove', 'Add Image');
+        updateImageQuantityUploaded('remove', 'Add Image3');
         deleteBtn.addEventListener('click', function () {
           deleteFile(file);
           dropImageList.removeChild(fileDiv);
-          updateImageQuantityUploaded('remove', 'Add Image');
+          updateImageQuantityUploaded('remove', 'Add Image4');
         });
       }
     }

@@ -12,13 +12,12 @@
 
     <div class="sidebar">
         <div class="sidebar-header">
-            <p class="company">Frozen Air Cond</p>
+            <img src={{asset('image\logo.png')}} alt="" class="logo">
         </div>
         <div class="sidebar-body">
             <ul class="sidebar-links">
                 @php
                     $links = [
-                        ['url' => route('frontend.index'), 'label' => trans('sidebar.index')],
                         ['url' => route('backend.admin.dashboard'), 'label' => trans('sidebar.dashboard')],
                         [
                             'section' => trans('sidebar.product'),
@@ -40,7 +39,7 @@
                                 ['url' => route('backend.admin.editUser'), 'label' => trans('sidebar.userManagement')],
                             ]
                         ],
-                        
+                        // ['url' => route('frontend.index'), 'label' => trans('sidebar.index')],
                     ];
                 @endphp
 

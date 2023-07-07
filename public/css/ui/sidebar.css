@@ -14,25 +14,17 @@
     background-color: #dbdbdb;
     color: black;
 }
-.company{
-    font-size: var(--font-h5);
-    font-weight: bold;
-    margin-top: 1rem;
-}
-
 .sidebar-header{
-    padding: 1rem 0;
+    padding: 1.8rem 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    display: none;
 }
 .sidebar-header img.logo{
     min-width: 160px;
     width: 10vw;
     height: auto;
 }
-
 .sidebar-body{
     display: flex;
     flex-direction: column;

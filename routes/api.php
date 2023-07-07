@@ -6,6 +6,8 @@ use App\Http\Controllers\backend\AjaxDataController;
 use App\Http\Controllers\backend\ProductController;
 use App\Domains\Product\Events\Image\CreatedImageGroupEvent;
 
+
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -25,3 +27,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/ajax-product',[AjaxDataController::class,'productData']);
 Route::post('/create-product',[ProductController::class,'store']);
 Route::post('/create-image-group/{productID}',[CreatedImageGroupEvent::class,'create']);
+

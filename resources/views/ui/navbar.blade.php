@@ -30,4 +30,5 @@
             <label for="menubtn" class="menubtn"><img src="{{asset('image\menu.png')}}" alt="" class="icon"></label>
         </div>
     @show
+    <script src={{ asset('js\ui\navbar.js') }}></script>
 </body>

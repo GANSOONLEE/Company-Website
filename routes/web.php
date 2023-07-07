@@ -13,6 +13,8 @@ use App\Models\productModel;
 
 use App\Http\Controllers\LocaleController;
 
+use App\Domains\Product\Events\Product\SearchedProductEvent;
+
 require_once app_path('Helpers/Global/SystemHelper.php');
 
 /*
@@ -76,4 +78,8 @@ Route::get('/test',function(){
 
 Route::get('/products', [ProductController::class, 'index'])->name('products');
 Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
-Route::post('/product/{productID}/delete', [DeletedProductEvent::class, 'destroy'])->name('products.destroy');
+// Route::post('/product/{productID}/delete', [DeletedProductEvent::class, 'destroy'])->name('products.destroy');
+
+// 產品
+Route::post('/product/search/',[SearchedProductEvent::class,'searchProductByModal'])->name('search.product');
+Route::get('/product/search/',[SearchedProductEvent::class,'searchProductByModal'])->name('search.product');

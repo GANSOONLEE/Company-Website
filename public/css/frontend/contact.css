@@ -1,28 +1,27 @@
-.main{
-    padding: 0.9rem 2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-content: space-around;
-    flex-wrap: wrap;
+.contact-us {
+  padding: 2rem 0;
 }
-
-.contact-row{
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+.contact-us .contact-us-header {
+  font-size: var(--font-h4);
+  font-weight: bold;
+  text-align: center;
 }
-.tiktok-embed{
-    margin: 0;
+.contact-us .contact-us-body {
+  padding: 2rem 6rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: start;
+  row-gap: 1.2rem;
+  text-align: center;
 }
-
-.text-section{
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: start;
-    padding: 2rem 3rem;
-    font-size: 3.4rem;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+.contact-us .contact-us-body .social-media {
+  padding: 0.9rem 2rem;
+}
+.contact-us .contact-us-body .social-media .social-media-name {
+  font-size: var(--font-h5);
+}
+.contact-us .contact-us-body .social-media .social-media-content > * {
+  width: 30vw;
+  height: 60vh;
 }

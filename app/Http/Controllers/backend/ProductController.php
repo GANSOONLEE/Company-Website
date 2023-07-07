@@ -17,7 +17,7 @@ class ProductController extends Controller{
     
     public function index($productType, $productCatelog){
         // 查詢現有的車款
-        $models = productModel::orderBy('modelName', 'asc')->get();
+        $models = productModel::orderBy('modelName', 'asc')->get('modelName');
 
         $productsData = Product::where('productCatelog', $productCatelog)
             ->where('productType', $productType)
@@ -57,7 +57,7 @@ class ProductController extends Controller{
             }
         }
 
-        return view('frontend.products', [
+        return view('frontend.product', [
             'productType' => $productType,
             'products' => $productsData,
             'models' => $models,
@@ -88,7 +88,7 @@ class ProductController extends Controller{
             return redirect(route('catelog'));
         }
 
-        return view('frontend.products', ['productType' => $productType, 'products' => $productsData, 'models' => $models, 'productCatelog' => $productCatelog]);
+        return view('frontend.product', ['productType' => $productType, 'products' => $productsData, 'models' => $models, 'productCatelog' => $productCatelog]);
     }
 
     // public function search(Request $request, $productType='all'){
@@ -185,7 +185,7 @@ class ProductController extends Controller{
 
     public function create(){
         // 返回创建产品的表单页面
-        return view('products.create');
+        return view('product.create');
     }
 
     public function destroy($productID){
@@ -193,7 +193,7 @@ class ProductController extends Controller{
         Product::deleteProduct($productID);
 
         // 重定向到产品列表页面或其他适当的页面
-        return redirect()->route('frontend.products.index');
+        return redirect()->route('frontend.product.index');
     }
 
     public function refresh(Request $request){

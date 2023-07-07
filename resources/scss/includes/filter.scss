@@ -1,0 +1,94 @@
+.navbar{
+    position: relative;
+}
+.filter{
+    position: relative;
+    margin: 2rem 2.8rem;
+    padding: 3rem;
+    min-width: 120px;
+    max-width: 18vw;
+    height: auto;
+    background-color: rgb(201, 201, 201);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    .filter-header{
+        font-size: var(--font-h6);
+        > i{
+            margin-right: 1rem;
+        }
+    }
+    .filter-body{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        width: 100%;
+        padding: 2rem 0;
+        .filter-section{
+            width: 100%;
+            input[type="checkbox"][name="Model"]:checked{
+                + .filter-section-title{
+                    i{
+                        transform: rotateZ(180deg);   
+                    }
+            }
+            }
+            .filter-section-title{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                font-size: var(--font-small);
+                margin-bottom: 1.2rem;
+                z-index: 2;
+                i{
+                    transition: transform .12s ease-in-out;
+                }
+            
+            }
+            .filter-section-box{
+                visibility: visible;
+                display: flex;
+                transform: translateY(0);
+                flex-direction: column;
+                row-gap: 1.2rem;     
+                .checkbox-section{
+                    label.checkbox-box{
+                        cursor: pointer;
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: flex-start;
+                        align-items: center;
+                        column-gap: 1.2rem;
+                        input[type="checkbox"].checkbox-display{
+                            display: block;
+                        }
+                        .checkbox-name{
+                            margin: 0;
+                            font-size: var(--font-small);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .filter-footer{
+        width: 100%;
+        .resetButton{
+            width: inherit;
+            outline: none;
+            border: none;
+            border-radius: 5px;
+            padding: .9rem 2rem;
+            color: white;
+            background-color: rgb(255, 106, 0);
+            font-size: var(--font-small);
+        }
+    }
+}
+
+@media only screen and (max-width: 720px){
+    
+}

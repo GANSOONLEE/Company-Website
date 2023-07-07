@@ -221,8 +221,8 @@
         {{-- --}}
         <div class="form-row">
             <div class="form-row-body buttonArea">
-                <button type="submit" class="submitButton">提交</button>
-                <button type="reset" class="resetButton">重置</button>
+                <button type="reset" class="resetButton">{{ trans('product.reset') }}</button>
+                <button type="submit" class="submitButton">{{ trans('product.submit') }}</button>
             </div>
         </div>
     </form>

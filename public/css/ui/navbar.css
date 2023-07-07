@@ -1,7 +1,7 @@
 .navbar {
     width: 100%;
     height: 7rem;
-    padding: 4rem;
+    padding: 4rem 6rem;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -10,6 +10,14 @@
     background-color: white;
     margin-bottom: -.1rem;
     z-index: 9999;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    transition: padding .2s ease-in-out;
+}
+.navbar.scroll{
+    height: 6rem;
+    padding: 0 6rem;
 }
 
 .logo-container {
@@ -20,15 +28,15 @@
 }
 
 .navbar .logo {
-    width: 12rem;
+    width: 10rem;
     height: auto;
     transition: all .2s ease-in-out;
 }
 .navbar .logo:hover{
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 .navbar .logo:active{
-    transform: scale(0.9);
+    transform: scale(0.95);
 }
 
 .menu {
@@ -69,23 +77,28 @@
     text-decoration: none;
     font-size: var(--font-h6);
     letter-spacing: .6rem;
+    color: #464646;
 }
-.navbar-link.active{
-    color: blue;
+.navbar-link:hover a{
+    color: black;
 }
-
 .navbar-link::after {
     content: "";
     display: block;
-    background: linear-gradient(to right, red, blue);
+    /* background-color: blue; */
     margin: .2rem 0;
     width: 0;
     height: 2px;
     transition: all .2s ease;
 }
-
 .navbar-link:hover::after {
     width: 100%;
+}
+.navbar-link.active{
+    color: blue;
+}
+.navbar-link.active:hover a{
+    color: blue;
 }
 
 @media only screen and (max-width: 972px) {
@@ -98,6 +111,15 @@
 
     .navbar .logo {
         justify-self: center;
+    }
+    .navbar.scroll .menubtn{
+        margin-top: -.9rem;
+    }
+    .navbar .menubtn{
+        margin-top: -.4rem;
+    }
+    .navbar.scroll .menu{
+        margin-top: 2rem;
     }
 
     .menu {

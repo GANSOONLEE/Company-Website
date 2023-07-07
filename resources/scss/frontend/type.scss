@@ -1,0 +1,33 @@
+body{
+    overflow-y: none;
+}
+
+.main{
+    display: flex;
+    width: 100vw;
+    height: 93vh;
+    
+}
+
+.product-type{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+}
+/* CHILD OF .main */
+.img-type{
+    width: 100%;
+}
+.org{
+    background-color: rgba(0, 0, 255, 0.1);
+}
+.non-org{
+    background-color: rgba(255, 0, 0, 0.1);
+}
+.typeBtn{
+    font-size: var(--font-h4);
+    font-family: 'vistol-sans', sans-serif;
+    padding: 2rem 4rem;
+}
