@@ -55,11 +55,12 @@
     margin: 0;
 }
 ul.links{
-    display: none;
-}
-input[type="checkbox"]:checked ~ ul.links{
     display: flex;
     flex-direction: column;
+}
+input[type="checkbox"]:checked ~ ul.links{
+    
+    display: none;
 }
 .fa-solid.fa-chevron-down{
     transition: all .2s ease;
@@ -92,5 +93,5 @@ input[type="checkbox"]:checked + .titleLabel .fa-solid.fa-chevron-down{
     color: blue;
 }
 .sidebar-body .sidebar-links .sidebar-link.active > li{
-    color: rgb(255, 119, 0);
+    color: rgb(255, 98, 0);
 }

@@ -13,24 +13,25 @@ class CreatedProductEvent{
 
     public function createProduct(Request $request){
 
-        // dd($request->images, $request->input("images"), $request->file("images"));
-        $images = $request->images;
-        $img=[];
-        var_dump($images, is_object($images), is_array($images));
-        foreach($images as $index=>$image){
-            var_dump($index ,$image->getClientOriginalName());
-            $img = $image;
-        }
-
-        dd($img);
-
         $primaryBrand = $request->input('primaryBrand');
         $primaryModel = $request->input('primaryModel');
         $productName = $primaryBrand . ' ' . $primaryModel;
 
         $secondaryBrand = $request->input('secondaryBrand');
         $secondaryModel = $request->input('secondaryModel');
-        
+        $productCode = $request->input('productCode');
+        $productCatelog = $request->input('productCatelog');
+
+        foreach ($request->file('images') as $index => $image) {
+            $fileName = $index === 0 ? 'cover.png' : $image->getClientOriginalName();
+    
+            Storage::disk('product')->put(
+                "$productCatelog/$primaryModel/$productCode/$fileName",
+                file_get_contents($image)
+            );
+        }
+
+       
         $combinedArray = [];
         if (isset($secondaryBrand, $secondaryModel)) {
 
@@ -48,9 +49,9 @@ class CreatedProductEvent{
 
         $data = [
             'productName' => strtoupper($productName),
-            'productCode' => $request->input('productCode'),
-            'productCatelog' => $request->input('productCatelog'),
             'productSubname' => $jsonData,
+            'productCode' => $productCode,
+            'productCatelog' => $productCatelog,
             'productModel' => strtoupper($primaryModel),
             'productBrand' => strtoupper($primaryBrand),
             'productType' => $request->input('productType'),
@@ -62,11 +63,6 @@ class CreatedProductEvent{
          *  从数据库读取 productID 并回传给 createdImageGroupEvent 
          * 
          */
-        $retrievedProduct = Product::where('productCode', $data['productCode'])->first();
-        $retrievedProductID = $retrievedProduct->productID;
-
-        $createdImageGroupEvent = new ImageGroupService;
-        $createdImageGroupEvent->create($request, $retrievedProductID);
 
         return back();
 

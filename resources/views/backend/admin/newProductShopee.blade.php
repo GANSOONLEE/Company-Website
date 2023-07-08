@@ -9,7 +9,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
     <link href={{ asset('css/backend/admin/newProductShopee.css') }} rel="stylesheet">
-    <title>{{trans('product.title')}}</title>
 @endpush
 
 
@@ -28,7 +27,7 @@
 @section('content')
     <div class="content">
         <div class="content-header">
-            <h1 class="content-title">{{ trans('product.title') }}</h1>
+            <h1 class="content-title">{{ trans('product.title.create') }}</h1>
         </div>
         <div class="content-body">
             <form action={{ route('backend.admin.createdProduct') }} method="POST" enctype="multipart/form-data" class="form">

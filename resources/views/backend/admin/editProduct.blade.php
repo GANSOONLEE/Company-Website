@@ -32,7 +32,7 @@
             @include('ui.alert')
         @endif
         
-        <p class="section-title">{{trans('product.title')}}</p>
+        <p class="section-title">{{trans('product.title.edit')}}</p>
         @include('ui.table')
 
     </div>

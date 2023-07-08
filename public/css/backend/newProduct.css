@@ -1,12 +1,8 @@
 body{
     display: flex;
-    
 }
 .main{
     margin-left: 16vw;
-}
-.content{
-    width: 82vw;
     padding: 2rem 5rem;
 }
 .content > h1{

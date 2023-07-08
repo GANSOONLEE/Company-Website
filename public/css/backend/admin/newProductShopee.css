@@ -227,3 +227,11 @@ input[type=file] {
 .form-control:focus {
   background-color: rgba(0, 0, 0, 0.1);
 }
+
+.form-input {
+  display: flex;
+  flex-direction: row;
+  -moz-column-gap: 3rem;
+       column-gap: 3rem;
+  margin: 2rem 0;
+}

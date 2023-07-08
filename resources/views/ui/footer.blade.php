@@ -7,19 +7,19 @@
         <div class="map-section">
             <div class="map-section-title">Follow Us</div>
             <ul class="links">
-                <a href="https://www.tiktok.com/@alatganti_aircond_ahseng" class="link" data-content="tiktok">
+                <a href="https://www.tiktok.com/@alatganti_aircond_ahseng" target="_new" class="link" data-content="tiktok">
                     <i class="fa-brands fa-tiktok"></i>
                     <li>TikTok</li>
                 </a>
-                <a href="https://www.facebook.com/FrozenForAlatGanti" class="link" data-content="facebook">
+                <a href="https://www.facebook.com/FrozenForAlatGanti" target="_new" class="link" data-content="facebook">
                     <i class="fa-brands fa-facebook"></i>
                     <li>Facebook</li>
                 </a>
-                <a href="https://youtube.com/@frozenaircondsdnbhd8042" class="link" data-content="youtube">
+                <a href="https://youtube.com/@frozenaircondsdnbhd8042" target="_new" class="link" data-content="youtube">
                     <i class="fa-brands fa-youtube"></i>
                     <li>Youtube</li>
                 </a>
-                <a href="https://www.wasap.my/60172430100" class="link" data-content="whatapps">
+                <a href="https://www.wasap.my/60172430100" target="_new" class="link" data-content="whatapps">
                     <i class="fa-brands fa-whatsapp"></i>
                     <li>Whatapps</li>
                 </a>

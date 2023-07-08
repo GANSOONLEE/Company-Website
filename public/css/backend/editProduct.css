@@ -1,13 +1,18 @@
-
+body{
+    display: flex;
+}
 .main{
-    position: absolute;
-    top: 0;
     margin-left: 16vw;
-    padding: 2rem;
-    color: #AEB1B8;
+    padding: 2rem 5rem;
+}
+.content{
+   
 }
 .section .section-title{
     font-size: 2.6rem;
+}
+#wrapper{
+    width: auto;
 }
 .gridjs-wrapper{
     color: #AEB1B8;

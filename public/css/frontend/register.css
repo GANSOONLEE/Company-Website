@@ -1,7 +1,7 @@
 
 .main{
     padding: 2rem 0 0;
-    height: 85vh;
+    height: 89vh;
     display: flex;
     justify-content: center;
     align-items: self-start;
@@ -38,7 +38,11 @@
     border: 1px solid #ccc;;
     padding: .9rem 2rem;
     transition: all .2s ease-in-out;
+    appearance: none;
 }
+.section-form input::-webkit-calendar-picker-indicator{
+    display: none;
+  } 
 .section-form input:focus, textarea:focus{ 
     border-color: #66afe9;
     
@@ -69,30 +73,38 @@
     font-weight: bold;
 }
 
-button[data-button-identify="next"], button[data-button-identify="previous"]{
+button[data-button-identify="next"]{
+    justify-self: flex-end;
+}
+
+button[data-button-identify="previous"]{
     transition: all .12s ease-in-out;
     background-color: rgb(99, 99, 255);
     color: #fff;
 }
 
-button[data-button-identify="next"]:hover, button[data-button-identify="previous"]:hover{
+button[data-button-identify="previous"]:hover{
     background-color: rgb(119, 119, 255);
 }
 
-button[data-button-identify="next"]:active, button[data-button-identify="previous"]:active{
+button[data-button-identify="previous"]:active{
     background-color: rgb(79, 79, 255);
 }
 
-button[data-button-identify="submit"]{
+button[data-button-identify="submit"], button[data-button-identify="next"]{
     transition: all .12s ease-in-out;
     background-color: rgb(99, 180, 99);
     color: #fff;
 }
 
-button[data-button-identify="submit"]:hover{
+button[data-button-identify="submit"]:hover, button[data-button-identify="next"]:hover{
     background-color: rgb(119, 180, 119);
 }
 
-button[data-button-identify="submit"]:active{
+button[data-button-identify="submit"]:active, button[data-button-identify="next"]:active{
     background-color: rgb(79, 180, 79);
+}
+option{
+    padding: 0;
+    margin: 0;
 }

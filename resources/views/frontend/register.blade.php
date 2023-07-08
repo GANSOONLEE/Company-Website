@@ -24,13 +24,14 @@
 
             <div class="section-form">
                 <label for="phone"><span class="requird">Phone:</label>
-                <input type="text" id="phone" name="phone" placeholder="Phone (012-34567890)" class="requird" maxlength="13" required>
+                <input type="text" id="phone" name="phone" placeholder="012 34567890" class="requird" maxlength="13" required>
             </div>
             <div class="section-form">
                 <label for="email"><span class="requird">Email:</label>
                 <input type="email" id="email" name="email" placeholder="Email" class="requird" required>
             </div>
             <div class="button-area">
+                <button type="button" style="visibility: hidden"></button>
                 <button type="button" data-button-identify="next">Next</button>
             </div>
         </div>
@@ -42,12 +43,16 @@
             </div>
             <div class="section-form">
                 <label for="address"><span class="requird">Address:</label>
-                {{-- <input type="text" id="address" name="address" placeholder="Address" required> --}}
                 <textarea id="address" name="address" required cols="50" rows="5" placeholder="Your full address"></textarea>
             </div>
             <div class="section-form">
                 <label for="occupation"><span class="requird">Profession:</label>
-                <input type="text" id="occupation"name="occupation" placeholder="Profession" required>
+                <input list="occupationList" id="occupation"name="occupation" placeholder="Profession" required>
+                <datalist id="occupationList" class="datalist">
+                    <option value="Maintenance">
+                    <option value="Workshop">
+                    <option value="Ordinary">
+                </datalist>
             </div>
             <div class="section-form">
                 <label for="store_name"><span class="requird">Store Name:</label>

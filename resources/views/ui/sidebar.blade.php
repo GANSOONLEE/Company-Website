@@ -12,7 +12,7 @@
 
     <div class="sidebar">
         <div class="sidebar-header">
-            <img src={{asset('image\logo.png')}} alt="" class="logo">
+            <a href={{ route('frontend.index') }}><img src={{asset('image\logo.png')}} alt="" class="logo"></a>
         </div>
         <div class="sidebar-body">
             <ul class="sidebar-links">

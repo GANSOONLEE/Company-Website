@@ -28,7 +28,7 @@ class AdminController extends Controller{
         // 查询所有种类数据
         $catelogs = productCatelog::orderBy('catelogName', 'asc')->get();
 
-        return view('backend.admin.newProduct',compact('products','models','catelogs'));
+        return view('backend.admin.newProductShopee',compact('products','models','catelogs'));
     }
 
     public function editProduct(): object{

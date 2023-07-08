@@ -17,7 +17,7 @@ body{
 .refreshButton:active{
     background-color: hsl(120, 100%, 23%);
 }
-th.gridjs-th{
+/* th.gridjs-th{
     background-color: hsl(240, 30%, 4%);
     border: black;
 }
@@ -32,19 +32,20 @@ td.gridjs-td{
 .gridjs-pagination .gridjs-pages button[disabled]{
     border: black;
     background-color: hsl(240, 30%, 14%);
-}
+} */
 #wrapper .gridjs-table .gridjs-tbody .gridjs-tr{
+    color: black;
     cursor: pointer;
 }
 #wrapper .gridjs-table .gridjs-tbody .gridjs-tr:nth-child(even) > .gridjs-td {
-    background-color: hsl(240, 30%, 12%);
+    background-color: hsl(0, 0%, 88%);
 }
 #wrapper .gridjs-table .gridjs-tbody .gridjs-tr:nth-child(odd) > .gridjs-td {
-    background-color: hsl(240, 30%, 8%);
+    background-color: hsl(0, 0%, 80%);
 }
 
 #wrapper .gridjs-table .gridjs-tbody .gridjs-tr:hover > .gridjs-td{
-    background-color: hsl(240, 20%, 20%);
+    background-color: hsl(0, 0%, 65%);
 }
 .modal-dialog{
     width: 80%;

@@ -60,15 +60,7 @@ Route::group(['prefix' => 'admin', 'as' => 'backend.admin.', 'middleware' => 'ad
 });
 
 Route::get('/test',function(){
-    $products = Product::all();
-
-    // 查询所有车款数据
-    $models = productModel::orderBy('modelName', 'asc')->get();
-
-    // 查询所有种类数据
-    $catelogs = productCatelog::orderBy('catelogName', 'asc')->get();
-
-    return view('backend.admin.newProductShopee',compact('products','models','catelogs'));
+    
 });
 
 
@@ -78,7 +70,8 @@ Route::get('/test',function(){
 
 Route::get('/products', [ProductController::class, 'index'])->name('products');
 Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
-// Route::post('/product/{productID}/delete', [DeletedProductEvent::class, 'destroy'])->name('products.destroy');
+Route::post('/product/delete/{productId}', [DeletedProductEvent::class, 'destroy'])->name('products.destroy');
+Route::get('/product/delete/{productId}', [DeletedProductEvent::class, 'destroy'])->name('products.destroy');
 
 // 產品
 Route::post('/product/search/',[SearchedProductEvent::class,'searchProductByModal'])->name('search.product');

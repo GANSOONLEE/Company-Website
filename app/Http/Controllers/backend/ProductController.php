@@ -9,9 +9,6 @@ use App\Models\productCatelog;
 use App\Models\productModel;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
-use \Illuminate\Database\QueryException;
-
-use Intervention\Image\ImageManagerStatic as Image;
 
 class ProductController extends Controller{
     
@@ -22,7 +19,7 @@ class ProductController extends Controller{
         $productsData = Product::where('productCatelog', $productCatelog)
             ->where('productType', $productType)
             ->orderBy('productModel', 'asc')
-            ->get(['productImage', 'productName', 'productCode', 'productModel', 'productSubname']);
+            ->get(['productCatelog', 'productName', 'productCode', 'productModel', 'productSubname']);
 
 
         $catelog = ProductCatelog::where('catelogName', $productCatelog)->first();
@@ -33,29 +30,29 @@ class ProductController extends Controller{
             return redirect(route('frontend.catelog'));
         }
 
-        $parsedDataList = []; // 创建用于存储解析后数据的数组
+        // $parsedDataList = []; // 创建用于存储解析后数据的数组
 
-        foreach ($productsData as $data) {
-            $parsedDataList[] = json_decode($data->productSubname, true);
-        }
+        // foreach ($productsData as $data) {
+        //     $parsedDataList[] = json_decode($data->productSubname, true);
+        // }
 
-        $formattedData = [];
+        // $formattedData = [];
 
-        foreach ($parsedDataList as $index => $item) {
-            if (is_array($item)) {
-                foreach ($item as $subItem) {
-                    if (is_array($subItem)) {
-                        $brand = $subItem['brand'];
-                        $model = $subItem['model'];
-                        $formattedData[$index] = $brand . ' ' . $model;
-                    } else {
-                        $formattedData[$index] = $subItem;
-                    }
-                }
-            } else {
-                $formattedData[$index] = $item;
-            }
-        }
+        // foreach ($parsedDataList as $index => $item) {
+        //     if (is_array($item)) {
+        //         foreach ($item as $subItem) {
+        //             if (is_array($subItem)) {
+        //                 $brand = $subItem['brand'];
+        //                 $model = $subItem['model'];
+        //                 $formattedData[$index] = $brand . ' ' . $model;
+        //             } else {
+        //                 $formattedData[$index] = $subItem;
+        //             }
+        //         }
+        //     } else {
+        //         $formattedData[$index] = $item;
+        //     }
+        // }
 
         return view('frontend.product', [
             'productType' => $productType,
@@ -190,6 +187,15 @@ class ProductController extends Controller{
 
     public function destroy($productID){
         // 删除指定的产品
+        
+        $product = Product::findOrFail($productID);
+
+        $productCatelog = $product->productCatelog;
+        $primaryModel = $product->primaryModel;
+        $productCode = $product->productCode;
+
+        Storage::disk('product')->deleteDirectory("$productCatelog/$primaryModel/$productCode");
+
         Product::deleteProduct($productID);
 
         // 重定向到产品列表页面或其他适当的页面

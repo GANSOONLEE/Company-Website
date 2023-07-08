@@ -21,7 +21,7 @@
                     @foreach($models as $model)
                         <div class="checkbox-section">
                             <label class="checkbox-box" for={{ $model->modelName }}>
-                                <input onchange="updateURLParams()" type="checkbox" name={{ $model->modelName }} id={{ $model->modelName }} value={{ $model->modelName }} class="checkbox-display">
+                                <input type="checkbox" name={{ $model->modelName }} id={{ $model->modelName }} value={{ $model->modelName }} class="checkbox-display">
                                 <p class="checkbox-name">{{ $model->modelName }}</p>
                             </label>
                         </div>
