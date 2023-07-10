@@ -1,11 +1,13 @@
 {
     "/js/backend/admin/submit.js": "/js/backend/admin/submit.js",
     "/js/backend/admin/upload.js": "/js/backend/admin/upload.js",
-    "/css/frontend/type.css": "/css/frontend/type.css",
+    "/js/frontend/product/productDetail.js": "/js/frontend/product/productDetail.js",
+    "/css/frontend/product/productDetail.css": "/css/frontend/product/productDetail.css",
     "/css/frontend/product.css": "/css/frontend/product.css",
     "/css/frontend/includes/productList.css": "/css/frontend/includes/productList.css",
     "/css/frontend/contact.css": "/css/frontend/contact.css",
     "/css/backend/admin/newProductShopee.css": "/css/backend/admin/newProductShopee.css",
     "/css/ui/footer.css": "/css/ui/footer.css",
-    "/css/includes/filter.css": "/css/includes/filter.css"
+    "/css/includes/filter.css": "/css/includes/filter.css",
+    "/css/frontend/type.css": "/css/frontend/type.css"
 }

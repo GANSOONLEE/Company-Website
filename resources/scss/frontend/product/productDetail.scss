@@ -1,0 +1,232 @@
+.navbar{
+    display: none !important;
+}
+
+.detail{
+    .detail-header{
+        // background-color: rgb(218, 100, 32);
+        background: linear-gradient(128deg, rgb(218, 100, 32), rgb(255, 94, 0));
+        color: white;
+        width: 100%;
+        height: 8vh;
+        padding: 0 4rem;
+        font-size: var(--font-h6);
+        a{
+            color: white;
+            display: flex;
+            align-items: center;
+            height: inherit;
+            width: min-content;
+            &:hover{
+                i{
+                    background-color: rgba(0, 0, 0, 0.3);
+                }
+                p.back{
+                    color: rgba(255, 255, 255, 0.8);
+                }
+            }
+            p.back, i{
+                margin: 0;
+                transition: background-color .12s ease-in-out;
+            }
+            i{
+                background-color: rgba(0, 0, 0, 0.2);
+                border-radius: 50%;
+                margin-right: 1rem;
+                width: 2vw;
+                display: flex;
+                height: 2vw;
+                justify-content: center;
+                align-items: center;
+                
+            }
+            p.back{
+                font-weight: bold;
+            }
+        }
+    }
+    .detail-body{
+        display: flex;
+        padding: 4rem 6rem;
+        flex-direction: row;
+        .product-image-area{
+            width: 30%;
+            .product-primary-image img, .product-another-image img{
+                cursor: pointer;
+            }
+            .product-primary-image{
+                margin-bottom: 2rem;
+                img{
+                    width: 100%;
+                }
+            }
+            .product-another-image{
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                column-gap: 1.2%;
+                row-gap: .5rem;
+                justify-content: flex-start;
+                .product-image-hoverable{
+                    width: 19%;
+                    height: auto;
+                    &.hover{
+                        border: 2px rgb(218, 100, 32) solid;
+                    }
+                }
+            }
+        }
+        .product-information{
+            width: 70%;
+            padding: 0 4rem;
+            .product-name{
+                font-size: var(--font-h1);
+                border-bottom: 2px solid rgb(218, 100, 32);
+            }
+            .product-car-model-list{
+                .product-car-model-title{
+                    font-size: var(--font-h5);
+                }
+                margin-top: 2rem;
+                display: flex;
+                flex-direction: column;
+                align-items: self-start;
+                row-gap: 1.2rem;
+                label.product-car-model{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    cursor: pointer;
+                    border-radius: 3px;
+                    width: 14vw;
+                    padding: 1rem;
+                    background-color: rgb(218, 100, 32);
+                    color: white;
+                    font-size: var(--font-small);
+                    &.disable-order-function{
+                        cursor: inherit;
+                    }
+                    input[type="radio"]{
+                        display: none;
+                        &:checked + p.car-model{
+                            color: aquamarine;
+                        }   
+                    }
+                    p.car-model{
+                        margin: 0;
+                    }
+                }
+            }
+            .button-area{
+                .product-quantity{
+
+                }
+                .add-to-cart{
+
+                }
+            }
+        }
+    }
+    .detail-footer{
+
+    }
+}
+
+@media only screen and (max-width: 720px) {
+    .detail{
+        .detail-header{
+            
+            a{
+                
+                &:hover{
+                    i{
+                        
+                    }
+                    p.back{
+                        
+                    }
+                }
+                p.back, i{
+                    
+                }
+                i{
+                    width: 6vw;
+                    height: 6vw;
+                }
+                p.back{
+                    font-size: var(--font-h5);
+                }
+            }
+        }
+        .detail-body{
+            flex-direction: column;
+            padding: 4rem;
+            .product-image-area{
+                width: 100%;
+                
+                .product-primary-image img, .product-another-image img{
+                    
+                }
+                .product-primary-image{
+                    
+                    img{
+                        
+                    }
+                }
+                .product-another-image{
+                    
+                    .product-image-hoverable{
+                        
+                        &.hover{
+                            
+                        }
+                    }
+                }
+            }
+            .product-information{
+                width: 100%;
+                padding: 4rem 0 2rem;
+                .product-name{
+                    padding-bottom: 1.2rem;
+                    font-size: var(--font-h2);
+                    border-bottom-color: rgba(218, 100, 32, 0.6);
+                }
+                .product-car-model-list{
+                    row-gap: 2.6rem;
+                    .product-car-model-title{
+
+                    }
+                    
+                    label.product-car-model{
+                        width: 100%;
+                        padding: 2rem;
+                        font-size: var(--font-h6);
+                        &.disable-order-function{
+                            
+                        }
+                        input[type="radio"]{
+                            
+                            &:checked + p.car-model{
+                                
+                            }   
+                        }
+                        p.car-model{
+
+                        }
+                    }
+                }
+                .button-area{
+                    .product-quantity{
+    
+                    }
+                    .add-to-cart{
+    
+                    }
+                }
+            }
+        }
+        .detail-footer{
+    
+        }
+    }
+}

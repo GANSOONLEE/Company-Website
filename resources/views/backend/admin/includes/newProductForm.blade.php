@@ -52,7 +52,7 @@
             </div>
             <div class="form-row-body">
                 <div class="form-row-image" data-drop-id="image">
-                    <input type="file" multiple accept=".png, .jpeg, .jpg, .gif" id="uploadButton" name="images[]" style="display: block">
+                    <input type="file" required multiple accept=".png, .jpeg, .jpg, .gif" id="uploadButton" name="images[]" style="display: block">
                     {{-- <div id="drop" class="drop-box" onclick="upload()">
                         <p class="drop-text">
                             <p class="note">{{ trans('product.addImage') }}</p><br>

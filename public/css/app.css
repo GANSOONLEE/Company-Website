@@ -45,19 +45,19 @@ input[type="checkbox"]{display: none;}
 }
 @media only screen and (max-width: 1170px){
     html{
-        font-size: 57.5%;
+        font-size: 55.5%;
     }
 }
 @media only screen and (max-width: 972px){
     html{
-        font-size: 45.5%;
+        font-size: 42.5%;
     }
 }
-@media only screen and (max-width: 972px){
+/* @media only screen and (max-width: 972px){
     html{
-        font-size: 40%;
+        font-size: 38%;
     }
-}
+} */
 
 /* cover Bootstrap 5 */
 body{

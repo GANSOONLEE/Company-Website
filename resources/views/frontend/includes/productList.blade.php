@@ -15,7 +15,7 @@
                     <a href={{ route('frontend.product.detail',['productCode' => $product->productCode]) }}>
                         <div class="product-list-box">
                             <div class="product-list-product-image">
-                                <img class="product-img" src="{{ Storage::url("{$product->productCatelog}/{$product->productModel}/{$product->productCode}/cover.png") }}" alt="">
+                                <img class="product-img" src="{{ asset("storage/{$product->productCatelog}/{$product->productModel}/{$product->productCode}/cover.png") }}" alt="">
                             </div>
                             <div class="product-list-product-name">
                                 {{ $product->productCode}}

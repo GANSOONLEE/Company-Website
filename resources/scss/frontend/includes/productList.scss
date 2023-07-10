@@ -17,19 +17,21 @@
             row-gap: 5rem;
             justify-content: space-between;
             align-items: flex-start;
-            
-            .product-list-box{
+            a{
                 min-width: calc((100% - 240px) / 3);
                 max-width: calc((100% - 240px) / 3);
-                .product-list-product-image{
-                    .product-img{
-                        width: 100%;
+                .product-list-box{
+                    .product-list-product-image{
+                        .product-img{
+                            width: 100%;
+                        }
+                    }
+                    .product-list-product-name{
+                        font-size: var(--font-h6);
                     }
                 }
-                .product-list-product-name{
-                    font-size: var(--font-h6);
-                }
             }
+            
         }
         
     }
@@ -38,4 +40,49 @@
 
     }
 
+}
+
+@media only screen and (max-width: 720px) {
+    .product-list{
+        margin: 2rem 2.8rem;
+        padding: 0 6rem;
+        .product-list-header{
+            font-size: var(--font-h3);
+            padding: 0 0 2rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+        }
+    
+        .product-list-body{
+            padding: 3rem 0 ;
+            .product-list-section{
+                display: flex;
+                flex-wrap: wrap;
+                column-gap: 2rem;
+                row-gap: 2rem;
+                justify-content: space-between;
+                align-items: flex-start;
+                a{
+                    min-width: calc((100% - 60px) / 2);
+                    max-width: calc((100% - 60px) / 2);
+                    .product-list-box{
+                        .product-list-product-image{
+                            .product-img{
+                                
+                            }
+                        }
+                        .product-list-product-name{
+                            
+                        }
+                    }
+                }
+                
+            }
+            
+        }
+    
+        .product-list-footer{
+    
+        }
+    
+    }
 }
