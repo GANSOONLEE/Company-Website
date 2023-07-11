@@ -9,7 +9,7 @@
 
 @section('content')
 
-    <div class="detail">
+    {{-- <div class="detail">
         <div class="detail-header">
             <a href={{ URL::previous() }}>
                 <i class="fa-solid fa-arrow-left"></i>
@@ -63,8 +63,91 @@
         <div class="detail-footer">
 
         </div>
+    </div> --}}
+
+    <div class="back-to-prevous-page">
+        <a href={{ URL::previous() }}>
+            <i class="fa-solid fa-arrow-left"></i>
+            <p>Back</p>
+        </a>
     </div>
 
+    <div class="detail">
+        <div class="detail-header">
+            <div class="product-name">
+                {{ $product->productName }}
+            </div>
+            <div class="product-description">
+
+            </div>
+        </div>
+        <div class="detail-body">
+            <div class="detail-product-image-area">
+                <div class="product-image-display">
+                    <div class="image-display-area">
+                        <img src="{{ asset("storage/$product->productCatelog/$product->productModel/$product->productCode/cover.png") }}" alt="" class="product-image-display">
+                    </div>
+                </div>
+                <div class="product-image-selector">
+                    <div class="prevous-image" data-image-controller="prevous">
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </div>
+                    <div class="image-selector-area">
+                        @foreach ($images as $image)
+                            <img src="{{ asset("storage/$image") }}" alt="" class="product-image-hoverable">
+                        @endforeach
+                    </div>
+                    <div class="next-image" data-image-controller="next">
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="detail-product-information-area">
+
+                <div class="information-section">
+                    <div class="information-section-title">
+
+                    </div>
+                    <div class="information-section-content">
+
+                    </div>
+
+                </div>
+
+                <div class="information-section">
+                    <div class="information-section-title">
+
+                    </div>
+                    <div class="information-section-content">
+
+                    </div>
+                </div>
+
+                <div class="action-section">
+                    <div class="add-to-cart-area">
+                        <div class="quantity-select-area">
+                            <button id="addQuantity" class="add-quantity">
+                                
+                            </button>
+                            <div id="displayCurrentQuantity" class="display-current-quantity-box">
+
+                            </div>
+                            <button id="removeQuantity" class="remove-quantity">
+
+                            </button>
+                        </div>
+                        <button class="add-to-cart" id="addToCart">
+                            <i></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="detail-footer">
+
+        </div>
+    </div>
 
 @endsection
 

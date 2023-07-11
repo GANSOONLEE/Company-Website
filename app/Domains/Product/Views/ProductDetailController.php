@@ -20,9 +20,7 @@ class ProductDetailController extends Controller{
         $images = [];
 
         foreach ($files as $file) {
-            if (basename($file) !== 'cover.png') {
-                $images[] = $file;
-            }
+            $images[] = $file;
         }
 
         return view('frontend.product.productDetail', ['product' => $product, 'images' => $images]);

@@ -1,151 +1,129 @@
+@charset "UTF-8";
+/* #region ========= 舊版樣式 */
+/* #endregion */
 .navbar {
   display: none !important;
 }
 
-.detail .detail-header {
-  background: linear-gradient(128deg, rgb(218, 100, 32), rgb(255, 94, 0));
-  color: white;
+.main {
+  flex-direction: column;
+}
+
+.back-to-prevous-page {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: white;
   width: 100%;
-  height: 8vh;
-  padding: 0 4rem;
   font-size: var(--font-h6);
+  padding: 2.4rem 4.2rem;
 }
-.detail .detail-header a {
-  color: white;
+.back-to-prevous-page a {
   display: flex;
   align-items: center;
-  height: inherit;
-  width: -moz-min-content;
-  width: min-content;
+  transition: color 0.09s ease-in-out;
 }
-.detail .detail-header a:hover i {
-  background-color: rgba(0, 0, 0, 0.3);
-}
-.detail .detail-header a:hover p.back {
-  color: rgba(255, 255, 255, 0.8);
-}
-.detail .detail-header a p.back, .detail .detail-header a i {
-  margin: 0;
-  transition: background-color 0.12s ease-in-out;
-}
-.detail .detail-header a i {
-  background-color: rgba(0, 0, 0, 0.2);
-  border-radius: 50%;
+.back-to-prevous-page a i {
   margin-right: 1rem;
-  width: 2vw;
-  display: flex;
-  height: 2vw;
-  justify-content: center;
-  align-items: center;
 }
-.detail .detail-header a p.back {
-  font-weight: bold;
+.back-to-prevous-page a p {
+  margin: 0;
+}
+.back-to-prevous-page a:hover {
+  color: rgb(255, 77, 0);
+}
+
+.detail {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 6.2rem;
+}
+.detail .detail-header .product-name {
+  font-size: var(--font-biggest);
+  padding: 0 0 0.6rem;
+  border-bottom: 3px solid rgb(255, 77, 0);
+  margin-bottom: 2rem;
 }
 .detail .detail-body {
   display: flex;
-  padding: 4rem 6rem;
-  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  -moz-column-gap: 2rem;
+       column-gap: 2rem;
+  padding: 3rem 6rem;
 }
-.detail .detail-body .product-image-area {
-  width: 30%;
-}
-.detail .detail-body .product-image-area .product-primary-image img, .detail .detail-body .product-image-area .product-another-image img {
-  cursor: pointer;
-}
-.detail .detail-body .product-image-area .product-primary-image {
-  margin-bottom: 2rem;
-}
-.detail .detail-body .product-image-area .product-primary-image img {
-  width: 100%;
-}
-.detail .detail-body .product-image-area .product-another-image {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  -moz-column-gap: 1.2%;
-       column-gap: 1.2%;
-  row-gap: 0.5rem;
-  justify-content: flex-start;
-}
-.detail .detail-body .product-image-area .product-another-image .product-image-hoverable {
-  width: 19%;
-  height: auto;
-}
-.detail .detail-body .product-image-area .product-another-image .product-image-hoverable.hover {
-  border: 2px rgb(218, 100, 32) solid;
-}
-.detail .detail-body .product-information {
-  width: 70%;
-  padding: 0 4rem;
-}
-.detail .detail-body .product-information .product-name {
-  font-size: var(--font-h1);
-  border-bottom: 2px solid rgb(218, 100, 32);
-}
-.detail .detail-body .product-information .product-car-model-list {
-  margin-top: 2rem;
+.detail .detail-body .detail-product-image-area {
   display: flex;
   flex-direction: column;
-  align-items: self-start;
-  row-gap: 1.2rem;
+  row-gap: 1.6rem;
+  width: 60%;
 }
-.detail .detail-body .product-information .product-car-model-list .product-car-model-title {
-  font-size: var(--font-h5);
+.detail .detail-body .detail-product-image-area .product-image-display .image-display-area img {
+  width: 80%;
+  height: auto;
 }
-.detail .detail-body .product-information .product-car-model-list label.product-car-model {
+.detail .detail-body .detail-product-image-area .product-image-selector {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+}
+.detail .detail-body .detail-product-image-area .product-image-selector .prevous-image, .detail .detail-body .detail-product-image-area .product-image-selector .next-image {
+  display: flex;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  z-index: 99;
+  transition: background-color 0.12s ease-in-out;
+}
+.detail .detail-body .detail-product-image-area .product-image-selector .prevous-image:hover, .detail .detail-body .detail-product-image-area .product-image-selector .next-image:hover {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.detail .detail-body .detail-product-image-area .product-image-selector .prevous-image:active, .detail .detail-body .detail-product-image-area .product-image-selector .next-image:active {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.detail .detail-body .detail-product-image-area .product-image-selector .prevous-image i, .detail .detail-body .detail-product-image-area .product-image-selector .next-image i {
+  margin: 0;
+  border-radius: 50%;
+  width: 1vw;
+  height: 1vw;
+  padding: 1.4rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
-  border-radius: 3px;
-  width: 14vw;
-  padding: 1rem;
-  background-color: rgb(218, 100, 32);
-  color: white;
-  font-size: var(--font-small);
 }
-.detail .detail-body .product-information .product-car-model-list label.product-car-model.disable-order-function {
-  cursor: inherit;
+.detail .detail-body .detail-product-image-area .product-image-selector .prevous-image i::before, .detail .detail-body .detail-product-image-area .product-image-selector .next-image i::before {
+  width: 1rem;
+  height: 1rem;
 }
-.detail .detail-body .product-information .product-car-model-list label.product-car-model input[type=radio] {
-  display: none;
+.detail .detail-body .detail-product-image-area .product-image-selector .prevous-image i.fa-arrow-left, .detail .detail-body .detail-product-image-area .product-image-selector .next-image i.fa-arrow-left {
+  justify-self: flex-start;
 }
-.detail .detail-body .product-information .product-car-model-list label.product-car-model input[type=radio]:checked + p.car-model {
-  color: aquamarine;
+.detail .detail-body .detail-product-image-area .product-image-selector .prevous-image i.fa-arrow-right, .detail .detail-body .detail-product-image-area .product-image-selector .next-image i.fa-arrow-right {
+  justify-self: flex-end;
 }
-.detail .detail-body .product-information .product-car-model-list label.product-car-model p.car-model {
-  margin: 0;
+.detail .detail-body .detail-product-image-area .product-image-selector .prevous-image {
+  margin-right: 1rem;
 }
-@media only screen and (max-width: 720px) {
-  .detail .detail-header a i {
-    width: 6vw;
-    height: 6vw;
-  }
-  .detail .detail-header a p.back {
-    font-size: var(--font-h5);
-  }
-  .detail .detail-body {
-    flex-direction: column;
-    padding: 4rem;
-  }
-  .detail .detail-body .product-image-area {
-    width: 100%;
-  }
-  .detail .detail-body .product-information {
-    width: 100%;
-    padding: 4rem 0 2rem;
-  }
-  .detail .detail-body .product-information .product-name {
-    padding-bottom: 1.2rem;
-    font-size: var(--font-h2);
-    border-bottom-color: rgba(218, 100, 32, 0.6);
-  }
-  .detail .detail-body .product-information .product-car-model-list {
-    row-gap: 2.6rem;
-  }
-  .detail .detail-body .product-information .product-car-model-list label.product-car-model {
-    width: 100%;
-    padding: 2rem;
-    font-size: var(--font-h6);
-  }
+.detail .detail-body .detail-product-image-area .product-image-selector .image-selector-area {
+  display: flex;
+  -moz-column-gap: 1.6rem;
+       column-gap: 1.6rem;
+  position: relative;
+  max-width: 100%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+.detail .detail-body .detail-product-image-area .product-image-selector .image-selector-area img {
+  width: calc((100% + 22px) / 5);
+  height: auto;
+}
+.detail .detail-body .detail-product-image-area .product-image-selector .image-selector-area img.hover {
+  border: 2px solid rgb(255, 77, 0);
+}
+.detail .detail-body .detail-product-image-area .product-image-selector .next-image {
+  margin-left: 1rem;
+}
+.detail .detail-body .detail-product-information-area {
+  width: 40%;
 }
