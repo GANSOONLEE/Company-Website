@@ -74,12 +74,7 @@
 
     <div class="detail">
         <div class="detail-header">
-            <div class="product-name">
-                {{ $product->productName }}
-            </div>
-            <div class="product-description">
-
-            </div>
+            
         </div>
         <div class="detail-body">
             <div class="detail-product-image-area">
@@ -105,39 +100,66 @@
             <div class="detail-product-information-area">
 
                 <div class="information-section">
-                    <div class="information-section-title">
+                    {{-- <div class="information-section-title">
 
-                    </div>
+                    </div> --}}
                     <div class="information-section-content">
-
+                        <div class="product-name">
+                            {{ $product->productName }}
+                        </div>
                     </div>
 
                 </div>
 
                 <div class="information-section">
-                    <div class="information-section-title">
-
-                    </div>
+                    {{-- <div class="information-section-title">
+                        
+                    </div> --}}
                     <div class="information-section-content">
-
+                        <div class="product-description-content">
+                            Description
+                        </div>
                     </div>
                 </div>
 
-                <div class="action-section">
+                <div class="information-section">
+                    <div class="information-section-title">
+                        Available Model:
+                    </div>
+                    <div class="information-section-content">
+                        @if($product->productSubname)
+                            @php
+                                $models = json_decode($product->productSubname)
+                            @endphp
+                            @foreach ($models as $model)
+                                <input type="radio" name='model' value="{{$model->brand}} {{$model->model}}" id="{{$model->brand}} {{$model->model}}">
+                                <label class="product-car-model disable-order-function" for="{{$model->brand}} {{$model->model}}">
+                                    <p class="car-model">{{$model->brand}} {{$model->model}}</p>
+                                </label>
+                            @endforeach
+                        @endif
+                    </div>
+                </div>
+
+                <div class="action-section adisable-funciton">
+                    <div class="action-title">
+                        Quantity
+                    </div>
                     <div class="add-to-cart-area">
                         <div class="quantity-select-area">
-                            <button id="addQuantity" class="add-quantity">
-                                
+                            <button id="removeQuantity" class="remove-quantity quantityButton">
+                                <i class="fa-solid fa-minus"></i>
                             </button>
                             <div id="displayCurrentQuantity" class="display-current-quantity-box">
-
+                                <p id="currentQuantity">1</p>
                             </div>
-                            <button id="removeQuantity" class="remove-quantity">
-
+                            <button id="addQuantity" class="add-quantity quantityButton">
+                                <i class="fa-solid fa-plus"></i>
                             </button>
                         </div>
                         <button class="add-to-cart" id="addToCart">
-                            <i></i>
+                            <i class="fa-solid fa-cart-shopping" style="color: #ee3211;"></i>
+                            Add to cart
                         </button>
                     </div>
                 </div>
@@ -148,6 +170,23 @@
 
         </div>
     </div>
+
+    <div class="user-action">
+        @auth
+            <a href="">
+                <div class="notification">1</div>
+                <div class="view-cart user-action-button">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </div>
+            </a>
+        @endauth
+        <a href="">
+            <div class="whatapps user-action-button">
+                <i class="fa-brands fa-whatsapp"></i>
+            </div>
+        </a>
+    </div>
+    
 
 @endsection
 
