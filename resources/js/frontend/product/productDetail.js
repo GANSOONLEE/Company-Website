@@ -149,7 +149,7 @@ addToCart.addEventListener('click', ()=>{
     let option = getOption();
     let quantity = getQuantity();
     let productCode = getProductCode();
-    let encodedEmail = urldecode(getEmail())
+    let encodedEmail = decodeURIComponent(getEmail())
     console.log(encodedEmail)
     if(option !== undefined){
         sendData(option, quantity, productCode, encodedEmail)
