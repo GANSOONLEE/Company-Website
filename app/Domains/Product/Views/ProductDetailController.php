@@ -3,9 +3,11 @@
 namespace App\Domains\Product\Views;
 
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Models\Cart;
 
 class ProductDetailController extends Controller{
 
@@ -23,7 +25,19 @@ class ProductDetailController extends Controller{
             $images[] = $file;
         }
 
-        return view('frontend.product.productDetail', ['product' => $product, 'images' => $images]);
+        /**
+         *  更新商品數
+         */
+
+        if(Auth::check()) {
+            $userEmail = Auth::user()->Email;
+            $recondCount = Cart::where('Email', $userEmail)->count();
+            $data = ['product' => $product, 'images' => $images, 'cart' => $recondCount];
+        } else {
+            $data = ['product' => $product, 'images' => $images];
+        }
+        
+        return view('frontend.product.productDetail', $data);
 
     }
 }

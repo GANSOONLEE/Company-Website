@@ -36,8 +36,8 @@ class AuthController extends Controller
         
         User::create($data);        
 
-        cookie()->queue('access_token', $accessToken, 0);
-        cookie()->queue('email', $data['Email'], 0);
+        cookie()->queue('access_token', $accessToken, 0, null, null, false, false, True);
+        cookie()->queue('email', $data['Email'], 0, null, null, false, false, True);
 
         return redirect()->back();
     }
@@ -59,8 +59,8 @@ class AuthController extends Controller
 
             User::updateUser($request->input('email'), $updateData);
 
-            cookie()->queue('accessToken', $newAccessToken, 60*24*180);
-            cookie()->queue('email', $data['Email'], 60*24*180);
+            cookie()->queue('accessToken', $newAccessToken, 60*24*180, null, null, false, false);
+            cookie()->queue('email', $data['Email'], 60*24*180, null, null, false, false);
 
             Auth::login($user, false);
 

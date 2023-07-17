@@ -174,7 +174,7 @@
     <div class="user-action">
         @auth
             <a href="">
-                <div class="notification">1</div>
+                <div class="notification">{{ $cart }}</div>
                 <div class="view-cart user-action-button">
                     <i class="fa-solid fa-cart-shopping"></i>
                 </div>

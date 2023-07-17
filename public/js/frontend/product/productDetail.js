@@ -141,9 +141,10 @@ addToCart.addEventListener('click', function () {
   var option = getOption();
   var quantity = getQuantity();
   var productCode = getProductCode();
-  var email = getEmail();
+  var encodedEmail = urldecode(getEmail());
+  console.log(encodedEmail);
   if (option !== undefined) {
-    sendData(option, quantity, productCode, email);
+    sendData(option, quantity, productCode, encodedEmail);
   }
 });
 /******/ })()
