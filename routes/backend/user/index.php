@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\frontend\AdminController;
-use App\Http\Controllers\frontend\ViewController;
+use App\Http\Controllers\frontend\UserController;
 
-Route::get('/dashboard', [ViewController::class, 'contact']);
+Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');

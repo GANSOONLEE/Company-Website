@@ -122,8 +122,8 @@ function sendData(option, quantity, productCode, email) {
       "email": email
     }),
     contentType: "application/json;charset=utf-8",
-    success: function success(data) {
-      console.log('Successful!');
+    success: function success() {
+      location.reload();
     },
     error: function error(XMLHttpRequest, textStatus, errorThrown) {
       console.log(XMLHttpRequest.status);

@@ -310,6 +310,9 @@
 .user-action .whatapps {
   background-color: hsl(103, 78%, 21%);
 }
+.user-action .whatapps i {
+  font-size: 2rem;
+}
 
 .disable-funciton {
   display: none;

@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class AddToCartEvent{
     public function productAddToCart(Request $request){
+
+        /**
+         *  Encapsulation data
+         */
         
         $data = [
             'productCode' => $request->productCode,
@@ -15,6 +19,29 @@ class AddToCartEvent{
             'Email' => $request->email,
         ];
 
-        Cart::create($data);
+        /**
+         *  Check record
+         *  @return object
+         */
+
+        $checkRecordDuplicate = Cart::where('Email', $data['Email'])
+                                    ->where('productBrand', $data['productBrand'])
+                                    ->where('productCode', $data['productCode'])
+                                    ->first();
+
+        if($checkRecordDuplicate){
+            $recordUpdateID = $checkRecordDuplicate->ID;
+            $recordUpdate = Cart::where('ID', $recordUpdateID)->first();
+            $recordUpdateQuantity = $recordUpdate->quantity + $data['quantity'];
+
+            $data = [
+                'quantity' => $recordUpdateQuantity
+            ];
+
+            Cart::where('ID', $recordUpdateID)->update($data);
+        }else{
+            Cart::create($data);
+        }
+        
     }
 }

@@ -21,7 +21,7 @@
                         @if (auth()->user()->isAdmin())
                             <li class="navbar-link"><a href="{{ route('backend.admin.dashboard') }}" class="user-link">DASHBOARD</a></li>
                         @else
-                            {{-- <li class="navbar-link"><a href="{{ route('backend.user.dashboard') }}" class="user-link">DASHBOARD</a></li> --}}
+                            <li class="navbar-link"><a href="{{ route('backend.user.dashboard') }}" class="user-link">DASHBOARD</a></li>
                         @endif
                             <li class="navbar-link"><a href="{{ route('frontend.logout') }}" class="user-link">LOGOUT</a></li>
                     @endguest

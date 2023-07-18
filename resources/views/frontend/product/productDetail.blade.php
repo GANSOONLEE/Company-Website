@@ -1,6 +1,6 @@
 @extends('frontend.layouts.app')
 
-@section('title', __('Catelog'))
+@section('title', __('Product Detail'))
 
 @push('after-style')
     <link rel="stylesheet" href="{{asset('css\frontend\product\productDetail.css')}}">
@@ -173,14 +173,14 @@
 
     <div class="user-action">
         @auth
-            <a href="">
+            <a href={{ route('backend.user.dashboard') }} target="_new">
                 <div class="notification">{{ $cart }}</div>
                 <div class="view-cart user-action-button">
                     <i class="fa-solid fa-cart-shopping"></i>
                 </div>
             </a>
         @endauth
-        <a href="">
+        <a href="https://www.wasap.my/60172430100" target="_new">
             <div class="whatapps user-action-button">
                 <i class="fa-brands fa-whatsapp"></i>
             </div>

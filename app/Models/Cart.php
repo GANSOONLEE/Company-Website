@@ -14,7 +14,7 @@ class Cart extends Model
      */
 
     protected $table = 'cart';
-    protected $primaryKey = 'Email';
+    protected $primaryKey = 'ID';
     protected $fillable = [
         'Email',
         'productCode',
@@ -25,10 +25,19 @@ class Cart extends Model
 
     /**
      *  Relationship
-    */
+     */
 
     public function user(){
         return $this->hasOne(User::class, 'Email');
+    }
+
+    /**
+     *  Function
+     */
+
+    public static function updateCart($ID, $data)
+    {
+        return self::where('ID', $ID)->update($data);
     }
 
 }
