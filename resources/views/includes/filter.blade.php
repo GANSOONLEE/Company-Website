@@ -5,7 +5,7 @@
 
     <div class="filter-header">
         <i class="fa-solid fa-filter"></i>
-        篩選條件
+        Filter
     </div>
 
     <form action="" method="GET">
@@ -33,8 +33,8 @@
         </div>
 
         <div class="filter-footer">
-            <button type="reset" class="resetButton">Reset Filter</button>
-            <button type="button" class="fetchButton">Get Data</button>
+            <button type="reset" class="filter-button resetButton">Reset Filter</button></a>
+            <button type="button" class="filter-button fetchButton">Get Data</button>
         </div>
     </form>
 </div>

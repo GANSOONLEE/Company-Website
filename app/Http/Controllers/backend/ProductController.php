@@ -166,7 +166,7 @@ class ProductController extends Controller{
                 }
             })
             ->orderBy('productModel', 'asc')
-            ->get(['productImage', 'productName', 'productCode', 'productSubname']);
+            ->get(['productName', 'productCode', 'productSubname', 'productCatelog', 'productModel']);
 
         return view('frontend.search', [
             'productType' => $productType,
@@ -176,7 +176,9 @@ class ProductController extends Controller{
             'models' => $models,
             'searchbarText' => $searchbarText,
             'brandSearch' => $searchResults,
+            'products' => $searchResults,
         ]);
+
     }
 
 

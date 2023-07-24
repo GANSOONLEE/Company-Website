@@ -13,4 +13,4 @@ Route::get('{productType}/catelog/{catelogName}',[ProductController::class, 'ind
 Route::get('{productType}/catelog/{catelogName}/{modelName}',[ProductController::class, 'model'])->name('catelog.model');
 
 // 查詢路由
-Route::post('{productType?}/search', [ProductController::class, 'search'])->name('product.search');
+Route::match(['get', 'post'], '{productType?}/search', [ProductController::class, 'search'])->name('product.search');

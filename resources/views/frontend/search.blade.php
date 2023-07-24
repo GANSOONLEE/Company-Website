@@ -4,31 +4,9 @@
 @section('title', __('Products'))
 
 @push('after-style')
-    <link rel="stylesheet" href="{{asset('css\frontend\products.css')}}">
     <link rel="stylesheet" href="{{asset('css\frontend\search.css')}}">
+    <link rel="stylesheet" href="{{asset('css\frontend\includes\productList.css')}}">
 
-    <style>
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 9999;
-        }
-
-        .modal-content {
-            position: sticky;
-            top: 12.5%;
-            display: block;
-            max-width: 80%;
-            max-height: 80%;
-            margin: auto;
-        }
-        .section{cursor: pointer;}
-    </style>
 @endpush
 
 @push('before-body')
@@ -97,105 +75,41 @@
             @endif --}}
         </div>
     </div>
+    
+    <div class="product-list">
 
-    <div class="search">
+        <div class="product-list-header">
+            Search product by '{{$searchbarText}}'
+        </div>
 
-        
+        <div class="product-list-body">
 
-        <div class="products-table">
-            @if($model)
-                <p class="title" id="model">Search Model By '{{$searchbarText}}'</p>
-                <div class="section">
-                    @foreach ($modelSearch as $model)
-                        <div class="product-card">
-                            <div class="product-card-header">
-                                <img src="{{ $model->productImage }}" alt="照片" class="product-image" ondblclick="zoomIn(this)">
+            <div class="product-list-section">
+
+                @if (count($products) > 0)
+                    @foreach ($products as $product)
+                        <a href={{ route('frontend.product.detail',['productCode' => $product->productCode]) }}>
+                            <div class="product-list-box">
+                                <div class="product-list-product-image">
+                                    <img class="product-img" src="{{ asset("storage/{$product->productCatelog}/{$product->productModel}/{$product->productCode}/cover.png") }}" alt="">
+                                </div>
+                                <div class="product-list-product-name">
+                                    {{ $product->productCode}}
+                                </div>
                             </div>
-                            <div class="product-card-body">
-                                <h3 class="product-name">{{ $model->productName }}</h3>
-                                <p class="product-code">{{ $model->productCode }}</p>
-                            </div>
-                            <div class="product-card-footer">
-                                {{-- 下單功能 --}}
-                            </div>
-                        </div>
+                        </a>
                     @endforeach
-                </div>
-            @endif
-            
-            {{--@if($name)
-                <p class="title" id="name">Search Name By '{{$searchbarText}}'</p>
-                <div class="section">
-                    @foreach ($nameSearch as $name)
-                        <div class="product-card">
-                            <div class="product-card-header">
-                                <img src="{{ $name->productImage }}" alt="照片" class="product-image" ondblclick="zoomIn(this)">
-                            </div>
-                            <div class="product-card-body">
-                                <h3 class="product-name">{{ $name->productName }}</h3>
-                                <p class="product-code">{{ $name->productCode }}</p>
-                            </div>
-                            <div class="product-card-footer">
-                               
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-            @endif
-            @if($code)
-                <p class="title" id="code">Search Code By '{{$searchbarText}}'</p>
-                <div class="section">
-                    @foreach ($codeSearch as $code)
-                        <div class="product-card">
-                            <div class="product-card-header">
-                                <img src="{{ $code->productImage }}" alt="照片" class="product-image" ondblclick="zoomIn(this)">
-                            </div>
-                            <div class="product-card-body">
-                                <h3 class="product-name">{{ $code->productName }}</h3>
-                                <p class="product-code">{{ $code->productCode }}</p>
-                            </div>
-                            <div class="product-card-footer">
-                               
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-            @endif
+                @endif
 
-            @if($brand)
-                <p class="title" id="brand">Search Brand By '{{$searchbarText}}'</p>
-                <div class="section">
-                    @foreach ($brandSearch as $brand)
-                        <div class="product-card">
-                            <div class="product-card-header">
-                                <img src="{{ $brand->productImage }}" alt="照片" class="product-image" ondblclick="zoomIn(this)">
-                            </div>
-                            <div class="product-card-body">
-                                <h3 class="product-name">{{ $brand->productName }}</h3>
-                                <p class="product-code">{{ $brand->productCode }}</p>
-                            </div>
-                            <div class="product-card-footer">
-                                
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-            @endif --}}
+            </div>
 
-            @if(empty($model) && empty($name) && empty($code) && empty($brand))
-                <div class="alert alert-warning" role="alert">
-                    Could not find any records related to '{{ $searchbarText }}'
-                </div>
-            @endif
+        </div>
 
-           
+        <div class="product-list-footer">
+
         </div>
     </div>
 
-
-    <div id="myModal" class="modal">
-        <img id="modalImg" class="modal-content" style="width: 60vw">
-    </div>
 @endsection
 
 @push('after-script')

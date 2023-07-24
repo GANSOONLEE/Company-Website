@@ -2,17 +2,19 @@
     position: relative;
 }
 .filter{
-    position: relative;
+    position: sticky;
+    top: 80px;
     margin: 2rem 2.8rem;
-    padding: 3rem;
+    padding: 2rem 3rem;
     min-width: 220px;
-    max-width: 18vw;
-    height: auto;
-    background-color: rgb(201, 201, 201);
+    max-width: 24vw;
+    height: min-content;
+    background-color: rgb(237, 237, 237);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
+    border-radius: 6px;
     .filter-header{
         font-size: var(--font-h6);
         > i{
@@ -40,7 +42,8 @@
                 flex-direction: row;
                 justify-content: space-between;
                 align-items: center;
-                font-size: var(--font-small);
+                font-size: var(--font-h6);
+                font-weight: bold;
                 margin-bottom: 1.2rem;
                 z-index: 2;
                 i{
@@ -53,8 +56,13 @@
                 display: flex;
                 transform: translateY(0);
                 flex-direction: column;
-                row-gap: 1.2rem;     
+                max-height: 40vh;
+                overflow-y: scroll;
+                &::-webkit-scrollbar{
+                    position: fixed;
+                }
                 .checkbox-section{
+                    width: 100%;
                     label.checkbox-box{
                         cursor: pointer;
                         display: flex;
@@ -62,6 +70,8 @@
                         justify-content: flex-start;
                         align-items: center;
                         column-gap: 1.2rem;
+                        padding: .5rem .2rem;
+                        border-bottom: 1px solid #acacac;
                         input[type="checkbox"].checkbox-display{
                             display: block;
                         }
@@ -70,21 +80,35 @@
                             font-size: var(--font-small);
                         }
                     }
+                    &:first-child{
+                        
+                    }
+                    &:last-child{
+                        padding-bottom: 1rem;
+                    }
                 }
             }
         }
     }
     .filter-footer{
         width: 100%;
-        .resetButton{
+        display: flex;
+        flex-direction: column;
+        row-gap: .8rem;
+        .filter-button{
             width: inherit;
             outline: none;
             border: none;
             border-radius: 5px;
             padding: .9rem 2rem;
             color: white;
-            background-color: rgb(255, 106, 0);
             font-size: var(--font-small);
+        }
+        .resetButton{
+            background-color: rgb(255, 114, 53);
+        }
+        .fetchButton{
+            background-color: rgb(69, 116, 255);
         }
     }
 }
