@@ -7,6 +7,7 @@ use App\Http\Controllers\backend\ProductController;
 use App\Models\Product;
 use App\Models\productModel;
 use App\Models\productCatelog;
+use App\Models\Brand;
 
 class AdminController extends Controller{
 
@@ -28,7 +29,9 @@ class AdminController extends Controller{
         // 查询所有种类数据
         $catelogs = productCatelog::orderBy('catelogName', 'asc')->get();
 
-        return view('backend.admin.newProductShopee',compact('products','models','catelogs'));
+        $brands = Brand::orderBy('brandName', 'asc')->get();
+
+        return view('backend.admin.newProductShopee',compact('products','models','catelogs','brands'));
     }
 
     public function editProduct(): object{

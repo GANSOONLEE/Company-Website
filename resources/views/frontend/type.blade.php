@@ -8,15 +8,17 @@
 
 @section('content')
 
-        <div class="product-type org">
-            <a href="/origin/catelog"><button class="typeBtn">Original</button></a>
+    <a class="product-type org" href="/origin/catelog">
+        <div>
             <img class="img-type" src={{ asset('image\original.png') }} alt="origin">
         </div>
+    </a>
         
-        <div class="product-type non-org">
-            <a href="/non-origin/catelog"><button class="typeBtn">Non-Original</button></a>
+    <a class="product-type non-org" href="/non-origin/catelog">
+        <div>
             <img class="img-type" src={{ asset('image\non-original.png') }} alt="non-org">
         </div>
+    </a>
 
 @endsection
 

@@ -14,7 +14,8 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 50%;
+    min-width: 50%;
+    max-width: 50%;
 }
 /* CHILD OF .main */
 .img-type{
