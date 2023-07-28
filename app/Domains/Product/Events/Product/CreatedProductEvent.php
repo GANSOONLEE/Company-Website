@@ -3,9 +3,7 @@
 namespace App\Domains\Product\Events\Product;
 
 use App\Models\Product;
-use App\Models\Image;
 
-use App\Domains\Product\Services\Image\ImageGroupService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 

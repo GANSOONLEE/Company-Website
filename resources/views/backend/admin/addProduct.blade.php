@@ -27,12 +27,15 @@
 @section('content')
     <div class="content">
         <div class="content-header">
-            <h1 class="content-title">{{ trans('product.title.create') }}</h1>
+            <h1 class="content-title">
+                <i class="fa-solid fa-cube"></i>
+                {{ trans('product.title.create') }}
+            </h1>
         </div>
         <div class="content-body">
             <form action={{ route('backend.admin.createdProduct') }} method="POST" enctype="multipart/form-data" class="form">
                 @csrf
-                @include('backend.admin.includes.newProductForm')
+                @include('backend.admin.includes.addProductForm')
             </form>
         </div>
         <div class="content-footer">

@@ -59,11 +59,6 @@ Route::group(['prefix' => 'admin', 'as' => 'backend.admin.', 'middleware' => 'ad
     includeRouteFiles(__DIR__ . '/backend/admin/');
 });
 
-Route::get('/test',function(){
-    
-});
-
-
 // Product 產品處理路由
 // Route::post('/products', [CreatedProductEvent::class, 'createProduct'])->name('products.store');
 // Route::post('/products/{productID}', [UpdatedProductEvent::class, 'updateProduct'])->name('products.update');
@@ -76,3 +71,14 @@ Route::get('/product/delete/{productId}', [DeletedProductEvent::class, 'destroy'
 // 產品
 Route::post('/product/search/',[SearchedProductEvent::class,'searchProductByModal'])->name('search.product');
 Route::get('/product/search/',[SearchedProductEvent::class,'searchProductByModal'])->name('search.product');
+
+// Test
+
+Route::get('/test', function () {
+    event(new App\Events\StatusLiked('Someone'));
+    return "Event has been sent!";
+});
+
+Route::get('/no', function () {
+    return View('welcome');
+});

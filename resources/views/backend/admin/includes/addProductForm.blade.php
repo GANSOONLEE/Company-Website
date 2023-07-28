@@ -12,7 +12,7 @@
         newSecondaryBrand.classList.add('secondary-input');
         newSecondaryBrand.setAttribute('list', 'secondaryBrandList');
         newSecondaryBrand.id = 'secondaryBrand';
-        newSecondaryBrand.placeholder = `{{trans('product.brand')}}`;
+        newSecondaryBrand.placeholder = `{{trans('product.car')}}`;
         newSecondaryBrand.name = 'secondaryBrand[]';
 
         const newSecondaryBrandList = document.createElement('datalist');
@@ -29,7 +29,7 @@
         newSecondaryModel.classList.add('form-control');
         newSecondaryModel.classList.add('secondary-input');
         newSecondaryModel.type = 'text';
-        newSecondaryModel.placeholder = `{{trans('product.model')}}`;
+        newSecondaryModel.placeholder = `{{trans('product.car-model')}}`;
         newSecondaryModel.name = 'secondaryModel[]';
 
         // 将新的输入框添加到容器中
@@ -42,9 +42,9 @@
 
     <form action={{ route('backend.admin.createdProduct') }} method="POST" enctype="multipart/form-data" class="form">
         @csrf
-
+        
         {{-- Upload Image --}}
-        <div class="form-row">
+        {{-- <div class="form-row">
             <div class="form-row-title">
                 <p class="form-row-title-text">
                     {{ trans('product.image') }}
@@ -60,44 +60,38 @@
                             <input type="file" multiple accept=".png, .jpeg, .jpg, .gif" id="uploadButton">
                             <input type="hidden" id="imgUpload" name="images[]"></a>
                         </p>
-                    </div> --}}
+                    </div>
                     <div class="drop-image-list" id="dropImageList">
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
-        {{-- Product Code --}}
+        {{-- Upload Image New --}}
         <div class="form-row">
             <div class="form-row-title">
-                <p class="form-row-title-text">
-                    {{ trans('product.code') }}
+                <p class="form-row-title-text request">
+                    {{ trans('product.image') }}
                 </p>
             </div>
             <div class="form-row-body">
-                <input type="text" class="form-control" name="productCode" id="productCode" placeholder={{ trans('product.code') }} required>
-            </div>
-        </div>
-
-        {{-- Product Model and Brand --}}
-        <div class="form-row">
-            <div class="form-row-title">
-                <p class="form-row-title-text">
-                    {{ trans('product.model') }}
-                </p>
-            </div>
-            <div class="form-row-body">
-                <div class="form-column" id="inputContainer">
-                    <div class="form-input" id="primaryInputGroup">
-                        <input required style="text-transform: uppercase;" class="form-control primary-input" list="primaryBrandList" id="primaryBrand" placeholder={{trans('product.brand')}} name="primaryModel">
-                        <datalist id="primaryBrandList">
-                            @foreach ($models as $option)
-                                <option value="{{ $option['modelName'] }}">
-                            @endforeach
-                        </datalist>
-                        <input required style="text-transform: uppercase;" class="form-control primary-input" type="text" placeholder={{trans('product.model')}} name="primaryBrand">
-                        <button id="addInputBtn" type="button" class="form-control" onclick="addInputGroup()">添加输入框</button>
-                    </div>
+                <div class="form-row-body-container control">
+                    <i class="fa-solid fa-angle-left" id="previousButton"></i>
+                </div>
+                <div class="form-row-body-container display" id="images-thumble">
+                    <div class="image" id="image-thumble"></div>
+                    <div class="image" id="image-thumble"></div>
+                    <div class="image" id="image-thumble"></div>
+                    <div class="image" id="image-thumble"></div>
+                    <div class="image" id="image-thumble"></div>
+                    <div class="image" id="image-thumble"></div>
+                    <div class="image" id="image-thumble"></div>
+                    <div class="image" id="image-thumble"></div>
+                    <div class="image" id="image-thumble"></div>
+                    <div class="image" id="image-thumble"></div>
+                </div>
+                <div class="form-row-body-container control">
+                    <i class="fa-solid fa-angle-right" id="nextButton"></i>
                 </div>
             </div>
         </div>
@@ -142,6 +136,29 @@
                 </div>
             </div>
         </div>
+        
+        {{-- product Name List = Car Model --}}
+        <div class="form-row">
+            <div class="form-row-title">
+                <p class="form-row-title-text">
+                    {{ trans('product.name-list') }}
+                </p>
+            </div>
+            <div class="form-row-body">
+                <div class="form-column" id="inputContainer">
+                    <div class="form-input" id="primaryInputGroup">
+                        <input required style="text-transform: uppercase;" class="form-control primary-input" list="productNameList" id="productNameList" placeholder={{trans('product.car')}} name="productNameList[]">
+                        <datalist id="productNameList">
+                            @foreach ($models as $option)
+                                <option value="{{ $option['modelName'] }}">
+                            @endforeach
+                        </datalist>
+                        <input required style="text-transform: uppercase;" class="form-control primary-input" type="text" placeholder={{trans('product.car-model')}}>
+                        <button id="addInputBtn" type="button" class="form-control" onclick="addInputGroup()">添加输入框</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         {{-- Product Model & Brand --}}
         <div class="form-row">
@@ -153,7 +170,7 @@
             </div>
         </div>
 
-        {{-- --}}
+        {{-- Button --}}
         <div class="form-row">
             <div class="form-row-body buttonArea">
                 <button type="reset" class="resetButton">{{ trans('product.reset') }}</button>

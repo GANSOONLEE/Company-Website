@@ -31,7 +31,7 @@ class AdminController extends Controller{
 
         $brands = Brand::orderBy('brandName', 'asc')->get();
 
-        return view('backend.admin.newProductShopee',compact('products','models','catelogs','brands'));
+        return view('backend.admin.addProduct',compact('products','models','catelogs','brands'));
     }
 
     public function editProduct(): object{
