@@ -6,63 +6,94 @@ use App\Models\Product;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class CreatedProductEvent{
 
     public function createProduct(Request $request){
 
-        $primaryBrand = $request->input('primaryBrand');
-        $primaryModel = $request->input('primaryModel');
-        $productName = $primaryBrand . ' ' . $primaryModel;
-
-        $secondaryBrand = $request->input('secondaryBrand');
-        $secondaryModel = $request->input('secondaryModel');
-        $productCode = $request->input('productCode');
-        $productCatelog = $request->input('productCatelog');
-
-        foreach ($request->file('images') as $index => $image) {
-            $fileName = $index === 0 ? 'cover.png' : $image->getClientOriginalName();
+        // foreach ($request->file('images') as $index => $image) {
+        //     $fileName = $index === 0 ? 'cover.png' : $image->getClientOriginalName();
     
-            Storage::disk('product')->put(
-                "$productCatelog/$primaryModel/$productCode/$fileName",
-                file_get_contents($image)
-            );
-        }
-
-       
-        $combinedArray = [];
-        if (isset($secondaryBrand, $secondaryModel)) {
-
-            foreach ($secondaryBrand as $key => $brand) {
-                $model = $secondaryModel[$key];
-                $combinedArray[] = [
-                    'brand' => strtoupper($brand),
-                    'model' => strtoupper($model)
-                ];
-            }
-            $jsonData = json_encode($combinedArray);
-        } else {
-            $jsonData = '';
-        }
-
-        $data = [
-            'productName' => strtoupper($productName),
-            'productSubname' => $jsonData,
-            'productCode' => $productCode,
-            'productCatelog' => $productCatelog,
-            'productModel' => strtoupper($primaryModel),
-            'productBrand' => strtoupper($primaryBrand),
-            'productType' => $request->input('productType'),
-        ];
-        
-        $product = Product::create($data);
+        //     Storage::disk('product')->put(
+        //         "$productCatelog/$primaryModel/$productCode/$fileName",
+        //         file_get_contents($image)
+        //     );
+        // }
 
         /**
-         *  从数据库读取 productID 并回传给 createdImageGroupEvent 
-         * 
+         * productNameList
+         * @param car,model
          */
+
+        #region
+
+        $productNameCars = $request->input('productNameList-Car');
+        $productNameModels = $request->input('productNameList-Model');
+
+        $productNameList = [];
+        
+        foreach($productNameCars as $index => $productNameCar){
+            $car = $productNameCar;
+            $model = $productNameModels[$index];
+            $carModel = $car . ' ' . $model;
+            $productNameList[] = $carModel;
+        }
+
+        #endregion
+
+        /**
+         * productBrandList
+         * @param code,brand,FZcode
+         */
+
+        #region
+
+        $productBrandCodes = $request->input('productBrandList-Code');
+        $productBrandBrands = $request->input('productBrandList-Brand');
+        $productBrandFZcodes = $request->input('productBrandList-FZcode');
+
+        $productBrandList = [];
+
+        foreach($productBrandCodes as $index => $productBrandCode){
+            $code = $productBrandCode;
+            $brand = $productBrandBrands[$index];
+            $fzcode = $productBrandFZcodes[$index];
+            $carBrand = [
+                'code' => $code,
+                'brand' => $brand,
+                'fzcode' => $fzcode,
+            ];
+            $productBrandList[] = $carBrand;
+        }
+
+        #endregion
+
+        $data = [
+            'productID' => $this->generateProductID(),
+            'productCatelog' => $request->input('productCatelog'),
+            'productType' => $request->input('productType'),
+            'productNameList' => json_encode($productNameList),
+            'productBrandList' => json_encode($productBrandList,)
+        ];
+
+        Product::create($data);
 
         return back();
 
+    }
+
+    function generateProductID(): string {
+        $productId = Str::random(12); // 產生指定長度(12)的字串
+    
+        // 檢查是否已經存在相同的產品ID
+        $productIdAlreadyHave = Product::where('productID', $productId)->exists();
+    
+        if ($productIdAlreadyHave) {
+            // 如果已經有相同的產品ID，則重新生成一個新的ID
+            return $this->generateProductID();
+        }
+    
+        return $productId;
     }
 }

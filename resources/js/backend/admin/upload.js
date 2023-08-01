@@ -1,54 +1,32 @@
-let droptarget = document.getElementById('drop');
-let dropImageList = document.getElementById('dropImageList');
-let imageQuantity = document.querySelector('.count');
-let uploadButton = document.querySelector('#uploadButton');
-let uploadImagesInput = document.querySelector('#imgUpload');
 
-let fileArr = [];
-let fileBlodArr = [];
-let imagePaths = [];
+/**
+ *  Upload image
+ *  @method droptarget // events fired on the drop targets
+ *  @method dragenter // when the draggable element enters it
+ *  @method dragleave // when the draggable element leaves it
+ *  @method drop // prevent default action
+ * 
+ *  @url https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/drag_event
+ * 
+ *  @param imageThumble // this area are prepared to where image upload display their thumbnail
+ *  @param imageInput // this area are the drag and drop valid area
+ */
 
-uploadButton.addEventListener('change', (event) => {
-  let files = event.target.files;
+let imageThumble = document.querySelector('#images-thumble'); 
+let imageInput = document.querySelector('#image-input');
 
-  // 遍历文件列表，将文件添加到 fileArr 数组中
-  for (let file of files) {
-    if (fileArr.length < 10) {
-      fileArr.push(file);
-      filesToBlod(file);
-      
-      droptarget.classList.remove('disable');
-      document.querySelector('.note').innerText = "Add Image";
-    } else {
-      droptarget.classList.add('disable');
-      document.querySelector('.note').innerText = "Max";
-    }
-  }
+  /**
+   *  Add event-listener to the element we want
+   *  @static
+   */
 
   
 
-  // 重置 input 元素的值，清空选择的文件
-  event.target.value = '';
+  // prevent default action (open file explorer)
+  function drop(){
 
-  
-})
-
-function handleEvent(event) {
-  event.preventDefault();
-  if (event.type === 'drop' || event.type === 'click') {
-    droptarget.classList.remove('active');
-    for (let file of event.dataTransfer.files) {
-      if(fileArr.length < 10){
-        fileArr.push(file);
-        filesToBlod(file); 
-      }
-    }
-  } else if (event.type === 'dragleave') {
-    droptarget.classList.remove('active');
-  } else {
-    droptarget.classList.add('active');
   }
-}
+
 
 /**
  *  @method previousButton():void
@@ -82,7 +60,7 @@ let scrollXList = document.querySelector('#images-thumble');
   let previousButton = document.querySelector('#previousButton');
   let nextButton = document.querySelector('#nextButton');
 
-  previousButton.addEventListener('click', moveScrollX('previous'));
-  previousButton.addEventListener('click', moveScrollX('next'));
+  // previousButton.addEventListener('click', moveScrollX('previous'));
+  // previousButton.addEventListener('click', moveScrollX('next'));
 
   

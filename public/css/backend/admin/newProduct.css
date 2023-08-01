@@ -1,5 +1,7 @@
 .content {
   margin-left: 18vw;
+  width: 81%;
+  padding: 0 0 4rem 0;
 }
 .content .content-header h1.content-title {
   font-size: var(--font-h4);
@@ -20,9 +22,28 @@
 .content .content-body .form .form-row .form-row-body {
   display: flex;
   align-items: center;
+  width: 100%;
+}
+.content .content-body .form .form-row .form-row-body.image {
+  outline: #555 1px solid;
+  border-radius: 6px;
+  margin: 2rem 0;
+  display: flex;
+}
+.content .content-body .form .form-row .form-row-body .form-row-body-container {
+  padding: 8rem 3rem;
 }
 .content .content-body .form .form-row .form-row-body .form-row-body-container.control {
   font-size: var(--font-h1);
+  height: -moz-max-content;
+  height: max-content;
+  width: -moz-max-content;
+  width: max-content;
+  cursor: pointer;
+  transition: all 0.12s ease-in-out;
+}
+.content .content-body .form .form-row .form-row-body .form-row-body-container.control:hover {
+  background-color: rgba(128, 128, 128, 0.2);
 }
 .content .content-body .form .form-row .form-row-body .form-row-body-container.control i {
   color: #555;
@@ -32,8 +53,7 @@
   flex-wrap: nowrap;
   -moz-column-gap: 1.2rem;
        column-gap: 1.2rem;
-  height: 8rem;
-  width: 33vw;
+  width: 100%;
   scroll-behavior: smooth;
   position: relative;
   overflow-x: hidden;
@@ -45,4 +65,27 @@
   min-width: 8rem;
   -o-object-fit: cover;
      object-fit: cover;
+}
+#addInputNameListBtn, #addInputBrandListBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -moz-column-gap: 1rem;
+       column-gap: 1rem;
+}
+#addInputNameListBtn p, #addInputBrandListBtn p {
+  margin: 0;
+}
+
+.caps {
+  text-transform: uppercase;
+}
+
+.display-row {
+  display: flex;
+}
+
+.display-column {
+  display: flex;
+  flex-direction: column;
 }

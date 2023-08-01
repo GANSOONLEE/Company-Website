@@ -5,12 +5,12 @@
         'product' => 'Product',
         'order'  =>  'Order',
         'user'  =>  'User',
-        'index'  =>  'Home',
+        'home'  =>  'Home',
         'viewOrder' => 'View Order',
         'editOrder' => 'Edit Order',
         'newProduct' => 'New Product',
         'editProduct' => 'Edit Product',
-        'userManagement' => 'User Management',
+        'account' => 'Account Management',
     ]
 
 ?>

@@ -90,14 +90,14 @@ buttonAddQuantity.addEventListener('click', ()=>{
 
 let addToCart = document.querySelector('#addToCart');
 
-function getProductCode(){
+function getproductID(){
     var currentPath = window.location.pathname;
     var paramValue = currentPath.split('/').pop();
     return paramValue;
 }
 
 function getOption(){
-    let option = document.getElementsByName('model');
+    let option = document.getElementsByName('brand');
     for(i=0; i < option.length; i++){
         if(option[i].checked){
             return option[i].value
@@ -120,19 +120,20 @@ function getEmail(){
     
 }
 
-function sendData(option, quantity, productCode, email){
+function sendData(option, quantity, productID, email){
     $.ajax({
         type: 'post',
         url: `/api/user/add-to-cart`,
         data: JSON.stringify({
-            "productCode": productCode,
+            "productID": productID,
             "productBrand": option,
             "quantity": quantity,
             "email": email
         }),
         contentType : "application/json;charset=utf-8",
-        success: function(){
-           location.reload();
+        success: function(Text){
+            // console.log(Text)
+            location.reload();
         },
         error: function (XMLHttpRequest, textStatus, errorThrown){
             console.log(XMLHttpRequest.status);
@@ -148,11 +149,10 @@ function sendData(option, quantity, productCode, email){
 addToCart.addEventListener('click', ()=>{
     let option = getOption();
     let quantity = getQuantity();
-    let productCode = getProductCode();
+    let productID = getproductID();
     let encodedEmail = decodeURIComponent(getEmail())
-    console.log(encodedEmail)
     if(option !== undefined){
-        sendData(option, quantity, productCode, encodedEmail)
+        sendData(option, quantity, productID, encodedEmail)
     }
 })
 

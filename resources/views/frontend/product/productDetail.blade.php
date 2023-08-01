@@ -80,7 +80,7 @@
             <div class="detail-product-image-area">
                 <div class="product-image-display">
                     <div class="image-display-area">
-                        <img src="{{ asset("storage/$product->productCatelog/$product->productModel/$product->productCode/cover.png") }}" alt="" class="product-image-display">
+                        <img src="{{ asset("storage/{$product->productCatelog}/{$product->getProductID()}/cover.png") }}" alt="image-product" class="product-image-display">
                     </div>
                 </div>
                 <div class="product-image-selector">
@@ -124,17 +124,18 @@
 
                 <div class="information-section">
                     <div class="information-section-title">
-                        Available Model:
+                        Available Brand:
                     </div>
                     <div class="information-section-content">
-                        @if($product->productSubname)
+                        @if($product->productBrandList)
                             @php
-                                $models = json_decode($product->productSubname)
+                                $brands = json_decode($product->productBrandList);
+                                // dd($product->productBrandList, $brands[0]->code)
                             @endphp
-                            @foreach ($models as $model)
-                                <input type="radio" name='model' value="{{$model->brand}} {{$model->model}}" id="{{$model->brand}} {{$model->model}}">
-                                <label class="product-car-model disable-order-function" for="{{$model->brand}} {{$model->model}}">
-                                    <p class="car-model">{{$model->brand}} {{$model->model}}</p>
+                            @foreach ($brands as $brand)
+                                <input type="radio" name='brand' value="{{$brand->code}}" id="{{$brand->code}}">
+                                <label class="product-brand disable-order-function" for="{{$brand->code}}">
+                                    <p>{{$brand->code}}</p>
                                 </label>
                             @endforeach
                         @endif

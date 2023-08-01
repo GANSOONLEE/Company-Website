@@ -1,47 +1,108 @@
 
 <script>
 
-    function addInputGroup() {
-        // 创建新的输入框元素
-        const newInputGroup = document.createElement('div');
-        newInputGroup.classList.add('form-input')
+    function addInputNameList(){
 
-        const newSecondaryBrand = document.createElement('input');
-        newSecondaryBrand.style.textTransform = 'uppercase';
-        newSecondaryBrand.classList.add('form-control');
-        newSecondaryBrand.classList.add('secondary-input');
-        newSecondaryBrand.setAttribute('list', 'secondaryBrandList');
-        newSecondaryBrand.id = 'secondaryBrand';
-        newSecondaryBrand.placeholder = `{{trans('product.car')}}`;
-        newSecondaryBrand.name = 'secondaryBrand[]';
+        const inputContainerName = document.querySelector('#inputContainerName');
 
-        const newSecondaryBrandList = document.createElement('datalist');
-        newSecondaryBrandList.id = 'secondaryBrandList';
+        // 創建新的元素
+        const addInputName = document.createElement('div');
+            addInputName.classList.add('form-input', 'display-row')
+
+        const inputNameListCar = document.createElement('input');
+            inputNameListCar.classList.add('form-control', 'caps');
+            inputNameListCar.setAttribute('list', 'productNameList-Car');
+            inputNameListCar.placeholder = `{{trans('product.car')}}`;
+            inputNameListCar.name = 'productNameList-Car[]';
+
+            
+        const datalistNameListCar = document.createElement('datalist');
+            datalistNameListCar.id = 'productNameList-Car';
+            datalistNameListCar.innerHTML = `@foreach ($models as $option)
+                    <option value="{{ $option['modelName'] }}">
+                @endforeach`
+
+        const inputNameListModel = document.createElement('input');
+            inputNameListModel.classList.add('form-control', 'caps');
+            inputNameListModel.setAttribute('list', 'productNameList-Model');
+            inputNameListModel.placeholder = `{{trans('product.model')}}`;
+            inputNameListModel.name = 'productNameList-Model[]';
+
         
-        @foreach ($models as $option)
-            const newOption{{ $loop->index }} = document.createElement('option');
-            newOption{{ $loop->index }}.value = "{{ $option['modelName'] }}";
-            newSecondaryBrandList.appendChild(newOption{{ $loop->index }});
-        @endforeach
+        // 將新建元素加入到父元素中
+        addInputName.appendChild(inputNameListCar);
+        addInputName.appendChild(datalistNameListCar);
+        addInputName.appendChild(inputNameListModel);
+        inputContainerName.appendChild(addInputName);
 
-        const newSecondaryModel = document.createElement('input');
-        newSecondaryModel.style.textTransform = 'uppercase';
-        newSecondaryModel.classList.add('form-control');
-        newSecondaryModel.classList.add('secondary-input');
-        newSecondaryModel.type = 'text';
-        newSecondaryModel.placeholder = `{{trans('product.car-model')}}`;
-        newSecondaryModel.name = 'secondaryModel[]';
-
-        // 将新的输入框添加到容器中
-        newInputGroup.appendChild(newSecondaryBrand);
-        newInputGroup.appendChild(newSecondaryBrandList);
-        newInputGroup.appendChild(newSecondaryModel);
-        inputContainer.appendChild(newInputGroup);
     }
+
+
+    function addInputBrandList(){
+
+        const inputContainerBrand = document.querySelector('#inputContainerBrand');
+
+        // 創建新的元素
+        const addInputBrand = document.createElement('div');
+            addInputBrand.classList.add('form-input', 'display-row')
+
+        const inputBrandListCode = document.createElement('div');
+
+            const inputBrandListCodeText = document.createElement('input');
+                inputBrandListCodeText.setAttribute('type', 'text');
+                inputBrandListCodeText.classList.add('form-control');
+                inputBrandListCodeText.placeholder = (`{{trans('product.code')}}`);
+                inputBrandListCodeText.name = ('productBrandList-Code[]');
+
+            inputBrandListCode.classList.add('input');
+            inputBrandListCode.appendChild(inputBrandListCodeText);
+
+
+        const inputBrandListBrand = document.createElement('div');
+
+            const inputBrandListBrandText = document.createElement('input');
+                inputBrandListBrandText.setAttribute('type', 'text');
+                inputBrandListBrandText.classList.add('form-control');
+                inputBrandListBrandText.placeholder = (`{{trans('product.brand')}}`);
+                inputBrandListBrandText.name = ('productBrandList-Brand[]');
+
+            inputBrandListBrand.classList.add('input');
+            inputBrandListBrand.appendChild(inputBrandListBrandText);
+
+
+        const inputBrandListFZCode = document.createElement('div');
+
+            const inputBrandListFZCodeText = document.createElement('input');
+                inputBrandListFZCodeText.setAttribute('type', 'text');
+                inputBrandListFZCodeText.classList.add('form-control');
+                inputBrandListFZCodeText.placeholder = (`{{trans('product.fzcode')}}`);
+                inputBrandListFZCodeText.name = ('productBrandList-FZcode[]');
+
+            inputBrandListFZCode.classList.add('input');
+            inputBrandListFZCode.appendChild(inputBrandListFZCodeText);
+        
+        // 將新建元素加入到父元素中
+        addInputBrand.appendChild(inputBrandListCode);
+        addInputBrand.appendChild(inputBrandListBrand);
+        addInputBrand.appendChild(inputBrandListFZCode);
+        inputContainerBrand.appendChild(addInputBrand);
+
+        
+    }
+
+    // 初始化設置
+    window.onload = function init(){
+        var buttonNameList = document.querySelector('#addInputNameListBtn');
+        buttonNameList.addEventListener('click', addInputNameList);
+
+        var buttonBrandList = document.querySelector('#addInputBrandListBtn');
+        buttonBrandList.addEventListener('click', addInputBrandList);
+    }
+
 </script>
 
     <form action={{ route('backend.admin.createdProduct') }} method="POST" enctype="multipart/form-data" class="form">
-        @csrf
+        <input type="hidden" name="_token" value="{{csrf_token()}}">
         
         {{-- Upload Image --}}
         {{-- <div class="form-row">
@@ -74,21 +135,12 @@
                     {{ trans('product.image') }}
                 </p>
             </div>
-            <div class="form-row-body">
+            <div class="form-row-body image" id="image-input">
                 <div class="form-row-body-container control">
                     <i class="fa-solid fa-angle-left" id="previousButton"></i>
                 </div>
                 <div class="form-row-body-container display" id="images-thumble">
-                    <div class="image" id="image-thumble"></div>
-                    <div class="image" id="image-thumble"></div>
-                    <div class="image" id="image-thumble"></div>
-                    <div class="image" id="image-thumble"></div>
-                    <div class="image" id="image-thumble"></div>
-                    <div class="image" id="image-thumble"></div>
-                    <div class="image" id="image-thumble"></div>
-                    <div class="image" id="image-thumble"></div>
-                    <div class="image" id="image-thumble"></div>
-                    <div class="image" id="image-thumble"></div>
+                    <input type="file" multiple>
                 </div>
                 <div class="form-row-body-container control">
                     <i class="fa-solid fa-angle-right" id="nextButton"></i>
@@ -99,7 +151,7 @@
         {{-- Product Catelog --}}
         <div class="form-row">
             <div class="form-row-title">
-                <p class="form-row-title-text">
+                <p class="form-row-title-text request">
                     {{ trans('product.catelog') }}
                 </p>
             </div>
@@ -118,7 +170,7 @@
         {{-- Product Type --}}
         <div class="form-row">
             <div class="form-row-title">
-                <p class="form-row-title-text">
+                <p class="form-row-title-text request">
                     {{ trans('product.type') }}
                 </p>
             </div>
@@ -140,21 +192,24 @@
         {{-- product Name List = Car Model --}}
         <div class="form-row">
             <div class="form-row-title">
-                <p class="form-row-title-text">
+                <p class="form-row-title-text request">
                     {{ trans('product.name-list') }}
                 </p>
             </div>
-            <div class="form-row-body">
-                <div class="form-column" id="inputContainer">
-                    <div class="form-input" id="primaryInputGroup">
-                        <input required style="text-transform: uppercase;" class="form-control primary-input" list="productNameList" id="productNameList" placeholder={{trans('product.car')}} name="productNameList[]">
-                        <datalist id="productNameList">
+            <div class="form-row-body display-row">
+                <div class="display-column" id="inputContainerName">
+                    <div class="form-input display-row">
+                        <input required class="form-control caps" list="productNameList-Car" placeholder={{trans('product.car')}} name="productNameList-Car[]">
+                        <datalist id="productNameList-Car">
                             @foreach ($models as $option)
                                 <option value="{{ $option['modelName'] }}">
                             @endforeach
                         </datalist>
-                        <input required style="text-transform: uppercase;" class="form-control primary-input" type="text" placeholder={{trans('product.car-model')}}>
-                        <button id="addInputBtn" type="button" class="form-control" onclick="addInputGroup()">添加输入框</button>
+                        <input required class="form-control caps" type="text" placeholder={{trans('product.car-model')}} name="productNameList-Model[]">
+                        <button id="addInputNameListBtn" type="button" class="form-control">
+                            <i class="fa-solid fa-plus"></i>
+                            <p class="button-text">Add</p>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -163,10 +218,28 @@
         {{-- Product Model & Brand --}}
         <div class="form-row">
             <div class="form-row-title">
-
+                <p class="form-row-title-text request">
+                    {{ trans('product.code-brand-fzcode') }}
+                </p>
             </div>
             <div class="form-row-body">
-                
+                <div class="code-brand-fzcode display-column" id="inputContainerBrand">
+                    <div class="form-input display-row">
+                        <div class="input">
+                            <input class="form-control" type="text" placeholder={{trans('product.code')}}  name="productBrandList-Code[]" required>
+                        </div>
+                        <div class="input">
+                            <input class="form-control" type="text" placeholder={{trans('product.brand')}}  name="productBrandList-Brand[]" required>
+                        </div>
+                        <div class="input">
+                            <input class="form-control" type="text" placeholder={{trans('product.fzcode')}}  name="productBrandList-FZcode[]">
+                        </div>
+                        <button id="addInputBrandListBtn" type="button" class="form-control">
+                            <i class="fa-solid fa-plus"></i>
+                            <p class="button-text">Add</p>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
 

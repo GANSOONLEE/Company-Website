@@ -12,13 +12,16 @@
 
             @if (count($products) > 0)
                 @foreach ($products as $product)
-                    <a href={{ route('frontend.product.detail',['productCode' => $product->productCode]) }}>
+                    @php
+                        $productName = json_decode($product->productNameList)[0];
+                    @endphp
+                    <a href={{ route('frontend.product.detail',['productCode' => $product->getProductID()]) }}>
                         <div class="product-list-box">
                             <div class="product-list-product-image">
-                                <img class="product-img" src="{{ asset("storage/{$product->productCatelog}/{$product->productModel}/{$product->productCode}/cover.png") }}" alt="">
+                                <img class="product-img" src="{{ asset("storage/{$product->productCatelog}/{$product->getProductID()}/cover.png") }}" alt="product-image">
                             </div>
                             <div class="product-list-product-name">
-                                {{ $product->productCode}}
+                                {{ $productName }}
                             </div>
                         </div>
                     </a>

@@ -9,9 +9,12 @@ use App\Models\catelogModel;
 class Product extends Model{
 
     protected $table = 'products';
-    protected $primaryKey = 'productID';
+    // protected $primaryKey = 'productID';
     protected $guarded = [ ];
     public $timestamps = false;
+    public $fillable = [
+        'productID',
+    ];
 
     /**
      * 一个产品只能有一种种类
@@ -21,22 +24,10 @@ class Product extends Model{
         return $this->belongsTo(productModel::class, 'productCatelog', 'catelogID');
     }
 
-    /**
-     * 根据种类和车款获取产品列表
-     *
-     * @param string $category
-     * @param string $model
-     * @return \Illuminate\Database\Eloquent\Collection
-     */
-    
-    public static function getByCategoryAndModel($category, $model)
-    {
-        return self::where('category', $category)
-            ->where('model', $model)
-            ->orderBy('productName', 'asc')
-            ->get();
+    public function getProductID(): string{
+        return $this->productID;
     }
-
+    
     /**
      * 根据关键字查询产品
      *

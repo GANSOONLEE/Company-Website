@@ -17,7 +17,7 @@ class Cart extends Model
     protected $primaryKey = 'ID';
     protected $fillable = [
         'Email',
-        'productCode',
+        'productID',
         'productBrand',
         'quantity'
     ];

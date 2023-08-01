@@ -10,75 +10,108 @@
 </head>
 <body>
 
+    @php
+        $links = [
+            [
+                'url' => route('frontend.index'),
+                'icon' => 'fa-solid fa-house',
+                'label' => trans('sidebar.home')
+            ],
+            [
+                'url' => route('backend.admin.dashboard'), 
+                'icon' => 'fa-solid fa-chart-line',
+                'label' => trans('sidebar.dashboard')
+            ],
+            [
+                'section' => trans('sidebar.product'),
+                'icon' => 'fa-solid fa-box',
+                'link' => [
+                    [
+                        'url' => route('backend.admin.newProduct'),
+                        'label' => trans('sidebar.newProduct')
+                    ],
+                    [
+                        'url' => route('backend.admin.editProduct'),
+                        'label' => trans('sidebar.editProduct')
+                    ],
+                ]
+            ],
+            [                
+                'section' => trans('sidebar.order'),
+                'icon' => 'fa-solid fa-box',
+                'link' => [
+                    [
+                        'url' => route('backend.admin.viewOrder'),
+                        'label' => trans('sidebar.viewOrder'),
+                        'notification' => 1,
+                    ],
+                    [
+                        'url' => route('backend.admin.noteOrder'),
+                        'label' => trans('sidebar.noteOrder')
+                    ],
+                ]
+            ],
+            [
+                'url' => route('backend.admin.managerAccount'),
+                'icon' => 'fa-solid fa-user',
+                'label' => trans('sidebar.account')
+            ],
+        ];
+    @endphp
+
     <div class="sidebar">
         <div class="sidebar-header">
             <a href={{ route('frontend.index') }}><img src={{asset('image\logo.png')}} alt="" class="logo"></a>
         </div>
         <div class="sidebar-body">
             <ul class="sidebar-links">
-                @php
-                    $links = [
-                        ['url' => route('backend.admin.dashboard'), 'label' => trans('sidebar.dashboard')],
-                        [
-                            'section' => trans('sidebar.product'),
-                            'link' => [
-                                ['url' => route('backend.admin.newProduct'), 'label' => trans('sidebar.newProduct')],
-                                ['url' => route('backend.admin.editProduct'), 'label' => trans('sidebar.editProduct')],
-                            ]
-                        ],
-                        [
-                            'section' => trans('sidebar.order'),
-                            'link' => [
-                                ['url' => route('backend.admin.viewOrder'), 'label' => trans('sidebar.viewOrder'), 'notification' => true],
-                                ['url' => route('backend.admin.editOrder'), 'label' => trans('sidebar.editOrder'), 'notification' => true],
-                            ]
-                        ],
-                        [
-                            'section' => trans('sidebar.user'),
-                            'link' => [
-                                ['url' => route('backend.admin.editUser'), 'label' => trans('sidebar.userManagement')],
-                            ]
-                        ],
-                        // ['url' => route('frontend.index'), 'label' => trans('sidebar.index')],
-                    ];
-                @endphp
-
                 @foreach ($links as $link)
-                @if (isset($link['section']))
-                    <div class="section">
-                        <input type="checkbox" name="" id="{{ $link['section'] }}">
-                        <label  class="titleLabel" for="{{ $link['section'] }}">
-                            <div class="title">
-                                <p>{{ $link['section'] }}</p>
-                                <i class="fa-solid fa-chevron-down"></i>
+                    @if(isset($link['section']))
+                        <div class="section">
+                            <div class="section-title">
+                                <i class="link-icon {{$link['icon']}}"></i>
+                                <p class="section-label">{{$link['section']}}</p>
                             </div>
-                        </label>
-                        <ul class="links">
-                            @foreach ($link['link'] as $sublink)
-                            <a href="{{ $sublink['url'] }}" class="sidebar-link {{ request()->url() == url($sublink['url']) ? 'active' : '' }}">
-                                    <li>{{ $sublink['label'] }}</li>
-                                    @if ($sublink['notification'] ?? false)
-                                        <div class="notification"></div>
-                                    @endif
-                                </a>
-                            @endforeach
-                        </ul>
-                    </div>
-                @else
-                    <a href="{{ $link['url'] }}" class="sidebar-link {{ request()->url() == $link['url'] ? 'active' : '' }}">
-                        <li>{{ $link['label'] }}</li>
-                        @if ($link['notification'] ?? false)
-                            <div class="notification"></div>
-                        @endif
-                    </a>
-                @endif
+                            <div class="section-links">
+                                @foreach($link['link'] as $secondary_link)
+                                    <a href="{{$secondary_link['url']}}" class="sidebar-link">
+                                        <p class="link-label">
+                                            {{$secondary_link['label']}}
+                                        </p>
+                                        @if(isset($secondary_link['notification']))
+                                            @if($secondary_link['notification']!==0)
+                                                <div class="notification-order">
+                                                    {{$secondary_link['notification']}}
+                                                </div>
+                                            @endif
+                                        @endif
+                                    </a>
+                                @endforeach
+                            </div>
+                        </div>
+                    @else
+                        <a href="{{$link['url']}}" class="sidebar-link">
+                            <i class="link-icon {{$link['icon']}}"></i>
+                            <p class="link-label">
+                                {{$link['label']}}
+                            </p>
+                        </a>
+                    @endif
                 @endforeach
-
+                <div class="sidebar-link">
+                    <i class="link-icon fa-solid fa-language"></i>
+                    <a href="{{ route('locale.change', ['lang' => 'en']) }}">
+                        <p class="link-label">ENG</p>
+                    </a>
+                    &nbsp;/&nbsp;
+                    <a href="{{ route('locale.change', ['lang' => 'zh']) }}">
+                        <p class="link-label">中文</p>
+                    </a>
+                </div>
             </ul>            
         </div>
         <div class="sidebar-footer">
-            <a href="{{ route('locale.change', ['lang' => 'en']) }}">English</a>
-            <a href="{{ route('locale.change', ['lang' => 'zh']) }}">中文</a>
+            <p class="clock"></p>
         </div>
     </div>
 </body>

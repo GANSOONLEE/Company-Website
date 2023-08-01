@@ -18,8 +18,7 @@ class ProductController extends Controller{
 
         $productsData = Product::where('productCatelog', $productCatelog)
             ->where('productType', $productType)
-            ->orderBy('productModel', 'asc')
-            ->get(['productCatelog', 'productName', 'productCode', 'productModel', 'productSubname']);
+            ->get(['productCatelog', 'productType', 'productNameList', 'productBrandList', 'productID']);
 
 
         $catelog = ProductCatelog::where('catelogName', $productCatelog)->first();
@@ -75,7 +74,7 @@ class ProductController extends Controller{
             ->where('productModel', 'like', '%' . $productModel . '%')
             ->where('productType', $productType)
             ->orderBy('productName', 'asc')
-            ->get(['productImage', 'productName', 'productCode']);
+            ->get(['productImage', 'productName', 'productID']);
 
         $catelog = ProductCatelog::where('catelogName', $productCatelog)->first();
 
@@ -111,31 +110,31 @@ class ProductController extends Controller{
     //     $modelSearch = Product::where('productModel', 'like', $searchQuery)
     //         ->where('productType', $productType)
     //         ->orderBy('productModel', 'asc')
-    //         ->get(['productImage', 'productName', 'productCode', 'productSubname']);
+    //         ->get(['productImage', 'productName', 'productID', 'productSubname']);
 
     //     // 搜尋名稱
     //     $nameSearch = Product::where('productName', 'like', $searchQuery)
     //         ->where('productType', $productType)
     //         ->orderBy('productName', 'asc')
-    //         ->get(['productImage', 'productName', 'productCode', 'productSubname']);
+    //         ->get(['productImage', 'productName', 'productID', 'productSubname']);
 
     //     // 搜尋名稱
     //     $nameSearch = Product::where('productSubname', 'like', $searchQuery)
     //         ->where('productType', $productType)
     //         ->orderBy('productName', 'asc')
-    //         ->get(['productImage', 'productName', 'productCode', 'productSubname']);
+    //         ->get(['productImage', 'productName', 'productID', 'productSubname']);
 
     //     // 搜尋編號
-    //     $codeSearch = Product::where('productCode', 'like', $searchQuery)
+    //     $codeSearch = Product::where('productID', 'like', $searchQuery)
     //         ->where('productType', $productType)
-    //         ->orderBy('productCode', 'asc')
-    //         ->get(['productImage', 'productName', 'productCode', 'productSubname']);
+    //         ->orderBy('productID', 'asc')
+    //         ->get(['productImage', 'productName', 'productID', 'productSubname']);
 
     //     // 搜尋型号
     //     $brandSearch = Product::where('productBrand', 'like', $searchQuery)
     //         ->where('productType', $productType)
-    //         ->orderBy('productCode', 'asc')
-    //         ->get(['productImage', 'productName', 'productCode', 'productSubname']);
+    //         ->orderBy('productID', 'asc')
+    //         ->get(['productImage', 'productName', 'productID', 'productSubname']);
 
     //     return view('frontend.search', ['productType' => $productType,'modelSearch' => $modelSearch, 'nameSearch' => $nameSearch, 'codeSearch' => $codeSearch, 'models' => $models, 'searchbarText' => $searchbarText, 'brandSearch' => $brandSearch]);
     // }
@@ -157,7 +156,7 @@ class ProductController extends Controller{
             $searchQuery .= '%' . $term . '%';
         }
 
-        $searchFields = ['productModel', 'productName', 'productSubname', 'productCode', 'productBrand'];
+        $searchFields = ['productModel', 'productName', 'productSubname', 'productID', 'productBrand'];
 
         $searchResults = Product::where('productType', $productType)
             ->where(function ($query) use ($searchFields, $searchQuery) {
@@ -166,7 +165,7 @@ class ProductController extends Controller{
                 }
             })
             ->orderBy('productModel', 'asc')
-            ->get(['productName', 'productCode', 'productSubname', 'productCatelog', 'productModel']);
+            ->get(['productName', 'productID', 'productSubname', 'productCatelog', 'productModel']);
 
         return view('frontend.search', [
             'productType' => $productType,
@@ -194,9 +193,9 @@ class ProductController extends Controller{
 
         $productCatelog = $product->productCatelog;
         $primaryModel = $product->primaryModel;
-        $productCode = $product->productCode;
+        $productID = $product->productID;
 
-        Storage::disk('product')->deleteDirectory("$productCatelog/$primaryModel/$productCode");
+        Storage::disk('product')->deleteDirectory("$productCatelog/$primaryModel/$productID");
 
         Product::deleteProduct($productID);
 
@@ -207,7 +206,7 @@ class ProductController extends Controller{
     public function refresh(Request $request){
         $productCatelog = $request->productCatelog;
         $productModel = $request->productModel;
-        $productCode = $request->productCode;
+        $productID = $request->productID;
         $image = $request->file('image');
 
         // 生成文件路径
@@ -220,7 +219,7 @@ class ProductController extends Controller{
         $product = new Product;
         $product->productCatelog = $productCatelog;
         $product->productModel = $productModel;
-        $product->productCode = $productCode;
+        $product->productID = $productID;
         $product->productImage = $filePath;
         $product->save();
 

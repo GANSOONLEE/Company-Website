@@ -28,9 +28,9 @@ Route::group(['prefix' => 'product'], function(){
 
 Route::group(['prefix' => 'order'], function(){
     Route::get('/viewOrder', [AdminController::class,'viewOrder'])->name('viewOrder');
-    Route::get('/editOrder', [AdminController::class,'editOrder'])->name('editOrder');
+    Route::get('/noteOrder', [AdminController::class,'noteOrder'])->name('noteOrder');
 });
 
 Route::group(['prefix' => 'user'], function(){
-    Route::get('/editUser', [AdminController::class,'editUser'])->name('editUser');
+    Route::get('/managerAccount', [AdminController::class,'managerAccount'])->name('managerAccount');
 });

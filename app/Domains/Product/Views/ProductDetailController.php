@@ -11,12 +11,12 @@ use App\Models\Cart;
 
 class ProductDetailController extends Controller{
 
-    function view($productCode){
+    function view($productID){
 
-        $product = Product::where('productCode', $productCode)
+        $product = Product::where('productID', $productID)
             ->first();
 
-        $directory = "$product->productCatelog/$product->productModel/$product->productCode/";
+        $directory = `$product->productCatelog/` . $product->getProductID() . `/`;
         
         $files = Storage::disk('product')->allFiles($directory);
         $images = [];
