@@ -90,43 +90,11 @@
         
     }
 
-    // 初始化設置
-    window.onload = function init(){
-        var buttonNameList = document.querySelector('#addInputNameListBtn');
-        buttonNameList.addEventListener('click', addInputNameList);
-
-        var buttonBrandList = document.querySelector('#addInputBrandListBtn');
-        buttonBrandList.addEventListener('click', addInputBrandList);
-    }
-
 </script>
 
-    <form action={{ route('backend.admin.createdProduct') }} method="POST" enctype="multipart/form-data" class="form">
+    
         <input type="hidden" name="_token" value="{{csrf_token()}}">
         
-        {{-- Upload Image --}}
-        {{-- <div class="form-row">
-            <div class="form-row-title">
-                <p class="form-row-title-text">
-                    {{ trans('product.image') }}
-                </p>
-            </div>
-            <div class="form-row-body">
-                <div class="form-row-image" data-drop-id="image">
-                    <input type="file" required multiple accept=".png, .jpeg, .jpg, .gif" id="uploadButton" name="images[]" style="display: block">
-                    {{-- <div id="drop" class="drop-box" onclick="upload()">
-                        <p class="drop-text">
-                            <p class="note">{{ trans('product.addImage') }}</p><br>
-                            <span class="count">(0/10)</span>
-                            <input type="file" multiple accept=".png, .jpeg, .jpg, .gif" id="uploadButton">
-                            <input type="hidden" id="imgUpload" name="images[]"></a>
-                        </p>
-                    </div>
-                    <div class="drop-image-list" id="dropImageList">
-                    </div>
-                </div>
-            </div>
-        </div> --}}
 
         {{-- Upload Image New --}}
         <div class="form-row">
@@ -135,60 +103,24 @@
                     {{ trans('product.image') }}
                 </p>
             </div>
-            <div class="form-row-body image" id="image-input">
+            <div class="form-row-body image">
+
                 <div class="form-row-body-container control">
                     <i class="fa-solid fa-angle-left" id="previousButton"></i>
                 </div>
+
                 <div class="form-row-body-container display" id="images-thumble">
-                    <input type="file" multiple>
+                    <div id="img-container" class="display-row">
+
+                    </div> 
                 </div>
                 <div class="form-row-body-container control">
                     <i class="fa-solid fa-angle-right" id="nextButton"></i>
                 </div>
             </div>
+            <input type="file" id="file" multiple accept="image/*" name="uploadFiles[]"/>
         </div>
 
-        {{-- Product Catelog --}}
-        <div class="form-row">
-            <div class="form-row-title">
-                <p class="form-row-title-text request">
-                    {{ trans('product.catelog') }}
-                </p>
-            </div>
-            <div class="form-row-body">
-                <div class="form-row-body-radio">
-                    @foreach ($catelogs as $option)
-                        <label for="{{ $option['catelogName'] }}">
-                            <input required class="form-check-input" type="radio" name="productCatelog" id="{{ $option['catelogName'] }}" value="{{ $option['catelogName'] }}">
-                            <div required class="form-radio">{{ $option['catelogName'] }}</div>
-                        </label>
-                    @endforeach
-                </div>
-            </div>
-        </div>
-
-        {{-- Product Type --}}
-        <div class="form-row">
-            <div class="form-row-title">
-                <p class="form-row-title-text request">
-                    {{ trans('product.type') }}
-                </p>
-            </div>
-            <div class="form-row-body">
-                <div class="form-row-body-radio">
-                    <label class="form-check-label" for="Origin">
-                        <input class="form-check-input" id="Origin" type="radio" name="productType" value="Origin">
-                        <div required class="form-radio">Original</div>
-                    </label>
-                        
-                    <label class="form-check-label" for="Non-Origin">
-                        <input class="form-check-input" id="Non-Origin" type="radio" name="productType" value="Non-Origin">
-                        <div required class="form-radio">Non-Original</div>
-                    </label>
-                </div>
-            </div>
-        </div>
-        
         {{-- product Name List = Car Model --}}
         <div class="form-row">
             <div class="form-row-title">
@@ -199,13 +131,13 @@
             <div class="form-row-body display-row">
                 <div class="display-column" id="inputContainerName">
                     <div class="form-input display-row">
-                        <input required class="form-control caps" list="productNameList-Car" placeholder={{trans('product.car')}} name="productNameList-Car[]">
+                        <input required class="input form-control caps" list="productNameList-Car" placeholder={{trans('product.car')}} name="productNameList-Car[]">
                         <datalist id="productNameList-Car">
                             @foreach ($models as $option)
                                 <option value="{{ $option['modelName'] }}">
                             @endforeach
                         </datalist>
-                        <input required class="form-control caps" type="text" placeholder={{trans('product.car-model')}} name="productNameList-Model[]">
+                        <input required class="input form-control caps" type="text" placeholder={{trans('product.car-model')}} name="productNameList-Model[]">
                         <button id="addInputNameListBtn" type="button" class="form-control">
                             <i class="fa-solid fa-plus"></i>
                             <p class="button-text">Add</p>
@@ -243,11 +175,61 @@
             </div>
         </div>
 
+        {{-- Product Type --}}
+        <div class="form-row">
+            <div class="form-row-title">
+                <p class="form-row-title-text request">
+                    {{ trans('product.type') }}
+                </p>
+            </div>
+            <div class="form-row-body">
+                <div class="form-row-body-radio">
+                    <label class="form-check-label" for="Origin">
+                        <input class="form-check-input" id="Origin" type="radio" name="productType" value="Origin">
+                        <div required class="form-radio">Original</div>
+                    </label>
+                        
+                    <label class="form-check-label" for="Non-Origin">
+                        <input class="form-check-input" id="Non-Origin" type="radio" name="productType" value="Non-Origin">
+                        <div required class="form-radio">Non-Original</div>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        {{-- Product Catelog --}}
+        <div class="form-row">
+            <div class="form-row-title">
+                <p class="form-row-title-text request">
+                    {{ trans('product.catelog') }}
+                </p>
+            </div>
+            <div class="form-row-body">
+                <div class="form-row-body-radio">
+                    @foreach ($catelogs as $option)
+                        <label for="{{ $option['catelogName'] }}">
+                            <input required class="form-check-input" type="radio" name="productCatelog" id="{{ $option['catelogName'] }}" value="{{ $option['catelogName'] }}">
+                            <div required class="form-radio">{{ $option['catelogName'] }}</div>
+                        </label>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+
+        
+
         {{-- Button --}}
         <div class="form-row">
             <div class="form-row-body buttonArea">
                 <button type="reset" class="resetButton">{{ trans('product.reset') }}</button>
-                <button type="submit" class="submitButton">{{ trans('product.submit') }}</button>
+                <button type="submit" id="submit" class="submitButton">{{ trans('product.submit') }}</button>
             </div>
         </div>
-    </form>
+
+    <script>
+        var buttonNameList = document.querySelector('#addInputNameListBtn');
+        buttonNameList.addEventListener('click', addInputNameList);
+
+        var buttonBrandList = document.querySelector('#addInputBrandListBtn');
+        buttonBrandList.addEventListener('click', addInputBrandList);
+    </script>

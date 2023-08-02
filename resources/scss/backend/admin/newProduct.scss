@@ -1,7 +1,7 @@
 
 .content{
-    margin-left: 18vw;
-    width: 81%;
+    margin-left: 18.5vw;
+    width: 80%;
     padding: 0 0 4rem 0;
     .content-header{
         h1.content-title{
@@ -14,10 +14,14 @@
     .content-body{
         .form{
             margin-top: 3rem;
+            display: flex;
+            flex-direction: column;
+            row-gap: 4rem;
             .form-row{
+                
                 .form-row-title{
                     p.form-row-title-text{
-                        font-size: var(--font-small);
+                        font-size: var(--font-h6);
                         &.request::after{
                             content: '*';
                             color: red;
@@ -28,6 +32,36 @@
                     display: flex;
                     align-items: center;
                     width: 100%;
+                    .form-input{
+                        width: 100%;
+                    }
+                    #inputContainerName, #inputContainerBrand{
+                        display: flex;
+                        flex-direction: column;
+                        row-gap: 1.2rem;
+                        width: 100%;
+                        .form-input{
+                            display: flex;
+                            column-gap: 2rem;
+                            max-width: calc(100%);
+                        }
+                    }
+                    #inputContainerName{
+                        .form-input{
+                            >*{
+                                min-width: calc((100% / 4) - 20px);
+                                max-width: calc((100% / 4) - 20px);
+                            }
+                        }
+                    }
+                    #inputContainerBrand{
+                        .form-input{
+                            >*{
+                                min-width: calc((100% / 4) - 20px);
+                                max-width: calc((100% / 4) - 20px);
+                            }
+                        }
+                    }
                     &.image{
                         outline: #555 1px solid;
                         border-radius: 6px;
@@ -60,11 +94,62 @@
                             position: relative;
                             overflow-x: hidden;
                             padding: 0 1rem;
-                            .image{
-                                background-color: red;
-                                min-height: 8rem;
-                                min-width: 8rem;
-                                object-fit: cover;
+                            #img-container{
+                                display: flex;
+                                justify-content: start;
+                                align-items: center;
+                                overflow-x: auto;
+                                scroll-behavior: smooth;
+                                min-width: 80%;
+                                .img-wrap {
+                                    display: flex;
+                                    position: relative;
+                                    margin: 10px 5px;
+                                    min-width: calc((100% / 5) - 10px);
+                                    max-width: calc((100% / 5) - 10px);
+                                    height: calc(auto - 10px);
+                                    border: 1px solid #d9d9d9;
+                                    overflow: hidden;
+                                    &:after {
+                                        display: inline-block;
+                                        content: '';
+                                        height: 100%;
+                                        vertical-align: middle;
+                                    }
+                                    img {
+                                        vertical-align: middle;
+                                        width: 100%;
+                                    }
+                                    > span {
+                                        position: absolute;
+                                        display: flex;
+                                        justify-content: center;
+                                        align-items: center;
+                                        top: 5px;
+                                        right: 5px;
+                                        width: 30px;
+                                        height: 30px;
+                                        text-align: center;
+                                        line-height: 16px;
+                                        border-radius: 20px;
+                                        background: rgba(77, 77, 77, 0.4);
+                                        transition: all .12s ease-in-out;
+                                        font-size: var(--font-h6);
+                                        cursor: pointer;
+                                        &:hover{
+                                            background: rgba(77, 77, 77, 0.5);
+                                        }
+                                        > i{
+                                            color: white;
+                                        }
+                                    }
+                                    label {
+                                        cursor: pointer;
+                                        > input {
+                                            display: none;
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
@@ -98,4 +183,17 @@
 .display-column{
     display: flex;
     flex-direction: column;
+}
+
+.alert{
+    margin-left: 17vw;
+    font-size: var(--font-h6);
+    display: flex !important;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    .btn-close{
+        position: relative;
+        padding: 0;
+    }
 }

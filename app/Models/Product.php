@@ -14,6 +14,10 @@ class Product extends Model{
     public $timestamps = false;
     public $fillable = [
         'productID',
+        'productCatelog',
+        'productType',
+        'productNameList',
+        'productBrandList',
     ];
 
     /**

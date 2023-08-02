@@ -12,14 +12,6 @@ class CreatedProductEvent{
 
     public function createProduct(Request $request){
 
-        // foreach ($request->file('images') as $index => $image) {
-        //     $fileName = $index === 0 ? 'cover.png' : $image->getClientOriginalName();
-    
-        //     Storage::disk('product')->put(
-        //         "$productCatelog/$primaryModel/$productCode/$fileName",
-        //         file_get_contents($image)
-        //     );
-        // }
 
         /**
          * productNameList
@@ -69,18 +61,53 @@ class CreatedProductEvent{
 
         #endregion
 
-        $data = [
-            'productID' => $this->generateProductID(),
-            'productCatelog' => $request->input('productCatelog'),
-            'productType' => $request->input('productType'),
-            'productNameList' => json_encode($productNameList),
-            'productBrandList' => json_encode($productBrandList,)
-        ];
+        $productCatelog = $request->input('productCatelog');
+            $productType = $request->input('productType');
+            $productID = $this->generateProductID();
 
-        Product::create($data);
+        $uploadedFiles = $request->allFiles();
 
-        return back();
+        $array = [];
 
+        foreach ($uploadedFiles['uploadFiles'] as $index => $image) {
+            $fileName = $index === 0 ? 'cover.png' : $image->getClientOriginalName();
+            $array[] = $image;
+
+            $directory = "$productCatelog/$productID/$fileName";
+
+            Storage::disk('product')->put(
+                $directory,
+                file_get_contents($image)
+            );
+        }
+
+        try{
+            $data = [
+                'productID' => $productID,
+                'productCatelog' => $productCatelog,
+                'productType' => $productType,
+                'productNameList' => json_encode($productNameList),
+                'productBrandList' => json_encode($productBrandList,)
+            ];
+
+            Product::create($data);
+
+            
+
+        } catch (\Exception $e) {
+            $this->showAlert('Error occurred while sending data: ' . $e->getMessage(), 'danger');
+        }
+
+        $this->showAlert('Data sent successfully!', 'success');
+        return redirect()->back();
+    }
+
+    public function showAlert($message, $type = 'info')
+    {
+        session()->flash('alert', [
+            'type' => $type,
+            'message' => $message
+        ]);
     }
 
     function generateProductID(): string {

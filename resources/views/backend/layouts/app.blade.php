@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ trans('web.admin') }} | @yield('title')</title>
 
     <script src="https://js.pusher.com/7.2/pusher.min.js"></script>
@@ -29,7 +30,9 @@
 
     @stack('before-body')
 
+    
     <div class="main">
+        
         @yield('content')
     </div>
     
