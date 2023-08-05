@@ -161,6 +161,8 @@ window.onload = function init() {
 
   // Form event
   new EventListener('#deleteButton', 'click', 'false', deleteProduct);
+  new EventListener('#addNameButton', 'click', 'false', addNameList);
+  new EventListener('#addBrandButton', 'click', 'false', addBrandList);
   alertonload();
 };
 
@@ -223,8 +225,17 @@ function editProductForm(data) {
       containerBrand[i].remove();
     }
   }
+  var containerName = document.querySelectorAll('#productNameListContainer');
+  if (containerName) {
+    for (i = 0; i < containerName.length; i++) {
+      containerName[i].remove();
+    }
+  }
+  console.log('进入Name');
   createNameList(data);
+  console.log('进入Brand');
   createBrandList(data);
+  console.log('结束');
 }
 function getData() {
   var productID = getDataValue.call(this, 'td[data-type="productID"]');
@@ -365,11 +376,28 @@ function deleteProduct() {
 
 function createNameList(data) {
   var dataArrayName = JSON.parse(data['productNameList']);
-  var form = document.querySelector('#productNameListRepeat');
+  var formName = document.querySelector('#productNameListRepeat');
+  dataArrayName.forEach(function (record, index) {
+    // Container
+    var container = document.createElement('div');
+    container.id = 'productNameListContainer';
+    container.classList.add('display-row', 'mb-3');
+
+    //创建car input元素
+    var nameInput = document.createElement('input');
+    nameInput.type = 'text';
+    nameInput.classList.add('form-control', 'text');
+    nameInput.name = "productNameList-CarModel[]";
+    nameInput.value = record;
+    nameInput.required = false;
+    nameInput.placeholder = 'Product Name';
+    container.appendChild(nameInput);
+    formName.appendChild(container);
+  });
 }
 function createBrandList(data) {
   var dataArrayBrand = JSON.parse(data['productBrandList']);
-  var form = document.querySelector('#productBrandListRepeat');
+  var formBrand = document.querySelector('#productBrandListRepeat');
   dataArrayBrand.forEach(function (record, index) {
     // Container
     var container = document.createElement('div');
@@ -380,35 +408,94 @@ function createBrandList(data) {
     var codeInput = document.createElement('input');
     codeInput.type = 'text';
     codeInput.className = 'form-control';
-    codeInput.name = "productBrand-Code[".concat(index, "]");
-    codeInput.value = record.code;
-    codeInput.required = true;
+    codeInput.name = "productBrandList-Code[]";
+    // codeInput.name = `productBrand-Code[${index}]`;
+    codeInput.value = record.code || '';
+    codeInput.required = false;
     codeInput.placeholder = 'Code';
 
     // 创建brand input元素
     var brandInput = document.createElement('input');
     brandInput.type = 'text';
     brandInput.className = 'form-control';
-    brandInput.name = "productBrand-Brand[".concat(index, "]");
-    brandInput.value = record.brand;
-    brandInput.required = true;
+    brandInput.name = "productBrandList-Brand[]";
+    // brandInput.name = `productBrand-Brand[${index}]`;
+    brandInput.value = record.brand || '';
+    brandInput.required = false;
     brandInput.placeholder = 'Brand';
 
     // 创建fzcode input元素
     var fzcodeInput = document.createElement('input');
     fzcodeInput.type = 'text';
     fzcodeInput.className = 'form-control';
-    fzcodeInput.name = "productBrand-FZCode[".concat(index, "]");
+    fzcodeInput.name = "productBrandList-FZcode[]";
+    // fzcodeInput.name = `productBrand-FZCode[${index}]`;
     fzcodeInput.value = record.fzcode || ''; // 如果fzcode为null，则设置为空字符串
-    fzcodeInput.required = true;
+    fzcodeInput.required = false;
     fzcodeInput.placeholder = 'FZ Code';
 
     // 将创建的input元素添加到表单中
     container.appendChild(codeInput);
     container.appendChild(brandInput);
     container.appendChild(fzcodeInput);
-    form.appendChild(container);
+    formBrand.appendChild(container);
   });
+}
+function addNameList() {
+  var formName = document.querySelector('#productNameListRepeat');
+
+  // Container
+  var container = document.createElement('div');
+  container.id = 'productNameListContainer';
+  container.classList.add('display-row', 'mb-3');
+
+  //创建car input元素
+  var nameInput = document.createElement('input');
+  nameInput.type = 'text';
+  nameInput.classList.add('form-control', 'text');
+  nameInput.name = "productNameList-CarModel[]";
+  nameInput.required = false;
+  nameInput.placeholder = 'Product Name';
+  container.appendChild(nameInput);
+  formName.appendChild(container);
+}
+function addBrandList() {
+  var formBrand = document.querySelector('#productBrandListRepeat');
+
+  // Container
+  var container = document.createElement('div');
+  container.id = 'productBrandListContainer';
+  container.classList.add('display-row', 'mb-3');
+
+  // 创建code input元素
+  var codeInput = document.createElement('input');
+  codeInput.type = 'text';
+  codeInput.className = 'form-control';
+  codeInput.name = "productBrandList-Code[]";
+  codeInput.required = false;
+  codeInput.placeholder = 'Code';
+
+  // 创建brand input元素
+  var brandInput = document.createElement('input');
+  brandInput.type = 'text';
+  brandInput.className = 'form-control';
+  brandInput.name = "productBrandList-Brand[]";
+  brandInput.required = false;
+  brandInput.placeholder = 'Brand';
+
+  // 创建fzcode input元素
+  var fzcodeInput = document.createElement('input');
+  fzcodeInput.type = 'text';
+  fzcodeInput.className = 'form-control';
+  fzcodeInput.name = "productBrandList-FZcode[]";
+  fzcodeInput.required = false;
+  fzcodeInput.placeholder = 'FZ Code';
+
+  // 将创建的input元素添加到表单中
+  container.appendChild(codeInput);
+  container.appendChild(brandInput);
+  container.appendChild(fzcodeInput);
+  formBrand.appendChild(container);
 }
 
 /***/ })

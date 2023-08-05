@@ -12,7 +12,47 @@ class UpdatedProductEvent{
 
         try {
 
-            //
+            /**
+             * productNameList
+             * 
+             */
+
+            #region
+
+            $productNameCarModel = $request->input('productNameList-CarModel');
+
+            #endregion
+
+            /**
+             * productBrandList
+             * 
+             */
+
+            #region
+
+            $productBrandCodes = $request->input('productBrandList-Code');
+            $productBrandBrands = $request->input('productBrandList-Brand');
+            $productBrandFZcodes = $request->input('productBrandList-FZcode');
+
+            $productBrandList = [];
+
+            foreach($productBrandCodes as $index => $productBrandCode){
+                $code = $productBrandCode;
+                $brand = $productBrandBrands[$index];
+                $fzcode = $productBrandFZcodes[$index];
+                if(!$brand){
+                    $brand = null;
+                }
+                if(!$fzcode){
+                    $fzcode = null;
+                }
+                $carBrand = [
+                    'code' => $code,
+                    'brand' => $brand,
+                    'fzcode' => $fzcode,
+                ];
+                $productBrandList[] = array_filter($carBrand);
+            }
 
             $productID = $request->input('productID');
             $productCatelog = $request->input('productCatelog');
@@ -24,6 +64,8 @@ class UpdatedProductEvent{
             if ($product) {
                 
                 $product->update([
+                    'productNameList' => array_filter($productNameCarModel),
+                    'productBrandList' => array_filter($productBrandList),
                     'productCatelog' => $productCatelog,
                     'productType' => $productType,
                     'productStatus' => $productStatus,
@@ -50,6 +92,5 @@ class UpdatedProductEvent{
             'message' => $message
         ]);
     }
-
 
 }

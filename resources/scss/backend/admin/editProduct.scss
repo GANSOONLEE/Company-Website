@@ -326,6 +326,14 @@
         select{
             font-size: $font-size;
         }
+        .label{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .addButton{
+                cursor: pointer;
+            }
+        }
     }
     button{
         font-size: $font-size;

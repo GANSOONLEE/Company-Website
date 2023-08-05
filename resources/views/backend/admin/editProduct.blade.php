@@ -26,12 +26,12 @@
     @endif
     <div class="section">
         <p class="section-title">{{ trans('product.title.edit') }}</p>
-        <div class="button-action-area">
+        {{-- <div class="button-action-area">
             <p class="instruction">{{trans('product.batch-operation')}}</p>
             <button type="button" class="btn btn-danger" data-button-action="delete">{{ trans('product.delete') }}</button>
             <button type="button" class="btn btn-primary" data-button-action="delist">{{ trans('product.delist') }}</button></button>
             <button type="button" class="btn btn-primary" data-button-action="public">{{ trans('product.public') }}</button></button>
-        </div>
+        </div> --}}
         <table id="myTable" class="display">
             <thead>
                 <tr>
@@ -73,11 +73,11 @@
                             <div data-type="productStatus" style="display: inline-block">{{ $product->productStatus }}</div>
                         </td>
                         @if(is_array(json_decode($product->productNameList)))
-                            <td data-type="productNameList">{{($product->productNameList)}}</td>
+                            <td style="display: none" data-type="productNameList">{{($product->productNameList)}}</td>
                         @endif
 
                         @if(is_array(json_decode($product->productBrandList)))
-                            <td data-type="productBrandList">{{ ($product->productBrandList)}}</td>
+                            <td style="display: none" data-type="productBrandList">{{ ($product->productBrandList)}}</td>
                         @endif
                         </tr>
                 @endforeach

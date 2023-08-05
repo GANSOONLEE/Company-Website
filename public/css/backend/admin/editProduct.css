@@ -253,6 +253,14 @@
 .form .mb-3 select {
   font-size: var(--font-small);
 }
+.form .mb-3 .label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.form .mb-3 .label .addButton {
+  cursor: pointer;
+}
 .form button {
   font-size: var(--font-small);
 }

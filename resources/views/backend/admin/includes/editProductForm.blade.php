@@ -54,20 +54,22 @@
                         </div>
                         <div class="display-column">
                             <div class="mb-3" id="productNameListRepeat">
-                                <label for="productNameListInput" class="form-label">{{trans('table.productNameList')}}</label>
-                                <div class="display-column">
-                                    <input type="text" class="form-control" name="productName" required >
+                                <div class="label">
+                                    <label for="productNameListInput" class="form-label">{{trans('table.productNameList')}}</label>
+                                    <i class="fa-solid fa-plus addButton" id="addNameButton"></i>
                                 </div>
                             </div>
                         </div>
                         <div class="display-column">
                             <div class="mb-3" id="productBrandListRepeat">
-                                <label for="productBrandListInput" class="form-label" >{{trans('table.productBrandList')}}</label>
-                                {{-- <input type="text" class="form-control" name="productBrand" required readonly> --}}
+                                <div class="label">
+                                    <label for="productBrandListInput" class="form-label" >{{trans('table.productBrandList')}}</label>
+                                    <i class="fa-solid fa-plus addButton" id="addBrandButton"></i>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
                     <!-- #endregion -->
 
                     <!-- Footer -->
@@ -76,8 +78,6 @@
                         <button type="submit" class="btn btn-primary" id="submitButton">{{trans('product.save')}}</button>
                     </div>
                 </div>
-            
-                
             </form>
         </div>
     </div>
