@@ -59,6 +59,14 @@ Route::group(['prefix' => 'admin', 'as' => 'backend.admin.', 'middleware' => 'ad
     includeRouteFiles(__DIR__ . '/backend/admin/');
 });
 
+/**
+ * API Pusher
+ */
+
+Route::group(['prefix' => 'api'], function () {
+    includeRouteFiles(__DIR__ . '/api/');
+});
+
 // Product 產品處理路由
 // Route::post('/products', [CreatedProductEvent::class, 'createProduct'])->name('products.store');
 // Route::post('/products/{productID}', [UpdatedProductEvent::class, 'updateProduct'])->name('products.update');
@@ -74,11 +82,11 @@ Route::get('/product/search/',[SearchedProductEvent::class,'searchProductByModal
 
 // Test
 
-Route::get('/test', function () {
-    event(new App\Events\StatusLiked('Someone'));
-    return "Event has been sent!";
-});
+// Route::get('/testing', function () {
+//     event(new App\Events\StatusLiked('Someone'));
+//     return "Event has been sent!";
+// });
 
-Route::get('/no', function () {
-    return View('welcome');
-});
+// Route::get('/view', function () {
+//     return View('welcome');
+// });

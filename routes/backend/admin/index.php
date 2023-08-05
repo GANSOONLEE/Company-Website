@@ -11,6 +11,8 @@ use App\Domains\Product\Events\Product\CreatedProductEvent;
 use App\Domains\Product\Events\Product\UpdatedProductEvent;
 use App\Domains\Product\Events\Product\DeletedProductEvent;
 
+use App\Domains\Order\Views\ViewOrder;
+
 // 後臺系統
 
 /**
@@ -28,7 +30,7 @@ Route::group(['prefix' => 'product'], function(){
 });
 
 Route::group(['prefix' => 'order'], function(){
-    Route::get('/viewOrder', [AdminController::class,'viewOrder'])->name('viewOrder');
+    Route::get('/viewOrder', [ViewOrder::class,'viewOrder'])->name('viewOrder');
     Route::get('/noteOrder', [AdminController::class,'noteOrder'])->name('noteOrder');
 });
 

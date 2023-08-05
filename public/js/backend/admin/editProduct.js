@@ -1,6 +1,19 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./resources/scss/frontend/product.scss":
+/*!**********************************************!*\
+  !*** ./resources/scss/frontend/product.scss ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
 /***/ "./resources/scss/frontend/product/productDetail.scss":
 /*!************************************************************!*\
   !*** ./resources/scss/frontend/product/productDetail.scss ***!
@@ -92,6 +105,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/scss/backend/admin/viewOrder.scss":
+/*!*****************************************************!*\
+  !*** ./resources/scss/backend/admin/viewOrder.scss ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
 /***/ "./resources/scss/frontend/contact.scss":
 /*!**********************************************!*\
   !*** ./resources/scss/frontend/contact.scss ***!
@@ -109,19 +135,6 @@ __webpack_require__.r(__webpack_exports__);
 /*!***********************************************************!*\
   !*** ./resources/scss/frontend/includes/productList.scss ***!
   \***********************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
-
-/***/ }),
-
-/***/ "./resources/scss/frontend/product.scss":
-/*!**********************************************!*\
-  !*** ./resources/scss/frontend/product.scss ***!
-  \**********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -587,16 +600,17 @@ function addBrandList() {
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
 /******/ 			"/js/backend/admin/editProduct": 0,
-/******/ 			"css/frontend/product": 0,
 /******/ 			"css/frontend/includes/productList": 0,
 /******/ 			"css/frontend/contact": 0,
+/******/ 			"css/backend/admin/viewOrder": 0,
 /******/ 			"css/backend/admin/newProduct": 0,
 /******/ 			"css/backend/admin/editProduct": 0,
 /******/ 			"css/ui/sidebar": 0,
 /******/ 			"css/ui/footer": 0,
 /******/ 			"css/includes/filter": 0,
 /******/ 			"css/frontend/type": 0,
-/******/ 			"css/frontend/product/productDetail": 0
+/******/ 			"css/frontend/product/productDetail": 0,
+/******/ 			"css/frontend/product": 0
 /******/ 		};
 /******/ 		
 /******/ 		// no chunk on demand loading
@@ -646,17 +660,18 @@ function addBrandList() {
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["css/frontend/product","css/frontend/includes/productList","css/frontend/contact","css/backend/admin/newProduct","css/backend/admin/editProduct","css/ui/sidebar","css/ui/footer","css/includes/filter","css/frontend/type","css/frontend/product/productDetail"], () => (__webpack_require__("./resources/js/backend/admin/editProduct.js")))
-/******/ 	__webpack_require__.O(undefined, ["css/frontend/product","css/frontend/includes/productList","css/frontend/contact","css/backend/admin/newProduct","css/backend/admin/editProduct","css/ui/sidebar","css/ui/footer","css/includes/filter","css/frontend/type","css/frontend/product/productDetail"], () => (__webpack_require__("./resources/scss/backend/admin/editProduct.scss")))
-/******/ 	__webpack_require__.O(undefined, ["css/frontend/product","css/frontend/includes/productList","css/frontend/contact","css/backend/admin/newProduct","css/backend/admin/editProduct","css/ui/sidebar","css/ui/footer","css/includes/filter","css/frontend/type","css/frontend/product/productDetail"], () => (__webpack_require__("./resources/scss/backend/admin/newProduct.scss")))
-/******/ 	__webpack_require__.O(undefined, ["css/frontend/product","css/frontend/includes/productList","css/frontend/contact","css/backend/admin/newProduct","css/backend/admin/editProduct","css/ui/sidebar","css/ui/footer","css/includes/filter","css/frontend/type","css/frontend/product/productDetail"], () => (__webpack_require__("./resources/scss/frontend/contact.scss")))
-/******/ 	__webpack_require__.O(undefined, ["css/frontend/product","css/frontend/includes/productList","css/frontend/contact","css/backend/admin/newProduct","css/backend/admin/editProduct","css/ui/sidebar","css/ui/footer","css/includes/filter","css/frontend/type","css/frontend/product/productDetail"], () => (__webpack_require__("./resources/scss/frontend/includes/productList.scss")))
-/******/ 	__webpack_require__.O(undefined, ["css/frontend/product","css/frontend/includes/productList","css/frontend/contact","css/backend/admin/newProduct","css/backend/admin/editProduct","css/ui/sidebar","css/ui/footer","css/includes/filter","css/frontend/type","css/frontend/product/productDetail"], () => (__webpack_require__("./resources/scss/frontend/product.scss")))
-/******/ 	__webpack_require__.O(undefined, ["css/frontend/product","css/frontend/includes/productList","css/frontend/contact","css/backend/admin/newProduct","css/backend/admin/editProduct","css/ui/sidebar","css/ui/footer","css/includes/filter","css/frontend/type","css/frontend/product/productDetail"], () => (__webpack_require__("./resources/scss/frontend/product/productDetail.scss")))
-/******/ 	__webpack_require__.O(undefined, ["css/frontend/product","css/frontend/includes/productList","css/frontend/contact","css/backend/admin/newProduct","css/backend/admin/editProduct","css/ui/sidebar","css/ui/footer","css/includes/filter","css/frontend/type","css/frontend/product/productDetail"], () => (__webpack_require__("./resources/scss/frontend/type.scss")))
-/******/ 	__webpack_require__.O(undefined, ["css/frontend/product","css/frontend/includes/productList","css/frontend/contact","css/backend/admin/newProduct","css/backend/admin/editProduct","css/ui/sidebar","css/ui/footer","css/includes/filter","css/frontend/type","css/frontend/product/productDetail"], () => (__webpack_require__("./resources/scss/includes/filter.scss")))
-/******/ 	__webpack_require__.O(undefined, ["css/frontend/product","css/frontend/includes/productList","css/frontend/contact","css/backend/admin/newProduct","css/backend/admin/editProduct","css/ui/sidebar","css/ui/footer","css/includes/filter","css/frontend/type","css/frontend/product/productDetail"], () => (__webpack_require__("./resources/scss/ui/footer.scss")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/frontend/product","css/frontend/includes/productList","css/frontend/contact","css/backend/admin/newProduct","css/backend/admin/editProduct","css/ui/sidebar","css/ui/footer","css/includes/filter","css/frontend/type","css/frontend/product/productDetail"], () => (__webpack_require__("./resources/scss/ui/sidebar.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/frontend/includes/productList","css/frontend/contact","css/backend/admin/viewOrder","css/backend/admin/newProduct","css/backend/admin/editProduct","css/ui/sidebar","css/ui/footer","css/includes/filter","css/frontend/type","css/frontend/product/productDetail","css/frontend/product"], () => (__webpack_require__("./resources/js/backend/admin/editProduct.js")))
+/******/ 	__webpack_require__.O(undefined, ["css/frontend/includes/productList","css/frontend/contact","css/backend/admin/viewOrder","css/backend/admin/newProduct","css/backend/admin/editProduct","css/ui/sidebar","css/ui/footer","css/includes/filter","css/frontend/type","css/frontend/product/productDetail","css/frontend/product"], () => (__webpack_require__("./resources/scss/backend/admin/editProduct.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/frontend/includes/productList","css/frontend/contact","css/backend/admin/viewOrder","css/backend/admin/newProduct","css/backend/admin/editProduct","css/ui/sidebar","css/ui/footer","css/includes/filter","css/frontend/type","css/frontend/product/productDetail","css/frontend/product"], () => (__webpack_require__("./resources/scss/backend/admin/newProduct.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/frontend/includes/productList","css/frontend/contact","css/backend/admin/viewOrder","css/backend/admin/newProduct","css/backend/admin/editProduct","css/ui/sidebar","css/ui/footer","css/includes/filter","css/frontend/type","css/frontend/product/productDetail","css/frontend/product"], () => (__webpack_require__("./resources/scss/backend/admin/viewOrder.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/frontend/includes/productList","css/frontend/contact","css/backend/admin/viewOrder","css/backend/admin/newProduct","css/backend/admin/editProduct","css/ui/sidebar","css/ui/footer","css/includes/filter","css/frontend/type","css/frontend/product/productDetail","css/frontend/product"], () => (__webpack_require__("./resources/scss/frontend/contact.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/frontend/includes/productList","css/frontend/contact","css/backend/admin/viewOrder","css/backend/admin/newProduct","css/backend/admin/editProduct","css/ui/sidebar","css/ui/footer","css/includes/filter","css/frontend/type","css/frontend/product/productDetail","css/frontend/product"], () => (__webpack_require__("./resources/scss/frontend/includes/productList.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/frontend/includes/productList","css/frontend/contact","css/backend/admin/viewOrder","css/backend/admin/newProduct","css/backend/admin/editProduct","css/ui/sidebar","css/ui/footer","css/includes/filter","css/frontend/type","css/frontend/product/productDetail","css/frontend/product"], () => (__webpack_require__("./resources/scss/frontend/product.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/frontend/includes/productList","css/frontend/contact","css/backend/admin/viewOrder","css/backend/admin/newProduct","css/backend/admin/editProduct","css/ui/sidebar","css/ui/footer","css/includes/filter","css/frontend/type","css/frontend/product/productDetail","css/frontend/product"], () => (__webpack_require__("./resources/scss/frontend/product/productDetail.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/frontend/includes/productList","css/frontend/contact","css/backend/admin/viewOrder","css/backend/admin/newProduct","css/backend/admin/editProduct","css/ui/sidebar","css/ui/footer","css/includes/filter","css/frontend/type","css/frontend/product/productDetail","css/frontend/product"], () => (__webpack_require__("./resources/scss/frontend/type.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/frontend/includes/productList","css/frontend/contact","css/backend/admin/viewOrder","css/backend/admin/newProduct","css/backend/admin/editProduct","css/ui/sidebar","css/ui/footer","css/includes/filter","css/frontend/type","css/frontend/product/productDetail","css/frontend/product"], () => (__webpack_require__("./resources/scss/includes/filter.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/frontend/includes/productList","css/frontend/contact","css/backend/admin/viewOrder","css/backend/admin/newProduct","css/backend/admin/editProduct","css/ui/sidebar","css/ui/footer","css/includes/filter","css/frontend/type","css/frontend/product/productDetail","css/frontend/product"], () => (__webpack_require__("./resources/scss/ui/footer.scss")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/frontend/includes/productList","css/frontend/contact","css/backend/admin/viewOrder","css/backend/admin/newProduct","css/backend/admin/editProduct","css/ui/sidebar","css/ui/footer","css/includes/filter","css/frontend/type","css/frontend/product/productDetail","css/frontend/product"], () => (__webpack_require__("./resources/scss/ui/sidebar.scss")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()
