@@ -1,4 +1,5 @@
 /******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
 /***/ "./resources/scss/frontend/type.scss":
@@ -7,7 +8,6 @@
   \*******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
 
@@ -20,7 +20,6 @@ __webpack_require__.r(__webpack_exports__);
   \*********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
 
@@ -33,7 +32,6 @@ __webpack_require__.r(__webpack_exports__);
   \***************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
 
@@ -46,7 +44,6 @@ __webpack_require__.r(__webpack_exports__);
   \****************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
 
@@ -59,7 +56,6 @@ __webpack_require__.r(__webpack_exports__);
   \******************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
 
@@ -72,7 +68,6 @@ __webpack_require__.r(__webpack_exports__);
   \**********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
 
@@ -85,7 +80,6 @@ __webpack_require__.r(__webpack_exports__);
   \***********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
 
@@ -98,7 +92,6 @@ __webpack_require__.r(__webpack_exports__);
   \**********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
 
@@ -111,19 +104,8 @@ __webpack_require__.r(__webpack_exports__);
   \************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
-
-
-/***/ }),
-
-/***/ "./resources/js/backend/admin/submit.js":
-/*!**********************************************!*\
-  !*** ./resources/js/backend/admin/submit.js ***!
-  \**********************************************/
-/***/ (() => {
-
 
 
 /***/ })
@@ -273,7 +255,6 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["css/frontend/product/productDetail","css/frontend/product","css/frontend/includes/productList","css/frontend/contact","css/backend/admin/newProduct","css/ui/sidebar","css/ui/footer","css/includes/filter","css/frontend/type"], () => (__webpack_require__("./resources/js/backend/admin/submit.js")))
 /******/ 	__webpack_require__.O(undefined, ["css/frontend/product/productDetail","css/frontend/product","css/frontend/includes/productList","css/frontend/contact","css/backend/admin/newProduct","css/ui/sidebar","css/ui/footer","css/includes/filter","css/frontend/type"], () => (__webpack_require__("./resources/scss/backend/admin/newProduct.scss")))
 /******/ 	__webpack_require__.O(undefined, ["css/frontend/product/productDetail","css/frontend/product","css/frontend/includes/productList","css/frontend/contact","css/backend/admin/newProduct","css/ui/sidebar","css/ui/footer","css/includes/filter","css/frontend/type"], () => (__webpack_require__("./resources/scss/frontend/contact.scss")))
 /******/ 	__webpack_require__.O(undefined, ["css/frontend/product/productDetail","css/frontend/product","css/frontend/includes/productList","css/frontend/contact","css/backend/admin/newProduct","css/ui/sidebar","css/ui/footer","css/includes/filter","css/frontend/type"], () => (__webpack_require__("./resources/scss/frontend/includes/productList.scss")))

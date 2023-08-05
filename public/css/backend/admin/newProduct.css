@@ -142,6 +142,54 @@
 .content .content-body .form .form-row .form-row-body .form-row-body-container.display #img-container .img-wrap label > input {
   display: none;
 }
+.content .content-body .form .form-row .form-row-body .form-row-body-radio {
+  width: 100%;
+  display: flex;
+  -moz-column-gap: 2rem;
+       column-gap: 2rem;
+}
+.content .content-body .form .form-row .form-row-body .form-row-body-radio input {
+  display: none;
+}
+.content .content-body .form .form-row .form-row-body .form-row-body-radio input:checked + label.form-check-label {
+  color: rgb(0, 79, 0);
+  border-color: green;
+  background-color: rgb(231, 255, 231);
+}
+.content .content-body .form .form-row .form-row-body .form-row-body-radio .form-check-label {
+  border-radius: 6px;
+  border: 2px solid #000;
+  padding: 2rem 6rem;
+  width: calc(25% - 20px);
+  text-align: center;
+  cursor: pointer;
+}
+.content .content-body .form .form-row .form-row-body .form-row-body-radio .form-check-label .form-radio {
+  font-size: var(--font-h6);
+}
+.content .content-body .form .form-row .form-row-body.buttonArea {
+  display: flex;
+}
+.content .content-body .form .form-row .form-row-body.buttonArea button {
+  padding: 1rem 3rem;
+  font-size: var(--font-small);
+  outline: none;
+  border: none;
+  border-radius: 4px;
+}
+.content .content-body .form .form-row .form-row-body.buttonArea button.resetButton {
+  background-color: rgb(255, 187, 187);
+  margin-right: 2rem;
+}
+.content .content-body .form .form-row .form-row-body.buttonArea button.resetButton:hover {
+  background-color: rgb(255, 152, 152);
+}
+.content .content-body .form .form-row .form-row-body.buttonArea button.submitButton {
+  background-color: rgb(187, 255, 187);
+}
+.content .content-body .form .form-row .form-row-body.buttonArea button.submitButton:hover {
+  background-color: rgb(152, 255, 152);
+}
 #addInputNameListBtn, #addInputBrandListBtn {
   display: flex;
   align-items: center;
@@ -167,6 +215,8 @@
 }
 
 .alert {
+  position: fixed;
+  width: 81.9vw;
   margin-left: 17vw;
   font-size: var(--font-h6);
   display: flex !important;
@@ -177,4 +227,156 @@
 .alert .btn-close {
   position: relative;
   padding: 0;
+}
+
+input[required]::-moz-placeholder {
+  color: red;
+}
+
+input[required]::placeholder {
+  color: red;
+}
+
+.modal-header,
+.modal-body,
+.modal-footer {
+  font-size: var(--font-h5);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade {
+    transition: none;
+  }
+}
+.show {
+  opacity: 100;
+}
+
+.modal-backdrop.fade {
+  opacity: 0.5;
+}
+
+.modal {
+  margin-top: 6rem;
+  padding-top: 2rem;
+}
+
+.loading-screen {
+  display: none;
+  z-index: -10;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.3);
+  overflow-y: hidden;
+}
+.loading-screen:hover {
+  cursor: wait;
+}
+.loading-screen.show {
+  z-index: 1090;
+}
+
+.container {
+  height: 100vh;
+  width: 100vw;
+  font-family: Helvetica;
+}
+
+.loader {
+  height: 20px;
+  width: 250px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+.loader--dot {
+  animation-name: loader;
+  animation-timing-function: ease-in-out;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  height: 20px;
+  width: 20px;
+  border-radius: 100%;
+  background-color: black;
+  position: absolute;
+  border: 2px solid white;
+}
+.loader--dot:first-child {
+  background-color: #8cc759;
+  animation-delay: 0.5s;
+}
+.loader--dot:nth-child(2) {
+  background-color: #8c6daf;
+  animation-delay: 0.4s;
+}
+.loader--dot:nth-child(3) {
+  background-color: #ef5d74;
+  animation-delay: 0.3s;
+}
+.loader--dot:nth-child(4) {
+  background-color: #f9a74b;
+  animation-delay: 0.2s;
+}
+.loader--dot:nth-child(5) {
+  background-color: #60beeb;
+  animation-delay: 0.1s;
+}
+.loader--dot:nth-child(6) {
+  background-color: #fbef5a;
+  animation-delay: 0s;
+}
+.loader--text {
+  position: absolute;
+  top: 200%;
+  left: 0;
+  right: 0;
+  width: 100%;
+  margin: auto;
+  text-align: center;
+}
+.loader--text:after {
+  content: "Please wait a minute";
+  font-weight: bold;
+  font-size: var(--font-h6);
+  animation-name: loading-text;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes loader {
+  15% {
+    transform: translateX(0);
+  }
+  45% {
+    transform: translateX(230px);
+  }
+  65% {
+    transform: translateX(230px);
+  }
+  95% {
+    transform: translateX(0);
+  }
+}
+@keyframes loading-text {
+  0% {
+    content: "Processing";
+  }
+  25% {
+    content: "Processing.";
+  }
+  50% {
+    content: "Processing..";
+  }
+  75% {
+    content: "Processing...";
+  }
 }

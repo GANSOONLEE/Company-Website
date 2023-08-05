@@ -9,7 +9,8 @@ use App\Models\catelogModel;
 class Product extends Model{
 
     protected $table = 'products';
-    // protected $primaryKey = 'productID';
+    public $incrementing = false;
+    protected $primaryKey = 'productID';
     protected $guarded = [ ];
     public $timestamps = false;
     public $fillable = [
@@ -18,6 +19,7 @@ class Product extends Model{
         'productType',
         'productNameList',
         'productBrandList',
+        'productStatus',
     ];
 
     /**

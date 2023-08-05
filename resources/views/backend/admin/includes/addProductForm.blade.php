@@ -25,7 +25,7 @@
         const inputNameListModel = document.createElement('input');
             inputNameListModel.classList.add('form-control', 'caps');
             inputNameListModel.setAttribute('list', 'productNameList-Model');
-            inputNameListModel.placeholder = `{{trans('product.model')}}`;
+            inputNameListModel.placeholder = `{{trans('product.car-model')}}`;
             inputNameListModel.name = 'productNameList-Model[]';
 
         
@@ -125,19 +125,19 @@
         <div class="form-row">
             <div class="form-row-title">
                 <p class="form-row-title-text request">
-                    {{ trans('product.name-list') }}
+                    {{ trans('product.name-list') }} : PROTON SAGA
                 </p>
             </div>
             <div class="form-row-body display-row">
                 <div class="display-column" id="inputContainerName">
                     <div class="form-input display-row">
-                        <input required class="input form-control caps" list="productNameList-Car" placeholder={{trans('product.car')}} name="productNameList-Car[]">
+                        <input required class="input form-control caps" list="productNameList-Car" placeholder="{{trans('product.car')}} : PROTON" name="productNameList-Car[]">
                         <datalist id="productNameList-Car">
                             @foreach ($models as $option)
                                 <option value="{{ $option['modelName'] }}">
                             @endforeach
                         </datalist>
-                        <input required class="input form-control caps" type="text" placeholder={{trans('product.car-model')}} name="productNameList-Model[]">
+                        <input required class="input form-control caps" type="text" placeholder="{{trans('product.car-model')}} : SAGA" name="productNameList-Model[]">
                         <button id="addInputNameListBtn" type="button" class="form-control">
                             <i class="fa-solid fa-plus"></i>
                             <p class="button-text">Add</p>
@@ -164,13 +164,34 @@
                             <input class="form-control" type="text" placeholder={{trans('product.brand')}}  name="productBrandList-Brand[]" required>
                         </div>
                         <div class="input">
-                            <input class="form-control" type="text" placeholder={{trans('product.fzcode')}}  name="productBrandList-FZcode[]">
+                            <input class="form-control" type="text" placeholder="{{trans('product.fzcode')}}"  name="productBrandList-FZcode[]">
                         </div>
                         <button id="addInputBrandListBtn" type="button" class="form-control">
                             <i class="fa-solid fa-plus"></i>
                             <p class="button-text">Add</p>
                         </button>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        {{-- Product Catelog --}}
+        <div class="form-row">
+            <div class="form-row-title">
+                <p class="form-row-title-text request">
+                    {{ trans('product.catelog') }}
+                </p>
+            </div>
+            <div class="form-row-body">
+                <div class="form-row-body-input">
+                    <label for="{{ $option['catelogName'] }}">
+                        <input required list="categoryList" class="form-input form-control" type="text" name="productCatelog" placeholder="{{trans('product.catelog')}}">
+                        <datalist id="categoryList">
+                            @foreach ($catelogs as $option) 
+                                <option value="{{ $option['catelogName'] }}">
+                            @endforeach
+                        </datalist>
+                    </label>
                 </div>
             </div>
         </div>
@@ -184,44 +205,29 @@
             </div>
             <div class="form-row-body">
                 <div class="form-row-body-radio">
+
+                    <input class="form-check-input" id="Origin" type="radio" name="productType" value="Origin">
                     <label class="form-check-label" for="Origin">
-                        <input class="form-check-input" id="Origin" type="radio" name="productType" value="Origin">
                         <div required class="form-radio">Original</div>
                     </label>
                         
+                    <input class="form-check-input" id="Non-Origin" type="radio" name="productType" value="Non-Origin">
                     <label class="form-check-label" for="Non-Origin">
-                        <input class="form-check-input" id="Non-Origin" type="radio" name="productType" value="Non-Origin">
                         <div required class="form-radio">Non-Original</div>
+                    </label>
+
+                    <input class="form-check-input" id="Recond" type="radio" name="productType" value="Recond">
+                    <label class="form-check-label" for="Recond">
+                        <div required class="form-radio">Recond</div>
                     </label>
                 </div>
             </div>
         </div>
-
-        {{-- Product Catelog --}}
-        <div class="form-row">
-            <div class="form-row-title">
-                <p class="form-row-title-text request">
-                    {{ trans('product.catelog') }}
-                </p>
-            </div>
-            <div class="form-row-body">
-                <div class="form-row-body-radio">
-                    @foreach ($catelogs as $option)
-                        <label for="{{ $option['catelogName'] }}">
-                            <input required class="form-check-input" type="radio" name="productCatelog" id="{{ $option['catelogName'] }}" value="{{ $option['catelogName'] }}">
-                            <div required class="form-radio">{{ $option['catelogName'] }}</div>
-                        </label>
-                    @endforeach
-                </div>
-            </div>
-        </div>
-
-        
 
         {{-- Button --}}
         <div class="form-row">
             <div class="form-row-body buttonArea">
-                <button type="reset" class="resetButton">{{ trans('product.reset') }}</button>
+                <button type="reset" id="resetButton" class="resetButton">{{ trans('product.reset') }}</button>
                 <button type="submit" id="submit" class="submitButton">{{ trans('product.submit') }}</button>
             </div>
         </div>

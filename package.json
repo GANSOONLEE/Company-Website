@@ -24,6 +24,7 @@
         "webpack-cli": "^4.0.0"
     },
     "dependencies": {
+        "datatables.net-dt": "^1.13.6",
         "moment": "^2.29.4"
     }
 }

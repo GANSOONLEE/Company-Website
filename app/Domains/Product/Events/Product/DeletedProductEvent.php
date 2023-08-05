@@ -4,37 +4,35 @@ namespace App\Domains\Product\Events\Product;
 
 use \App\Domains\Product\Events\Notification\ProductDeletedNotification;
 use App\Models\Product;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class DeletedProductEvent{
 
-    public function destroy($productID)
+    public function deleteProduct(Request $request)
     {
-
         try {
-            $product = Product::findOrFail($productID);
+            $product = Product::where('productID', $request->productID)->first();
 
-            
-
+            $productID = $request->input('productID');
             $productCatelog = $product->productCatelog;
-            $primaryModel = $product->productModel;
-            $productCode = $product->productCode;
             
-            Storage::disk('product')->deleteDirectory("$productCatelog/$primaryModel/$productCode");
+            Storage::disk('product')->deleteDirectory("$productCatelog/$productID");
 
-            $product->delete();
+            $product->delete();    
 
-            $message = trans('delete.success');
-            $type = 'success';
+        } catch (\Exception $err) {
 
-
-        } catch (\Exception $e) {
-
-            $message = trans('delete.warning');
-            $type = 'warning';
-            
         }
-
+        
         return redirect()->back();
+    }
+
+    public function showAlert($message, $type = 'info')
+    {
+        session()->flash('alert', [
+            'type' => $type,
+            'message' => $message
+        ]);
     }
 }

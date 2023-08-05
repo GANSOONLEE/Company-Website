@@ -11,6 +11,7 @@
         'newProduct' => 'New Product',
         'editProduct' => 'Edit Product',
         'account' => 'Account Management',
+        'noteOrder' => 'Order Note',
     ]
 
 ?>

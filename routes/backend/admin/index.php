@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 /* Return View */
 use App\Http\Controllers\frontend\AdminController;
+use App\Domains\Product\Views\ProductEditController;
 
 /* Method */
 use App\Domains\Product\Events\Product\CreatedProductEvent;
@@ -20,10 +21,10 @@ Route::get('/dashboard', [AdminController::class,'dashboard'])->name('dashboard'
 
 Route::group(['prefix' => 'product'], function(){
     Route::get('/newProduct', [AdminController::class,'newProduct'])->name('newProduct');
-    Route::get('/editProduct', [AdminController::class,'editProduct'])->name('editProduct');
+    Route::get('/editProduct', [ProductEditController::class,'editProduct'])->name('editProduct');
 
     Route::post('/newProduct', [CreatedProductEvent::class, 'createProduct'])->name('createdProduct');
-    Route::post('/editProduct/{productID}', [UpdatedProductEvent::class , 'updateProduct'])->name('updatedProduct');
+    Route::post('/editProduct', [UpdatedProductEvent::class , 'updateProduct'])->name('updatedProduct');
 });
 
 Route::group(['prefix' => 'order'], function(){

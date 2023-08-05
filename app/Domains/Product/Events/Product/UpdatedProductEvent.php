@@ -8,45 +8,48 @@ use \Illuminate\Database\QueryException;
 
 class UpdatedProductEvent{
 
-    public function updateProduct(Request $request, $productID){
+    public function updateProduct(Request $request){
 
         try {
-            
-            $auth = Product::where('productID', $productID)
-                    ->get('productCode');
 
-            if($auth != substr($request->input('productCode'), 0, 255)){
+            //
+
+            $productID = $request->input('productID');
+            $productCatelog = $request->input('productCatelog');
+            $productType = $request->input('productType');
+            $productStatus = $request->input('productStatus');
+
+            $product = Product::where('productID', $productID)->first();
+
+            if ($product) {
                 
-            }
+                $product->update([
+                    'productCatelog' => $productCatelog,
+                    'productType' => $productType,
+                    'productStatus' => $productStatus,
+                ]);
 
-            $data = [
-                'productName' => substr($request->input('productName'), 0, 255),
-                'productCode' => substr($request->input('productCode'), 0, 255),
-                'productCatelog' => $request->input('productCatelog'),
-                'productModel' => $request->input('productModel'),
-                'productBrand' => $request->input('productBrand'),
-                'productType' => $request->input('productType'),
-            ];
-            Product::updateProduct($productID, $data);
-        
-            $alertType = 'success';
-            $message = trans("product.success");
+                $this->showAlert(trans('product.success'), 'success');
+                return redirect()->back();
+
+            } else {
+                $this->showAlert(trans('product.warning'), 'warning');
+                return redirect()->back();
+            }
 
         } catch (QueryException $err) {
-
-            $alertType = 'warning';
-
-            $errorCode = $err->getCode();
-            if ($errorCode === '23000') {
-                $errorMsg = trans("product.duplicate");
-            }else{
-                $errorMsg = $err->getMessage();
-            }
-            
-            $message = trans("product.warning") . $errorMsg;
-        }
-        
-        return redirect()->back()->with('alertType', $alertType)->with('message', $message);       
+            $this->showAlert(trans('product.duplicate'), 'warning');
+            return redirect()->back();
+        }   
     }
+
+    public function showAlert($message, $type = 'info')
+    {
+        session()->flash('alert', [
+            'type' => $type,
+            'message' => $message
+        ]);
+    }
+
 
 }

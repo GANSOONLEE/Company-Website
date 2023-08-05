@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
+    
     <link href={{ asset('css/backend/admin/newProduct.css') }} rel="stylesheet">
 @endpush
 
@@ -24,7 +24,7 @@
 @endpush
 
 @if (session('alert'))
-    <div class="alert alert-{{ session('alert.type') }} alert-dismissible show" role="alert">
+    <div class="alert alert-{{ session('alert.type') }} alert-dismissible show" role="alert" id="alertForm">
         {{ session('alert.message') }}
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
@@ -38,7 +38,7 @@
             </h1>
         </div>
         <div class="content-body">
-            <form action={{ route('backend.admin.createdProduct') }} method="POST" enctype="multipart/form-data" class="form">
+            <form action={{ route('backend.admin.createdProduct') }} method="POST" enctype="multipart/form-data" class="form" id="newProductForm">
                 @csrf
                 @include('backend.admin.includes.addProductForm')
             </form>
@@ -46,6 +46,17 @@
         <div class="content-footer">
 
         </div>
-         
     </div>
 @endsection
+<div class="loading-screen">
+    <div class="container">
+        <div class="loader">
+            <div class="loader--dot"></div>
+            <div class="loader--dot"></div>
+            <div class="loader--dot"></div>
+            <div class="loader--dot"></div>
+            <div class="loader--dot"></div>
+            <div class="loader--text"></div>
+        </div>
+    </div>
+</div>
