@@ -27,7 +27,7 @@
     @endif
 
     <div class="section">
-        <p class="section-title">{{ trans('product.order.edit') }}</p>
+        <p class="section-title">{{ trans('product.order.view') }}</p>
         {{-- <div class="button-action-area">
             <p class="instruction">{{trans('product.batch-operation')}}</p>
             <button type="button" class="btn btn-danger" data-button-action="delete">{{ trans('product.delete') }}</button>

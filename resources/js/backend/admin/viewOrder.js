@@ -47,7 +47,7 @@ const pusher = new Pusher('771599bd4947d3ad7e41', {
 });
 
 const channel = pusher.subscribe('order-status');
-channel.bind('App\\Events\\OrderStatusUpdated', (data) => {
+channel.bind('App\\Events\\NewOrderNotification', (data) => {
     // Handle the notification count update here, e.g., update the red dot count
     console.log('Received new order notification');
 });

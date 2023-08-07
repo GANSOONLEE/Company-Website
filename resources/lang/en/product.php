@@ -4,6 +4,7 @@
 
         'title.create' => 'Create Product',
         'title.edit' => 'Edit Product',
+        'order.view' => 'View Order',
 
         /**
          *  column name

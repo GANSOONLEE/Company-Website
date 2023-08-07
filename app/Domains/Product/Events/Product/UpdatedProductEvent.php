@@ -5,6 +5,7 @@ namespace App\Domains\Product\Events\Product;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use \Illuminate\Database\QueryException;
+use App\Domains\Product\Observer\ProductCreatedNotification;
 
 class UpdatedProductEvent{
 

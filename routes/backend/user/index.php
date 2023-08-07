@@ -4,3 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\frontend\UserController;
 
 Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
+Route::get('/favorite', [UserController::class, 'favorite'])->name('favorite');
+Route::get('/cart', [UserController::class, 'cart'])->name('cart');
+Route::get('/order', [UserController::class, 'order'])->name('order');
+Route::get('/account', [UserController::class, 'account'])->name('account');

@@ -28,6 +28,8 @@
 
     @stack('before-body')
 
+    @include('backend\user\includes\sidebar')
+
     <div class="main">
         @yield('content')
     </div>

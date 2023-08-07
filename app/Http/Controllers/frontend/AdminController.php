@@ -12,7 +12,9 @@ use App\Models\Brand;
 class AdminController extends Controller{
 
     public function dashboard(): object{
-        return view('backend.admin.dashboard');
+        
+        $orderNew = session('orderNew');
+        return view('backend.admin.dashboard', compact('orderNew'));
     }
 
     /**
@@ -30,18 +32,9 @@ class AdminController extends Controller{
         $catelogs = productCatelog::orderBy('catelogName', 'asc')->get();
 
         $brands = Brand::orderBy('brandName', 'asc')->get();
+        $orderNew = session('orderNew');
 
-        return view('backend.admin.addProduct',compact('products','models','catelogs','brands'));
-    }
-
-    public function editProduct(): object{
-        // 查询所有车款数据
-        $models = productModel::orderBy('modelName', 'asc')->get();
-
-        // 查询所有种类数据
-        $catelogs = productCatelog::orderBy('catelogName', 'asc')->get();
-
-        return view('backend.admin.editProduct',compact('models','catelogs'));
+        return view('backend.admin.addProduct',compact('products','models','catelogs','brands', 'orderNew'));
     }
 
     /**
@@ -50,11 +43,13 @@ class AdminController extends Controller{
      */
 
     public function viewOrder(): object{
-        return view('backend.admin.viewOrder');
+        $orderNew = session('orderNew');
+        return view('backend.admin.viewOrder', compact('orderNew'));
     }
 
     public function editOrder(): object{
-        return view('backend.admin.editOrder');
+        $orderNew = session('orderNew');
+        return view('backend.admin.editOrder', compact('orderNew'));
     }
 
     /**
@@ -63,7 +58,8 @@ class AdminController extends Controller{
      */
 
     public function editUser(): object{
-        return view('backend.admin.editUser');
+        $orderNew = session('orderNew');
+        return view('backend.admin.editUser', compact('orderNew'));
     }
 }
 

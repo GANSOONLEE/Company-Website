@@ -2,6 +2,8 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Order;
+use App\Models\Product;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
@@ -14,6 +16,8 @@ class AdminMiddleware
     {
         $email = Cookie::get('email');
         $accessToken = Cookie::get('accessToken');
+        $orderNew = Order::where('orderStatus', 'New')
+            ->count();
     
         // 在数据库中查找与 cookie 中的电子邮件匹配的用户
         $user = User::where('Email', $email)
@@ -29,6 +33,7 @@ class AdminMiddleware
     
         if ($user->isAdmin() && $request->is('admin*')) {
             Auth::login($user, false); // 将用户实例登录到内置身份验证系统中
+            $request->session()->put('orderNew', $orderNew); // 将$productDelist保存到Session中
             return $next($request);
         }
     

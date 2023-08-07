@@ -2,6 +2,7 @@
 
 namespace App\Domains\Product\Events\Product;
 
+
 use App\Models\Product;
 
 use Illuminate\Http\Request;
@@ -99,7 +100,7 @@ class CreatedProductEvent{
         }
 
         $this->showAlert('Data sent successfully!', 'success');
-        return redirect()->back();
+        // return redirect()->back();
     }
 
     public function showAlert($message, $type = 'info')

@@ -4,6 +4,7 @@
 
         'title.create' => '新增产品',
         'title.edit' => '修改产品',
+        'order.view' => '查看订单',
 
         /**
          *  欄位名稱

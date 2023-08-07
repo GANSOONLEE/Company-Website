@@ -1,6 +1,6 @@
 @extends('backend.user.layouts.app')
 
-@section('title', 'Dashboard')
+@section('title', 'Cart')
 
 @push('after-style')
     <link rel="stylesheet" href="{{asset('css\backend\product.css')}}">

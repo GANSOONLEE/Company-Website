@@ -8,8 +8,9 @@ class ViewOrder{
     function viewOrder(){
 
         $orderData = Order::all();
+        $orderNew = session('orderNew');
 
-        return View('backend.admin.viewOrder', compact('orderData'));
+        return View('backend.admin.viewOrder', compact('orderData', 'orderNew'));
     }
 
 }

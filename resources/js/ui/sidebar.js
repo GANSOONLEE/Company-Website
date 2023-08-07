@@ -54,3 +54,26 @@ setInterval(function time(){
     
 }, 1000)
 
+// 连接到 Pusher
+const pusher = new Pusher('771599bd4947d3ad7e41', {
+    encrypted: true,
+    cluster: 'ap1',
+});
+
+// 订阅事件
+var channel = pusher.subscribe('sidebar');
+channel.bind('new-order-event', function(data) {
+
+    console.log('new-order detect')
+
+    // 更新前端显示的orderStatus值为"new"的数量
+    var newOrderCount = data.newOrderCount;
+    // 更新前端显示的通知
+    document.querySelector('.notification-order').textContent = newOrderCount;
+});
+
+channel.bind('product-delist-event', function(data) {
+
+    console.log(`delist product have: ${data}`)
+
+});

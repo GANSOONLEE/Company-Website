@@ -19,7 +19,7 @@ window.onload = function init(){
     new EventListener('#addNameButton', 'click', 'false', addNameList);
     new EventListener('#addBrandButton', 'click', 'false', addBrandList);
     
-    alertonload();
+    alertOnload();
 }
 
 /**
@@ -28,7 +28,7 @@ window.onload = function init(){
 
     // #region
 
-    function alertonload(){
+    function alertOnload(){
         let alertForm = document.querySelector('#alertForm')
         let bsAlert = new bootstrap.Alert(alertForm)
         setTimeout(function() {
@@ -268,6 +268,9 @@ function createNameList(data){
         nameInput.value = record;
         nameInput.required = false;
         nameInput.placeholder = 'Product Name';
+        if(index == 0){
+            nameInput.required = true;
+        }
         
         container.appendChild(nameInput);
         formName.appendChild(container)
@@ -295,6 +298,10 @@ function createBrandList(data){
         codeInput.value = record.code || '';
         codeInput.required = false;
         codeInput.placeholder = 'Code';
+        if(index == 0){
+            codeInput.required = true;
+        }
+        
 
         // 创建brand input元素
         const brandInput = document.createElement('input');
@@ -305,6 +312,10 @@ function createBrandList(data){
         brandInput.value = record.brand || '';
         brandInput.required = false;
         brandInput.placeholder = 'Brand';
+        if(index == 0){
+            brandInput.required = true;
+        }
+        
 
         // 创建fzcode input元素
         const fzcodeInput = document.createElement('input');
@@ -315,6 +326,10 @@ function createBrandList(data){
         fzcodeInput.value = record.fzcode || ''; // 如果fzcode为null，则设置为空字符串
         fzcodeInput.required = false;
         fzcodeInput.placeholder = 'FZ Code';
+        if(index == 0){
+            fzcodeInput.required = true;
+        }
+        
 
         // 将创建的input元素添加到表单中
         container.appendChild(codeInput);

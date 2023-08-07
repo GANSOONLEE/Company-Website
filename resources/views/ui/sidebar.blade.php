@@ -43,7 +43,7 @@
                     [
                         'url' => route('backend.admin.viewOrder'),
                         'label' => trans('sidebar.viewOrder'),
-                        'notification' => 1,
+                        'notification' => 'notification',
                     ],
                     [
                         'url' => route('backend.admin.noteOrder'),
@@ -78,12 +78,10 @@
                                         <p class="link-label">
                                             {{$secondary_link['label']}}
                                         </p>
-                                        @if(isset($secondary_link['notification']))
-                                            @if($secondary_link['notification']!==0)
-                                                <div class="notification-order">
-                                                    {{$secondary_link['notification']}}
-                                                </div>
-                                            @endif
+                                        @if(isset($secondary_link['notification']) && $orderNew !== 0)
+                                            <div class="notification-order">
+                                                {{ $orderNew }}
+                                            </div>
                                         @endif
                                     </a>
                                 @endforeach
@@ -108,7 +106,7 @@
                         <p class="link-label">中文</p>
                     </a>
                 </div>
-            </ul>            
+            </ul>       
         </div>
         <div class="sidebar-footer">
             <p class="clock"></p>
