@@ -16,7 +16,7 @@ class UserController extends Controller{
     }
 
     public function favorite() :View{
-        return view('backend.user.dashboard');
+        return view('backend.user.dashboard'); // 修改
     }
 
     public function cart() :View{
@@ -24,11 +24,11 @@ class UserController extends Controller{
     }
 
     public function order() :View{
-        return view('backend.user.dashboard');
+        return view('backend.user.dashboard'); // 修改
     }
 
     public function account() :View{
-        return view('backend.user.dashboard');
+        return view('backend.user.dashboard'); // 修改
     }
 
 }

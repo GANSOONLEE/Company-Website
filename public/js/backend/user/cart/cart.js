@@ -68,7 +68,7 @@ function generatedOrder(orderElement) {
     var csrfToken = document.querySelector('meta[name="csrf-token"]').content;
 
     // send order inform to backend
-    // #BUG Fix the route can't work
+    // #TODO send order inform to backend
     $.ajax({
       type: 'post',
       dataType: 'json',
@@ -88,6 +88,28 @@ function generatedOrder(orderElement) {
     console.error(error);
   }
 }
-createOrder();
+
+/** ———————————————————————————————————— initialization —————————————————————————————————————————— */
+
+// #region 
+
+window.onload = function initialization() {
+  // 將 class="product-card" 的dom元素注冊成 CartCard 實例
+  var card = document.querySelectorAll('.product-card');
+  var productCardInstances = [];
+  for (i = 0; i < card.length; i++) {
+    var cardInstance = new CartCard(cards[i]);
+    productCardInstances.push(cardInstance);
+  }
+  console.log(productCardInstances);
+};
+
+// #endregion
+
+/** ———————————————————————————————————— event listener —————————————————————————————————————————— */
+
+// #region 
+
+// #endregion
 /******/ })()
 ;

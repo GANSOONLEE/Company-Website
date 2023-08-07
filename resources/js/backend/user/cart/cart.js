@@ -80,7 +80,7 @@ function generatedOrder(orderElement){
         const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
 
         // send order inform to backend
-        // #BUG Fix the route can't work
+        // #TODO send order inform to backend
         $.ajax({
             type     : 'post',
             dataType : 'json',
@@ -101,5 +101,32 @@ function generatedOrder(orderElement){
     }
 }
 
+/** ———————————————————————————————————— initialization —————————————————————————————————————————— */
 
-createOrder()
+// #region 
+
+window.onload = function initialization(){
+
+
+    // 將 class="product-card" 的dom元素注冊成 CartCard 實例
+    const card = document.querySelectorAll('.product-card')
+    let productCardInstances = [];
+    for(i=0;i<card.length;i++){
+        const cardInstance = new CartCard(cards[i]);
+        productCardInstances.push(cardInstance);
+    }
+
+    console.log(productCardInstances)
+
+}
+
+
+// #endregion
+
+/** ———————————————————————————————————— event listener —————————————————————————————————————————— */
+
+// #region 
+
+
+
+// #endregion
