@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible">
     <title>User | @yield('title')</title>
@@ -18,10 +19,7 @@
     <!-- Font-aweson -->
     <script src="https://kit.fontawesome.com/4fffedbe3d.js" crossorigin="anonymous"></script>
     
-    <link rel="stylesheet" href={{asset ('css\backend\app.css') }}>
     @stack('after-style')
-
-    
 
 </head>
 <body>

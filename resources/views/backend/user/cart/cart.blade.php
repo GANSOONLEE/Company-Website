@@ -11,13 +11,15 @@
     
 @endpush
 
-
+<!-- 
+    #TODO write the js to initial table
+-->
 @push('after-script')
-    
+    <script src={{asset('js\backend\user\cart\cart.js')}}></script>
 @endpush
 
+<!-- #TODO fill in the information inside the table -->
 
 @section('content')
-
-
+    
 @endsection

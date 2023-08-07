@@ -301,7 +301,6 @@ function createBrandList(data){
         if(index == 0){
             codeInput.required = true;
         }
-        
 
         // 创建brand input元素
         const brandInput = document.createElement('input');
@@ -315,7 +314,6 @@ function createBrandList(data){
         if(index == 0){
             brandInput.required = true;
         }
-        
 
         // 创建fzcode input元素
         const fzcodeInput = document.createElement('input');
@@ -329,7 +327,6 @@ function createBrandList(data){
         if(index == 0){
             fzcodeInput.required = true;
         }
-        
 
         // 将创建的input元素添加到表单中
         container.appendChild(codeInput);

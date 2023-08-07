@@ -22,11 +22,12 @@
                 'icon' => 'fa-solid fa-chart-line',
                 'label' => 'Dashboard'
             ],
-            [
-                'url' => route('backend.user.favorite'), 
-                'icon' => 'fa-solid fa-bookmark',
-                'label' => 'Favorite'
-            ],
+            // #TAG Beta-function
+            // [
+            //     'url' => route('backend.user.favorite'), 
+            //     'icon' => 'fa-solid fa-bookmark',
+            //     'label' => 'Favorite'
+            // ],
             [
                 'url' => route('backend.user.cart'), 
                 'icon' => 'fa-solid fa-cart-shopping',
