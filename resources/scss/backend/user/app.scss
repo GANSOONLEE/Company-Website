@@ -1,0 +1,7 @@
+
+.main{
+    $left: 17vw;
+    margin-left: $left;
+    padding: 3rem;
+    width: calc(100vw - $left);
+}

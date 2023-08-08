@@ -5,6 +5,8 @@ namespace App\Http\Controllers\frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\View\View;
 
+
+
 class UserController extends Controller{
 
     /**
@@ -18,11 +20,7 @@ class UserController extends Controller{
     public function favorite() :View{
         return view('backend.user.dashboard'); // 修改
     }
-
-    public function cart() :View{
-        return view('backend.user.cart.cart');
-    }
-
+    
     public function order() :View{
         return view('backend.user.dashboard'); // 修改
     }

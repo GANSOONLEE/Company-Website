@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 use App\Models\User;
 
@@ -20,6 +21,7 @@ class UserMiddleware
         $request->session()->flash('user', $user);
         
         if(($user->isUser() || $user->isAdmin()) && $request->is('user*')){
+            Auth::login($user);
             return $next($request);
         }
         return redirect()->route('frontend.login');

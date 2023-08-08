@@ -62,6 +62,7 @@
                 @endforeach
             </ul>            
         </div>
+        <div class="clock" style="display: none"></div>
     </div>
 </body>
 <script src="{{asset('js\ui\sidebar.js')}}"></script>

@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible">
     <title>User | @yield('title')</title>
 
+    <!-- Pusher -->
     <script src="https://js.pusher.com/7.2/pusher.min.js"></script>
 
     <!-- Bootstrap 5 -->
@@ -18,6 +19,8 @@
 
     <!-- Font-aweson -->
     <script src="https://kit.fontawesome.com/4fffedbe3d.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href={{asset('css\backend\user\app.css')}}>
     
     @stack('after-style')
 

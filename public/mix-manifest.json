@@ -5,8 +5,8 @@
     "/js/backend/user/cart/cart.js": "/js/backend/user/cart/cart.js",
     "/js/frontend/product/productDetail.js": "/js/frontend/product/productDetail.js",
     "/js/ui/sidebar.js": "/js/ui/sidebar.js",
-    "/css/frontend/includes/productList.css": "/css/frontend/includes/productList.css",
-    "/css/frontend/contact.css": "/css/frontend/contact.css",
+    "/css/backend/user/cart/cart.css": "/css/backend/user/cart/cart.css",
+    "/css/backend/user/app.css": "/css/backend/user/app.css",
     "/css/backend/admin/viewOrder.css": "/css/backend/admin/viewOrder.css",
     "/css/backend/admin/newProduct.css": "/css/backend/admin/newProduct.css",
     "/css/backend/admin/editProduct.css": "/css/backend/admin/editProduct.css",
@@ -15,5 +15,7 @@
     "/css/includes/filter.css": "/css/includes/filter.css",
     "/css/frontend/type.css": "/css/frontend/type.css",
     "/css/frontend/product/productDetail.css": "/css/frontend/product/productDetail.css",
-    "/css/frontend/product.css": "/css/frontend/product.css"
+    "/css/frontend/product.css": "/css/frontend/product.css",
+    "/css/frontend/includes/productList.css": "/css/frontend/includes/productList.css",
+    "/css/frontend/contact.css": "/css/frontend/contact.css"
 }
