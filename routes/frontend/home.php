@@ -7,7 +7,7 @@ Route::get('/', [ViewController::class, 'index'])->name('index');
 
 Route::get('/about-us', [ViewController::class, 'about'])->name('about');
 
-Route::get('/type', [ViewController::class, 'type'])->name('type');
+Route::get('/product', [ViewController::class, 'product'])->name('product');
 
 Route::get('/contact', [ViewController::class, 'contact'])->name('contact');
 

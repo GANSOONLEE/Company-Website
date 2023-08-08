@@ -1,11 +1,13 @@
 .contact-us {
   padding: 2rem 0;
 }
+
 .contact-us .contact-us-header {
   font-size: var(--font-h4);
   font-weight: bold;
   text-align: center;
 }
+
 .contact-us .contact-us-body {
   padding: 2rem 6rem;
   display: flex;
@@ -15,13 +17,16 @@
   row-gap: 1.2rem;
   text-align: center;
 }
+
 .contact-us .contact-us-body .social-media {
   padding: 0.9rem 2rem;
 }
+
 .contact-us .contact-us-body .social-media .social-media-name {
   font-size: var(--font-h5);
 }
-.contact-us .contact-us-body .social-media .social-media-content > * {
+
+.contact-us .contact-us-body .social-media .social-media-content>* {
   width: 30vw;
   height: 60vh;
 }

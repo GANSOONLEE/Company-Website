@@ -120,6 +120,8 @@ class CartCard{
  * 
  */
 
+// #region
+
 function createOrder(){
 
     /** @param {Array} selectProduct </br>The set of the select product, sort with category A-Z */
@@ -191,6 +193,8 @@ function generatedOrder(orderElement){
     }
 }
 
+// #endregion
+
 /** ———————————————————————————————————— initialization —————————————————————————————————————————— */
 
 // #region 
@@ -217,6 +221,18 @@ initialization()
 
 // #region 
 
+/**  */
 
+let checkOrder = document.querySelector('#checkOrder');
+checkOrder.addEventListener('click', checkOrderForm)
+
+function checkOrderForm(){
+    
+}
+
+function generate(){
+    
+}
 
 // #endregion
+

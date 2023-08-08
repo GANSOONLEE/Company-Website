@@ -11,7 +11,7 @@
                 <ul class="navbar-links" class="menubtn">
                     <li class="navbar-link {{ request()->is('/')? 'active' : ''}}"><a href="{{route('frontend.index')}}">HOME</a></li>
                     <li class="navbar-link {{ request()->is('about')? 'active' : ''}}"><a href="{{route('frontend.about')}}">ABOUT US</a></li>
-                    <li class="navbar-link {{ request()->is('type')? 'active' : ''}}"><a href="{{route('frontend.type')}}">PRODUCT</a></li>
+                    <li class="navbar-link {{ request()->is('type')? 'active' : ''}}"><a href="{{route('frontend.product')}}">PRODUCT</a></li>
                     <li class="navbar-link {{ request()->is('contact')? 'active' : ''}}"><a href="{{route('frontend.contact')}}">CONTACT</a></li>
                     
                     @guest

@@ -20,6 +20,9 @@
     <!-- Font-aweson -->
     <script src="https://kit.fontawesome.com/4fffedbe3d.js" crossorigin="anonymous"></script>
 
+    <!-- Data Tables -->
+    <link rel="stylesheet" href="https:://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+
     <link rel="stylesheet" href={{asset('css\backend\user\app.css')}}>
     
     @stack('after-style')
@@ -47,8 +50,10 @@
     <!-- Grid.js -->
     <script src="https://cdn.jsdelivr.net/npm/gridjs/dist/gridjs.umd.js"></script>
     
+    <!-- Data Table -->
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
     @stack('after-script')
 
-    
 </body>
 </html>

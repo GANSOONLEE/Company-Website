@@ -270,11 +270,8 @@ function editProductForm(data) {
       containerName[i].remove();
     }
   }
-  console.log('进入Name');
   createNameList(data);
-  console.log('进入Brand');
   createBrandList(data);
-  console.log('结束');
 }
 function getData() {
   var productID = getDataValue.call(this, 'td[data-type="productID"]');
@@ -481,9 +478,6 @@ function createBrandList(data) {
     fzcodeInput.value = record.fzcode || ''; // 如果fzcode为null，则设置为空字符串
     fzcodeInput.required = false;
     fzcodeInput.placeholder = 'FZ Code';
-    if (index == 0) {
-      fzcodeInput.required = true;
-    }
 
     // 将创建的input元素添加到表单中
     container.appendChild(codeInput);

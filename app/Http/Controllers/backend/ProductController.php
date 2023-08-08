@@ -12,13 +12,13 @@ use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller{
     
-    public function index($productType, $productCatelog){
+    public function index($productCatelog){
         // 查詢現有的車款
         $models = productModel::orderBy('modelName', 'asc')->get('modelName');
 
         $productsData = Product::where('productCatelog', $productCatelog)
-            ->where('productType', $productType)
-            ->get(['productCatelog', 'productType', 'productNameList', 'productBrandList', 'productID']);
+            ->where('productStatus', 'Public')
+            ->get(['productCatelog', 'productNameList', 'productBrandList', 'productID']);
 
 
         $catelog = ProductCatelog::where('catelogName', $productCatelog)->first();
@@ -54,7 +54,6 @@ class ProductController extends Controller{
         // }
 
         return view('frontend.product', [
-            'productType' => $productType,
             'products' => $productsData,
             'models' => $models,
             'productCatelog' => $productCatelog,

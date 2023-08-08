@@ -39,7 +39,7 @@
                     <i class="fa-solid fa-address-card"></i>
                     <li>About Us</li>
                 </a>
-                <a href={{route('frontend.type')}} class="link">
+                <a href={{route('frontend.product')}} class="link">
                     <i class="fa-brands fa-product-hunt"></i>
                     <li>Product</li>
                 </a>

@@ -6,6 +6,9 @@
   width: 100%;
 }
 .cart-container .cart-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding-bottom: 1rem;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   margin-bottom: 2rem;
@@ -13,25 +16,65 @@
 .cart-container .cart-header .page-title {
   font-size: var(--font-h2);
 }
+.cart-container .cart-header .button-create-order {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  border: none;
+  background-color: green;
+  border-radius: 4px;
+  color: white;
+  font-weight: 600;
+  padding: 0.4rem;
+}
+.cart-container .cart-header .button-create-order:hover {
+  background-color: rgb(0, 109, 0);
+}
+.cart-container .cart-header .button-create-order .center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: var(--font-small);
+}
+.cart-container .cart-header .button-create-order .center i {
+  padding-left: 1rem;
+}
+.cart-container .cart-header .button-create-order .center p {
+  padding: 0.9rem 2rem 0.9rem 1rem;
+  margin: 0;
+}
 .cart-container .cart-body .cards-container {
   display: flex;
   flex-direction: column;
 }
 .cart-container .cart-body .cards-container .cards-body {
   display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 0 4rem;
   flex-wrap: wrap;
   -moz-column-gap: 4vw;
        column-gap: 4vw;
   row-gap: 3vw;
 }
+.cart-container .cart-body .cards-container .cards-body input[type=checkbox]:checked + label .product-card {
+  box-shadow: 0.3px 0.3px 5px 0.2px green;
+}
+.cart-container .cart-body .cards-container .cards-body label {
+  min-width: 230px;
+  width: 25%;
+  max-width: 25%;
+}
 .cart-container .cart-body .cards-container .cards-body .product-card {
+  cursor: pointer;
   border-radius: 6px;
   box-shadow: 0.3px 0.3px 5px 0.2px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
-  min-width: 230px;
-  width: calc(25% - 20px);
-  max-width: calc(25% - 20px);
+}
+.cart-container .cart-body .cards-container .cards-body .product-card:hover {
+  box-shadow: 0.7px 0.7px 10px 0.3px rgba(0, 0, 0, 0.2);
 }
 .cart-container .cart-body .cards-container .cards-body .product-card .product-card-header a {
   display: block;
@@ -104,3 +147,4 @@
   padding: 0 2rem;
   font-size: var(--font-small);
 }
+/* ——————————————————————————————————————— Layout (Table) ————————————————————————————————————————————— */

@@ -125,6 +125,8 @@ function sendData(option, quantity, productID, email) {
     success: function success(Text) {
       // console.log(Text)
       location.reload();
+      var newState = { page: "updated" }; // 根据需要设置新状态
+      history.pushState(newState, '', ''); // 更新历史记录
     },
     error: function error(XMLHttpRequest, textStatus, errorThrown) {
       console.log(XMLHttpRequest.status);

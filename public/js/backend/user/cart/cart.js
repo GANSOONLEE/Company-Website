@@ -125,6 +125,7 @@ var CartCard = /*#__PURE__*/function () {
  * generator order with select products
  * 
  */
+// #region
 function createOrder() {
   /** @param {Array} selectProduct </br>The set of the select product, sort with category A-Z */
   var selectProduct = document.querySelectorAll('input[type="checkbox"]');
@@ -185,6 +186,8 @@ function generatedOrder(orderElement) {
   }
 }
 
+// #endregion
+
 /** ———————————————————————————————————— initialization —————————————————————————————————————————— */
 
 // #region 
@@ -205,6 +208,13 @@ initialization();
 /** ———————————————————————————————————— event listener —————————————————————————————————————————— */
 
 // #region 
+
+/**  */
+
+var checkOrder = document.querySelector('#checkOrder');
+checkOrder.addEventListener('click', checkOrderForm);
+function checkOrderForm() {}
+function generate() {}
 
 // #endregion
 /******/ })()

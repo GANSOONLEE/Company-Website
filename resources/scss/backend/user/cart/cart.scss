@@ -8,11 +8,42 @@
     flex-direction: column;
     width: 100%;
     .cart-header{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
         padding-bottom: 1rem;
         border-bottom: 1px solid rgba(0, 0, 0, 0.2);
         margin-bottom: 2rem;
         .page-title{
             font-size: var(--font-h2);
+        }
+        .button-create-order{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            outline: none;
+            border: none;
+            background-color: green;
+            border-radius: 4px;
+            color: white;
+            font-weight: 600;
+            padding: .4rem;
+            &:hover{
+                background-color: rgb(0, 109, 0);
+            }
+            .center{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: var(--font-small);
+                i{
+                    padding-left: 1rem;
+                }
+                p{
+                    padding: .9rem 2rem .9rem 1rem;
+                    margin: 0;
+                }
+            }
         }
     }
 
@@ -21,21 +52,37 @@
             display: flex;
             flex-direction: column;
             .cards-header{
+
             }
             .cards-body{
                 display: flex;
+                align-items: flex-start;
+                justify-content: space-between;
+                padding: 0 4rem;
                 flex-wrap: wrap;
                 column-gap: 4vw;
                 row-gap: 3vw;
+                input[type="checkbox"]{
+                    &:checked + label .product-card{
+                        box-shadow: .3px .3px 5px .2px green;
+                    }
+                }
+                label{
+                    $width: calc((100% / 4));
+                    min-width: 230px;
+                    width: $width;
+                    max-width: $width;
+                }
                 .product-card{
+                    cursor: pointer;
                     border-radius: 6px;
                     box-shadow: .3px .3px 5px .2px rgba(0, 0, 0, 0.2);
                     display: flex;
                     flex-direction: column;
-                    $width: calc((100% / 4) - 20px);
-                    min-width: 230px;
-                    width: $width;
-                    max-width: $width;
+                    
+                    &:hover{
+                        box-shadow: .7px .7px 10px .3px rgba(0, 0, 0, 0.2);
+                    }
                     .product-card-header{
                         a{
                             display: block;
@@ -135,3 +182,6 @@
 
 
 // #endregion
+
+/* ——————————————————————————————————————— Layout (Table) ————————————————————————————————————————————— */
+

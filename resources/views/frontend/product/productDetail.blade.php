@@ -174,7 +174,7 @@
 
     <div class="user-action">
         @auth
-            <a href={{ route('backend.user.dashboard') }} target="_new">
+            <a href={{ route('backend.user.cart') }} target="_new">
                 <div class="notification">{{ $cart }}</div>
                 <div class="view-cart user-action-button">
                     <i class="fa-solid fa-cart-shopping"></i>

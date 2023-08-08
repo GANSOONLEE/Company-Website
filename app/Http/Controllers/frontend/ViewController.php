@@ -13,7 +13,7 @@ class ViewController extends Controller
 
     public function type(){return view('frontend.type');}
 
-    public function catelog(){
+    public function product(){
         $catelogs = ProductCatelog::orderBy('catelogName', 'asc')->get();
         return view('frontend.catelog',compact('catelogs')); 
     }
