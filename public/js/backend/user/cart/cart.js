@@ -34,21 +34,25 @@ var CartCard = /*#__PURE__*/function () {
     key: "structureInit",
     value: function structureInit(element) {
       /** control quantity button  */
+      var removeQuantityButtonIcon = document.createElement('i');
+      removeQuantityButtonIcon.classList.add('fa-solid', 'fa-minus');
       var removeQuantityButton = document.createElement('button');
       removeQuantityButton.type = 'button';
       removeQuantityButton.id = 'removeQuantityButton';
-      removeQuantityButton.innerText = '-';
       removeQuantityButton.classList.add('quantity-button', 'remove');
+      removeQuantityButton.appendChild(removeQuantityButtonIcon);
       var displayQuantity = document.createElement('div');
       displayQuantity.id = 'displayQuantityContainer';
       displayQuantity.classList.add('display-quantity');
       displayQuantity.innerText = this.product_quantity;
+      var addQuantityButtonIcon = document.createElement('i');
+      addQuantityButtonIcon.classList.add('fa-solid', 'fa-plus');
       var addQuantityButton = document.createElement('button');
       addQuantityButton.type = 'button';
       addQuantityButton.id = 'addQuantityButton';
-      addQuantityButton.innerText = '+';
       addQuantityButton.classList.add('quantity-button', 'add');
-      var footer = element.querySelector('.product-card-footer');
+      addQuantityButton.appendChild(addQuantityButtonIcon);
+      var footer = element.querySelector('[data-column="Quantity"]');
       footer.appendChild(removeQuantityButton);
       footer.appendChild(displayQuantity);
       footer.appendChild(addQuantityButton);
@@ -217,5 +221,40 @@ function checkOrderForm() {}
 function generate() {}
 
 // #endregion
+
+/** ————————————————————————————— Data Table ————————————————————————————— */
+
+var table = new DataTable('#myTable', {});
+$(document).ready(function () {
+  // 监听点击事件，选择特定的 <tr> 元素
+  $('tr.product-card').click(function (event) {
+    $('button.quantity-button').click(function (event) {
+      // 阻止事件冒泡，避免触发父元素的点击事件，包括 checkbox 的点击事件
+      event.stopPropagation();
+      // 在这里添加你希望按钮点击后执行的代码
+    });
+
+    $('.checkbox').click(function (event) {
+      // 阻止事件冒泡，避免触发父元素的点击事件
+      event.stopPropagation();
+    });
+
+    // 获取被点击的 <tr> 元素内部的 checkbox
+    var checkbox = $(this).find('.checkbox');
+
+    // 切换 checkbox 的选中状态
+    checkbox.prop('checked', !checkbox.prop('checked'));
+  });
+  $('#selectAll').click(function (event) {
+    // 阻止事件冒泡，避免触发父元素的点击事件
+    event.stopPropagation();
+
+    // 获取全选按钮的状态
+    var selectAllChecked = $(this).prop('checked');
+
+    // 将所有具有 .checkbox 类的复选框的状态设置为与全选按钮相同
+    $('.checkbox').prop('checked', selectAllChecked);
+  });
+});
 /******/ })()
 ;

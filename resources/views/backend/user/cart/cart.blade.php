@@ -3,7 +3,7 @@
 @section('title', 'Cart')
 
 @push('after-style')
-
+    <link rel="stylesheet" href="{{asset('css\backend\user\cart\cart.css')}}">
 @endpush
 
 @push('before-body')
@@ -12,8 +12,8 @@
 
 <!-- #TODO write the js to initial table -->
 @push('after-script')
-    <link rel="stylesheet" href="{{asset('css\backend\user\cart\cart.css')}}">
     <script src={{asset('js\backend\user\cart\cart.js')}}></script>
+    
 @endpush
 
 <!-- #TODO fill in the information inside the table -->
@@ -84,7 +84,7 @@
         </div>
     </div> --}}
 
-    <div class="checkout-form">
+    {{-- <div class="checkout-form">
         
         <!-- Heading, Title -->
         <div class="checkout-form-header">
@@ -113,6 +113,95 @@
         <div class="checkout-form-footer">
 
         </div>
+    </div> --}}
+
+<div class="content">
+
+    <!-- page title and description -->
+    <div class="page-header">
+        <div class="page-title">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <p>Your Cart</p>
+        </div>
+        <button class="button-create-order" id="checkOrder">
+            <div class="center">
+                <i class="fa-solid fa-plus"></i>
+            </div>
+            <div class="center">
+                <p>Create Order</p>
+            </div>
+        </button>
     </div>
+
+    <table id="myTable">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Category</th>
+                <th>Car Model</th>
+                <th>Product Code</th>
+                <th>Quantity</th>
+                <th data-header="Checkbox">
+                    <input class="checkbox" id="selectAll" type="checkbox" name="">
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($carts as $index => $cart)
+                <tr class="product-card" data-product-id="{{ $cart->productID }}" data-quantity="{{ $cart->quantity }}" data-brand="{{ $cart->productBrand}}" data-cart="{{ $cart->ID }}">
+                    <td data-column="Index">{{ $index+1 }}</td>
+                    <td data-column="Category">{{ $cart->cart_to_product()['productCatelog'] }}</td>
+                    <td data-column="Name">{{ json_decode($cart->cart_to_product()['productNameList'])[0] }}</td>
+                    <td data-column="Brand">{{ $cart->productBrand}}</td>
+                    <td data-column="Quantity">
+
+                    </td>
+                    <td data-column="Checkbox">
+                        <input class="checkbox" type="checkbox" name="productItem[]" id="{{ $cart->ID }}">
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
+
+<div class="model-background">
+
+    <!-- Model -->
+    <div class="model">
+
+        <!-- Title -->
+        <div class="model-header">
+            Comfirm Order
+        </div>
+
+        <!-- Cart -->
+        <div class="model-body">
+            <div class="cart-display" id="confirm-order-cart-list">
+                
+                <div class="cart">
+                    <div class="cart-image">
+
+                    </div>
+                    <div class="cart-image">
+                        <p>Perodua Bezza 1.3 2012</p>
+                        <p>SWJ-PER 005</p>
+                    </div>
+                    <div class="action">
+                        <button>
+                            Edit
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Button -->
+        <div class="model-footer">
+
+        </div>
+    </div>
+</div>
 
 @endsection
