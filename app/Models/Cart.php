@@ -18,6 +18,7 @@ class Cart extends Model
     protected $fillable = [
         'Email',
         'productID',
+        'productCategory',
         'productBrand',
         'quantity'
     ];

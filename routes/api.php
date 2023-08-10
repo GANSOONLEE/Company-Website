@@ -9,6 +9,7 @@ use App\Domains\Product\Events\Product\SearchedProductEvent;
 use App\Domains\Product\Events\Product\DeletedProductEvent;
 use App\Domains\Order\Events\Cart\AddToCartEvent;
 use  App\Domains\Order\Events\Cart\UpdateCartEvent;
+use  App\Domains\Order\Events\CreatedOrderEvent;
 
 
 /*
@@ -34,3 +35,4 @@ Route::post('/delete-product', [DeletedProductEvent::class , 'deleteProduct']);
 Route::post('/search-product', [SearchedProductEvent::class , 'searchProductByModal']);
 Route::post('/user/add-to-cart/', [AddToCartEvent::class, 'productAddToCart']);
 Route::post('/update-cart-quantity', [UpdateCartEvent::class , 'updateCart']);
+Route::post('/create-order',[CreatedOrderEvent::class, 'createOrder'])->name('api.create-order');

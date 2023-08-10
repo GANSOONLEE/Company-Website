@@ -74,7 +74,7 @@
 
     <div class="detail">
         <div class="detail-header">
-            
+            <input type="text" name="productCategory" id="" value="{{ $product->productCatelog }}">
         </div>
         <div class="detail-body">
             <div class="detail-product-image-area">

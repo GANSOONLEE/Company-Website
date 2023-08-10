@@ -47,17 +47,16 @@
             </thead>
             <tbody>
                 @foreach ($orderData as $order)
-                    <tr id="data-row" data-order-id={{"$order->orderID"}} data-status="{{ $order->orderStatus }}" class="order">
+                    <tr href="/{{$order->orderID}}" id="data-row" data-order-id={{"$order->orderID"}} data-status="{{ $order->orderStatus }}" class="order">
 
                         <td data-type="orderID">{{ $order->orderID }}</td> 
 
-                        <td data-type="customerUser">{{ $order->order_to_user()->Name }}</td>
+                        <td data-type="customerUser">{{ $order->productCategory }}</td>
 
                         <td data-type="orderReceivedDate">{{ $order->orderReceivedDate }}</td>
 
                         <td data-type="orderReceivedTime">{{ $order->orderReceivedTime }}</td>
 
-                        
                         <td data-status="{{$order->orderStatus}}">
                         {{-- <td data-status="Complete"> --}}
                             <span></span>
@@ -70,6 +69,5 @@
                 @endforeach
             </tbody>
         </table>
-        <p class="instruction">{!!trans('product.user-instruction')!!}</p>
     </div>
 @endsection

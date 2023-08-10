@@ -2,15 +2,17 @@
 
 namespace App\Domains\Order\Events;
 
+use App\Models\Cart;
 use App\Models\Order;
 use App\Events\Order\NewOrderNotification;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Str;
+use PhpParser\Error;
 
 class CreatedOrderEvent{
 
-    function createOrder(Request $request): void{
+    function createOrder(Request $request){
 
         try{
             /**
@@ -18,24 +20,50 @@ class CreatedOrderEvent{
              */
 
             $orderID = $this->generatorOrderID();
-            $Email = Auth::user()->email;
+            $Email = $request->input('email');
             $orderReceivedDate = date('Y-m-d');
             $orderReceivedTime = date('H:i:s');
-            $orderContent = $request->input('productOrder');
+            $orderContent = $request->input('productIds');
 
             $data = [
                 'orderID' => $orderID,
                 'Email' => $Email,
                 'orderReceivedDate' => $orderReceivedDate,
                 'orderReceivedTime' => $orderReceivedTime,
-                'orderContent' => $orderContent,
+                'orderContent' => json_encode($orderContent),
             ];
 
-            Order::created($data);
+            foreach( $orderContent as $cart){
+                $cart = Cart::where('ID', $cart)
+                    ->first();
+
+                if($cart->quantity === 0){   
+                    throw new Error('Qty can\'t empty! ');
+                }
+            }
+
+            Order::create($data);
+
+            foreach($orderContent as $cart){
+                $cart = Cart::where('ID', $cart)
+                    ->first();
+
+                $cart->update([
+                    'quantity' => 0,
+                ]);
+            }
+
+            $status = [
+                'success' => 'success',
+            ];
 
         }catch(\Exception $e){
-            return redirect()->back()->json($e->getMessage());
+            $status = [
+                'error' => $e->getMessage(),
+            ];
         }
+
+        return response()->json($status);
 
     }
 

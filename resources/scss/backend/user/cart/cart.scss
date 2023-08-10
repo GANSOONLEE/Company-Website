@@ -272,8 +272,8 @@
     #myTable{
         margin: 2rem 0;
         width: 100%;
-        border: 1px solid #ddd;
-        border-radius: 16px;
+        outline: 1px solid #ddd;
+        border-radius: 4px;
         font-size: var(--font-h6); 
         thead{
             >tr{
@@ -375,10 +375,10 @@
     height: 100vh;
     overflow-y: hidden;
     background-color: rgba(0, 0, 0, 0.4);
-    > .model{
-        width: 50%;
+    .model{
+        width: 40%;
         height: auto;
-        padding: 2rem 2.5rem 3rem 2.5rem;
+        padding: 2rem 2rem 3rem;
         border-radius: 6px;
         background-color: white;
         position: relative;
@@ -389,11 +389,78 @@
             font-size: var(--font-h4);
             padding-bottom: 1rem;
             border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            p{
+                margin-bottom: 0;
+            }
+            i{
+                cursor: pointer;
+            }
         }
         .model-body{
             padding-top: 2rem;
             font-size: var(--font-h6);
-            
+
+            /* —————— Cart display ——————*/
+            .cart-display{
+
+                /* ———— Units ———— */
+                >.cart{
+                    width: 100%;
+                    display: flex;
+                    padding: .1rem 2rem 2rem;
+                    justify-content: space-between;
+                    column-gap: 10rem;
+                    align-items: center;
+                    &:not(:first-child){
+                        padding: 2rem
+                    }
+                    &:not(:last-child){
+                        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+                    }
+                    >.cart{
+                        &-info{
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: flex-start;
+                            align-items: flex-start;
+                            font-weight: bold;
+                            $margin-bottom: 0;
+                            .product-name{
+                                font-size: var(--font-h6);
+                                margin-bottom: $margin-bottom;
+                            }
+                            .product-brand{
+                                font-size: var(--font-small);
+                                color: grey;
+                                margin-bottom: $margin-bottom;
+                            }
+                        }
+                        &-quantity{
+                            margin-right: 12rem;
+                                p{
+                                margin-bottom: 0;
+                            }
+                        }
+                        &-action{
+                            button.edit-button{
+                                color: white;
+                                background-color: #216BFD;
+                                font-size: var(--font-small);
+                                padding: 1rem 1.6rem;
+                                border-radius: 2px;
+                                border: none;
+                                outline: none;
+                                &:hover{
+                                    background-color: #1a5bdc;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
         .model-footer{
 

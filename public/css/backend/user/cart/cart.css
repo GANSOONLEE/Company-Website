@@ -228,8 +228,8 @@
 #myTable_wrapper #myTable {
   margin: 2rem 0;
   width: 100%;
-  border: 1px solid #ddd;
-  border-radius: 16px;
+  outline: 1px solid #ddd;
+  border-radius: 4px;
   font-size: var(--font-h6);
 }
 #myTable_wrapper #myTable thead > tr {
@@ -309,10 +309,10 @@
   overflow-y: hidden;
   background-color: rgba(0, 0, 0, 0.4);
 }
-.model-background > .model {
-  width: 50%;
+.model-background .model {
+  width: 40%;
   height: auto;
-  padding: 2rem 2.5rem 3rem 2.5rem;
+  padding: 2rem 2rem 3rem;
   border-radius: 6px;
   background-color: white;
   position: relative;
@@ -320,12 +320,74 @@
   left: 50%;
   transform: translateX(-50%);
 }
-.model-background > .model .model-header {
+.model-background .model .model-header {
   font-size: var(--font-h4);
   padding-bottom: 1rem;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.model-background > .model .model-body {
+.model-background .model .model-header p {
+  margin-bottom: 0;
+}
+.model-background .model .model-header i {
+  cursor: pointer;
+}
+.model-background .model .model-body {
   padding-top: 2rem;
   font-size: var(--font-h6);
+  /* —————— Cart display ——————*/
+}
+.model-background .model .model-body .cart-display {
+  /* ———— Units ———— */
+}
+.model-background .model .model-body .cart-display > .cart {
+  width: 100%;
+  display: flex;
+  padding: 0.1rem 2rem 2rem;
+  justify-content: space-between;
+  -moz-column-gap: 10rem;
+       column-gap: 10rem;
+  align-items: center;
+}
+.model-background .model .model-body .cart-display > .cart:not(:first-child) {
+  padding: 2rem;
+}
+.model-background .model .model-body .cart-display > .cart:not(:last-child) {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+.model-background .model .model-body .cart-display > .cart > .cart-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-weight: bold;
+}
+.model-background .model .model-body .cart-display > .cart > .cart-info .product-name {
+  font-size: var(--font-h6);
+  margin-bottom: 0;
+}
+.model-background .model .model-body .cart-display > .cart > .cart-info .product-brand {
+  font-size: var(--font-small);
+  color: grey;
+  margin-bottom: 0;
+}
+.model-background .model .model-body .cart-display > .cart > .cart-quantity {
+  margin-right: 12rem;
+}
+.model-background .model .model-body .cart-display > .cart > .cart-quantity p {
+  margin-bottom: 0;
+}
+.model-background .model .model-body .cart-display > .cart > .cart-action button.edit-button {
+  color: white;
+  background-color: #216BFD;
+  font-size: var(--font-small);
+  padding: 1rem 1.6rem;
+  border-radius: 2px;
+  border: none;
+  outline: none;
+}
+.model-background .model .model-body .cart-display > .cart > .cart-action button.edit-button:hover {
+  background-color: #1a5bdc;
 }

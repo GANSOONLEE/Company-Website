@@ -53,5 +53,10 @@ channel.bind('App\\Events\\NewOrderNotification', function (data) {
   // Handle the notification count update here, e.g., update the red dot count
   console.log('Received new order notification');
 });
+$('.paginate_button').click(function (event) {
+  document.querySelectorAll('.order').forEach(function (orderElement) {
+    observer.observe(orderElement);
+  });
+});
 /******/ })()
 ;

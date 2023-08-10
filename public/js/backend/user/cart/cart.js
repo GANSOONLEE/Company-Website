@@ -256,5 +256,41 @@ $(document).ready(function () {
     $('.checkbox').prop('checked', selectAllChecked);
   });
 });
+
+/* ———————————————————— Model ———————————————————— */
+
+$(document).ready(function () {
+  $('#checkOrder').click(function (event) {
+    var selectedProductIds = [];
+
+    // 遍历选中的复选框，获取其 data-id 属性值
+    $('.checkbox:checked').each(function () {
+      selectedProductIds.push($(this).data('id'));
+    });
+    var email = document.querySelector('#email').innerText;
+
+    // 使用 AJAX 发送数据到指定的路由
+    $.ajax({
+      url: '/api/create-order',
+      type: 'POST',
+      data: {
+        productIds: selectedProductIds,
+        'email': email
+      },
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      success: function success(response) {
+        // 处理响应
+        console.log(response);
+        location.reload();
+      },
+      error: function error(_error3) {
+        // 处理错误
+        console.error(_error3);
+      }
+    });
+  });
+});
 /******/ })()
 ;

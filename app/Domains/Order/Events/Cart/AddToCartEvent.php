@@ -18,6 +18,7 @@ class AddToCartEvent{
                 'productBrand' => $request->productBrand,
                 'quantity' => $request->quantity,
                 'Email' => $request->email,
+                'productCategory' => $request->productCategory,
             ];
 
             /**
@@ -42,10 +43,17 @@ class AddToCartEvent{
                 Cart::where('ID', $recordUpdateID)->update($data);
             }else{
                 Cart::create($data);
+
+                $status = [
+                    'success' => 'success',
+                ];
             }
         } catch (\Exception $e) { 
-            return $e->getMessage();
+            $status = [
+                'error' => $e->getMessage(),
+            ];
         }
-        
+
+        return response()->json($status);
     }
 }

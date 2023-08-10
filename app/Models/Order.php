@@ -36,4 +36,14 @@ class Order extends Model
     {
         return $this->user()->first(); // 返回关联的User模型
     }
+
+    public function cart()
+    {
+        return $this->belongsTo(Cart::class, 'ID', 'ID');
+    }
+
+    public function order_to_cart()
+    {
+        return $this->cart()->first(); // 返回关联的User模型
+    }
 }

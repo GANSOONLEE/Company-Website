@@ -132,7 +132,6 @@
             </div>
         </button>
     </div>
-
     <table id="myTable">
         <thead>
             <tr>
@@ -157,42 +156,47 @@
 
                     </td>
                     <td data-column="Checkbox">
-                        <input class="checkbox" type="checkbox" name="productItem[]" id="{{ $cart->ID }}">
+                        <input class="checkbox" type="checkbox" name="productOrder[]" id="{{ $cart->ID }}" data-id="{{ $cart->ID }}">
                     </td>
                 </tr>
             @endforeach
         </tbody>
     </table>
+    @php
+        $email = Auth::user()->Email;
+    @endphp
+    <p id="email" style="display: none">{{$email}}</p>
 </div>
 
-<div class="model-background">
+{{-- <div class="model-background">
 
     <!-- Model -->
-    <div class="model">
+    <form action="{{route('api.create-order')}}" method="post">
+    <div class="model" id="productModel">
 
         <!-- Title -->
         <div class="model-header">
-            Comfirm Order
+            <p>Comfirm Order</p>
+            <i class="fa-solid fa-xmark" id="closeModelButton"></i>
         </div>
 
         <!-- Cart -->
         <div class="model-body">
             <div class="cart-display" id="confirm-order-cart-list">
                 
-                <div class="cart">
-                    <div class="cart-image">
-
+                @foreach($carts as $cart)
+                <div class="cart" data-id="1">
+                    <div class="cart-info">
+                        <p class="product-name">Perodua Bezza 1.3 2012</p>
+                        <p class="product-brand">SWJ-PER 005</p>
                     </div>
-                    <div class="cart-image">
-                        <p>Perodua Bezza 1.3 2012</p>
-                        <p>SWJ-PER 005</p>
-                    </div>
-                    <div class="action">
-                        <button>
-                            Edit
-                        </button>
+                    <div class="cart-quantity">
+                        <p id="cart-quantity">
+                            12 Qty.
+                        </p>
                     </div>
                 </div>
+                @endforeach
 
             </div>
         </div>
@@ -202,6 +206,7 @@
 
         </div>
     </div>
-</div>
+    </form>
+</div> --}}
 
 @endsection
