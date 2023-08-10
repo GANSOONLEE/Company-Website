@@ -147,7 +147,7 @@
         </thead>
         <tbody>
             @foreach ($carts as $index => $cart)
-                <tr class="product-card" data-product-id="{{ $cart->productID }}" data-quantity="{{ $cart->quantity }}" data-brand="{{ $cart->productBrand}}" data-cart="{{ $cart->ID }}">
+                <tr class="product-card" data-product-id="{{ $cart->productID }}" data-quantity="{{ $cart->quantity }}" data-brand="{{ $cart->productBrand }}" data-cart="{{ $cart->ID }}">
                     <td data-column="Index">{{ $index+1 }}</td>
                     <td data-column="Category">{{ $cart->cart_to_product()['productCatelog'] }}</td>
                     <td data-column="Name">{{ json_decode($cart->cart_to_product()['productNameList'])[0] }}</td>
@@ -156,7 +156,7 @@
 
                     </td>
                     <td data-column="Checkbox">
-                        <input class="checkbox" type="checkbox" name="productOrder[]" id="{{ $cart->ID }}" data-id="{{ $cart->ID }}">
+                        <input class="checkbox" type="checkbox" name="productOrder[]" data-cart-id="{{ $cart->ID }}" data-brand="{{ $cart->productBrand }}" data-id="{{ $cart->productID }}">
                     </td>
                 </tr>
             @endforeach

@@ -34,10 +34,11 @@ class CreatedOrderEvent{
             ];
 
             foreach( $orderContent as $cart){
-                $cart = Cart::where('ID', $cart)
+                $productInCart = Cart::where('ID', $cart['cartID'])
+                    ->where('Email', $Email)
                     ->first();
 
-                if($cart->quantity === 0){   
+                if($productInCart->quantity === 0){   
                     throw new Error('Qty can\'t empty! ');
                 }
             }
@@ -45,17 +46,26 @@ class CreatedOrderEvent{
             Order::create($data);
 
             foreach($orderContent as $cart){
-                $cart = Cart::where('ID', $cart)
+                $productInCart = Cart::where('ID', $cart['cartID'])
+                    ->where('Email', $Email)
                     ->first();
 
-                $cart->update([
+                $productInCart->update([
                     'quantity' => 0,
                 ]);
-            }
 
-            $status = [
-                'success' => 'success',
-            ];
+                // $status = [
+                //     'id' => $cart['id'],
+                //     'cartID' => $cart['cartID'],
+                //     'brand' => $cart['brand'],
+                //     'quantity' => $cart['quantity'],
+                //     'cart' => $productInCart,
+                // ];
+
+                $status = [
+                    'success' => 'success',
+                ];
+            }
 
         }catch(\Exception $e){
             $status = [

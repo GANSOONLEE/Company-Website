@@ -39,8 +39,8 @@
                 <tr>
                     <th>{{trans('table.orderID')}}</th>
                     <th>{{trans('table.userName')}}</th>
-                    <th>{{trans('table.orderReceivedDate')}}</th>
-                    <th>{{trans('table.orderReceivedTime')}}</th>
+                    <th aria-sort="descending" class="sorting sorting_desc" aria-label="Received Time: activate to sort column descending">{{trans('table.orderReceivedDate')}}</th>
+                    <th aria-sort="descending" class="sorting sorting_desc" aria-label="Received Time: activate to sort column descending">{{trans('table.orderReceivedTime')}}</th>
                     <th>{{trans('table.orderStatus')}}</th>
                     <th style="display: none">{{trans('table.orderContent')}}</th>
                 </tr>
@@ -51,7 +51,7 @@
 
                         <td data-type="orderID">{{ $order->orderID }}</td> 
 
-                        <td data-type="customerUser">{{ $order->productCategory }}</td>
+                        <td data-type="customerUser">{{ $order->Email }}</td>
 
                         <td data-type="orderReceivedDate">{{ $order->orderReceivedDate }}</td>
 

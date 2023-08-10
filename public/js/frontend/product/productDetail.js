@@ -111,7 +111,7 @@ function getEmail() {
     if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
   }
 }
-function sendData(option, quantity, productID, email, productCategory) {
+function sendData(option, quantity, productID, email) {
   $.ajax({
     type: 'post',
     url: "/api/user/add-to-cart",
@@ -119,8 +119,7 @@ function sendData(option, quantity, productID, email, productCategory) {
       "productID": productID,
       "productBrand": option,
       "quantity": quantity,
-      "email": email,
-      'productCategory': productCategory
+      "email": email
     }),
     contentType: "application/json;charset=utf-8",
     success: function success(Text) {
@@ -144,9 +143,8 @@ addToCart.addEventListener('click', function () {
   var quantity = getQuantity();
   var productID = getproductID();
   var encodedEmail = decodeURIComponent(getEmail());
-  var productCategory = document.querySelector('[name="productCategory"]').value;
   if (option !== undefined) {
-    sendData(option, quantity, productID, encodedEmail, productCategory);
+    sendData(option, quantity, productID, encodedEmail);
   }
 });
 /******/ })()
