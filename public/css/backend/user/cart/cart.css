@@ -218,12 +218,27 @@
 
 /* ——————————————————————————————————————— Data Tables ————————————————————————————————————————————— */
 #myTable_wrapper {
+  display: flex;
+  flex-direction: column;
   /** —————————————— Record Per Page —————————————— */
   /** ——————————————————— Filter —————————————————— */
   width: 100%;
   /** ——————————————————— Table ——————————————————— */
   /** ——— Showing {a} to {b} of {total} entries ——— */
   /** —————————————————— Paginate ————————————————— */
+}
+#myTable_wrapper #myTable_length {
+  width: 100%;
+  margin-bottom: 1.2rem;
+}
+#myTable_wrapper #myTable_length label {
+  font-size: var(--font-small);
+}
+#myTable_wrapper #myTable_length label select {
+  padding: 0.2rem 0.4rem;
+}
+#myTable_wrapper #myTable_filter label {
+  font-size: var(--font-small);
 }
 #myTable_wrapper #myTable {
   margin: 2rem 0;
@@ -239,8 +254,10 @@
   width: auto;
   padding: 1.4rem 0;
   padding-left: 1.4rem;
+  cursor: pointer;
 }
 #myTable_wrapper #myTable thead > tr > th[data-header=Checkbox] {
+  cursor: auto;
   width: 1%;
   display: flex;
   -moz-column-gap: 1.2rem;
@@ -248,6 +265,12 @@
 }
 #myTable_wrapper #myTable thead > tr > th[data-header=Checkbox] .checkbox {
   display: block;
+}
+#myTable_wrapper #myTable thead > tr > th:not(:last-child):hover {
+  background-color: #efefef;
+}
+#myTable_wrapper #myTable thead > tr > th:not(:last-child):active {
+  background-color: #dfdfdf;
 }
 #myTable_wrapper #myTable tbody > tr.product-card {
   padding-left: 2rem;

@@ -14,10 +14,11 @@ class AuthController extends Controller
 {
 
     function generateAccessToken()
-{
-    // 隨機的32位亂碼 accessToken
-    return Str::random(32);
-}
+    {
+        // 隨機的32位亂碼 accessToken
+        return Str::random(32);
+    }
+    
     public function register(Request $request)
     {
         $accessToken = $this->generateAccessToken();

@@ -1,0 +1,120 @@
+
+/* —————————————————————— Layouts —————————————————————— */
+
+.content{
+    width: 100%;
+}
+
+.page-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    margin-bottom: 2rem;
+    .page-title{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        color: #010D4D;
+        column-gap: 1.2rem;
+        i{
+            padding-top: .4rem;
+            font-size: var(--font-h6);
+        }
+        p{
+            margin-bottom: 0;
+            font-size: var(--font-h3);
+        }
+    }
+}
+
+/* —————————————————————— Order  —————————————————————— */
+
+.order{
+    >.order{
+
+        &-header{
+            
+        }
+
+        &-body{
+            display: flex;
+            flex-direction: column;
+            row-gap: 1.6rem;
+        }
+
+        &-footer{
+            
+        }
+    }
+
+}
+
+/* —————————————————————— Order-Card —————————————————————— */
+
+.order-card{
+    >.order-card{
+        &-header{
+            
+        }
+        &-body{
+            
+        }
+        &-footer{
+            
+        }
+    }
+}
+
+/* —————————————————————— Card —————————————————————— */
+
+.card{
+    width: 100%;
+    >.card{
+        &-header{
+            padding: 1rem 2rem;
+            font-size: var(--font-h6);
+        }
+        &-body{
+            display: flex;
+            padding: 1rem 2rem;
+            font-size: var(--font-h6);
+            p{
+                font-weight: bold;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                column-gap: 1.2rem;
+                margin-bottom: 0;
+            }
+            .card-information{
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-end;
+                padding: 0;
+            }
+            & > p::before{
+                content: '';
+                width: 10px;
+                height: 10px;
+                border-radius: 100%;
+                display: block;
+            }
+            &[data-status="Received"] > p::before{
+                background-color: red;
+            }
+            &[data-status="In Proccess"] > p::before{
+                background-color: yellow;
+            }
+            &[data-status="Success"] > p::before{
+                background-color: green;
+            }
+        }
+        &-footer{
+            
+        }
+    }
+}

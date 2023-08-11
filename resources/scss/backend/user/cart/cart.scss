@@ -255,19 +255,33 @@
 /* ——————————————————————————————————————— Data Tables ————————————————————————————————————————————— */
 
 #myTable_wrapper{
-
+    display: flex;
+    flex-direction: column;
+    $label-font-size: var(--font-small);
     /** —————————————— Record Per Page —————————————— */
     #myTable_length{
+        width: 100%;
+        margin-bottom: 1.2rem;
+        label{
+            font-size: $label-font-size;
+            select{
+                padding: .2rem .4rem;
 
+            }
+        }
     }
 
     /** ——————————————————— Filter —————————————————— */
     #myTable_filter{
-
+        label{
+            font-size: $label-font-size;
+        }
     }
 
     width: 100%;
     /** ——————————————————— Table ——————————————————— */
+
+    // #TODO Adjust something
 
     #myTable{
         margin: 2rem 0;
@@ -282,13 +296,21 @@
                     width: auto;
                     padding: 1.4rem 0;
                     padding-left: 1.4rem;
+                    cursor: pointer;
                     &[data-header="Checkbox"]{
+                        cursor: auto;
                         width: 1%;
                         display: flex;
                         column-gap: 1.2rem;
                         .checkbox{
                             display: block;
                         }
+                    }
+                    &:not(:last-child):hover{
+                        background-color: #efefef;
+                    }
+                    &:not(:last-child):active{
+                        background-color: #dfdfdf;
                     }
                 }
             }

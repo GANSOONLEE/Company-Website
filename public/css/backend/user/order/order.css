@@ -1,0 +1,84 @@
+@charset "UTF-8";
+/* —————————————————————— Layouts —————————————————————— */
+.content {
+  width: 100%;
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  margin-bottom: 2rem;
+}
+.page-header .page-title {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: #010D4D;
+  -moz-column-gap: 1.2rem;
+       column-gap: 1.2rem;
+}
+.page-header .page-title i {
+  padding-top: 0.4rem;
+  font-size: var(--font-h6);
+}
+.page-header .page-title p {
+  margin-bottom: 0;
+  font-size: var(--font-h3);
+}
+
+/* —————————————————————— Order  —————————————————————— */
+.order > .order-body {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1.6rem;
+}
+/* —————————————————————— Order-Card —————————————————————— */
+/* —————————————————————— Card —————————————————————— */
+.card {
+  width: 100%;
+}
+.card > .card-header {
+  padding: 1rem 2rem;
+  font-size: var(--font-h6);
+}
+.card > .card-body {
+  display: flex;
+  padding: 1rem 2rem;
+  font-size: var(--font-h6);
+}
+.card > .card-body p {
+  font-weight: bold;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  -moz-column-gap: 1.2rem;
+       column-gap: 1.2rem;
+  margin-bottom: 0;
+}
+.card > .card-body .card-information {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  padding: 0;
+}
+.card > .card-body > p::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  display: block;
+}
+.card > .card-body[data-status=Received] > p::before {
+  background-color: red;
+}
+.card > .card-body[data-status="In Proccess"] > p::before {
+  background-color: yellow;
+}
+.card > .card-body[data-status=Success] > p::before {
+  background-color: green;
+}

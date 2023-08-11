@@ -46,12 +46,13 @@
                 </tr>
             </thead>
             <tbody>
+
                 @foreach ($orderData as $order)
                     <tr href="/{{$order->orderID}}" id="data-row" data-order-id={{"$order->orderID"}} data-status="{{ $order->orderStatus }}" class="order">
 
                         <td data-type="orderID">{{ $order->orderID }}</td> 
 
-                        <td data-type="customerUser">{{ $order->Email }}</td>
+                        <td data-type="customerUser">{{ $order->order_to_user()->Name }}</td>
 
                         <td data-type="orderReceivedDate">{{ $order->orderReceivedDate }}</td>
 
@@ -65,8 +66,8 @@
 
                         <td data-type="orderContent" style="display: none">{{ $order->orderContent }}</td>
                     </tr>
-
                 @endforeach
+
             </tbody>
         </table>
     </div>

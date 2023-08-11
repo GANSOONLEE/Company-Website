@@ -4,7 +4,7 @@ var __webpack_exports__ = {};
   !*** ./resources/js/backend/admin/viewOrder.js ***!
   \*************************************************/
 var table = new DataTable('#myTable', {
-  // options
+  "order": [[4, "desc"]]
 });
 
 /**

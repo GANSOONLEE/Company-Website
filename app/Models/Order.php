@@ -13,7 +13,7 @@ class Order extends Model
     public $incrementing = false;
     protected $primaryKey = 'orderID';
     protected $guarded = [ ];
-    public $timestamps = false;
+    public $timestamps = true;
     public $fillable = [
         'orderID',
         'Email', // user.email

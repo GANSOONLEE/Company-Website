@@ -17,5 +17,6 @@
     "/css/frontend/product/productDetail.css": "/css/frontend/product/productDetail.css",
     "/css/frontend/product.css": "/css/frontend/product.css",
     "/css/frontend/includes/productList.css": "/css/frontend/includes/productList.css",
-    "/css/frontend/contact.css": "/css/frontend/contact.css"
+    "/css/frontend/contact.css": "/css/frontend/contact.css",
+    "/css/backend/user/order/order.css": "/css/backend/user/order/order.css"
 }

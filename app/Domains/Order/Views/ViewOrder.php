@@ -8,7 +8,7 @@ class ViewOrder{
 
     function viewOrder(){
 
-        $orderData = Order::orderBy(DB::raw("CONCAT(orderReceivedDate, ' ', orderReceivedTime)"), 'desc')
+        $orderData = Order::orderBy('updated_at', 'desc')
             ->get();
 
         $orderNew = session('orderNew');
