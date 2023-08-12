@@ -141,7 +141,7 @@
                 <th>Product Code</th>
                 <th>Quantity</th>
                 <th data-header="Checkbox">
-                    <input class="checkbox" id="selectAll" type="checkbox" name="">
+                    <input class="selectAllCheckbox" id="selectAll" type="checkbox" name="" style="display: block">
                 </th>
             </tr>
         </thead>

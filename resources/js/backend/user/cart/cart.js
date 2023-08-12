@@ -139,6 +139,8 @@ function createOrder(){
         return;
     }
 
+
+
     try{
 
         let orderElement = [];
@@ -188,7 +190,7 @@ function generatedOrder(orderElement){
             'X-CSRF-TOKEN': csrfToken
             },
             success: function(data) {
-                console.log(data)
+                // console.log(data)
             },
             error: function(xhr, status, error) {
                 console.error(`Server status: ${status}\nError: ${error}`);
@@ -292,10 +294,21 @@ $(document).ready(function() {
 });
 
 function sendData(){
+    let itemChecked;
     let selectedProductIds = [];
 
+    let selectAllChecked = $('#selectAll').prop('checked');
+
+    if (selectAllChecked) {
+        itemChecked = $('.checkbox');
+    }else{
+        itemChecked = $('.checkbox:checked');
+    }
+
+    // console.log(itemChecked)
+
     // 遍历选中的复选框，获取其 data-id 属性值
-    $('.checkbox:checked').each(function() {
+    itemChecked.each(function() {
         // let id = $(this).data('id');
         // let quantity = $(this).closest('tr').data('quantity');
         let id = this.getAttribute('data-id');

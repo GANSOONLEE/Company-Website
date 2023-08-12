@@ -1,7 +1,16 @@
 @charset "UTF-8";
 /* —————————————————————— Layouts —————————————————————— */
-.content {
+.main {
+  display: flex;
+  flex-direction: column;
+  background-color: #fffffc;
+}
+.main .content {
   width: 100%;
+  padding: 2rem 3rem;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 1px 1px 25px 0.2px rgba(0, 0, 0, 0.2);
 }
 
 .page-header {
@@ -39,10 +48,30 @@
 /* —————————————————————— Card —————————————————————— */
 .card {
   width: 100%;
+  cursor: pointer;
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.2);
+  transition: all 0.12s ease-in-out;
+}
+.card:hover {
+  box-shadow: 0 0 20px 3px rgba(0, 1, 83, 0.2);
 }
 .card > .card-header {
   padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.card > .card-header > p {
+  margin: 0;
+}
+.card > .card-header > .order-id {
   font-size: var(--font-h6);
+}
+.card > .card-header > .update-time {
+  font-size: var(--font-small);
+}
+.card > .card-header > .update-time b {
+  margin-right: 1rem;
 }
 .card > .card-body {
   display: flex;
@@ -81,4 +110,111 @@
 }
 .card > .card-body[data-status=Success] > p::before {
   background-color: green;
+}
+/* ———————————————————— Modal ———————————————————— */
+.model-background {
+  z-index: 10;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow-y: hidden;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: none;
+}
+.model-background.show {
+  display: block;
+}
+.model-background.show > .model {
+  animation-name: fade-in;
+  animation-duration: 0.2s;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in-out;
+}
+.model-background .model {
+  width: 40%;
+  height: auto;
+  border-radius: 6px;
+  background-color: white;
+  position: relative;
+  top: 4rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.model-background .model .model-header {
+  font-size: var(--font-h4);
+  border-bottom: 1.5px solid rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 2rem 1rem;
+}
+.model-background .model .model-header p {
+  margin-bottom: 0;
+}
+.model-background .model .model-header p span {
+  color: rgb(0, 157, 255);
+  font-weight: bold;
+}
+.model-background .model .model-header p span::before {
+  content: "#";
+}
+.model-background .model .model-header i {
+  cursor: pointer;
+}
+.model-background .model .model-body {
+  padding: 0.8rem 2rem 0.4rem;
+}
+.model-background .model .model-footer {
+  background-color: rgb(244, 244, 244);
+  border-radius: 0 0 6px 6px;
+  border-top: 2px solid rgb(240, 240, 240);
+  padding: 1rem 2rem;
+  font-size: var(--font-h6);
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    top: -20%;
+  }
+  100% {
+    opacity: 1;
+    top: 4rem;
+  }
+}
+/* ———————————————————— Order Item ———————————————————— */
+.order-item-display > .order {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.order-item-display > .order:not(:first-child) {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+.order-item-display > .order > .item-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 90%;
+  align-items: flex-start;
+  row-gap: 0.4rem;
+  padding: 0.6rem 2rem 0.6rem 0;
+}
+.order-item-display > .order > .item-info > .item-id {
+  font-size: var(--font-small);
+}
+.order-item-display > .order > .item-info > .item-brand {
+  font-size: var(--font-small);
+}
+.order-item-display > .order > .item-quantity {
+  flex: 1;
+}
+.order-item-display > .order > .item-quantity > p {
+  text-align: right;
+  font-size: calc(var(--font-small) + 0.4rem);
+}
+
+p {
+  margin-bottom: 0;
 }

@@ -3,6 +3,7 @@
     "/js/backend/admin/upload.js": "/js/backend/admin/upload.js",
     "/js/backend/admin/viewOrder.js": "/js/backend/admin/viewOrder.js",
     "/js/backend/user/cart/cart.js": "/js/backend/user/cart/cart.js",
+    "/js/backend/user/order/order.js": "/js/backend/user/order/order.js",
     "/js/frontend/product/productDetail.js": "/js/frontend/product/productDetail.js",
     "/js/ui/sidebar.js": "/js/ui/sidebar.js",
     "/css/backend/user/cart/cart.css": "/css/backend/user/cart/cart.css",

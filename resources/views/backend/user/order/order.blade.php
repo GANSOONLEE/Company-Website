@@ -56,9 +56,12 @@
                         
                     </div>
                     <div class="order-card-body">
+
+                        <!-- Card -->
                         <div class="card">
                             <div class="card-header">
-                                {{ $order->orderID }}
+                                <p class="order-id">{{ $order->orderID }}</p>
+                                <p class="update-time"><b>Updated at:</b>{{$order->updated_at}}</p>
                             </div>
                             <div class="card-body" data-status="{{ $order->orderStatus }}">
                                 <p>{{ $order->orderStatus }}</p>
@@ -84,6 +87,42 @@
         <!-- Footer -->
         <div class="order-footer">
 
+        </div>
+    </div>
+
+    <div class="model-background" id="orderModel">
+
+    <!-- Model -->
+    <div class="model">
+
+        <!-- Title -->
+        <div class="model-header">
+            <p>Order Detail : <span id="orderID">1</span></p>
+            <i class="fa-solid fa-xmark" id="closeModalButton"></i>
+        </div>
+
+        <!-- Cart -->
+        <div class="model-body">
+            <div class="order-item-display" id="order-item-list">
+                
+                <div class="order" data-id="1">
+                    <div class="item-info">
+                        <p class="item-id" id="ItemID">Perodua Bezza 1.3 2012</p>
+                        <p class="item-brand" id="ItemBrand">SWJ-PER 005</p>
+                    </div>
+                    <div class="item-quantity">
+                        <p id="ItemQuantity">
+                            12 Qty.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Button -->
+        <div class="model-footer">
+            <div id="orderStatus"></div>
         </div>
     </div>
 

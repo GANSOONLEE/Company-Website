@@ -58,5 +58,12 @@ $('.paginate_button').click(function (event) {
     observer.observe(orderElement);
   });
 });
+
+/* ———————————————————— Order Detail ———————————————————— */
+
+$('.order').click(function (event) {
+  var dataOrderID = $(this).data('order-id');
+  console.log(dataOrderID);
+});
 /******/ })()
 ;

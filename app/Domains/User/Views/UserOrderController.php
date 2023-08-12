@@ -11,6 +11,7 @@ class UserOrderController extends Controller{
         $email = auth()->user()->Email;
 
         $orderData = Order::where('Email', $email)
+            -> orderBy('created_at', 'desc')
             -> get();
 
         return view('backend.user.order.order', compact('orderData'));

@@ -1,8 +1,17 @@
 
 /* —————————————————————— Layouts —————————————————————— */
 
-.content{
-    width: 100%;
+.main{
+    display: flex;
+    flex-direction: column;
+    background-color: #fffffc;
+    .content{
+        width: 100%;
+        padding: 2rem 3rem;
+        background-color: #fff;
+        border-radius: 4px;
+        box-shadow: 1px 1px 25px .2px rgba(0, 0, 0, 0.2);
+    }
 }
 
 .page-header{
@@ -71,10 +80,30 @@
 
 .card{
     width: 100%;
+    cursor: pointer;
+    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.2);
+    transition:  all .12s ease-in-out;
+    &:hover{
+        box-shadow: 0 0 20px 3px rgba(0, 1, 83, 0.2);
+    }
     >.card{
         &-header{
             padding: 1rem 2rem;
-            font-size: var(--font-h6);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            >p{
+                margin: 0;
+            }
+            >.order-id{
+                font-size: var(--font-h6);
+            }
+            >.update-time{
+                font-size: var(--font-small);
+                b{
+                    margin-right: 1rem;
+                }
+            }
         }
         &-body{
             display: flex;
@@ -118,3 +147,123 @@
         }
     }
 }
+
+/* ———————————————————— Modal ———————————————————— */
+.model-background{
+    z-index: 10;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow-y: hidden;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: none;
+    &.show{
+        display: block;
+        > .model{
+            animation-name: fade-in;
+            animation-duration: .2s;
+            animation-iteration-count: 1;
+            animation-timing-function: ease-in-out;
+        }
+    }
+    .model{
+        width: 40%;
+        height: auto;
+        border-radius: 6px;
+        background-color: white;
+        position: relative;
+        top: 4rem;
+        left: 50%;
+        transform: translateX(-50%);
+        .model-header{
+            font-size: var(--font-h4);
+            border-bottom: 1.5px solid rgba(0, 0, 0, 0.3);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 2rem 1rem;
+            p{
+                margin-bottom: 0;
+                span{
+                    color: rgb(0, 157, 255);
+                    font-weight: bold;
+                    &::before{
+                        content: '#';
+                    }
+                }
+            }
+            i{
+                cursor: pointer;
+            }
+        }
+
+        .model-body{
+            padding: .8rem 2rem .4rem;
+        }
+
+        .model-footer{
+            background-color: rgb(244, 244, 244);
+            border-radius: 0 0 6px 6px;
+            border-top: 2px solid rgb(240, 240, 240);
+            padding: 1rem 2rem;
+            font-size: var(--font-h6);
+            div{
+                
+            }
+        }
+    }
+}
+
+@keyframes fade-in {
+    0%{
+        opacity: 0;
+        top: -20%;
+    };
+    100%{
+        opacity: 1;
+        top: 4rem;
+    }
+}
+
+/* ———————————————————— Order Item ———————————————————— */
+
+.order-item-display{
+    $font-size: var(--font-small);
+    // Units
+    >.order{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        &:not(:first-child){
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        >.item-info{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 90%;
+            align-items: flex-start;
+            row-gap: .4rem;
+            padding: .6rem 2rem .6rem 0;
+            >.item{
+                &-id{
+                    font-size: $font-size;
+                }
+                &-brand{
+                    font-size: $font-size;
+                }
+            }
+        }
+        >.item-quantity{
+            flex: 1;
+            >p{
+                text-align: right;
+                font-size: calc($font-size + .4rem);
+            }
+        }
+    }
+}
+
+p{margin-bottom: 0;}
