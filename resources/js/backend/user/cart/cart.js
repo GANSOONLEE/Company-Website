@@ -251,35 +251,32 @@ let table = new DataTable('#myTable', {
 });
 
 $(document).ready(function() {
+
     // 监听点击事件，选择特定的 <tr> 元素
     $('tr.product-card').click(function(event) {
 
         $('button.quantity-button').click(function(event) {
-            // 阻止事件冒泡，避免触发父元素的点击事件，包括 checkbox 的点击事件
             event.stopPropagation();
-            // 在这里添加你希望按钮点击后执行的代码
         });
 
         $('.checkbox').click(function(event) {
-            // 阻止事件冒泡，避免触发父元素的点击事件
             event.stopPropagation();
+            $(this).closest('tr.product-card').click();
+            // return false;
         });
-        
-        // 获取被点击的 <tr> 元素内部的 checkbox
+
         var checkbox = $(this).find('.checkbox');
-        
-        // 切换 checkbox 的选中状态
         checkbox.prop('checked', !checkbox.prop('checked'));
+
+        let allChecked = $('.checkbox:checked').length === $('.checkbox').length;
+        $('#selectAll').prop('checked', allChecked)
     });
 
     $('#selectAll').click(function(event){
-        // 阻止事件冒泡，避免触发父元素的点击事件
         event.stopPropagation();
     
-        // 获取全选按钮的状态
         var selectAllChecked = $(this).prop('checked');
         
-        // 将所有具有 .checkbox 类的复选框的状态设置为与全选按钮相同
         $('.checkbox').prop('checked', selectAllChecked);
     })
 });

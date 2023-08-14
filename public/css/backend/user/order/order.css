@@ -17,9 +17,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: 2rem;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  margin-bottom: 2rem;
 }
 .page-header .page-title {
   display: flex;
@@ -217,4 +214,98 @@
 
 p {
   margin-bottom: 0;
+}
+
+/* ———————————————————— Table ———————————————————— */
+/* ———————————————————— Category ———————————————————— */
+.order-category {
+  padding-top: 2rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.order-category a.order-status {
+  cursor: pointer;
+  box-sizing: border-box;
+  font-size: var(--font-small);
+  text-align: center;
+  padding: 1.2rem 2rem;
+  min-width: auto;
+  max-width: auto;
+  border-bottom: 3px solid rgba(255, 255, 255, 0) !important;
+  transition: all 0.1s ease-in-out;
+}
+.order-category a.order-status.active {
+  border-bottom: 3px solid #001dbf !important;
+  color: #0a58ca;
+  font-weight: bold;
+}
+.order-category a.order-status:hover {
+  background-color: rgba(0, 29, 191, 0.062745098);
+}
+
+/* ———————————————————— Display List ———————————————————— */
+.order-header {
+  font-size: var(--font-small);
+  padding: 0.6rem 2rem;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.05);
+}
+.order-header p:first-child {
+  width: 15%;
+}
+.order-header p:nth-child(2) {
+  width: 15%;
+}
+
+.order-list {
+  font-size: var(--font-small);
+  margin-top: 1.2rem;
+  /* Units of Order */
+}
+.order-list p:first-child {
+  width: 15%;
+}
+.order-list p:nth-child(2) {
+  width: 15%;
+}
+.order-list a.order {
+  cursor: pointer;
+  color: inherit;
+  padding: 1.6rem 2.2rem;
+}
+.order-list a.order.odd {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+.order-list a.order.even {
+  background-color: rgba(0, 0, 0, 0.07);
+}
+.order-list a.order:hover {
+  background-color: #dfdfdf;
+}
+.order-list .no-data {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  width: 100%;
+  padding: 2rem;
+}
+.order-list .no-data object {
+  width: 30%;
+  height: auto;
+  color: orange;
+}
+
+/* —————— General —————— */
+.display-row {
+  display: flex;
+}
+
+.display-column {
+  display: flex;
+  flex-direction: column;
 }

@@ -113,5 +113,14 @@ window.onload = function ready() {
     event.target.classList.remove('show');
   });
 };
+
+/* ———————————————————— Category Active ———————————————————— */
+
+$(document).ready(function () {
+  $('.order-status').click(function (event) {
+    $('.order-status.active').removeClass('active');
+    $(this).addClass('active');
+  });
+});
 /******/ })()
 ;

@@ -20,7 +20,7 @@ class Order extends Model
         'orderReceivedDate',
         'orderReceivedTime',
         'orderContent', // json
-        'orderStatus', // Enum: Received, In Process, Complete
+        'orderStatus', // Enum: New, Received, In Process, Complete
     ];
 
     /**

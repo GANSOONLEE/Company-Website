@@ -18,9 +18,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-bottom: 2rem;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-    margin-bottom: 2rem;
+
     .page-title{
         display: flex;
         justify-content: flex-start;
@@ -267,3 +265,117 @@
 }
 
 p{margin-bottom: 0;}
+
+/* ———————————————————— Table ———————————————————— */
+.table{
+    >.table-header{
+        
+    }
+    >.table-body{
+
+    }
+    >.table-footer{
+        
+    }
+}
+
+/* ———————————————————— Category ———————————————————— */
+
+.order-category{
+    padding-top: 2rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    a.order-status{
+        cursor: pointer;
+        box-sizing: border-box;
+        font-size: var(--font-small);
+        text-align: center;
+        padding: 1.2rem 2rem;
+        min-width: auto;
+        max-width: auto;
+        border-bottom: 3px solid #ffffff00 !important;
+        transition: all .1s ease-in-out;
+        &.active{
+            border-bottom: 3px solid #001dbf !important;
+            color: #0a58ca;
+            font-weight: bold;
+        }
+        &:hover{
+            background-color: #001dbf10;
+        }
+    }
+}
+
+/* ———————————————————— Display List ———————————————————— */
+
+.order-header{
+    font-size: var(--font-small);
+    padding: .6rem 2rem;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.05);
+    p{
+        &:first-child{
+            width: 15%;
+        }
+        &:nth-child(2){
+            width: 15%;
+        }
+    }
+}
+
+.order-list{
+    font-size: var(--font-small);
+    margin-top: 1.2rem;
+    p{
+        &:first-child{
+            width: 15%;
+        }
+        &:nth-child(2){
+            width: 15%;
+        }
+    }
+
+    /* Units of Order */
+    a.order{
+        cursor: pointer;
+        color: inherit;
+        padding: 1.6rem 2.2rem;
+        &.odd{
+            background-color: rgba(0, 0, 0, 0.03);
+        }
+        &.even{
+            background-color: rgba(0, 0, 0, 0.07);
+        }
+        &:hover{
+            background-color: #dfdfdf;
+        }
+    }
+
+    .no-data{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: auto;
+        width: 100%;
+        padding: 2rem;
+        object{
+            width: 30%;
+            height: auto;
+            color: orange;
+        }
+    }
+
+}
+
+/* —————— General —————— */
+.display-row{
+    display: flex;
+}
+.display-column{
+    display: flex;
+    flex-direction: column;
+}
