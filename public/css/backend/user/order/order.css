@@ -290,14 +290,12 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: auto;
-  width: 100%;
   padding: 2rem;
 }
-.order-list .no-data object {
-  width: 30%;
-  height: auto;
-  color: orange;
+.order-list .no-data > p {
+  width: 100%;
+  text-align: center;
+  font-size: var(--font-h6);
 }
 
 /* —————— General —————— */

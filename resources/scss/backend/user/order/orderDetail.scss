@@ -1,0 +1,176 @@
+
+/* ———————————————————— Layouts ———————————————————— */
+
+.content{
+    width: 100%;
+}
+
+/* ———————————————————— Clipboard ———————————————————— */
+
+.clipboard{
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    left: 50%;
+    top: -50px;
+    width: auto;
+    height: auto;
+    font-size: var(--font-small);
+    column-gap: .9rem;
+    background-color: rgb(143, 143, 255);
+    padding: .6rem .8rem;
+    border-radius: 6px;
+    .icon{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(177, 177, 255);
+        border-radius: 100%;
+        $size: 25px;
+        min-width: $size;
+        min-height: $size;
+        i{
+            font-size: calc($size / 2);
+            color: rgba(0, 0, 0, 0.4);
+        }
+    }
+    p{
+        font-weight: bold;
+        color: rgba(255, 255, 255, 0.8);
+        margin-bottom: 0;
+        letter-spacing: .1rem;
+    }
+    &.show{
+        animation-name: show;
+        animation-duration: .7s;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+    }
+    &.hidden{
+        animation-name: hidden;
+        animation-duration: .7s;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+    }
+}
+
+$start: -50px;
+$end: 2.5vh;
+
+@keyframes show {
+    0% {
+        top: $start;
+        opacity: 0;
+    };
+    100% {
+        top: $end;
+        opacity: 1;
+    };
+};
+
+@keyframes hidden {
+    0% {
+        top: $end;
+        opacity: 1;
+    };
+    100% {
+        top: $start;
+        opacity: 0;
+    };
+};
+
+/* ———————————————————— Order ———————————————————— */
+
+.order{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: auto;
+    border-radius: 6px;
+    padding: 2rem;
+    box-shadow: 0 0 25px 5px #00000020;
+    .order-title{
+        width: min-content;
+        font-size: var(--font-h5);
+        letter-spacing: .6rem;
+        text-align: center;
+        transform: translateY(-55%);
+        background-color: #fff;
+        padding: .4rem 1.2rem;
+    }
+    >.order-{
+
+        &header{
+            width: 100%;
+            padding-top: 1rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px dotted rgba(0, 0, 0, 0.2);
+            .title{
+                font-size: var(--font-h2);
+                text-align: center;
+                padding-bottom: 1.4rem;
+            }
+            .information{
+                font-size: var(--font-small);
+                justify-content: space-between;
+                align-items: center;
+                p{
+                    span{
+                        cursor: pointer;
+                        color: blue;
+                    }
+                }
+            }
+        }
+
+        &body{
+            width: 100%;
+        }
+        
+        &footer{
+            width: 100%;
+        }
+    }
+}
+
+.product{
+    width: 100%;
+    
+    .product-header{
+        font-size: var(--font-h6);
+        font-weight: bold;
+        padding: 0 2rem;
+        margin-bottom: 1rem;
+    }
+    .product-information{
+        font-size: var(--font-small);
+        padding: 1.4rem 2rem;
+        &:not(:last-child){
+            border-bottom: 1px solid #00000022;
+        }
+    }
+    p{
+        margin-bottom: 0;
+        &:nth-child(1){
+            width: 100%;
+        }
+        &:nth-child(2){
+            width: 100%;
+        }
+        &:nth-child(3){
+            width: 100%;
+        }
+        &:nth-child(4){
+            width: 100%;
+        }
+    }   
+}
+
+/* ———————————————————— General ———————————————————— */
+.display-row{
+    display: flex;
+}
+.display-column{
+    display: flex;
+    flex-direction: column;
+}

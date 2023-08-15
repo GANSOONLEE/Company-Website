@@ -359,16 +359,13 @@ p{margin-bottom: 0;}
         display: flex;
         justify-content: center;
         align-items: center;
-        height: auto;
-        width: 100%;
         padding: 2rem;
-        object{
-            width: 30%;
-            height: auto;
-            color: orange;
+        >p{
+            width: 100%;
+            text-align: center;
+            font-size: var(--font-h6);
         }
     }
-
 }
 
 /* —————— General —————— */

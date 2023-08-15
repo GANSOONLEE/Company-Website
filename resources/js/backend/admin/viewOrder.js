@@ -1,6 +1,10 @@
 let table = new DataTable('#myTable', {
-    "order": [[ 4, "desc" ]]
+    "order": [
+        [2, "desc"],
+        [3, "desc"],
+    ]
 });
+
 
 /**
  * Observer

@@ -4,7 +4,7 @@ var __webpack_exports__ = {};
   !*** ./resources/js/backend/admin/viewOrder.js ***!
   \*************************************************/
 var table = new DataTable('#myTable', {
-  "order": [[4, "desc"]]
+  "order": [[2, "desc"], [3, "desc"]]
 });
 
 /**

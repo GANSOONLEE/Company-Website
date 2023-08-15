@@ -189,8 +189,9 @@
                     </a>
                     @endforeach
                 @else
-                    <div class="no-data">
+                    <div class="no-data display-column">
                         <object data="{{asset('images\Shipping Bag.svg')}}" type="image/svg+xml"></object>
+                        <p>There are not orders yet.</p>
                     </div>
                 @endif
             </div>
