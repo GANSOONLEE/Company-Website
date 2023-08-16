@@ -23,9 +23,15 @@ class ViewOrderDetail extends Controller{
             $productElement = Product::where('productID', $product->id)
                 ->orderBy('productCatelog', 'asc')
                 ->first();
-            $productData[] = $productElement;
+            $productData[] = [$productElement , $product->quantity];
         }
 
+        $productCatelogs = [];
+        foreach ($productData as $productItem) {
+            $productCatelogs[] = $productItem[0]->productCatelog;
+        }
+
+        array_multisort($productCatelogs, SORT_ASC, $productData);
         
         return view('backend.user.order.orderDetail', compact('orderData', 'productData'));
     }

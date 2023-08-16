@@ -1,0 +1,143 @@
+
+/* ———————————————————— Layouts ———————————————————— */
+
+.main{
+    .section{
+        margin-left: 17vw;
+        padding: 0 2rem;
+        width: 83vw;
+        height: auto;
+        &-title{
+            font-size: var(--font-h4);
+            padding: 3rem 0 0 ;
+        }
+        .button-action-area{
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            column-gap: 2rem;
+            padding: 1rem .5rem;
+            button{
+                outline: none;
+                border: none;
+                cursor: pointer;
+                font-size: var(--font-small);
+                text-align: center;
+                font-weight: normal;
+                padding: .6rem .6rem;
+                width: calc(100% / 10);
+                border: 6px;
+                &:disabled{
+                    cursor: not-allowed;
+                    background-color: darkgrey;
+                    color: rgb(25, 25, 25);
+                }
+            }
+        }
+    }
+}
+
+/* ———————————————————— Order ———————————————————— */
+
+.order{
+    max-width: 100%;
+    .order-header{
+        justify-content: space-between;
+        align-items: center;
+        padding-right: 2.5rem;
+        p{
+            margin-bottom: 0;
+            font-size: var(--font-h6);
+        }
+    }
+    .order-body{
+        font-size: var(--font-small);
+        
+        .order-list{
+            padding: 1rem 1.4rem;
+            justify-content: flex-start;
+            align-items: center;
+            column-gap: 0;
+            cursor: pointer;
+            &:hover{
+                color: blue;
+            }
+            &:not(:last-child){
+                border-bottom: 1px solid #00000022;
+            }
+            p{
+                margin-bottom: 0;
+                &:first-child{
+                    max-width: 20px;
+                    margin-right: 3rem;
+                }
+                &:not(:first-child){
+                    min-width: calc((100% / 5) - 60px);
+                    max-width: calc((100% / 5) - 60px);
+                }
+            }
+        }
+    }
+    .order-footer{
+
+    }
+}
+
+/* ———————————————————— General ———————————————————— */
+
+.display-row{
+    display: flex;
+}
+.display-column{
+    display: flex;
+    flex-direction: column;
+}
+
+/* ———————————————————— Modal ———————————————————— */
+#backgroundModal{
+    width: 100vw;
+    height: 100vh;
+    background-color: #000000ac;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 4rem;
+    #editModal{
+        min-width: 40%;
+        max-width: 40%;
+        height: auto;
+        background-color: #eee;
+        border-radius: 6px;
+        position: relative;
+        top: 0;
+        left: 0;
+        .modal-header{
+            font-size: var(--font-h5);
+            background-color: #fff;
+            p{
+                margin-bottom: 0;
+            }
+            #backgroundModalButton{
+                cursor: pointer;
+                color: #1E3050;
+                &:hover{
+                    color: red;
+                }
+            }
+        }
+        .modal-body{
+            font-size: var(--font-small);
+            input{
+                font-size: var(--font-small);
+            }
+        }
+        .modal-footer{
+            button{
+                font-size: var(--font-small);
+            }
+        }
+    }
+}

@@ -1,6 +1,19 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./resources/scss/backend/user/cart/cart.scss":
+/*!****************************************************!*\
+  !*** ./resources/scss/backend/user/cart/cart.scss ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
 /***/ "./resources/scss/backend/user/order/order.scss":
 /*!******************************************************!*\
   !*** ./resources/scss/backend/user/order/order.scss ***!
@@ -170,10 +183,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/scss/backend/user/app.scss":
-/*!**********************************************!*\
-  !*** ./resources/scss/backend/user/app.scss ***!
-  \**********************************************/
+/***/ "./resources/scss/backend/admin/viewOrderDetail.scss":
+/*!***********************************************************!*\
+  !*** ./resources/scss/backend/admin/viewOrderDetail.scss ***!
+  \***********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -183,10 +196,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/scss/backend/user/cart/cart.scss":
-/*!****************************************************!*\
-  !*** ./resources/scss/backend/user/cart/cart.scss ***!
-  \****************************************************/
+/***/ "./resources/scss/backend/user/app.scss":
+/*!**********************************************!*\
+  !*** ./resources/scss/backend/user/app.scss ***!
+  \**********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -658,8 +671,8 @@ function addBrandList() {
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
 /******/ 			"/js/backend/admin/editProduct": 0,
-/******/ 			"css/backend/user/cart/cart": 0,
 /******/ 			"css/backend/user/app": 0,
+/******/ 			"css/backend/admin/viewOrderDetail": 0,
 /******/ 			"css/backend/admin/viewOrder": 0,
 /******/ 			"css/backend/admin/newProduct": 0,
 /******/ 			"css/backend/admin/editProduct": 0,
@@ -672,7 +685,8 @@ function addBrandList() {
 /******/ 			"css/frontend/includes/productList": 0,
 /******/ 			"css/frontend/contact": 0,
 /******/ 			"css/backend/user/order/orderDetail": 0,
-/******/ 			"css/backend/user/order/order": 0
+/******/ 			"css/backend/user/order/order": 0,
+/******/ 			"css/backend/user/cart/cart": 0
 /******/ 		};
 /******/ 		
 /******/ 		// no chunk on demand loading
@@ -722,22 +736,23 @@ function addBrandList() {
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["css/backend/user/cart/cart","css/backend/user/app","css/backend/admin/viewOrder","css/backend/admin/newProduct","css/backend/admin/editProduct","css/ui/sidebar","css/ui/footer","css/includes/filter","css/frontend/type","css/frontend/product/productDetail","css/frontend/product","css/frontend/includes/productList","css/frontend/contact","css/backend/user/order/orderDetail","css/backend/user/order/order"], () => (__webpack_require__("./resources/js/backend/admin/editProduct.js")))
-/******/ 	__webpack_require__.O(undefined, ["css/backend/user/cart/cart","css/backend/user/app","css/backend/admin/viewOrder","css/backend/admin/newProduct","css/backend/admin/editProduct","css/ui/sidebar","css/ui/footer","css/includes/filter","css/frontend/type","css/frontend/product/productDetail","css/frontend/product","css/frontend/includes/productList","css/frontend/contact","css/backend/user/order/orderDetail","css/backend/user/order/order"], () => (__webpack_require__("./resources/scss/backend/admin/editProduct.scss")))
-/******/ 	__webpack_require__.O(undefined, ["css/backend/user/cart/cart","css/backend/user/app","css/backend/admin/viewOrder","css/backend/admin/newProduct","css/backend/admin/editProduct","css/ui/sidebar","css/ui/footer","css/includes/filter","css/frontend/type","css/frontend/product/productDetail","css/frontend/product","css/frontend/includes/productList","css/frontend/contact","css/backend/user/order/orderDetail","css/backend/user/order/order"], () => (__webpack_require__("./resources/scss/backend/admin/newProduct.scss")))
-/******/ 	__webpack_require__.O(undefined, ["css/backend/user/cart/cart","css/backend/user/app","css/backend/admin/viewOrder","css/backend/admin/newProduct","css/backend/admin/editProduct","css/ui/sidebar","css/ui/footer","css/includes/filter","css/frontend/type","css/frontend/product/productDetail","css/frontend/product","css/frontend/includes/productList","css/frontend/contact","css/backend/user/order/orderDetail","css/backend/user/order/order"], () => (__webpack_require__("./resources/scss/backend/admin/viewOrder.scss")))
-/******/ 	__webpack_require__.O(undefined, ["css/backend/user/cart/cart","css/backend/user/app","css/backend/admin/viewOrder","css/backend/admin/newProduct","css/backend/admin/editProduct","css/ui/sidebar","css/ui/footer","css/includes/filter","css/frontend/type","css/frontend/product/productDetail","css/frontend/product","css/frontend/includes/productList","css/frontend/contact","css/backend/user/order/orderDetail","css/backend/user/order/order"], () => (__webpack_require__("./resources/scss/backend/user/app.scss")))
-/******/ 	__webpack_require__.O(undefined, ["css/backend/user/cart/cart","css/backend/user/app","css/backend/admin/viewOrder","css/backend/admin/newProduct","css/backend/admin/editProduct","css/ui/sidebar","css/ui/footer","css/includes/filter","css/frontend/type","css/frontend/product/productDetail","css/frontend/product","css/frontend/includes/productList","css/frontend/contact","css/backend/user/order/orderDetail","css/backend/user/order/order"], () => (__webpack_require__("./resources/scss/backend/user/cart/cart.scss")))
-/******/ 	__webpack_require__.O(undefined, ["css/backend/user/cart/cart","css/backend/user/app","css/backend/admin/viewOrder","css/backend/admin/newProduct","css/backend/admin/editProduct","css/ui/sidebar","css/ui/footer","css/includes/filter","css/frontend/type","css/frontend/product/productDetail","css/frontend/product","css/frontend/includes/productList","css/frontend/contact","css/backend/user/order/orderDetail","css/backend/user/order/order"], () => (__webpack_require__("./resources/scss/backend/user/order/order.scss")))
-/******/ 	__webpack_require__.O(undefined, ["css/backend/user/cart/cart","css/backend/user/app","css/backend/admin/viewOrder","css/backend/admin/newProduct","css/backend/admin/editProduct","css/ui/sidebar","css/ui/footer","css/includes/filter","css/frontend/type","css/frontend/product/productDetail","css/frontend/product","css/frontend/includes/productList","css/frontend/contact","css/backend/user/order/orderDetail","css/backend/user/order/order"], () => (__webpack_require__("./resources/scss/backend/user/order/orderDetail.scss")))
-/******/ 	__webpack_require__.O(undefined, ["css/backend/user/cart/cart","css/backend/user/app","css/backend/admin/viewOrder","css/backend/admin/newProduct","css/backend/admin/editProduct","css/ui/sidebar","css/ui/footer","css/includes/filter","css/frontend/type","css/frontend/product/productDetail","css/frontend/product","css/frontend/includes/productList","css/frontend/contact","css/backend/user/order/orderDetail","css/backend/user/order/order"], () => (__webpack_require__("./resources/scss/frontend/contact.scss")))
-/******/ 	__webpack_require__.O(undefined, ["css/backend/user/cart/cart","css/backend/user/app","css/backend/admin/viewOrder","css/backend/admin/newProduct","css/backend/admin/editProduct","css/ui/sidebar","css/ui/footer","css/includes/filter","css/frontend/type","css/frontend/product/productDetail","css/frontend/product","css/frontend/includes/productList","css/frontend/contact","css/backend/user/order/orderDetail","css/backend/user/order/order"], () => (__webpack_require__("./resources/scss/frontend/includes/productList.scss")))
-/******/ 	__webpack_require__.O(undefined, ["css/backend/user/cart/cart","css/backend/user/app","css/backend/admin/viewOrder","css/backend/admin/newProduct","css/backend/admin/editProduct","css/ui/sidebar","css/ui/footer","css/includes/filter","css/frontend/type","css/frontend/product/productDetail","css/frontend/product","css/frontend/includes/productList","css/frontend/contact","css/backend/user/order/orderDetail","css/backend/user/order/order"], () => (__webpack_require__("./resources/scss/frontend/product.scss")))
-/******/ 	__webpack_require__.O(undefined, ["css/backend/user/cart/cart","css/backend/user/app","css/backend/admin/viewOrder","css/backend/admin/newProduct","css/backend/admin/editProduct","css/ui/sidebar","css/ui/footer","css/includes/filter","css/frontend/type","css/frontend/product/productDetail","css/frontend/product","css/frontend/includes/productList","css/frontend/contact","css/backend/user/order/orderDetail","css/backend/user/order/order"], () => (__webpack_require__("./resources/scss/frontend/product/productDetail.scss")))
-/******/ 	__webpack_require__.O(undefined, ["css/backend/user/cart/cart","css/backend/user/app","css/backend/admin/viewOrder","css/backend/admin/newProduct","css/backend/admin/editProduct","css/ui/sidebar","css/ui/footer","css/includes/filter","css/frontend/type","css/frontend/product/productDetail","css/frontend/product","css/frontend/includes/productList","css/frontend/contact","css/backend/user/order/orderDetail","css/backend/user/order/order"], () => (__webpack_require__("./resources/scss/frontend/type.scss")))
-/******/ 	__webpack_require__.O(undefined, ["css/backend/user/cart/cart","css/backend/user/app","css/backend/admin/viewOrder","css/backend/admin/newProduct","css/backend/admin/editProduct","css/ui/sidebar","css/ui/footer","css/includes/filter","css/frontend/type","css/frontend/product/productDetail","css/frontend/product","css/frontend/includes/productList","css/frontend/contact","css/backend/user/order/orderDetail","css/backend/user/order/order"], () => (__webpack_require__("./resources/scss/includes/filter.scss")))
-/******/ 	__webpack_require__.O(undefined, ["css/backend/user/cart/cart","css/backend/user/app","css/backend/admin/viewOrder","css/backend/admin/newProduct","css/backend/admin/editProduct","css/ui/sidebar","css/ui/footer","css/includes/filter","css/frontend/type","css/frontend/product/productDetail","css/frontend/product","css/frontend/includes/productList","css/frontend/contact","css/backend/user/order/orderDetail","css/backend/user/order/order"], () => (__webpack_require__("./resources/scss/ui/footer.scss")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/backend/user/cart/cart","css/backend/user/app","css/backend/admin/viewOrder","css/backend/admin/newProduct","css/backend/admin/editProduct","css/ui/sidebar","css/ui/footer","css/includes/filter","css/frontend/type","css/frontend/product/productDetail","css/frontend/product","css/frontend/includes/productList","css/frontend/contact","css/backend/user/order/orderDetail","css/backend/user/order/order"], () => (__webpack_require__("./resources/scss/ui/sidebar.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/backend/user/app","css/backend/admin/viewOrderDetail","css/backend/admin/viewOrder","css/backend/admin/newProduct","css/backend/admin/editProduct","css/ui/sidebar","css/ui/footer","css/includes/filter","css/frontend/type","css/frontend/product/productDetail","css/frontend/product","css/frontend/includes/productList","css/frontend/contact","css/backend/user/order/orderDetail","css/backend/user/order/order","css/backend/user/cart/cart"], () => (__webpack_require__("./resources/js/backend/admin/editProduct.js")))
+/******/ 	__webpack_require__.O(undefined, ["css/backend/user/app","css/backend/admin/viewOrderDetail","css/backend/admin/viewOrder","css/backend/admin/newProduct","css/backend/admin/editProduct","css/ui/sidebar","css/ui/footer","css/includes/filter","css/frontend/type","css/frontend/product/productDetail","css/frontend/product","css/frontend/includes/productList","css/frontend/contact","css/backend/user/order/orderDetail","css/backend/user/order/order","css/backend/user/cart/cart"], () => (__webpack_require__("./resources/scss/backend/admin/editProduct.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/backend/user/app","css/backend/admin/viewOrderDetail","css/backend/admin/viewOrder","css/backend/admin/newProduct","css/backend/admin/editProduct","css/ui/sidebar","css/ui/footer","css/includes/filter","css/frontend/type","css/frontend/product/productDetail","css/frontend/product","css/frontend/includes/productList","css/frontend/contact","css/backend/user/order/orderDetail","css/backend/user/order/order","css/backend/user/cart/cart"], () => (__webpack_require__("./resources/scss/backend/admin/newProduct.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/backend/user/app","css/backend/admin/viewOrderDetail","css/backend/admin/viewOrder","css/backend/admin/newProduct","css/backend/admin/editProduct","css/ui/sidebar","css/ui/footer","css/includes/filter","css/frontend/type","css/frontend/product/productDetail","css/frontend/product","css/frontend/includes/productList","css/frontend/contact","css/backend/user/order/orderDetail","css/backend/user/order/order","css/backend/user/cart/cart"], () => (__webpack_require__("./resources/scss/backend/admin/viewOrder.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/backend/user/app","css/backend/admin/viewOrderDetail","css/backend/admin/viewOrder","css/backend/admin/newProduct","css/backend/admin/editProduct","css/ui/sidebar","css/ui/footer","css/includes/filter","css/frontend/type","css/frontend/product/productDetail","css/frontend/product","css/frontend/includes/productList","css/frontend/contact","css/backend/user/order/orderDetail","css/backend/user/order/order","css/backend/user/cart/cart"], () => (__webpack_require__("./resources/scss/backend/admin/viewOrderDetail.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/backend/user/app","css/backend/admin/viewOrderDetail","css/backend/admin/viewOrder","css/backend/admin/newProduct","css/backend/admin/editProduct","css/ui/sidebar","css/ui/footer","css/includes/filter","css/frontend/type","css/frontend/product/productDetail","css/frontend/product","css/frontend/includes/productList","css/frontend/contact","css/backend/user/order/orderDetail","css/backend/user/order/order","css/backend/user/cart/cart"], () => (__webpack_require__("./resources/scss/backend/user/app.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/backend/user/app","css/backend/admin/viewOrderDetail","css/backend/admin/viewOrder","css/backend/admin/newProduct","css/backend/admin/editProduct","css/ui/sidebar","css/ui/footer","css/includes/filter","css/frontend/type","css/frontend/product/productDetail","css/frontend/product","css/frontend/includes/productList","css/frontend/contact","css/backend/user/order/orderDetail","css/backend/user/order/order","css/backend/user/cart/cart"], () => (__webpack_require__("./resources/scss/backend/user/cart/cart.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/backend/user/app","css/backend/admin/viewOrderDetail","css/backend/admin/viewOrder","css/backend/admin/newProduct","css/backend/admin/editProduct","css/ui/sidebar","css/ui/footer","css/includes/filter","css/frontend/type","css/frontend/product/productDetail","css/frontend/product","css/frontend/includes/productList","css/frontend/contact","css/backend/user/order/orderDetail","css/backend/user/order/order","css/backend/user/cart/cart"], () => (__webpack_require__("./resources/scss/backend/user/order/order.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/backend/user/app","css/backend/admin/viewOrderDetail","css/backend/admin/viewOrder","css/backend/admin/newProduct","css/backend/admin/editProduct","css/ui/sidebar","css/ui/footer","css/includes/filter","css/frontend/type","css/frontend/product/productDetail","css/frontend/product","css/frontend/includes/productList","css/frontend/contact","css/backend/user/order/orderDetail","css/backend/user/order/order","css/backend/user/cart/cart"], () => (__webpack_require__("./resources/scss/backend/user/order/orderDetail.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/backend/user/app","css/backend/admin/viewOrderDetail","css/backend/admin/viewOrder","css/backend/admin/newProduct","css/backend/admin/editProduct","css/ui/sidebar","css/ui/footer","css/includes/filter","css/frontend/type","css/frontend/product/productDetail","css/frontend/product","css/frontend/includes/productList","css/frontend/contact","css/backend/user/order/orderDetail","css/backend/user/order/order","css/backend/user/cart/cart"], () => (__webpack_require__("./resources/scss/frontend/contact.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/backend/user/app","css/backend/admin/viewOrderDetail","css/backend/admin/viewOrder","css/backend/admin/newProduct","css/backend/admin/editProduct","css/ui/sidebar","css/ui/footer","css/includes/filter","css/frontend/type","css/frontend/product/productDetail","css/frontend/product","css/frontend/includes/productList","css/frontend/contact","css/backend/user/order/orderDetail","css/backend/user/order/order","css/backend/user/cart/cart"], () => (__webpack_require__("./resources/scss/frontend/includes/productList.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/backend/user/app","css/backend/admin/viewOrderDetail","css/backend/admin/viewOrder","css/backend/admin/newProduct","css/backend/admin/editProduct","css/ui/sidebar","css/ui/footer","css/includes/filter","css/frontend/type","css/frontend/product/productDetail","css/frontend/product","css/frontend/includes/productList","css/frontend/contact","css/backend/user/order/orderDetail","css/backend/user/order/order","css/backend/user/cart/cart"], () => (__webpack_require__("./resources/scss/frontend/product.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/backend/user/app","css/backend/admin/viewOrderDetail","css/backend/admin/viewOrder","css/backend/admin/newProduct","css/backend/admin/editProduct","css/ui/sidebar","css/ui/footer","css/includes/filter","css/frontend/type","css/frontend/product/productDetail","css/frontend/product","css/frontend/includes/productList","css/frontend/contact","css/backend/user/order/orderDetail","css/backend/user/order/order","css/backend/user/cart/cart"], () => (__webpack_require__("./resources/scss/frontend/product/productDetail.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/backend/user/app","css/backend/admin/viewOrderDetail","css/backend/admin/viewOrder","css/backend/admin/newProduct","css/backend/admin/editProduct","css/ui/sidebar","css/ui/footer","css/includes/filter","css/frontend/type","css/frontend/product/productDetail","css/frontend/product","css/frontend/includes/productList","css/frontend/contact","css/backend/user/order/orderDetail","css/backend/user/order/order","css/backend/user/cart/cart"], () => (__webpack_require__("./resources/scss/frontend/type.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/backend/user/app","css/backend/admin/viewOrderDetail","css/backend/admin/viewOrder","css/backend/admin/newProduct","css/backend/admin/editProduct","css/ui/sidebar","css/ui/footer","css/includes/filter","css/frontend/type","css/frontend/product/productDetail","css/frontend/product","css/frontend/includes/productList","css/frontend/contact","css/backend/user/order/orderDetail","css/backend/user/order/order","css/backend/user/cart/cart"], () => (__webpack_require__("./resources/scss/includes/filter.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/backend/user/app","css/backend/admin/viewOrderDetail","css/backend/admin/viewOrder","css/backend/admin/newProduct","css/backend/admin/editProduct","css/ui/sidebar","css/ui/footer","css/includes/filter","css/frontend/type","css/frontend/product/productDetail","css/frontend/product","css/frontend/includes/productList","css/frontend/contact","css/backend/user/order/orderDetail","css/backend/user/order/order","css/backend/user/cart/cart"], () => (__webpack_require__("./resources/scss/ui/footer.scss")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/backend/user/app","css/backend/admin/viewOrderDetail","css/backend/admin/viewOrder","css/backend/admin/newProduct","css/backend/admin/editProduct","css/ui/sidebar","css/ui/footer","css/includes/filter","css/frontend/type","css/frontend/product/productDetail","css/frontend/product","css/frontend/includes/productList","css/frontend/contact","css/backend/user/order/orderDetail","css/backend/user/order/order","css/backend/user/cart/cart"], () => (__webpack_require__("./resources/scss/ui/sidebar.scss")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

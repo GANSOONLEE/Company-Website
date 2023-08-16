@@ -1,0 +1,134 @@
+@charset "UTF-8";
+/* ———————————————————— Layouts ———————————————————— */
+.main .section {
+  margin-left: 17vw;
+  padding: 0 2rem;
+  width: 83vw;
+  height: auto;
+}
+.main .section-title {
+  font-size: var(--font-h4);
+  padding: 3rem 0 0;
+}
+.main .section .button-action-area {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  -moz-column-gap: 2rem;
+       column-gap: 2rem;
+  padding: 1rem 0.5rem;
+}
+.main .section .button-action-area button {
+  outline: none;
+  border: none;
+  cursor: pointer;
+  font-size: var(--font-small);
+  text-align: center;
+  font-weight: normal;
+  padding: 0.6rem 0.6rem;
+  width: 10%;
+  border: 6px;
+}
+.main .section .button-action-area button:disabled {
+  cursor: not-allowed;
+  background-color: darkgrey;
+  color: rgb(25, 25, 25);
+}
+
+/* ———————————————————— Order ———————————————————— */
+.order {
+  max-width: 100%;
+}
+.order .order-header {
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 2.5rem;
+}
+.order .order-header p {
+  margin-bottom: 0;
+  font-size: var(--font-h6);
+}
+.order .order-body {
+  font-size: var(--font-small);
+}
+.order .order-body .order-list {
+  padding: 1rem 1.4rem;
+  justify-content: flex-start;
+  align-items: center;
+  -moz-column-gap: 0;
+       column-gap: 0;
+  cursor: pointer;
+}
+.order .order-body .order-list:hover {
+  color: blue;
+}
+.order .order-body .order-list:not(:last-child) {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1333333333);
+}
+.order .order-body .order-list p {
+  margin-bottom: 0;
+}
+.order .order-body .order-list p:first-child {
+  max-width: 20px;
+  margin-right: 3rem;
+}
+.order .order-body .order-list p:not(:first-child) {
+  min-width: calc(20% - 60px);
+  max-width: calc(20% - 60px);
+}
+/* ———————————————————— General ———————————————————— */
+.display-row {
+  display: flex;
+}
+
+.display-column {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ———————————————————— Modal ———————————————————— */
+#backgroundModal {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6745098039);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 4rem;
+}
+#backgroundModal #editModal {
+  min-width: 40%;
+  max-width: 40%;
+  height: auto;
+  background-color: #eee;
+  border-radius: 6px;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+#backgroundModal #editModal .modal-header {
+  font-size: var(--font-h5);
+  background-color: #fff;
+}
+#backgroundModal #editModal .modal-header p {
+  margin-bottom: 0;
+}
+#backgroundModal #editModal .modal-header #backgroundModalButton {
+  cursor: pointer;
+  color: #1E3050;
+}
+#backgroundModal #editModal .modal-header #backgroundModalButton:hover {
+  color: red;
+}
+#backgroundModal #editModal .modal-body {
+  font-size: var(--font-small);
+}
+#backgroundModal #editModal .modal-body input {
+  font-size: var(--font-small);
+}
+#backgroundModal #editModal .modal-footer button {
+  font-size: var(--font-small);
+}

@@ -5,6 +5,7 @@
         'title.create' => 'Create Product',
         'title.edit' => 'Edit Product',
         'order.view' => 'View Order',
+        'order.view.detail' => 'Order Detail',
 
         /**
          *  column name
@@ -25,6 +26,7 @@
         'delist' => 'Delist',
         'public' => 'Public',
         'batch-operation' => 'Batch operation',
+        'quantity' => 'Qty.',
 
         /**
          *  button
@@ -36,6 +38,8 @@
         'save' => 'Save',
         'reset' => 'Reset',
         'cancel' => 'Cancel',
+        'already-complete' => 'Already Done',
+        'complete' => 'Mark it Done',
 
         /**
          *  Information

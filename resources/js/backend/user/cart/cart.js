@@ -247,7 +247,9 @@ function generate(){
 /** ————————————————————————————— Data Table ————————————————————————————— */
 
 let table = new DataTable('#myTable', {
-    
+    "order": [
+        [1, "asc"],
+    ]
 });
 
 $(document).ready(function() {

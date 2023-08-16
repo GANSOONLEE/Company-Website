@@ -5,6 +5,7 @@
         'title.create' => '新增产品',
         'title.edit' => '修改产品',
         'order.view' => '查看订单',
+        'order.view.detail' => '订单明细',
 
         /**
          *  欄位名稱
@@ -22,6 +23,7 @@
         'fzcode' => 'Frozen 编号',
         'car' => '車款',
         'car-model' => '型號',
+        'quantity' => '數量',
 
         /**
          *  按鈕
@@ -36,6 +38,8 @@
         'delist' => 'Delist',
         'public' => 'Public',
         'batch-operation' => '批量操作',
+        'already-complete' => '已完成',
+        'complete' => '标记为完成',
 
         /**
          *  信息

@@ -153,7 +153,7 @@
                 </a>
                 
                 {{-- In Process --}}
-                <a class="order-status {{ request('status') === 'InProcess' ? ' active' : '' }}" href="{{ route('backend.user.order', ['status' => 'InProcess']) }}">
+                <a class="order-status {{ request('status') === 'In Process' ? ' active' : '' }}" href="{{ route('backend.user.order', ['status' => 'In Process']) }}">
                     <div data-status="In Process">
                         In Process
                     </div>

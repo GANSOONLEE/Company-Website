@@ -62,8 +62,8 @@ $('.paginate_button').click(function (event) {
 /* ———————————————————— Order Detail ———————————————————— */
 
 $('.order').click(function (event) {
-  var dataOrderID = $(this).data('order-id');
-  console.log(dataOrderID);
+  var orderID = $(this).data('order-id');
+  window.location.href = "/admin/admin-view-order/".concat(orderID);
 });
 /******/ })()
 ;

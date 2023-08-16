@@ -224,7 +224,9 @@ function generate() {}
 
 /** ————————————————————————————— Data Table ————————————————————————————— */
 
-var table = new DataTable('#myTable', {});
+var table = new DataTable('#myTable', {
+  "order": [[1, "asc"]]
+});
 $(document).ready(function () {
   // 监听点击事件，选择特定的 <tr> 元素
   $('tr.product-card').click(function (event) {

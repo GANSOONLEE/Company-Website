@@ -58,8 +58,8 @@
                     </div>
                     @foreach ($productData as $index => $product)
                         <div class="product-information display-row">
-                            <p> {{$product->productCatelog}} </p>
-                            <p> {{json_decode($product->productNameList)[0]}} </p>
+                            <p> {{$product[0]->productCatelog}} </p>
+                            <p> {{json_decode($product[0]->productNameList)[0]}} </p>
                             <p> {{json_decode($orderData->orderContent)[$index]->brand}} </p>
                             <p> {{json_decode($orderData->orderContent)[$index]->quantity}} </p>
                         </div>

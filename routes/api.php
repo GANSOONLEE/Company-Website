@@ -10,7 +10,9 @@ use App\Domains\Product\Events\Product\DeletedProductEvent;
 use App\Domains\Order\Events\Cart\AddToCartEvent;
 use App\Domains\Order\Events\Cart\UpdateCartEvent;
 use App\Domains\Order\Events\CreatedOrderEvent;
+use App\Domains\Order\Events\UpdatedOrderEvent;
 use App\Domains\Order\Events\UserViewOrderEvent;
+
 
 
 /*
@@ -38,3 +40,4 @@ Route::post('/user/add-to-cart/', [AddToCartEvent::class, 'productAddToCart']);
 Route::post('/update-cart-quantity', [UpdateCartEvent::class , 'updateCart']);
 Route::post('/create-order',[CreatedOrderEvent::class, 'createOrder'])->name('api.create-order');
 Route::post('/user-view-order',[UserViewOrderEvent::class, 'userViewOrder'])->name('api.user-view-order');
+Route::post('/update-order-status',[UpdatedOrderEvent::class, 'updateOrder'])->name('api.update-order-status');
