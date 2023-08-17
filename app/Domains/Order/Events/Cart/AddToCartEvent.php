@@ -41,6 +41,11 @@ class AddToCartEvent{
                 ];
 
                 Cart::where('ID', $recordUpdateID)->update($data);
+
+                $status = [
+                    'success' => 'success',
+                ];
+                
             }else{
                 Cart::create($data);
 

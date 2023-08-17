@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 /* Return View */
 use App\Http\Controllers\frontend\AdminController;
 use App\Domains\Product\Views\ProductEditController;
+use App\Domains\Product\Views\PendingOrderController;
 
 /* Method */
 use App\Domains\Product\Events\Product\CreatedProductEvent;
@@ -32,7 +33,7 @@ Route::group(['prefix' => 'product'], function(){
 
 Route::group(['prefix' => 'order'], function(){
     Route::get('/viewOrder', [ViewOrder::class,'viewOrder'])->name('viewOrder');
-    Route::get('/noteOrder', [AdminController::class,'noteOrder'])->name('noteOrder');
+    Route::get('/pendingOrder', [PendingOrderController::class,'pendingOrder'])->name('pendingOrder');
 });
 
 Route::group(['prefix' => 'user'], function(){

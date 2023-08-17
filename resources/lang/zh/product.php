@@ -23,13 +23,15 @@
         'fzcode' => 'Frozen 编号',
         'car' => '車款',
         'car-model' => '型號',
-        'quantity' => '數量',
+        'quantity' => '数量',
+        'own' => '还欠',
 
         /**
          *  按鈕
          */
 
         'submit' => '提交',
+        'update' => '更新',
         'refresh' => '刷新',
         'edit' => '编辑产品',
         'save' => '储存',
@@ -40,6 +42,8 @@
         'batch-operation' => '批量操作',
         'already-complete' => '已完成',
         'complete' => '标记为完成',
+        'markAtPending' => '标记为待定',
+        'markAtProcess' => '标记为处理中',
 
         /**
          *  信息
@@ -54,6 +58,7 @@
         'user-instruction' => '<b>点击</b>勾选，<b>双击</b>修改',
         'product-success-delete' => '产品成功删除！',
         'product-failure-delete' => '出现错误，产品没有被删除！',
+        'pending' => '如果订单某些<span style="color:red">商品不足</span>，请按下<b>标记为待定</b>按钮'
     ];
 
 ?>

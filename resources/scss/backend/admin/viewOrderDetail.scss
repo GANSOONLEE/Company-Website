@@ -42,17 +42,33 @@
 .order{
     max-width: 100%;
     .order-header{
-        justify-content: space-between;
+        justify-content: flex-start;
         align-items: center;
         padding-right: 2.5rem;
+        row-gap: .7rem;
+        .order-info{
+            justify-content: space-between;
+            align-items: flex-start;
+            width: 100%;
+        }
         p{
             margin-bottom: 0;
             font-size: var(--font-h6);
         }
+        .customer-info{
+            justify-content: flex-start;
+            align-items: flex-start;
+            width: 100%;
+            column-gap: 2rem;
+            .customer-name{
+                font-weight: bold;
+                color: rgb(0, 0, 147);
+                text-align: left;
+            }
+        }
     }
     .order-body{
         font-size: var(--font-small);
-        
         .order-list{
             padding: 1rem 1.4rem;
             justify-content: flex-start;
@@ -74,6 +90,10 @@
                 &:not(:first-child){
                     min-width: calc((100% / 5) - 60px);
                     max-width: calc((100% / 5) - 60px);
+                }
+                &[data="own"]{
+                    margin-left: 1.2rem;
+                    color: red;
                 }
             }
         }
@@ -109,14 +129,27 @@
         min-width: 40%;
         max-width: 40%;
         height: auto;
-        background-color: #eee;
+        padding: .4rem 0;
+        background-color: #fff;
         border-radius: 6px;
         position: relative;
         top: 0;
         left: 0;
+        &.shake{
+            animation-name: shake;
+            animation-duration: .2s;
+            animation-iteration-count: 1;
+            animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+            #backgroundModalButton{
+                animation-name: scale;
+                animation-duration: .2s;
+                animation-iteration-count: 1;
+                animation-timing-function: linear;
+            }
+        }
         .modal-header{
             font-size: var(--font-h5);
-            background-color: #fff;
+            background-color: #fafafa;
             p{
                 margin-bottom: 0;
             }
@@ -135,9 +168,52 @@
             }
         }
         .modal-footer{
+            background-color: #fafafa;
             button{
                 font-size: var(--font-small);
             }
         }
+    }
+}
+
+@keyframes shake{
+    0%{
+        transform: rotateZ(0);
+    }
+    12.5%{
+        transform: rotateZ(1deg);
+    }
+    25%{
+        transform: rotateZ(-1deg);
+    }
+    37.5%{
+        transform: rotateZ(1deg);
+    }
+    50%{
+        transform: rotateZ(-1deg);
+    }
+    62.5%{
+        transform: rotateZ(1deg);
+    }
+    75%{
+        transform: rotateZ(-1deg);
+    }
+    87.5%{
+        transform: rotateZ(1deg);
+    }
+    100%{
+        transform: rotateZ(0);
+    }
+}
+
+@keyframes scale {
+    0%{
+        transform: scaleY(1.2);
+    }
+    70%{
+        transform: scaleY(.8);
+    }
+    100%{
+        transform: scaleY(1.0);
     }
 }

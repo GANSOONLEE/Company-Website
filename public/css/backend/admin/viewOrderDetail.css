@@ -40,13 +40,31 @@
   max-width: 100%;
 }
 .order .order-header {
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   padding-right: 2.5rem;
+  row-gap: 0.7rem;
+}
+.order .order-header .order-info {
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
 }
 .order .order-header p {
   margin-bottom: 0;
   font-size: var(--font-h6);
+}
+.order .order-header .customer-info {
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  -moz-column-gap: 2rem;
+       column-gap: 2rem;
+}
+.order .order-header .customer-info .customer-name {
+  font-weight: bold;
+  color: rgb(0, 0, 147);
+  text-align: left;
 }
 .order .order-body {
   font-size: var(--font-small);
@@ -76,6 +94,10 @@
   min-width: calc(20% - 60px);
   max-width: calc(20% - 60px);
 }
+.order .order-body .order-list p[data=own] {
+  margin-left: 1.2rem;
+  color: red;
+}
 /* ———————————————————— General ———————————————————— */
 .display-row {
   display: flex;
@@ -103,15 +125,28 @@
   min-width: 40%;
   max-width: 40%;
   height: auto;
-  background-color: #eee;
+  padding: 0.4rem 0;
+  background-color: #fff;
   border-radius: 6px;
   position: relative;
   top: 0;
   left: 0;
 }
+#backgroundModal #editModal.shake {
+  animation-name: shake;
+  animation-duration: 0.2s;
+  animation-iteration-count: 1;
+  animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+#backgroundModal #editModal.shake #backgroundModalButton {
+  animation-name: scale;
+  animation-duration: 0.2s;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+}
 #backgroundModal #editModal .modal-header {
   font-size: var(--font-h5);
-  background-color: #fff;
+  background-color: #fafafa;
 }
 #backgroundModal #editModal .modal-header p {
   margin-bottom: 0;
@@ -129,6 +164,50 @@
 #backgroundModal #editModal .modal-body input {
   font-size: var(--font-small);
 }
+#backgroundModal #editModal .modal-footer {
+  background-color: #fafafa;
+}
 #backgroundModal #editModal .modal-footer button {
   font-size: var(--font-small);
+}
+
+@keyframes shake {
+  0% {
+    transform: rotateZ(0);
+  }
+  12.5% {
+    transform: rotateZ(1deg);
+  }
+  25% {
+    transform: rotateZ(-1deg);
+  }
+  37.5% {
+    transform: rotateZ(1deg);
+  }
+  50% {
+    transform: rotateZ(-1deg);
+  }
+  62.5% {
+    transform: rotateZ(1deg);
+  }
+  75% {
+    transform: rotateZ(-1deg);
+  }
+  87.5% {
+    transform: rotateZ(1deg);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
+}
+@keyframes scale {
+  0% {
+    transform: scaleY(1.2);
+  }
+  70% {
+    transform: scaleY(0.8);
+  }
+  100% {
+    transform: scaleY(1);
+  }
 }

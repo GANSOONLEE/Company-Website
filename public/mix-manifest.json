@@ -1,5 +1,6 @@
 {
     "/js/backend/admin/editProduct.js": "/js/backend/admin/editProduct.js",
+    "/js/backend/admin/pendingOrder.js": "/js/backend/admin/pendingOrder.js",
     "/js/backend/admin/upload.js": "/js/backend/admin/upload.js",
     "/js/backend/admin/viewOrder.js": "/js/backend/admin/viewOrder.js",
     "/js/backend/admin/viewOrderDetail.js": "/js/backend/admin/viewOrderDetail.js",
@@ -8,9 +9,9 @@
     "/js/backend/user/order/orderDetail.js": "/js/backend/user/order/orderDetail.js",
     "/js/frontend/product/productDetail.js": "/js/frontend/product/productDetail.js",
     "/js/ui/sidebar.js": "/js/ui/sidebar.js",
-    "/css/backend/user/app.css": "/css/backend/user/app.css",
     "/css/backend/admin/viewOrderDetail.css": "/css/backend/admin/viewOrderDetail.css",
     "/css/backend/admin/viewOrder.css": "/css/backend/admin/viewOrder.css",
+    "/css/backend/admin/pendingOrder.css": "/css/backend/admin/pendingOrder.css",
     "/css/backend/admin/newProduct.css": "/css/backend/admin/newProduct.css",
     "/css/backend/admin/editProduct.css": "/css/backend/admin/editProduct.css",
     "/css/ui/sidebar.css": "/css/ui/sidebar.css",
@@ -23,5 +24,6 @@
     "/css/frontend/contact.css": "/css/frontend/contact.css",
     "/css/backend/user/order/orderDetail.css": "/css/backend/user/order/orderDetail.css",
     "/css/backend/user/order/order.css": "/css/backend/user/order/order.css",
-    "/css/backend/user/cart/cart.css": "/css/backend/user/cart/cart.css"
+    "/css/backend/user/cart/cart.css": "/css/backend/user/cart/cart.css",
+    "/css/backend/user/app.css": "/css/backend/user/app.css"
 }

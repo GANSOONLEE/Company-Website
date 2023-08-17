@@ -27,12 +27,14 @@
         'public' => 'Public',
         'batch-operation' => 'Batch operation',
         'quantity' => 'Qty.',
+        'own' => 'Is own',
 
         /**
          *  button
          */
 
         'submit' => 'Submit',
+        'update' => 'Update',
         'refresh' => 'Refresh',
         'edit' => 'Edit Product',
         'save' => 'Save',
@@ -40,6 +42,8 @@
         'cancel' => 'Cancel',
         'already-complete' => 'Already Done',
         'complete' => 'Mark it Done',
+        'markAtPending' => 'Pending',
+        'markAtProcess' => 'Make it Processing',
 
         /**
          *  Information
@@ -54,6 +58,7 @@
         'user-instruction' => '<b>Click</b> to select, <b>Double click</b> to edit',
         'product-success-delete' => 'Delete product successful!',
         'product-failure-delete' => 'Error! Product aren\'t delete!',
+        'pending' => 'If certain items in the order are <span style="color:red">insufficient</span>, please press the <b>Mark as Pending</b> button.'
     ];
 
 ?>

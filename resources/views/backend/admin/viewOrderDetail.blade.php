@@ -26,23 +26,33 @@
         <div class="order card">
             
             <!-- Order Information -->
-            <div class="order-header card-header display-row">
-                <p>{{$order->orderID}}</p>
-                <p>{{$order->orderStatus}}</p>
+            <div class="order-header card-header display-column">
+                <div class="display-row order-info">
+                    <p id="orderID">{{$order->orderID}}</p>
+                    <p>{{$order->orderStatus}}</p>
+                </div>
+                <div class="display-row customer-info">
+                    <p class="customer-name">{{$order->order_to_user()->Name}}</p>
+                    @php
+                        $propertyName = 'Store / Company Name';
+                    @endphp
+                    <p>{{$order->order_to_user()->$propertyName}}</p>
+                </div>
             </div>
-
             <!-- Order Items -->
             <div class="order-body">
-                
                 <!-- Units -->
                 @foreach ($productData as $index => $item)
                     <div class="order-list display-row" id="item-edit">
                         <p data="index">{{$index+1}}.</p>
-                        <p data="id" style="display: none">{{$item[0]->productID}}</p>
+                        <p data="cartID" style="display: none">{{$item[1]->cartID}}</p>
                         <p data="category">{{$item[0]->productCatelog}}</p>
                         <p data="name">{{json_decode($item[0]->productNameList)[0]}}</p>
                         <p data="brand">{{$item[1]->brand}}</p>
                         <p data="quantity">{{$item[1]->quantity}}</p>
+                        @if(isset($item[1]->own))
+                            {{trans('product.own')}} <p data="own">{{$item[1]->own}}</p>
+                        @endif
                     </div>
                 @endforeach
 
@@ -51,8 +61,17 @@
             <!-- I don't know -->
             <div class="order-footer card-footer">
                 <div class="button-action-area">
+                    @if($order->orderStatus === 'Pending')
+                    <button type="button" class="btn btn-secondary" data-order-id={{$order->orderID}} id="InProcessButton">
+                        {{trans('product.markAtProcess')}}
+                    </button>
+                    @else
+                    <button type="button" class="btn btn-secondary" data-order-id={{$order->orderID}} id="PendingButton" {{$order->orderStatus == "Complete" ? 'disabled':''}}>
+                        {{trans('product.markAtPending')}}
+                    </button>
+                    @endif
                     <button type="button" class="btn btn-primary" data-button-action="complete" data-order-id={{$order->orderID}} id="CompleteButton" {{$order->orderStatus == "Complete" ? 'disabled':''}}>
-                        @if($order->orderStatus === 'In Process')
+                        @if($order->orderStatus !== 'Complete' )
                             {{ trans('product.complete') }}
                         @else
                             {{ trans('product.already-complete') }}
@@ -62,7 +81,7 @@
             </div>
 
         </div>
-
+        <p style="font-size: var(--font-small);padding-top: .4rem">{!!trans('product.pending')!!}</p>
         <div class="modal-background" id="backgroundModal" style="display: none">
             <div class="modal" id="editModal" style="display: block">
                 <div class="modal-header display-row">
@@ -86,10 +105,18 @@
                         <label for="quantity">{{trans('product.quantity')}}</label>
                         <input required class="form-control" type="text" name="" id="quantity" value="">
                     </div>
+                    <div class="mb-3">
+                        <label for="own">{{trans('product.own')}}</label>
+                        <input class="form-control" type="text" name="" id="own" value="" placeholder="{{trans('product.own')}}">
+                    </div>
+                    <div class="mb-3" style="display: none">
+                        <label for="cartID">{{trans('product.own')}}</label>
+                        <input class="form-control" type="text" id="cartID" value="">
+                    </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-success">
-                        {{trans('product.submit')}}
+                    <button type="button" class="btn btn-success" id="updateProductOwn">
+                        {{trans('product.update')}}
                     </button>
                 </div>
             </div>

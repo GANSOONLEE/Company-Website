@@ -46,8 +46,8 @@
                         'notification' => 'notification',
                     ],
                     [
-                        'url' => route('backend.admin.noteOrder'),
-                        'label' => trans('sidebar.noteOrder')
+                        'url' => route('backend.admin.pendingOrder'),
+                        'label' => trans('sidebar.pendingOrder')
                     ],
                 ]
             ],

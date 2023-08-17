@@ -11,7 +11,7 @@
         'newProduct' => '新增产品',
         'editProduct' => '修改产品',
         'account' => '用户管理',
-        'noteOrder' => '订单笔记',
+        'pendingOrder' => '待定订单',
     ]
 
 ?>

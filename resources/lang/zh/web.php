@@ -23,6 +23,7 @@
          'view_order' => '查看订单',
          'edit_order' => '修改订单',
          'user_management' => '用户管理',
+         'pending_order' => '待定订单'
     ];
 
 ?>

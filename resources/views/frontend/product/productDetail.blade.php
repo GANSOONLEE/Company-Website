@@ -74,7 +74,7 @@
 
     <div class="detail">
         <div class="detail-header">
-            <input type="text" name="productCategory" id="" value="{{ $product->productCatelog }}">
+            <input style="display: none" type="text" name="productCategory" id="" value="{{ $product->productCatelog }}">
         </div>
         <div class="detail-body">
             <div class="detail-product-image-area">
@@ -97,12 +97,84 @@
                     </div>
                 </div>
             </div>
-            <div class="detail-product-information-area">
+            <div class="detail-product-information-area display-column">
 
-                <div class="information-section">
-                    {{-- <div class="information-section-title">
+                <!-- Product Name -->
+                <div class="detail-product-information-subarea">
+                    <!-- Product Name -->
+                    <div class="information-section">
+                        <div class="information-section-content">
+                            <div class="product-name">
+                                {{ json_decode($product->productNameList)[0] }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                    </div> --}}
+                <!-- Car Model | Brand -->
+                <div class="detail-product-information-subarea display-row">
+                    
+                    <!-- Car Model -->
+                    <div class="information-section car-model">
+                        <div class="information-section-content display-column">
+                            <div class="section-title">
+                                <p class="">Car Model</p>
+                            </div>
+                            @foreach ((json_decode($product->productNameList)) as $name)
+                                <p>{{ $name }}</p>
+                            @endforeach
+                        </div>
+                    </div>
+
+                    <!-- Brand -->
+                    <div class="information-section display-column brand-list-box">
+                        
+                        <!-- brand list -->
+                        <div class="information-section-content display-column  brand-list-container">
+                            <div class="section-title">
+                                <p class="">Brand</p>
+                            </div>
+                            <div class="brand-list">
+                                @foreach ((json_decode($product->productBrandList)) as $brand)
+                                    <input type="radio" name='brand' value="{{$brand->code}}" id="{{$brand->code}}">
+                                    <label class="product-brand" for="{{$brand->code}}">
+                                        <p>{{$brand->code}}</p>
+                                    </label>
+                                @endforeach
+                            </div>
+                        </div>
+
+                        <!-- cart -->
+                        <div class="information-section display-column">
+                            <div class="action-section display-column">
+                                <div class="action-title">
+                                    Quantity
+                                </div>
+                                <div class="add-to-cart-area">
+                                    <div class="quantity-select-area">
+                                        <button id="removeQuantity" class="remove-quantity quantityButton">
+                                            <i class="fa-solid fa-minus"></i>
+                                        </button>
+                                        <div id="displayCurrentQuantity" class="display-current-quantity-box">
+                                            <p id="currentQuantity">1</p>
+                                        </div>
+                                        <button id="addQuantity" class="add-quantity quantityButton">
+                                            <i class="fa-solid fa-plus"></i>
+                                        </button>
+                                    </div>
+                                    <button class="add-to-cart" id="addToCart">
+                                        <i class="fa-solid fa-cart-shopping"></i>
+                                        Add to cart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                {{-- <div class="information-section">
+                    <div class="information-section-title">
+
+                    </div>
                     <div class="information-section-content">
                         <div class="product-name">
                             {{ $product->productName }}
@@ -112,9 +184,9 @@
                 </div>
 
                 <div class="information-section">
-                    {{-- <div class="information-section-title">
+                    <div class="information-section-title">
                         
-                    </div> --}}
+                    </div>
                     <div class="information-section-content">
                         <div class="product-description-content">
                             Description
@@ -128,11 +200,7 @@
                     </div>
                     <div class="information-section-content">
                         @if($product->productBrandList)
-                            @php
-                                $brands = json_decode($product->productBrandList);
-                                // dd($product->productBrandList, $brands[0]->code)
-                            @endphp
-                            @foreach ($brands as $brand)
+                            @foreach ((json_decode($product->productBrandList)) as $brand)
                                 <input type="radio" name='brand' value="{{$brand->code}}" id="{{$brand->code}}">
                                 <label class="product-brand disable-order-function" for="{{$brand->code}}">
                                     <p>{{$brand->code}}</p>
@@ -163,7 +231,7 @@
                             Add to cart
                         </button>
                     </div>
-                </div>
+                </div> --}}
 
             </div>
         </div>

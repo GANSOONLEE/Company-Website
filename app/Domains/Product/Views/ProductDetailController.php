@@ -16,7 +16,7 @@ class ProductDetailController extends Controller{
         $product = Product::where('productID', $productID)
             ->first();
 
-        $directory = `$product->productCatelog/` . $product->getProductID() . `/`;
+        $directory = $product->productCatelog . '/' . $product->getProductID() . '/';
         
         $files = Storage::disk('product')->allFiles($directory);
         $images = [];
@@ -31,7 +31,10 @@ class ProductDetailController extends Controller{
 
         if(Auth::check()) {
             $userEmail = Auth::user()->Email;
-            $recondCount = Cart::where('Email', $userEmail)->count();
+            $recondCount = Cart::where('Email', $userEmail)
+                            ->where('quantity', '<>', 0)
+                            ->count();
+                            
             $data = ['product' => $product, 'images' => $images, 'cart' => $recondCount];
         } else {
             $data = ['product' => $product, 'images' => $images];

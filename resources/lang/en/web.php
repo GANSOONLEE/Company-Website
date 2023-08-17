@@ -23,6 +23,7 @@
          'view_order' => 'View Order',
          'edit_order' => 'Edit Order',
          'user_management' => 'User Management',
+         'pending_order' => 'Pending Order'
     ];
 
 ?>

@@ -71,3 +71,78 @@
         }
     }
 }
+
+@media only screen and (max-width: 790px) {
+
+    .sidebar{
+        position: fixed;
+        height: 100vh;
+        min-width: 100vw;
+        height: 6vh;
+        top: 0;
+        padding: 2rem 0;
+        background-color: rgb(255, 255, 255);
+        box-shadow: 0 0 10px #000000aa;
+        > .sidebar-header{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+            img.logo{
+                min-width: 10vw;
+                width: 10vw;
+                max-width: 10vw;
+            }
+        }
+        .sidebar-body{
+            padding: 2rem 0;
+            > ul.sidebar-links{
+                .section{
+                    display: flex;
+                    flex-direction: column;
+                    
+                    padding: .8rem 0;
+                    font-size: var(--font-h6);
+                    //background: linear-gradient(#999, #999) 12% 30px/1px 46% no-repeat;
+                    > .section-title{
+                        display: flex;
+                        align-items: center;
+                    }
+                    .section-links{
+                        padding: 1.3rem .7rem 0;
+                        .sidebar-link{
+                            //background: linear-gradient(#999,#999) 0px 50%/20px 1px no-repeat;
+                            padding: 1.2rem 0 1.2rem 4rem;
+                        }
+                    }
+                }
+                .sidebar-link{
+                    padding: 1.2rem 2rem;
+                    font-size: var(--font-h6);
+                    display: flex;
+                    align-items: center;
+                    width: 100%;
+                    justify-content: center;
+                    background-color: white;
+                    .notification-order{
+                        margin-left: 1rem;
+                        background-color: rgb(213, 0, 0);
+                        color: whitesmoke;
+                        border-radius: 2px;
+                        height: 80%;
+                        width: 2vw;
+                        text-align: center;
+                        font-size: var(--font-small);
+                    }
+                }
+                i.link-icon{
+                    margin-right: 2rem;
+                }
+                p{
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+}
