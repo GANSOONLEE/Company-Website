@@ -122,6 +122,9 @@
 #myTable_wrapper > #myTable > tbody > tr > td[data-status="In Process"] > span {
   animation: blindInProcess infinite 1s steps(1);
 }
+#myTable_wrapper > #myTable > tbody > tr > td[data-status=Pending] > span {
+  animation: blindInPending infinite 0.5s steps(1);
+}
 #myTable_wrapper > #myTable > tbody > tr > td[data-status=Complete] > span {
   animation: blindComplete infinite 1s steps(1);
 }
@@ -139,6 +142,14 @@
   }
   50% {
     background-color: rgb(187, 187, 0);
+  }
+}
+@keyframes blindInPending {
+  0% {
+    background-color: rgb(28, 35, 255);
+  }
+  50% {
+    background-color: rgb(4, 0, 129);
   }
 }
 @keyframes blindComplete {

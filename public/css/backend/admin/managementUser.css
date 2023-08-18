@@ -1,0 +1,9 @@
+.main .section {
+  margin-left: 17vw;
+  width: 83vw;
+  height: auto;
+}
+.main .section-title {
+  font-size: var(--font-h4);
+  padding: 2rem 0 0 2rem;
+}

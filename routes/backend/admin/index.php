@@ -14,6 +14,7 @@ use App\Domains\Product\Events\Product\DeletedProductEvent;
 
 use App\Domains\Order\Events\AdminViewOrderEvent;
 use App\Domains\Order\Views\ViewOrder;
+use App\Domains\Auth\Views\ManagerAdminController;
 
 // 後臺系統
 
@@ -21,7 +22,7 @@ use App\Domains\Order\Views\ViewOrder;
  * sidebar 連接
  * 
  */
-Route::get('/dashboard', [AdminController::class,'dashboard'])->name('dashboard');
+// Route::get('/dashboard', [AdminController::class,'dashboard'])->name('dashboard');
 
 Route::group(['prefix' => 'product'], function(){
     Route::get('/newProduct', [AdminController::class,'newProduct'])->name('newProduct');
@@ -37,7 +38,7 @@ Route::group(['prefix' => 'order'], function(){
 });
 
 Route::group(['prefix' => 'user'], function(){
-    Route::get('/managerAccount', [AdminController::class,'managerAccount'])->name('managerAccount');
+    Route::get('/managerAccount', [ManagerAdminController::class,'managerAccount'])->name('managerAccount');
 });
 
 Route::get('/admin-view-order/{orderID}',[AdminViewOrderEvent::class, 'adminViewOrder'])->name('api.admin-view-order');
