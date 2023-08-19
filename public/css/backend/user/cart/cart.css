@@ -321,6 +321,15 @@
   display: block;
   cursor: pointer;
 }
+.dataTables_empty {
+  border-top: 1px solid rgba(0, 0, 0, 0.1333333333);
+  background-color: rgba(0, 0, 0, 0.0666666667);
+  padding: 0.4rem 1rem;
+}
+.dataTables_empty:hover {
+  background-color: rgba(161, 35, 18, 0.0666666667);
+}
+
 /* ——————————————————————————————————————— Model ————————————————————————————————————————————— */
 .model-background {
   z-index: 10;

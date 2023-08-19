@@ -5,6 +5,7 @@ namespace App\Domains\Product\Events\Product;
 
 use App\Models\Product;
 
+use App\Models\UserOperation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -93,14 +94,20 @@ class CreatedProductEvent{
 
             Product::create($data);
 
-            
+            $operation = [
+                'userID' => auth()->user()->Name,
+                'operationType' => 'Create Product',
+                'ID' => $productID,
+            ];
+
+            UserOperation::create($operation);
 
         } catch (\Exception $e) {
             $this->showAlert('Error occurred while sending data: ' . $e->getMessage(), 'danger');
         }
 
         $this->showAlert('Data sent successfully!', 'success');
-        // return redirect()->back();
+        return redirect()->back();
     }
 
     public function showAlert($message, $type = 'info')

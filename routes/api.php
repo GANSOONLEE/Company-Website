@@ -13,6 +13,7 @@ use App\Domains\Order\Events\Cart\UpdateCartOwnEvent;
 use App\Domains\Order\Events\CreatedOrderEvent;
 use App\Domains\Order\Events\UpdatedOrderEvent;
 use App\Domains\Order\Events\UserViewOrderEvent;
+use App\Domains\Auth\Events\RestoreRecordEvent;
 
 
 
@@ -43,3 +44,5 @@ Route::post('/create-order',[CreatedOrderEvent::class, 'createOrder'])->name('ap
 Route::post('/user-view-order',[UserViewOrderEvent::class, 'userViewOrder'])->name('api.user-view-order');
 Route::post('/update-order-status',[UpdatedOrderEvent::class, 'updateOrder'])->name('api.update-order-status');
 Route::post('/update-cart-own',[UpdateCartOwnEvent::class, 'updateOwnCart'])->name('api.update-order-status');
+Route::post('/restore-record',[RestoreRecordEvent::class, 'restoreRecord'])->name('api.restore-record');
+

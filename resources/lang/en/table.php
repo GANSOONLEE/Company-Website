@@ -13,7 +13,12 @@
         'orderReceivedTime' => 'Received Time',
         'orderStatus' => 'Status',
         'orderContent' => 'Content',
-        'view-order' => 'Order'
+        'view-order' => 'Order',
+        'userID' => 'Username',
+        'ID' => 'ID',
+        'operationType' => 'Operation Type',
+        'created_at' => 'Operation Time',
+        'restore' => 'Restore',
     ]
 
 ?>

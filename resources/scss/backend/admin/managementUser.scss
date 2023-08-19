@@ -10,3 +10,203 @@
         }
     }
 }
+
+/* ———————————————————— Table ———————————————————————— */
+
+#myTable_wrapper{
+    border-radius: 6px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+    margin: 2rem;
+    padding: .9rem 2rem;
+
+    $font-size: var(--font-small);
+
+    >#myTable_length, >#myTable_filter{
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        font-size: $font-size;
+        >label{
+            padding: 1rem 0;
+            width: 50%;
+        }
+    }
+
+    // Record per page
+    >#myTable_length{
+        >label{
+
+           >select{
+                margin: 0 .6rem;
+                padding: .2rem .6rem;
+           }
+        }
+    }
+
+    // Filter
+    >#myTable_filter{
+        >label{
+            >input{
+                margin: 0 .6rem;
+                padding: .2rem .6rem;
+            }
+        }
+    }
+
+    // Table
+    >#myTable{
+        outline: 1px solid rgb(223, 223, 223);
+        padding: .9rem 2rem;
+        width: 100% !important;
+        border-radius: 6px;
+        >t{
+            $padding: 1rem;
+            $font-size: var(--font-h6);
+            // $padding: 1rem;
+            &head{
+                > tr > th{
+                    color: black;
+                    font-weight: bold;
+                    padding: $padding;
+                    font-size: $font-size;
+                    cursor: pointer;
+                    border-bottom: 1px solid darkgrey;
+                    &:hover{
+                        background-color: azure;
+                    }
+                }
+            }
+            &body{
+                > tr{
+                    color: black;
+                    &.odd{
+                        background-color: rgb(233, 233, 233);
+                    }
+                    &.even{
+                        background-color: rgb(228, 228, 228);                    
+                    }
+                    &:hover{
+                        background-color: rgb(220, 220, 220);
+                        color: orangered;
+                    }
+                    >td{
+                        cursor: pointer;
+                        padding: $padding;
+                        font-size: $font-size;
+                        .inputCheckbox{
+                            display: block;
+                            cursor: pointer;
+                        }
+                        > span{
+                            $size: 10px;
+                            display: inline-block;
+                            height: $size;
+                            width: $size;
+                            border: 25px;
+                            margin-right: 1rem;
+                            border-radius: 50%;
+                        }
+                        &[data-status="Delist"] > span{
+                            animation: blindDelist infinite 1s steps(1);
+                        }
+                        &[data-status="Public"] > span{
+                            animation: blindPublic infinite 1s steps(1);
+                        }
+                    }
+                    @keyframes blindDelist {
+                        0%{
+                            background-color: yellow;
+                        }
+                        50%{
+                            background-color: rgb(187, 187, 0);
+                        }
+                    }
+
+                    @keyframes blindPublic {
+                        0%{
+                            background-color: rgb(0, 187, 56);                         
+                        }
+                        50%{
+                            background-color: green;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    $font-size: var(--font-h6);
+    // Recond
+    >#myTable_info{
+        width: 100%;
+        text-align: right;
+        font-size: $font-size;
+    }
+
+    // Paginate
+    >#myTable_paginate{
+        $border-color: rgba(0, 0, 255, 0.23);
+
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        font-size: $font-size;
+        width: min-content;
+        border-radius: 6px;
+        border: 2px solid $border-color;
+        a{
+            cursor: pointer;
+            padding: .6rem 1rem;
+            &.paginate_button:first-child{
+                border-right: 1px solid $border-color;
+            }
+            &.paginate_button:last-child{
+                border-right: 1px solid $border-color;
+            }
+            &.disabled{
+                cursor: not-allowed;
+                color: rgb(99, 99, 99);
+                background-color: rgba(221, 221, 221, 0.23);
+            }
+        }
+        >span{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            >.paginate_button{
+                border-right: 1px solid $border-color;
+                border-left: 1px solid $border-color;
+                padding: .6rem 1.2rem;
+                &:first-child{
+                    border-left: 1px solid $border-color;
+                    border-right: none;
+                }
+                &:last-child{
+                    border-left: none;
+                    border-right: 1px solid $border-color;
+                }
+                &:hover{
+                    background-color: aliceblue;
+                }
+                &.current{
+                    color: orangered;
+                    background-color: rgba(255, 189, 165, 0.23);
+                }
+            }
+        }
+    }
+}
+
+.restoreButton{
+    padding: .4rem .8rem;
+    outline: none;
+    border: none;
+    font-size: var(--font-small);
+    border-radius: 2px;
+    color: white;
+    background-color: green;
+    transition: all .12s ease-in-out;
+    &:hover{
+        background-color: rgb(0, 110, 0);
+    }
+}

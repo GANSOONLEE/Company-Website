@@ -3,6 +3,7 @@
 namespace App\Domains\Product\Events\Product;
 
 use App\Models\Product;
+use App\Models\UserOperation;
 use Illuminate\Http\Request;
 use \Illuminate\Database\QueryException;
 use App\Domains\Product\Observer\ProductCreatedNotification;
@@ -71,6 +72,14 @@ class UpdatedProductEvent{
                     'productType' => $productType,
                     'productStatus' => $productStatus,
                 ]);
+
+                $operation = [
+                    'userID' => auth()->user()->Name,
+                    'operationType' => 'Update Product',
+                    'ID' => $productID,
+                ];
+    
+                UserOperation::create($operation);
 
                 $this->showAlert(trans('product.success'), 'success');
                 return redirect()->back();

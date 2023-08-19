@@ -22,7 +22,7 @@ use App\Domains\Auth\Views\ManagerAdminController;
  * sidebar 連接
  * 
  */
-// Route::get('/dashboard', [AdminController::class,'dashboard'])->name('dashboard');
+Route::get('/dashboard', [AdminController::class,'dashboard'])->name('dashboard');
 
 Route::group(['prefix' => 'product'], function(){
     Route::get('/newProduct', [AdminController::class,'newProduct'])->name('newProduct');

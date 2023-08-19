@@ -10,8 +10,8 @@
 
         <div class="product-list-section">
 
-            @if (count($products) > 0)
-                @foreach ($products as $product)
+            @if (count($productData) > 0)
+                @foreach ($productData as $product)
                     @php
                         $productName = json_decode($product->productNameList)[0];
                     @endphp

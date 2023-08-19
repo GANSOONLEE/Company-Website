@@ -169,15 +169,15 @@
   display: none;
 }
 .detail .detail-body .detail-product-information-area .information-section .information-section-content .brand-list input[type=radio]:checked + label {
-  background: orangered;
+  background: rgb(255, 115, 64);
   color: #fafafa;
 }
 .detail .detail-body .detail-product-information-area .information-section .information-section-content .brand-list label {
   transition: all 0.2s ease-in-out;
   cursor: pointer;
-  border-radius: 4px;
+  border-radius: 2px;
   font-size: var(--font-h6);
-  border: #ee3211 2px solid;
+  border: #e8edff 1px solid;
   background-color: #f4eeee;
   padding: 0.9rem 2rem;
 }

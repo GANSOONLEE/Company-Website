@@ -17,11 +17,12 @@
                 'icon' => 'fa-solid fa-house',
                 'label' => trans('sidebar.home')
             ],
-            // [
-            //     'url' => route('backend.admin.dashboard'), 
-            //     'icon' => 'fa-solid fa-chart-line',
-            //     'label' => trans('sidebar.dashboard')
-            // ],
+            // #TODO admin dashboard
+            [
+                'url' => route('backend.admin.dashboard'), 
+                'icon' => 'fa-solid fa-chart-line',
+                'label' => trans('sidebar.dashboard')
+            ],
             [
                 'section' => trans('sidebar.product'),
                 'icon' => 'fa-solid fa-box',
@@ -38,7 +39,7 @@
             ],
             [                
                 'section' => trans('sidebar.order'),
-                'icon' => 'fa-solid fa-box',
+                'icon' => 'fa-regular fa-file-lines',
                 'link' => [
                     [
                         'url' => route('backend.admin.viewOrder'),

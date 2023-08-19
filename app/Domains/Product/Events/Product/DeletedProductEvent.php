@@ -4,7 +4,10 @@ namespace App\Domains\Product\Events\Product;
 
 use \App\Domains\Product\Events\Notification\ProductDeletedNotification;
 use App\Models\Product;
+use App\Models\User;
+use App\Models\UserOperation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class DeletedProductEvent{
@@ -17,15 +20,33 @@ class DeletedProductEvent{
             $productID = $request->input('productID');
             $productCatelog = $product->productCatelog;
             
-            Storage::disk('product')->deleteDirectory("$productCatelog/$productID");
+            // Storage::disk('product')->deleteDirectory("$productCatelog/$productID");
 
-            $product->delete();    
+            $email = $request->input('email');
+            $user = User::where('Email', $email)->first();
+
+            $operation = [
+                'userID' => $user->Name,
+                'operationType' => 'Delete Product',
+                'ID' => $request->productID,
+            ];
+
+            UserOperation::create($operation);
+
+            $product->delete();
+
+            $status = [
+                'success' => 'success',
+            ];
 
         } catch (\Exception $err) {
-
+            $status = [
+                'error' => $err->getMessage(),
+                'debug' => $request->input('email'),
+            ];
         }
         
-        return redirect()->back();
+        return response()->json($status);
     }
 
     public function showAlert($message, $type = 'info')

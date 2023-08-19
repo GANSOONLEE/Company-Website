@@ -7,19 +7,22 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\productCatelog;
 use App\Models\productModel;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller{
     
-    public function index($productCatelog){
+    public function index($productCatelog, Request $request){
         // 查詢現有的車款
         $models = productModel::orderBy('modelName', 'asc')->get('modelName');
 
-        $productsData = Product::where('productCatelog', $productCatelog)
+        $productType = $request->input('productType');
+        $productName = $request->input('productName');
+        
+        $productData = Product::where('productCatelog', $productCatelog)
             ->where('productStatus', 'Public')
             ->get(['productCatelog', 'productNameList', 'productBrandList', 'productID']);
-
 
         $catelog = ProductCatelog::where('catelogName', $productCatelog)->first();
 
@@ -29,32 +32,8 @@ class ProductController extends Controller{
             return redirect(route('frontend.catelog'));
         }
 
-        // $parsedDataList = []; // 创建用于存储解析后数据的数组
-
-        // foreach ($productsData as $data) {
-        //     $parsedDataList[] = json_decode($data->productSubname, true);
-        // }
-
-        // $formattedData = [];
-
-        // foreach ($parsedDataList as $index => $item) {
-        //     if (is_array($item)) {
-        //         foreach ($item as $subItem) {
-        //             if (is_array($subItem)) {
-        //                 $brand = $subItem['brand'];
-        //                 $model = $subItem['model'];
-        //                 $formattedData[$index] = $brand . ' ' . $model;
-        //             } else {
-        //                 $formattedData[$index] = $subItem;
-        //             }
-        //         }
-        //     } else {
-        //         $formattedData[$index] = $item;
-        //     }
-        // }
-
         return view('frontend.product', [
-            'products' => $productsData,
+            'productData' => $productData,
             'models' => $models,
             'productCatelog' => $productCatelog,
         ]);

@@ -5,10 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\productModel;
 use App\Models\catelogModel;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Product extends Model{
 
+    use SoftDeletes;
+
+
     protected $table = 'products';
+    protected $dates = ['deleted_at'];
     public $incrementing = false;
     protected $primaryKey = 'productID';
     protected $guarded = [ ];

@@ -67,9 +67,7 @@ Route::group(['prefix' => 'api'], function () {
     includeRouteFiles(__DIR__ . '/api/');
 });
 
-// Product 產品處理路由
-// Route::post('/products', [CreatedProductEvent::class, 'createProduct'])->name('products.store');
-// Route::post('/products/{productID}', [UpdatedProductEvent::class, 'updateProduct'])->name('products.update');
+
 
 Route::get('/products', [ProductController::class, 'index'])->name('products');
 Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');

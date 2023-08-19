@@ -7,9 +7,11 @@ use App\Models\User;
 
 class UserOperation extends Model{
 
+    protected $table = 'users_operation';
     protected $primaryKey = 'operationID';
     protected $fillable = [
         'userID',
+        'ID',
         'operationType',
     ];
     public $timestamps = true;

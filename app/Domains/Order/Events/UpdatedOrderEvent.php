@@ -3,6 +3,7 @@
 namespace App\Domains\Order\Events;
 
 use App\Models\Order;
+use App\Models\UserOperation;
 use Illuminate\Http\Request;
 
 class UpdatedOrderEvent{
@@ -26,6 +27,13 @@ class UpdatedOrderEvent{
                 'orderStatus' => 'In Process'
             ]);
         }
+
+        $operation = [
+            'userID' => auth()->user()->Name,
+            'operationType' => `Update order status from $currentOrder->orderStatus to $request->status`,
+        ];
+
+        UserOperation::create($operation);
 
         $response = [
             'type' => '200',

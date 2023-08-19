@@ -12,7 +12,31 @@
         <div class="filter-body">
 
             <div class="filter-section">
-                <input type="checkbox" name="Model" id="Model">
+                <div class="filter-section-box">
+
+                    <div class="checkbox-section">
+                        <label class="checkbox-box" for="Origin">
+                            <input type="checkbox" data-type="type"name="Original" id="Origin" value="Original" class="checkbox-display">
+                            <p class="checkbox-name">Original</p>
+                        </label>
+                    </div>
+                    <div class="checkbox-section">
+                        <label class="checkbox-box" for="Non-Origin">
+                            <input type="checkbox" data-type="type"name="Non-Original" id="Non-Origin" value="Non-Original" class="checkbox-display">
+                            <p class="checkbox-name">Non-Original</p>
+                        </label>
+                    </div>
+                    <div class="checkbox-section">
+                        <label class="checkbox-box" for="Recond">
+                            <input type="checkbox" data-type="type" name="Recond" id="Recond" value="Recond" class="checkbox-display">
+                            <p class="checkbox-name">Recond</p>
+                        </label>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="filter-section">
                 <label class="filter-section-title" for="Model">
                     Car Model
                 </label>
@@ -20,8 +44,8 @@
 
                     @foreach($models as $model)
                         <div class="checkbox-section">
-                            <label class="checkbox-box" for={{ $model->modelName }}>
-                                <input type="checkbox" name={{ $model->modelName }} id={{ $model->modelName }} value={{ $model->modelName }} class="checkbox-display">
+                            <label class="checkbox-box" for="{{ $model->modelName }}">
+                                <input type="checkbox" data-type="model" name={{ $model->modelName }} id="{{ $model->modelName }}" value={{ $model->modelName }} class="checkbox-display">
                                 <p class="checkbox-name">{{ $model->modelName }}</p>
                             </label>
                         </div>
@@ -33,7 +57,12 @@
         </div>
 
         <div class="filter-footer">
-            <button type="reset" class="filter-button resetButton">Reset Filter</button></a>
+            @php
+                $originalUrl = $_SERVER['REQUEST_URI'];
+                $parts = parse_url($originalUrl);
+                $baseUrl = $parts['path'];
+            @endphp
+            <a href={{$baseUrl}}><button type="reset" class="filter-button resetButton" style="width: 100%">Reset Filter</button></a>
             <button type="button" class="filter-button fetchButton">Get Data</button>
         </div>
     </form>

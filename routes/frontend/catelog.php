@@ -10,7 +10,3 @@ use App\Http\Controllers\backend\ProductController;
 
 // 處理路由
 Route::get('/catelog/{catelogName}',[ProductController::class, 'index'])->name('catelog.index');
-Route::get('/catelog/{catelogName}/{modelName}',[ProductController::class, 'model'])->name('catelog.model');
-
-// 查詢路由
-Route::match(['get', 'post'], '{productType?}/search', [ProductController::class, 'search'])->name('product.search');

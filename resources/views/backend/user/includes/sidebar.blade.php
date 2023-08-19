@@ -17,11 +17,12 @@
                 'icon' => 'fa-solid fa-house',
                 'label' => 'Home'
             ],
-            // [
-            //     'url' => route('backend.user.dashboard'), 
-            //     'icon' => 'fa-solid fa-chart-line',
-            //     'label' => 'Dashboard'
-            // ],
+            // #TODO user dashboard
+            [
+                'url' => route('backend.user.dashboard'), 
+                'icon' => 'fa-solid fa-chart-line',
+                'label' => 'Dashboard'
+            ],
             // #TAG Beta-function
             // [
             //     'url' => route('backend.user.favorite'), 

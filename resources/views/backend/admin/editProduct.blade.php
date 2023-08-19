@@ -4,7 +4,6 @@
 
 @push('after-style')
     <link rel="stylesheet" href={{asset('css\backend\admin\editProduct.css')}}>
-    
 @endpush
 
 

@@ -124,8 +124,6 @@ $(document).ready(function() {
     $('.order-status').click(function(event){
         $('.order-status.active').removeClass('active');
         $(this).addClass('active');
-
-        
     });
 
 });

@@ -13,31 +13,21 @@ class SearchedProductEvent{
 
     public function searchProductByModal(Request $request){
 
-        $values = $request->input('values');
+        try{
 
-        $product = Product::whereIn('productModel', $values)
-            ->get(['productCatelog', 'productName', 'productCode', 'productModel', 'productSubname']);
+            $status = [
+                'success' => 'success',
+                'debug' => $request-> filter,
+            ];
 
-        $product = $product->map(function ($product) {
-            $product->detailLink = route('frontend.product.detail',['productCode' => $product->productCode]); // 將新的欄位添加到每個項目中並賦值
-            return $product;
-        });
+        }catch(\Exception $e){
+            $status = [
+                'code' => $e->getCode(),
+                'error' => $e->getMessage(),
+            ];
+        }
 
-        $product = $product->map(function ($product) {
-            $product->imageSrc = asset("storage/{$product->productCatelog}/{$product->productModel}/{$product->productCode}/cover.png"); // 將新的欄位添加到每個項目中並賦值
-            return $product;
-        });
+        return response()->json($status);
 
-        $this->search($product);
-
-
-        // 返回查询结果给 AJAX 请求
-        return response()->json($product);
-    }
-
-
-    function search($product){
-
-        return view('frontend.product' ,['$product' => $product]);
     }
 }

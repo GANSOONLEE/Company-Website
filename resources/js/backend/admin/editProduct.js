@@ -210,9 +210,9 @@ function getEmail() {
  * @param {string} email The record who edit
  */
 
-function updataInformation(){
+function updateInformation(){
     const encodedEmail = decodeURIComponent(getEmail());
-    console.log(encodedEmail)
+    return encodedEmail;
 }
 
 
@@ -223,16 +223,18 @@ function updataInformation(){
 function deleteProduct(){
 
     const productID = document.querySelector('[name="productID"]').value;
+    const email = updateInformation();
 
     $.ajax({
         type: 'post',
         dataType: 'json',
-        data: {'productID': productID},
+        data: {'productID': productID, 'email': email},
         url: '/api/delete-product',
         headers: {
           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
         success: function(data) {
+            // console.log(data)
             location.reload();
         },
         error: function(xhr, status, error) {

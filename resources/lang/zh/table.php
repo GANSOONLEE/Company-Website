@@ -13,7 +13,12 @@
         'orderReceivedTime' => '抵达时间',
         'orderStatus' => '订单状态',
         'orderContent' => '订单详情',
-        'view-order' => '订单处理'
+        'view-order' => '订单处理',
+        'userID' => '用戶名稱',
+        'ID' => 'ID',
+        'operationType' => '操作類型',
+        'created_at' => '操作時間',
+        'restore' => '復原操作',
     ]
 
 ?>
