@@ -260,6 +260,7 @@
     $label-font-size: var(--font-small);
     /** —————————————— Record Per Page —————————————— */
     #myTable_length{
+        display: none;
         width: 100%;
         margin-bottom: 1.2rem;
         label{
@@ -273,8 +274,22 @@
 
     /** ——————————————————— Filter —————————————————— */
     #myTable_filter{
+        display: flex;
         label{
             font-size: $label-font-size;
+            >input{
+                outline: none;
+                border: none;
+                border-radius: 2px 2px 0 0;
+                margin: 0 .6rem;
+                padding: .4rem 1rem;
+                background-color: rgb(238, 247, 255);
+                border-bottom: 2px solid rgba(255, 255, 255, 0);
+                transition: all .1s ease-in-out;
+                &:focus{
+                    border-bottom: 2px solid blue;
+                }
+            }
         }
     }
 

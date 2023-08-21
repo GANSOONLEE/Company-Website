@@ -81,7 +81,9 @@
                                         </p>
                                         @if(isset($secondary_link['notification']) && $orderNew !== 0)
                                             <div class="notification-order">
-                                                {{ $orderNew }}
+                                                <p id="order-new">
+                                                    {{ $orderNew }}
+                                                </p>
                                             </div>
                                         @endif
                                     </a>

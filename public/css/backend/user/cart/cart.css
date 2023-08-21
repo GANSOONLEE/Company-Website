@@ -228,6 +228,7 @@
   /** —————————————————— Paginate ————————————————— */
 }
 #myTable_wrapper #myTable_length {
+  display: none;
   width: 100%;
   margin-bottom: 1.2rem;
 }
@@ -237,8 +238,24 @@
 #myTable_wrapper #myTable_length label select {
   padding: 0.2rem 0.4rem;
 }
+#myTable_wrapper #myTable_filter {
+  display: flex;
+}
 #myTable_wrapper #myTable_filter label {
   font-size: var(--font-small);
+}
+#myTable_wrapper #myTable_filter label > input {
+  outline: none;
+  border: none;
+  border-radius: 2px 2px 0 0;
+  margin: 0 0.6rem;
+  padding: 0.4rem 1rem;
+  background-color: rgb(238, 247, 255);
+  border-bottom: 2px solid rgba(255, 255, 255, 0);
+  transition: all 0.1s ease-in-out;
+}
+#myTable_wrapper #myTable_filter label > input:focus {
+  border-bottom: 2px solid blue;
 }
 #myTable_wrapper #myTable {
   margin: 2rem 0;

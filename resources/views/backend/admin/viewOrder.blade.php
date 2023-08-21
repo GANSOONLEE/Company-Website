@@ -37,11 +37,11 @@
         <table id="myTable" class="display">
             <thead>
                 <tr>
-                    <th>{{trans('table.orderID')}}</th>
-                    <th>{{trans('table.userName')}}</th>
-                    <th aria-sort="descending" class="sorting sorting_desc" aria-label="Received Time: activate to sort column descending">{{trans('table.orderReceivedDate')}}</th>
-                    <th aria-sort="descending" class="sorting sorting_desc" aria-label="Received Time: activate to sort column descending">{{trans('table.orderReceivedTime')}}</th>
-                    <th>{{trans('table.orderStatus')}}</th>
+                    <th data-type="orderID">{{trans('table.orderID')}}</th>
+                    <th data-type="customerUser">{{trans('table.userName')}}</th>
+                    <th data-type="orderReceivedDate" aria-sort="descending" class="sorting sorting_desc" aria-label="Received Time: activate to sort column descending">{{trans('table.orderReceivedDate')}}</th>
+                    <th data-type="orderReceivedTime" aria-sort="descending" class="sorting sorting_desc" aria-label="Received Time: activate to sort column descending">{{trans('table.orderReceivedTime')}}</th>
+                    <th data-type="orderStatus">{{trans('table.orderStatus')}}</th>
                     <th style="display: none">{{trans('table.orderContent')}}</th>
                 </tr>
             </thead>
@@ -58,10 +58,10 @@
 
                         <td data-type="orderReceivedTime">{{ $order->orderReceivedTime }}</td>
 
-                        <td data-status="{{$order->orderStatus}}">
+                        <td data-type="orderStatus" data-status="{{$order->orderStatus}}">
                         {{-- <td data-status="Complete"> --}}
                             <span></span>
-                            <div data-type="orderStatus" style="display: inline-block">{{ $order->orderStatus }}</div>
+                            <div style="display: inline-block">{{ $order->orderStatus }}</div>
                         </td>
 
                         <td data-type="orderContent" style="display: none">{{ $order->orderContent }}</td>

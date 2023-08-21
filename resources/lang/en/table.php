@@ -19,6 +19,10 @@
         'operationType' => 'Operation Type',
         'created_at' => 'Operation Time',
         'restore' => 'Restore',
+
+        'create-product' => 'Create Product',
+        'update-product' => 'Update Product',
+        'delete-product' => 'Delete Product',
     ]
 
 ?>

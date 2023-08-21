@@ -24,7 +24,6 @@
     $font-size: var(--font-small);
 
     >#myTable_length, >#myTable_filter{
-        display: flex;
         align-items: center;
         justify-content: flex-start;
         font-size: $font-size;
@@ -36,8 +35,8 @@
 
     // Record per page
     >#myTable_length{
+        display: none;
         >label{
-
            >select{
                 margin: 0 .6rem;
                 padding: .2rem .6rem;
@@ -47,10 +46,20 @@
 
     // Filter
     >#myTable_filter{
+        display: flex;
         >label{
             >input{
+                outline: none;
+                border: none;
+                border-radius: 2px 2px 0 0;
                 margin: 0 .6rem;
-                padding: .2rem .6rem;
+                padding: .4rem 1rem;
+                background-color: rgb(238, 247, 255);
+                border-bottom: 2px solid rgba(255, 255, 255, 0);
+                transition: all .1s ease-in-out;
+                &:focus{
+                    border-bottom: 2px solid blue;
+                }
             }
         }
     }
@@ -61,6 +70,23 @@
         padding: .9rem 2rem;
         width: 100% !important;
         border-radius: 6px;
+        th[data-type="orderID"], td[data-type="orderID"]{
+            min-width: auto;
+            max-width: 30px;
+        }
+        th[data-type="customerUser"], td[data-type="customerUser"]{
+            min-width: 100px;
+            max-width: 100px;
+        }
+        th[data-type="orderReceivedDate"],
+        td[data-type="orderReceivedDate"],
+        th[data-type="orderReceivedTime"],
+        td[data-type="orderReceivedTime"],
+        th[data-type="orderStatus"],
+        td[data-type="orderStatus"]{
+            min-width: 25px;
+            max-width: 25px;
+        }
         >t{
             $padding: 1rem;
             $font-size: var(--font-h6);
@@ -113,6 +139,9 @@
                         &[data-status="In Process"] > span{
                             animation: blindInProcess infinite 1s steps(1);
                         }
+                        &[data-status="Pending"] > span{
+                            animation: blindInPending infinite .5s steps(1);
+                        }
                         &[data-status="Complete"] > span{
                             animation: blindComplete infinite 1s steps(1);
                         }
@@ -134,7 +163,14 @@
                             background-color: rgb(187, 187, 0);
                         }
                     }
-
+                    @keyframes blindInPending {
+                        0%{
+                            background-color: rgb(28, 35, 255);
+                        }
+                        50%{
+                            background-color: rgb(4, 0, 129);
+                        }
+                    }
                     @keyframes blindComplete {
                         0%{
                             background-color: rgb(0, 187, 56);                         

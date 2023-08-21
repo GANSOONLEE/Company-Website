@@ -14,7 +14,7 @@
             .dark\:bg-gray-900{background-color: white;}
             body {
                 font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-                
+                background-color: white;
             }
             .max-w-xl.mx-auto{
                 display: flex;
@@ -40,16 +40,18 @@
             <div class="max-w-xl mx-auto sm:px-6 lg:px-8">
                 <img src="{{asset('image/logo.png')}}" class="logo">
                 <div class="flex items-center pt-8 sm:justify-start sm:pt-0">
-                    <div class="px-4 text-lg text-gray-500 border-r border-gray-400 tracking-wider">
+                    <div class="px-4 text-lg text-gray-600 border-r border-gray-400 tracking-wider">
                         @yield('code')
                     </div>
 
-                    <div class="ml-4 text-lg text-gray-500 uppercase tracking-wider">
+                    <div class="ml-4 text-lg text-gray-600 uppercase tracking-wider">
                         @yield('message')
                     </div>
                 </div>
             </div>
-            <a href={{ route('back') }} class="link"> Back</a>
+            <a href='{{URL::previous()}}' class="link">
+                Previous Page
+            </a>
         </div>
     </body>
 </html>

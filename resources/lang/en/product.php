@@ -43,7 +43,7 @@
         'already-complete' => 'Already Done',
         'complete' => 'Mark it Done',
         'markAtPending' => 'Pending',
-        'markAtProcess' => 'Make it Processing',
+        'markAtProcess' => 'Make it Process',
 
         /**
          *  Information

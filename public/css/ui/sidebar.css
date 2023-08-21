@@ -45,13 +45,21 @@
 }
 .sidebar .sidebar-body > ul.sidebar-links .sidebar-link .notification-order {
   margin-left: 1rem;
-  background-color: rgb(213, 0, 0);
+  background-color: rgb(0, 89, 255);
+  padding: 1rem;
   color: whitesmoke;
-  border-radius: 2px;
-  height: 80%;
-  width: 2vw;
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sidebar .sidebar-body > ul.sidebar-links .sidebar-link .notification-order p {
+  margin-bottom: 0;
   text-align: center;
   font-size: var(--font-small);
+  font-weight: bold;
 }
 .sidebar .sidebar-body > ul.sidebar-links i.link-icon {
   margin-right: 2rem;

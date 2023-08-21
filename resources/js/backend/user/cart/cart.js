@@ -107,7 +107,7 @@ class CartCard{
               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             success: function(data) {
-              console.log(data)
+                console.log(data)
             },
             error: function(xhr, status, error) {
                 console.log('AJAX Error:',xhr,status, error);
@@ -190,7 +190,7 @@ function generatedOrder(orderElement){
             'X-CSRF-TOKEN': csrfToken
             },
             success: function(data) {
-                // console.log(data)
+                console.log(data)
             },
             error: function(xhr, status, error) {
                 console.error(`Server status: ${status}\nError: ${error}`);
@@ -335,7 +335,7 @@ function sendData(){
         },
         success: function(response) {
             // 处理响应
-            location.reload();
+            // location.reload();
             console.log(response);
         },
         error: function(error) {

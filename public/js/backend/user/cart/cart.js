@@ -179,7 +179,7 @@ function generatedOrder(orderElement) {
         'X-CSRF-TOKEN': csrfToken
       },
       success: function success(data) {
-        // console.log(data)
+        console.log(data);
       },
       error: function error(xhr, status, _error2) {
         console.error("Server status: ".concat(status, "\nError: ").concat(_error2));
@@ -300,7 +300,7 @@ function sendData() {
     },
     success: function success(response) {
       // 处理响应
-      location.reload();
+      // location.reload();
       console.log(response);
     },
     error: function error(_error3) {

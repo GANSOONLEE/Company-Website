@@ -41,96 +41,6 @@
         </div>
     </div>
 
-    {{-- #region 
-        <div class="order">
-
-            <div class="order-header">
-
-            </div>
-
-            <!-- Information -->
-            <div class="order-body">
-
-                <!-- Units -->
-                @foreach ($orderData as $order)
-                    <div class="order-card">
-                        <div class="order-card-header">
-                            
-                        </div>
-                        <div class="order-card-body">
-
-                            <!-- Card -->
-                            <div class="card">
-                                <div class="card-header">
-                                    <p class="order-id">{{ $order->orderID }}</p>
-                                    <p class="update-time"><b>Updated at:</b>{{$order->updated_at}}</p>
-                                </div>
-                                <div class="card-body" data-status="{{ $order->orderStatus }}">
-                                    <p>{{ $order->orderStatus }}</p>
-                                    <div class="card-information">
-                                        <p class="received-date">{{ $order->orderReceivedDate }}</p>
-                                        <p class="received-time">{{ $order->orderReceivedTime }}</p>
-                                    </div>
-                                </div>
-                                <!-- <div class="card-footer">
-
-                                </div> -->
-                            </div>
-                            
-                        </div>
-                        <div class="order-cart-footer">
-                            
-                        </div>
-                    </div>
-                @endforeach
-
-            </div>
-
-            <!-- Footer -->
-            <div class="order-footer">
-
-            </div>
-        </div>
-
-        <div class="model-background" id="orderModel">
-
-            <!-- Model -->
-            <div class="model">
-
-                <!-- Title -->
-                <div class="model-header">
-                    <p>Order Detail : <span id="orderID">1</span></p>
-                    <i class="fa-solid fa-xmark" id="closeModalButton"></i>
-                </div>
-
-                <!-- Cart -->
-                <div class="model-body">
-                    <div class="order-item-display" id="order-item-list">
-                        
-                        <div class="order" data-id="1">
-                            <div class="item-info">
-                                <p class="item-id" id="ItemID">Perodua Bezza 1.3 2012</p>
-                                <p class="item-brand" id="ItemBrand">SWJ-PER 005</p>
-                            </div>
-                            <div class="item-quantity">
-                                <p id="ItemQuantity">
-                                    12 Qty.
-                                </p>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-                <!-- Button -->
-                <div class="model-footer">
-                    <div id="orderStatus"></div>
-                </div>
-            </div>
-
-        </div>
-    {{-- #endregion --}}
-
     <div class="table">
 
         {{-- Category: New, Received, In Process, Complete --}}
@@ -175,7 +85,7 @@
             <div class="order-header display-row">
                 <p>Order ID</p>
                 <p>Created At</p>
-                <p></p>
+                <p>Item Quantity</p>
             </div>
 
             <div class="order-list display-column">
@@ -185,6 +95,7 @@
                         <div class="display-row">
                             <p>{{$order->orderID}}</p>
                             <p>{{$order->created_at}}</p>
+                            <p>{{count(json_decode($order->orderContent))}}</p>
                         </div>
                     </a>
                     @endforeach

@@ -39,7 +39,14 @@
 
                         <td data-type="ID">{{$operation->ID}}</td>
 
-                        <td data-type="operationType">{{$operation->operationType}}</td>
+                        
+                        @if($operation->operationType=='Create Product')
+                            <td data-type="operationType">{{trans('table.create-product')}}</td>
+                        @elseif($operation->operationType=='Update Product')
+                            <td data-type="operationType">{{trans('table.update-product')}}</td>
+                        @else
+                            <td data-type="operationType">{{trans('table.delete-product')}}</td>    
+                        @endif
 
                         <td data-type="created_at">{{$operation->created_at}}</td>
                         

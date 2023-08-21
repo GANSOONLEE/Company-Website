@@ -173,12 +173,12 @@
   color: #fafafa;
 }
 .detail .detail-body .detail-product-information-area .information-section .information-section-content .brand-list label {
-  transition: all 0.2s ease-in-out;
+  transition: all 0.12s ease-in-out;
   cursor: pointer;
   border-radius: 2px;
   font-size: var(--font-h6);
-  border: #e8edff 1px solid;
-  background-color: #f4eeee;
+  border: #ff6f00 2px solid;
+  background-color: #fdfdfd;
   padding: 0.9rem 2rem;
 }
 .detail .detail-body .detail-product-information-area .information-section .product-name {
