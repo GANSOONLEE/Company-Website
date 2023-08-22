@@ -46,7 +46,8 @@ class CreatedOrderEvent{
                 }
             }
 
-            // Order::create($data);
+            Order::create($data);
+
             $orderNewCount = Order::where('orderStatus', 'New')->count();
             event(new NewOrderEvent($orderNewCount));
 

@@ -21,7 +21,7 @@ class AdminMiddleware
     
         // 在数据库中查找与 cookie 中的电子邮件匹配的用户
         $user = User::where('Email', $email)
-            ->where('AccessToken', $accessToken)
+            // ->where('AccessToken', $accessToken)
             ->where('Role', 'admin')
             ->first();
     

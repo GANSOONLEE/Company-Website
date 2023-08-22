@@ -5,6 +5,8 @@ namespace App\Domains\Order\Events;
 use App\Models\Order;
 use App\Models\UserOperation;
 use Illuminate\Http\Request;
+use App\Events\NewOrderEvent;
+use Illuminate\Support\Facades\Log;
 
 class UpdatedOrderEvent{
 
@@ -33,8 +35,10 @@ class UpdatedOrderEvent{
             'operationType' => `Update order status from $currentOrder->orderStatus to $request->status`,
         ];
 
-        UserOperation::create($operation);
+        
 
+        UserOperation::create($operation);
+        
         $response = [
             'type' => '200',
             'event' => "The order {$request->orderID} are update!\nFrom {$currentOrder->orderStatus} to {$request->status}"

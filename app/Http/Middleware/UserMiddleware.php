@@ -15,7 +15,7 @@ class UserMiddleware
         $accessToken = Cookie::get('accessToken');
 
         $user = User::where('Email', $email)
-            ->where('AccessToken', $accessToken)
+            // ->where('AccessToken', $accessToken) //禁止單一賬號從多個地方登入
             ->first();
 
         $request->session()->flash('user', $user);

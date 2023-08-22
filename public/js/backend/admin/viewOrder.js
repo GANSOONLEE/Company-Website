@@ -30,17 +30,20 @@ var observer = new IntersectionObserver(function (entries) {
         }) // Parse the JSON response
         .then(function (data) {
           // Handle the response data here
+
           console.log('订单状态已更新为:', data);
           // You can update the UI or perform any other actions based on the data
         })["catch"](function (error) {
           console.error('请求出错:', error);
           // Handle any error that occurred during the request
         });
+
+        var _table = $('#myTable').DataTable();
+        _table.ajax.reload();
       }
     }
   });
 });
-
 document.querySelectorAll('.order').forEach(function (orderElement) {
   observer.observe(orderElement);
 });

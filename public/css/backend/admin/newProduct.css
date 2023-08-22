@@ -380,3 +380,68 @@ input[required]::placeholder {
     content: "Processing...";
   }
 }
+/* ====================== RWD Design ====================== */
+@media only screen and (max-width: 790px) {
+  .content {
+    width: 100%;
+    padding: 6rem 2rem;
+    margin-left: 0;
+  }
+  .content .content-body {
+    padding: 0;
+    margin: 0;
+  }
+  .content .content-body .form .form-row .form-row-body #inputContainerName .form-input > * {
+    min-width: calc(33.3333333333% - 1.2rem);
+    max-width: calc(33.3333333333% - 10px);
+  }
+  .content .content-body .form .form-row .form-row-body #inputContainerBrand .form-input > * {
+    min-width: calc(25% - 10px);
+    max-width: calc(25% - 10px);
+  }
+  .content .content-body .form .form-row .form-row-body .form-row-body-container {
+    padding: 8rem 3rem;
+  }
+  .content .content-body .form .form-row .form-row-body .form-row-body-container.control {
+    font-size: var(--font-h1);
+    height: -moz-max-content;
+    height: max-content;
+    width: -moz-max-content;
+    width: max-content;
+    cursor: pointer;
+    transition: all 0.12s ease-in-out;
+  }
+  .content .content-body .form .form-row .form-row-body .form-row-body-container.control:hover {
+    background-color: rgba(128, 128, 128, 0.2);
+  }
+  .content .content-body .form .form-row .form-row-body .form-row-body-container.control i {
+    color: #555;
+  }
+  .content .content-body .form .form-row .form-row-body .form-row-body-radio {
+    width: 100%;
+    display: flex;
+    -moz-column-gap: 2rem;
+         column-gap: 2rem;
+  }
+  .content .content-body .form .form-row .form-row-body .form-row-body-radio input {
+    display: none;
+  }
+  .content .content-body .form .form-row .form-row-body .form-row-body-radio input:checked + label.form-check-label {
+    color: rgb(0, 79, 0);
+    border-color: green;
+    background-color: rgb(231, 255, 231);
+  }
+  .content .content-body .form .form-row .form-row-body .form-row-body-radio .form-check-label {
+    padding: 1rem 3rem;
+    width: 30%;
+  }
+  .content .content-body .form .form-row .form-row-body .form-row-body-radio .form-check-label .form-radio {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: var(--font-h6);
+  }
+  .content .content-body .form .form-row .form-row-body .form-row-body-radio .form-check-label .form-radio p {
+    margin-bottom: 0;
+  }
+}

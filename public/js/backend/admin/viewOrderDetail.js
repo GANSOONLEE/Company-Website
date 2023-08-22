@@ -23,6 +23,7 @@ $('#CompleteButton').click(function (event) {
     },
     error: function error(xhr, status, _error) {
       console.error(xhr, status, _error);
+      location.reload();
     }
   });
 });
@@ -44,6 +45,7 @@ $('#PendingButton').click(function (event) {
     },
     error: function error(xhr, status, _error2) {
       console.error(xhr, status, _error2);
+      location.reload();
     }
   });
 });
@@ -65,6 +67,7 @@ $('#InProcessButton').click(function (event) {
     },
     error: function error(xhr, status, _error3) {
       console.error(xhr, status, _error3);
+      location.reload();
     }
   });
 });
@@ -98,6 +101,7 @@ $('#updateProductOwn').click(function (event) {
     },
     error: function error(xhr, status, _error4) {
       console.error(xhr, status, _error4);
+      location.reload();
     }
   });
 });

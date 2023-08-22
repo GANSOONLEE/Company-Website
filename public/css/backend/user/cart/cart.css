@@ -440,3 +440,20 @@
 .model-background .model .model-body .cart-display > .cart > .cart-action button.edit-button:hover {
   background-color: #1a5bdc;
 }
+/* ==================== RWD Design ==================== */
+/* ——————————————————————————————————————— Data Tables ————————————————————————————————————————————— */
+#myTable_wrapper {
+  width: 100%;
+  padding: 0;
+  /** ——————————————————— Table ——————————————————— */
+}
+#myTable_wrapper #myTable {
+  padding: 0;
+  font-size: var(--font-small);
+}
+#myTable_wrapper #myTable thead > tr {
+  padding-left: 0;
+}
+#myTable_wrapper input[type=checkbox] {
+  width: 30px;
+}

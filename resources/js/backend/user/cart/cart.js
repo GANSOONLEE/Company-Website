@@ -335,8 +335,8 @@ function sendData(){
         },
         success: function(response) {
             // 处理响应
-            // location.reload();
-            console.log(response);
+            location.reload();
+            // console.log(response);
         },
         error: function(error) {
             // 处理错误

@@ -408,3 +408,83 @@ $loader-dot--size: 20px;
         content: "Processing...";
     }
 }
+
+/* ====================== RWD Design ====================== */
+
+@media only screen and (max-width: 790px) {
+    .content{
+        width: 100%;
+        padding: 6rem 2rem;
+        margin-left: 0;
+        .content-body{
+            padding: 0;
+            margin: 0;
+            .form{
+                .form-row{
+                    .form-row-body{
+                        #inputContainerName{
+                            .form-input{
+                                >*{
+                                    min-width: calc((100% / 3) - 1.2rem);
+                                    max-width: calc((100% / 3) - 10px);
+                                }
+                            }
+                        }
+                        #inputContainerBrand{
+                            .form-input{
+                                >*{
+                                    min-width: calc((100% / 4) - 10px);
+                                    max-width: calc((100% / 4) - 10px);
+                                }
+                            }
+                        }
+                        .form-row-body-container{
+                            padding: 8rem 3rem;
+                            // height: 16rem;
+                            &.control{
+                                font-size: var(--font-h1);
+                                height: max-content;
+                                width: max-content;
+                                cursor: pointer;
+                                transition: all .12s ease-in-out;
+                                &:hover{
+                                    background-color: rgba(128, 128, 128, 0.2);
+                                }
+                                i{
+                                    color: #555;
+                                    
+                                }
+                            }
+                        }
+                        .form-row-body-radio{
+                            width: 100%;
+                            display: flex;
+                            column-gap: 2rem;
+                            input{
+                                display: none;
+                                &:checked + label.form-check-label{
+                                    color: rgb(0, 79, 0);
+                                    border-color: green;
+                                    background-color: rgb(231, 255, 231);
+                                }
+                            }
+                            .form-check-label{
+                                padding: 1rem 3rem;
+                                width: 30%;
+                                .form-radio{
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    font-size: var(--font-h6);
+                                    p{
+                                        margin-bottom: 0;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

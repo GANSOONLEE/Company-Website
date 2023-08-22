@@ -513,3 +513,32 @@
         }
     }
 }
+
+/* ==================== RWD Design ==================== */
+
+/* ——————————————————————————————————————— Data Tables ————————————————————————————————————————————— */
+
+#myTable_wrapper{
+    $label-font-size: var(--font-h6);
+    width: 100%;
+    padding: 0;
+    /** ——————————————————— Table ——————————————————— */
+    // #TODO Adjust something
+    #myTable{
+        padding: 0;
+        font-size: var(--font-small); 
+        thead{
+            >tr{
+                padding-left: 0;
+                >th{
+
+                }
+            }
+        }
+    
+    }
+
+    input[type="checkbox"]{
+        width: 30px;
+    }
+}

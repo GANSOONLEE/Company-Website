@@ -113,30 +113,30 @@
         }
     }
 
+    $padding: 1rem;
+    $font-size: var(--font-h6);
+    thead{
+        tr th.sorting{
+            color: black;
+            font-weight: bold;
+            padding: $padding;
+            font-size: $font-size;
+            cursor: pointer;
+            &:hover{
+                background-color: azure;
+            }
+        }
+    }
+
     // Table
-    >#myTable{
+    #myTable{
         outline: 1px solid rgb(223, 223, 223);
         padding: .9rem 2rem;
         width: 100% !important;
         border-radius: 6px;
-        >t{
-            $padding: 1rem;
-            $font-size: var(--font-h6);
-            // $padding: 1rem;
-            &head{
-                > tr > th{
-                    color: black;
-                    font-weight: bold;
-                    padding: $padding;
-                    font-size: $font-size;
-                    cursor: pointer;
-                    &:hover{
-                        background-color: azure;
-                    }
-                }
-            }
+        t{
             &body{
-                > tr{
+                tr{
                     color: black;
                     &.odd{
                         background-color: rgb(233, 233, 233);
@@ -356,4 +356,83 @@
 .display-column{
     display: flex;
     flex-direction: column;
+}
+
+/* RWD Design */
+@media only screen and (max-width: 790px) {
+    .main{
+        margin-top: 2rem;
+        .section{
+            margin-left: 0;
+            width: 100vw;
+        }
+    }
+
+    >#myTable_wrapper{
+        #myTable{
+            thead{
+                overflow-x: scroll;
+            }
+            tbody{
+                overflow-x: scroll;
+            }
+        }
+    }
+
+    .dataTables_scrollHead{
+        width: 100%;
+    }
+    .dataTables_scrollBody{
+
+    }
+
+    /* ———————————————————— Bootstrap 5 ———————————————————— */
+
+    .modal{
+        
+        width: 100vw;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+        >.modal-dialog{
+            width: 90%;
+            max-width: 90%;
+            margin: 0 2rem;
+            margin-top: 12rem;
+            margin-bottom: 24rem;
+            >.modal-content{
+                overflow-y: auto;
+                >.modal{
+                    &-header{
+                        p.modal-title{
+                            margin: 0;
+                            font-size: var(--font-h4);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /* ———————————————————— Product Edit Form ———————————————————————— */
+
+    .form{
+        $font-size: var(--font-h5);
+        .form-body{
+            flex-direction: column;
+            padding: 2rem;
+            > .display-column{
+                row-gap: 1.6rem;
+                &:first-child{
+                    width: 100%;
+                }
+                &:nth-child(2){
+                    width: 100%;
+                }
+                &:last-child{
+                    width: 100%;
+                }
+            }
+        }
+    }
 }

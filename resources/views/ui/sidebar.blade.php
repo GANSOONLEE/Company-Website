@@ -63,7 +63,11 @@
     <div class="sidebar">
         <div class="sidebar-header">
             <a href={{ route('frontend.index') }}><img src={{asset('image\logo.png')}} alt="" class="logo"></a>
+            <label for="menu-button">
+                <img src="{{asset('image\menu.png')}}" alt="" class="menu-icon">
+            </label>
         </div>
+        <input type="checkbox" class="menu" id="menu-button">
         <div class="sidebar-body">
             <ul class="sidebar-links">
                 @foreach ($links as $link)
@@ -79,12 +83,12 @@
                                         <p class="link-label">
                                             {{$secondary_link['label']}}
                                         </p>
-                                        @if(isset($secondary_link['notification']) && $orderNew !== 0)
-                                            <div class="notification-order">
-                                                <p id="order-new">
-                                                    {{ $orderNew }}
-                                                </p>
-                                            </div>
+                                        @if(isset($secondary_link['notification']))
+                                        <div class="notification-order" data-number={{ $orderNew }}>
+                                            <p id="order-new">
+                                                {{ $orderNew }}
+                                            </p>
+                                        </div>
                                         @endif
                                     </a>
                                 @endforeach

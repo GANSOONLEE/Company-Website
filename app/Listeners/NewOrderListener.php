@@ -15,7 +15,7 @@ class NewOrderListener
      */
     public function __construct()
     {
-        Log::info('NewOrderListener are set.'); // 添加此行
+        // Log::info('NewOrderListener are set.'); // 添加此行
     }
 
     /**
@@ -23,8 +23,8 @@ class NewOrderListener
      */
     public function handle(object $event): void
     {
-        Log::info('NewOrderListener received an event.'); // 添加此行
-        Log::info($event->orderNewCount);
+        // Log::info('NewOrderListener received an event.'); // 添加此行
+        // Log::info($event->orderNewCount);
 
         Broadcast::channel('create-order-channel', function () use ($event) {
             return $event->orderNewCount;

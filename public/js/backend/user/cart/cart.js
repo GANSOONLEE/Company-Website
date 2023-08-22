@@ -300,9 +300,10 @@ function sendData() {
     },
     success: function success(response) {
       // 处理响应
-      // location.reload();
-      console.log(response);
+      location.reload();
+      // console.log(response);
     },
+
     error: function error(_error3) {
       // 处理错误
       console.error(_error3);

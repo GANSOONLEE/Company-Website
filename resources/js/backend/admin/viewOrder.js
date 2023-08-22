@@ -29,6 +29,7 @@ const observer = new IntersectionObserver((entries) => {
                 .then(response => response.json()) // Parse the JSON response
                 .then(data => {
                     // Handle the response data here
+                    
                     console.log('订单状态已更新为:', data);
                     // You can update the UI or perform any other actions based on the data
                 })
@@ -36,6 +37,8 @@ const observer = new IntersectionObserver((entries) => {
                     console.error('请求出错:', error);
                     // Handle any error that occurred during the request
                 });
+                const table = $('#myTable').DataTable();
+                table.ajax.reload()
             }
         }
     });

@@ -333,9 +333,11 @@ p{margin-bottom: 0;}
     p{
         &:first-child{
             width: 15%;
+            min-width: 110px;
         }
         &:nth-child(2){
             width: 15%;
+            min-width: max-content;
         }
     }
 

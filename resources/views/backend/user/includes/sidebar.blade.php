@@ -50,7 +50,11 @@
     <div class="sidebar">
         <div class="sidebar-header">
             <a href={{ route('frontend.index') }}><img src={{asset('image\logo.png')}} alt="" class="logo"></a>
+            <label for="menu-button">
+                <img src="{{asset('image\menu.png')}}" alt="" class="menu-icon">
+            </label>
         </div>
+        <input type="checkbox" class="menu" id="menu-button">
         <div class="sidebar-body">
             <ul class="sidebar-links">
                 @foreach ($links as $link)

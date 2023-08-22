@@ -268,9 +268,12 @@ p {
 }
 .order-list p:first-child {
   width: 15%;
+  min-width: 110px;
 }
 .order-list p:nth-child(2) {
   width: 15%;
+  min-width: -moz-max-content;
+  min-width: max-content;
 }
 .order-list a.order {
   cursor: pointer;
