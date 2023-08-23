@@ -11,9 +11,8 @@
     @section('content')
 
         @include('ui.carousel')
-
         
-        <div class="content">
+        {{-- <div class="content">
             <div class="container">
                 <div class="text">
                     <p class="title">Alat Ganti Ah Seng Overview</p>
@@ -28,6 +27,45 @@
                 <div class="image">
                     <img src="{{asset('image\frozen air cond.png')}}" alt="">
                 </div>
+            </div>
+        </div> --}}
+
+        <div class="section">
+            <div class="section-title">
+                <p>Our Mission</p>
+            </div>
+            <div class="card-container">
+
+                <div class="card">
+                    <div class="card-header">
+                        <embed src="{{asset('images/idea.svg')}}" type="image/svg+xml" />
+                    </div>
+                    <div class="card-body">
+                        Innovative Pondering<br>
+                        Tradition-Sundering
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <embed src="{{asset('images/gear.svg')}}" type="image/svg+xml" />
+                    </div>
+                    <div class="card-body">
+                        High Quanlity<br>
+                        Best Durability
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <embed src="{{asset('images/service.svg')}}" type="image/svg+xml" />
+                    </div>
+                    <div class="card-body">  
+                        Expert Guidance<br>
+                        Remarkable Assistance
+                    </div>
+                </div>
+
             </div>
         </div>
     

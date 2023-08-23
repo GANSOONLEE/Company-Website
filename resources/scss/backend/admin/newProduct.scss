@@ -172,7 +172,9 @@
                             width: calc((75% / 3) - 20px);
                             text-align: center;
                             cursor: pointer;
-                            
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
                             .form-radio{
                                 font-size: var(--font-h6);
                             }
@@ -414,7 +416,7 @@ $loader-dot--size: 20px;
 @media only screen and (max-width: 790px) {
     .content{
         width: 100%;
-        padding: 6rem 2rem;
+        padding: 6rem 2rem 3rem;
         margin-left: 0;
         .content-body{
             padding: 0;
@@ -482,9 +484,28 @@ $loader-dot--size: 20px;
                                 }
                             }
                         }
+                        &.buttonArea{
+                            flex-direction: column;
+                            width: 100%;
+                            align-items: center;
+                            row-gap: 3rem;
+                            button{
+                                width: 100%;
+                                padding: 1rem 0;
+                                font-size: var(--font-h5);
+                            }
+                            button.resetButton{
+                                margin-right: 0;
+                            }
+                        }
                     }
                 }
             }
         }
     }
+}
+
+.modal-dialog{
+    margin-top: 10rem;
+    padding-top: 2rem;
 }

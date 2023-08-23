@@ -1,76 +1,135 @@
-.main{
-    padding: 4rem 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+@charset "UTF-8";
+.main {
+  padding: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.header{
-    width: 80vw;
-    height: auto;
-    transition: all .2s ease;
-}
-.carousel-control-prev{
-    background-image: linear-gradient(to left,rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
-}
-.carousel-control-next{
-    background-image: linear-gradient(to right,rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
+.header {
+  width: 80vw;
+  height: auto;
+  transition: all 0.2s ease;
 }
 
+.carousel-control-prev {
+  background-image: linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
+}
+
+.carousel-control-next {
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  padding: 3rem;
+}
+.section .section-title {
+  padding-bottom: 2rem;
+}
+.section .section-title p {
+  font-size: var(--font-h1);
+  font-weight: bold;
+  font-variant-caps: small-caps;
+  letter-spacing: 0.1rem;
+  margin-bottom: 0;
+  background: linear-gradient(0deg, rgb(255, 0, 0) 44%, rgb(38, 0, 255) 46%);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+.section .card-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  padding: 2.6rem 8rem;
+  width: 100%;
+}
+.section .card-container .card {
+  min-width: 120px;
+  width: 25%;
+  max-width: 33.3333333333%;
+  transition: all 0.17s ease-in-out;
+  border: 3px solid darkorange;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.section .card-container .card:hover {
+  background-color: darkorange;
+}
+.section .card-container .card .card-header {
+  background-color: transparent;
+  padding: 3rem 3rem 1rem;
+  border-bottom: none;
+}
+.section .card-container .card .card-header embed {
+  width: 80px;
+  height: auto;
+}
+.section .card-container .card .card-body {
+  letter-spacing: 0.4px;
+  font-size: var(--font-h5);
+  color: red;
+}
+
+/** 舊版功能
 .content {
-    display: flex;
+	display: flex;
+	flex-direction: column;
+	row-gap: .9rem;
+	.container {
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-evenly;
+		align-items: flex-start;
+		padding: 3rem 6rem;
+		.text {
+			.title {
+				font-size: var(--font-h2);
+				font-family: $font-family_1;
+			}
+			.description {
+				padding: 1rem 4rem;
+				font-family: $font-family_2;
+			}
+		}
+	}
+}
+.description {
+	.overview {
+		font-size: var(--font-h5);
+		padding: 1rem 0;
+	}
+}
+.container {
+	.image {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex: 1;
+		img {
+			width: 50rem;
+			min-width: 250px;
+		}
+	}
+}
+*/
+@media only screen and (max-width: 646px) {
+  .carousel-indicators {
+    display: none;
+  }
+  .content .container {
     flex-direction: column;
-    row-gap: .9rem;
-}
-
-.content .container {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: self-start;
-    padding: 3rem 6rem
-}
-
-.content .container .text .title {
-    font-size: var(--font-h2);
-    font-family: 'khand', sans-serif;
-}
-
-.content .container .text .description {
-    padding: 1rem 4rem;
-    font-family: 'Itim', sans-serif;
-}
-
-.description .overview {
-    font-size: var(--font-h5);
-    padding: 1rem 0;
-}
-
-.container .image {
-    display: flex;
     justify-content: center;
     align-items: center;
-    flex: 1;
-}
-
-.container .image img {
-    width: 50rem;
-    min-width: 250px
-}
-
-@media only screen and (max-width:646px) {
-    .carousel-indicators{
-        display: none;
-    }
-    .content .container {
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 3rem 2rem
-    }
-
-    .content .container .text .title {
-        text-align: center;
-    }
+    padding: 3rem 2rem;
+  }
+  .content .container .text .title {
+    text-align: center;
+  }
 }

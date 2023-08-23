@@ -2,7 +2,7 @@ let table = new DataTable('#myTable', {
     "order": [
         [2, "desc"],
         [3, "desc"],
-    ]
+    ],
 });
 
 
@@ -30,18 +30,18 @@ const observer = new IntersectionObserver((entries) => {
                 .then(data => {
                     // Handle the response data here
                     
-                    console.log('订单状态已更新为:', data);
+                    console.info('订单状态已更新为:', data);
                     // You can update the UI or perform any other actions based on the data
                 })
                 .catch(error => {
                     console.error('请求出错:', error);
                     // Handle any error that occurred during the request
                 });
-                const table = $('#myTable').DataTable();
-                table.ajax.reload()
+                location.reload();
             }
         }
     });
+    // $('#myTable').DataTable().ajax.reload(null, false);
 });
 
 document.querySelectorAll('.order').forEach((orderElement) => {
@@ -56,7 +56,6 @@ const pusher = new Pusher('771599bd4947d3ad7e41', {
 const channel = pusher.subscribe('order-status');
 channel.bind('App\\Events\\NewOrderNotification', (data) => {
     // Handle the notification count update here, e.g., update the red dot count
-    console.log('Received new order notification');
 });
 
 $('.paginate_button').click(function(event){

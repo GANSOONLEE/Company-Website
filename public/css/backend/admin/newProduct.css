@@ -163,6 +163,9 @@
   width: calc(25% - 20px);
   text-align: center;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .content .content-body .form .form-row .form-row-body .form-row-body-radio .form-check-label .form-radio {
   font-size: var(--font-h6);
@@ -384,7 +387,7 @@ input[required]::placeholder {
 @media only screen and (max-width: 790px) {
   .content {
     width: 100%;
-    padding: 6rem 2rem;
+    padding: 6rem 2rem 3rem;
     margin-left: 0;
   }
   .content .content-body {
@@ -444,4 +447,22 @@ input[required]::placeholder {
   .content .content-body .form .form-row .form-row-body .form-row-body-radio .form-check-label .form-radio p {
     margin-bottom: 0;
   }
+  .content .content-body .form .form-row .form-row-body.buttonArea {
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    row-gap: 3rem;
+  }
+  .content .content-body .form .form-row .form-row-body.buttonArea button {
+    width: 100%;
+    padding: 1rem 0;
+    font-size: var(--font-h5);
+  }
+  .content .content-body .form .form-row .form-row-body.buttonArea button.resetButton {
+    margin-right: 0;
+  }
+}
+.modal-dialog {
+  margin-top: 10rem;
+  padding-top: 2rem;
 }

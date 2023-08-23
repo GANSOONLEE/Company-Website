@@ -12,9 +12,7 @@ function scrollHeightNavbar(){
 
     if(windowHeight >= navbarHeight + 20 && classDetect < 0 ){
         navbar.classList.add('scroll');
-        console.log('add');
     }else if(windowHeight < navbarHeight && classDetect > -1 ){
         navbar.classList.remove('scroll');
-        console.log('remove');
     }
 }

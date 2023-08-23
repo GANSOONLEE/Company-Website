@@ -31,19 +31,20 @@ var observer = new IntersectionObserver(function (entries) {
         .then(function (data) {
           // Handle the response data here
 
-          console.log('订单状态已更新为:', data);
+          console.info('订单状态已更新为:', data);
           // You can update the UI or perform any other actions based on the data
         })["catch"](function (error) {
           console.error('请求出错:', error);
           // Handle any error that occurred during the request
         });
 
-        var _table = $('#myTable').DataTable();
-        _table.ajax.reload();
+        location.reload();
       }
     }
   });
+  // $('#myTable').DataTable().ajax.reload(null, false);
 });
+
 document.querySelectorAll('.order').forEach(function (orderElement) {
   observer.observe(orderElement);
 });
@@ -54,7 +55,6 @@ var pusher = new Pusher('771599bd4947d3ad7e41', {
 var channel = pusher.subscribe('order-status');
 channel.bind('App\\Events\\NewOrderNotification', function (data) {
   // Handle the notification count update here, e.g., update the red dot count
-  console.log('Received new order notification');
 });
 $('.paginate_button').click(function (event) {
   document.querySelectorAll('.order').forEach(function (orderElement) {
