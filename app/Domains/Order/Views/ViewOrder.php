@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Domains\Order\Views;
+use App\Mail\OrderShipped;
 use App\Models\Order;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class ViewOrder{
 

@@ -9,7 +9,7 @@ class UserCartController extends Controller{
 
     public function cart(){
 
-        $email = auth()->user()->Email;
+        $email = auth()->user()->email_address;
     
         $carts = Cart::where('Email', $email)
             ->orderBy('productCategory', 'asc')

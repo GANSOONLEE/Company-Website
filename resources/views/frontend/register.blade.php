@@ -19,16 +19,16 @@
         <div class="part" data-index='1' data-visible='true'>
             <div class="section-form">
                 <label for="name"><span class="requird">Name:</label>
-                <input type="text" id="name" name="name" placeholder="Name" class="requird" required>
+                <input type="text" id="name" name="username" placeholder="Name" class="requird" required>
             </div>
 
             <div class="section-form">
                 <label for="phone"><span class="requird">Phone:</label>
-                <input type="text" id="phone" name="phone" placeholder="012 34567890" class="requird" maxlength="13" required>
+                <input type="text" id="phone" name="phone_number" placeholder="012 34567890" class="requird" maxlength="13" required>
             </div>
             <div class="section-form">
                 <label for="email"><span class="requird">Email:</label>
-                <input type="email" id="email" name="email" placeholder="Email" class="requird" required>
+                <input type="email" id="email" name="email_address" placeholder="Email" class="requird" required>
             </div>
             <div class="button-area">
                 <button type="button" style="visibility: hidden"></button>
@@ -47,7 +47,7 @@
             </div>
             <div class="section-form">
                 <label for="occupation"><span class="requird">Profession:</label>
-                <input list="occupationList" id="occupation"name="occupation" placeholder="Profession" required>
+                <input list="occupationList" id="occupation" name="profession" placeholder="Profession" required>
                 <datalist id="occupationList" class="datalist">
                     <option value="Maintenance">
                     <option value="Workshop">
@@ -56,7 +56,7 @@
             </div>
             <div class="section-form">
                 <label for="store_name"><span class="requird">Store Name:</label>
-                <input type="text" id="store_name"name="store_name" placeholder="Store Name" required>
+                <input type="text" id="store_name"name="company_name" placeholder="Store Name" required>
             </div>
             <div class="section-form">
                 <label for="password"><span class="requird">Password:</label>

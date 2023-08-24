@@ -18,15 +18,15 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'Name',
-        'Phone Number',
-        'Email',
-        'Birthday',
-        'Address',
-        'Profession',
-        'Store / Company Name',
-        'Password',
-        'AccessToken'
+        'username',
+        'phone_number Number',
+        'email_address',
+        'birthday',
+        'address',
+        'profession',
+        'company_name',
+        'password',
+        'access_token'
     ];
 
 
@@ -52,18 +52,18 @@ class User extends Authenticatable
     public function isAdmin(){
 
         // 根据你的用户模型中的字段来判断是否为管理员
-        return $this->Role === 'admin';
+        return $this->role === 'admin';
     }
 
     public function isUser(){
 
         // 根据你的用户模型中的字段来判断是否为管理员
-        return $this->Role === 'user';
+        return $this->role === 'customer';
     }
 
-    public static function updateUser($Email, $data)
+    public static function updateUser($email_address, $data)
     {
-        return self::where('Email', $Email)->update($data);
+        return self::where('email_address', $email_address)->update($data);
     }
 
 }

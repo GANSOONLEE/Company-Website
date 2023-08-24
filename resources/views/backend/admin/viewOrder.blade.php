@@ -52,7 +52,7 @@
 
                         <td data-type="orderID">{{ $order->orderID }}</td> 
 
-                        <td data-type="customerUser">{{ $order->order_to_user()->Name }}</td>
+                        <td data-type="customerUser">{{ $order->order_to_user()->username }}</td>
 
                         <td data-type="orderReceivedDate">{{ $order->orderReceivedDate }}</td>
 

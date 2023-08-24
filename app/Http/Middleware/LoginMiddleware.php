@@ -18,16 +18,16 @@ class LoginMiddleware
      */
     public function handle($request, Closure $next)
     {
-        $email = Cookie::get('email');
-        $accessToken = Cookie::get('accessToken');
+        $email_address = Cookie::get('email');
+        $access_token = Cookie::get('access_token');
     
         // 在数据库中查找与 cookie 中的电子邮件匹配的用户
-        $user = User::where('Email', $email)
+        $user = User::where('email_address', $email_address)
             // ->where('AccessToken', $accessToken)
             ->first();
         
         if($user){
-            $request->session()->flash('user', $user);
+            $request->session()->flash('access_token', $access_token);
             Auth::login($user, false); // 将用户实例登录到内置身份验证系统中
         }
         return $next($request);

@@ -32,11 +32,34 @@
 
         <div class="section">
             <div class="section-title">
+                <p>Our Company</p>
+            </div>
+            <div class="organize-container">
+                <div class="organize-hexagon">
+                    <img src="{{asset('image/1.jpg')}}" alt="">
+                </div>
+                <div class="organize-hexagon">
+                    <img src="{{asset('image/2.jpg')}}" alt="">
+                </div>
+                <div class="organize-hexagon">
+                    <img src="{{asset('image/3.jpg')}}" alt="">
+                </div>
+                <div class="organize-hexagon">
+                    <img src="{{asset('image/4.png')}}" alt="">
+                </div>
+                <div class="organize-hexagon">
+                    <img src="{{asset('image/5.jpg')}}" alt="">
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">
                 <p>Our Mission</p>
             </div>
             <div class="card-container">
 
-                <div class="card">
+                <div class="card mission-card">
                     <div class="card-header">
                         <embed src="{{asset('images/idea.svg')}}" type="image/svg+xml" />
                     </div>
@@ -46,7 +69,7 @@
                     </div>
                 </div>
 
-                <div class="card">
+                <div class="card mission-card center">
                     <div class="card-header">
                         <embed src="{{asset('images/gear.svg')}}" type="image/svg+xml" />
                     </div>
@@ -56,7 +79,7 @@
                     </div>
                 </div>
 
-                <div class="card">
+                <div class="card mission-card">
                     <div class="card-header">
                         <embed src="{{asset('images/service.svg')}}" type="image/svg+xml" />
                     </div>

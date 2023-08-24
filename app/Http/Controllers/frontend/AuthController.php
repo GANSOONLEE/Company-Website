@@ -24,21 +24,21 @@ class AuthController extends Controller
         $accessToken = $this->generateAccessToken();
 
         $data = [
-            'Name' => $request->input('name'),
-            'Phone Number' => $request->input('phone'),
-            'Email' => $request->input('email'),
-            'Birthday' => $request->input('birthday'),
-            'Address' => $request->input('address'),
-            'Profession' => $request->input('occupation'),
-            'Store / Company Name' => $request->input('store_name'),
-            'Password' => Hash::make($request->input('password')),
-            'AccessToken' => $accessToken,
+            'username' => $request->input('username'),
+            'phone_number' => $request->input('phone_number'),
+            'email_address' => $request->input('email_address'),
+            'birthday' => $request->input('birthday'),
+            'address' => $request->input('address'),
+            'profession' => $request->input('profession'),
+            'company_name' => $request->input('company_name'),
+            'password' => Hash::make($request->input('password')),
+            'access_token' => $accessToken,
         ];
         
         User::create($data);        
 
         cookie()->queue('access_token', $accessToken, 0, null, null, false, false, True);
-        cookie()->queue('email', $data['Email'], 0, null, null, false, false, True);
+        cookie()->queue('email', $data['email_address'], 0, null, null, false, false, True);
 
         return redirect()->back();
     }
@@ -46,22 +46,22 @@ class AuthController extends Controller
     public function login(Request $request){
         
         $data = [
-            'Email' => $request->input('email'),
-            'Password' => $request->input('password'),
+            'email_address' => $request->input('email_address'),
+            'password' => $request->input('password'),
         ];
 
-        $user = User::where('Email', $data['Email'])->first();
+        $user = User::where('email_address', $data['email_address'])->first();
 
-        if ($user && Hash::check($data['Password'], $user->Password)) {
+        if ($user && Hash::check($data['password'], $user->Password)) {
 
             $newAccessToken = $this->generateAccessToken();
 
-            $updateData = ['AccessToken' => $newAccessToken,];
+            $updateData = ['access_token' => $newAccessToken,];
 
-            User::updateUser($request->input('email'), $updateData);
+            User::updateUser($request->input('email_address'), $updateData);
 
-            cookie()->queue('accessToken', $newAccessToken, 60*24*180, null, null, false, false);
-            cookie()->queue('email', $data['Email'], 60*24*180, null, null, false, false);
+            cookie()->queue('access_token', $newAccessToken, 60*24*180, null, null, false, false);
+            cookie()->queue('email_address', $data['email_address'], 60*24*180, null, null, false, false);
 
             Auth::login($user, false);
 
@@ -96,8 +96,8 @@ class AuthController extends Controller
     function logout(Request $request){
 
         $response = back()
-            ->withCookie(Cookie::forget('email'))
-            ->withCookie(Cookie::forget('accessToken'));
+            ->withCookie(Cookie::forget('email_address'))
+            ->withCookie(Cookie::forget('access_token'));
 
         Auth::logout();
 

@@ -1,7 +1,7 @@
 
 .website-map{
     width: 100%;
-    background-color: rgb(235, 235, 235);
+    background-color: #ebebeb;
     
     .footer-title{
         font-size: var(--font-h3);
@@ -34,7 +34,8 @@
                 a.link{
                     display: flex;
                     font-size: var(--font-h6);
-                    
+                    justify-content: flex-start;
+                    align-items: center;
                 }
                 a.link:hover{
                     color: blue;
@@ -61,7 +62,7 @@
         justify-content: space-between;
         align-items: center;
         text-align: center;
-        background-color: rgb(201, 201, 201);
+        background-color: #c9c9c9;
         font-size: var(--font-small);
         p{
             margin-bottom: 0;

@@ -9,7 +9,7 @@ class UserOrderController extends Controller{
 
     public function order(Request $request){
 
-        $email = auth()->user()->Email;
+        $email = auth()->user()->email_address;
         $status = $request->status ?? 'New'; // 如果沒有提供狀態，默認為 'New'
 
         $orderData = Order::where('email', $email)

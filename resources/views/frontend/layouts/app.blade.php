@@ -13,6 +13,9 @@
     <link rel="stylesheet" href="{{asset('css\app.css')}}">
     @stack('after-style')
 
+    <!-- Scroll reveal -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
     <!-- Font-aweson -->
     <script src="https://kit.fontawesome.com/4fffedbe3d.js" crossorigin="anonymous"></script>
 

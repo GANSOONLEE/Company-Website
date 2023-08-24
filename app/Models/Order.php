@@ -29,7 +29,7 @@ class Order extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'Email', 'Email');
+        return $this->belongsTo(User::class, 'Email', 'email_address');
     }
 
     public function order_to_user()

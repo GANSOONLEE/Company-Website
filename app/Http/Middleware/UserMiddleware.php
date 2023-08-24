@@ -12,13 +12,13 @@ class UserMiddleware
     public function handle($request, Closure $next)
     {
         $email = Cookie::get('email');
-        $accessToken = Cookie::get('accessToken');
+        $access_token = Cookie::get('access_token');
 
-        $user = User::where('Email', $email)
-            // ->where('AccessToken', $accessToken) //禁止單一賬號從多個地方登入
+        $user = User::where('email_address', $email)
+            // ->where('access_token', $access_token) //禁止單一賬號從多個地方登入
             ->first();
 
-        $request->session()->flash('user', $user);
+        $request->session()->flash('username', $user);
         
         if(($user->isUser() || $user->isAdmin()) && $request->is('user*')){
             Auth::login($user);
