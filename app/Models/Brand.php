@@ -13,8 +13,9 @@ class Brand extends Model
      *  Setup
      */
 
-    protected $table = 'brand';
+    protected $table = 'brands';
     protected $primaryKey = 'brandID';
+    protected $fillable = ['brandName'];
     public $timestamps = false;
 
     /**

@@ -14,8 +14,9 @@ use App\Domains\Order\Events\CreatedOrderEvent;
 use App\Domains\Order\Events\UpdatedOrderEvent;
 use App\Domains\Order\Events\UserViewOrderEvent;
 use App\Domains\Auth\Events\RestoreRecordEvent;
+use App\Http\Controllers\SubscriberController;
 
-
+Route::post('/subscribe', [SubscriberController::class, 'sendEmail']);
 
 /*
 |--------------------------------------------------------------------------

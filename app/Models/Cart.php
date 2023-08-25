@@ -13,16 +13,53 @@ class Cart extends Model
      *  Setup
      */
 
-    protected $table = 'cart';
-    protected $primaryKey = 'ID';
+    protected $table = 'carts';
+    protected $primaryKey = 'cart_ID';
     protected $fillable = [
-        'Email',
-        'productID',
-        'productCategory',
-        'productBrand',
-        'quantity'
+        'email_address',
+        'cart_content',
     ];
     public $timestamps = false;
+
+    /**
+     * @example
+     * {
+     *     "123ABC": {
+     *         "product_category": "Fan Control",
+     *         "cart_content": [
+     *             {
+     *                 "brand": "SWJ",
+     *                 "brand_code": "SWJ-001",
+     *                 "quantity": 4
+     *             },
+     *             {
+     *                 "brand": "AM",
+     *                 "brand_code": "AM-001",
+     *                 "quantity": 2
+     *             }
+     *         ]
+     *     },
+     *     "456EDF": {
+     *         "product_category": "Fan Cover",
+     *         "cart_content": [
+     *             {
+     *                 "brand": "SWJ",
+     *                 "brand_code": "SWJ-00123",
+     *                 "quantity": 4
+     *             },
+     *             {
+     *                 "brand": "AM",
+     *                 "brand_code": "AM-00453",
+     *                 "quantity": 3
+     *             }
+     *         ]
+     *     }
+     * }
+     */
+    
+    protected $casts = [
+        'cart_content' => 'json',
+    ];
 
     /**
      *  Relationship

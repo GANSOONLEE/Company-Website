@@ -3,55 +3,26 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\productModel;
-use App\Models\catelogModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Product extends Model{
 
     use SoftDeletes;
 
-
     protected $table = 'products';
     protected $dates = ['deleted_at'];
-    public $incrementing = false;
-    protected $primaryKey = 'productID';
+    protected $primaryKey = 'product_id';
     protected $guarded = [ ];
+    public $incrementing = false;
     public $timestamps = false;
     public $fillable = [
-        'productID',
-        'productCatelog',
-        'productType',
-        'productNameList',
-        'productBrandList',
-        'productStatus',
+        'product_id',
+        'product_category',
+        'product_type',
+        'product_nameL_list',
+        'product_brand_list',
+        'product_status',
     ];
-
-    /**
-     * 一个产品只能有一种种类
-     */
-    public function catelog()
-    {
-        return $this->belongsTo(productModel::class, 'productCatelog', 'catelogID');
-    }
-
-    public function getProductID(): string{
-        return $this->productID;
-    }
-    
-    /**
-     * 根据关键字查询产品
-     *
-     * @param string $keyword
-     * @return \Illuminate\Database\Eloquent\Collection
-     */
-    public static function searchByKeyword($keyword)
-    {
-        return self::where('productName', 'LIKE', "%$keyword%")
-            ->orWhere('productCode', 'LIKE', "%$keyword%")
-            ->orderBy('productName', 'asc')
-            ->get();
-    }
 
     /**
      * 创建新产品

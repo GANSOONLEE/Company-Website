@@ -15,12 +15,13 @@ class Order extends Model
     protected $guarded = [ ];
     public $timestamps = true;
     public $fillable = [
-        'orderID',
-        'Email', // user.email
-        'orderReceivedDate',
-        'orderReceivedTime',
-        'orderContent', // json
-        'orderStatus', // Enum: New, Received, In Process, Complete
+        'order_id',
+        'user_id',
+        'email_address',
+        'order_received_date',
+        'order_received_time',
+        'order_content',
+        'order_status', // Enum: New, Received, In Process, Complete
     ];
 
     /**
