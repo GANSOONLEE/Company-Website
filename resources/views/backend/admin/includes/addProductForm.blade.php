@@ -18,8 +18,8 @@
             
         const datalistNameListCar = document.createElement('datalist');
             datalistNameListCar.id = 'productNameList-Car';
-            datalistNameListCar.innerHTML = `@foreach ($models as $option)
-                    <option value="{{ $option['modelName'] }}">
+            datalistNameListCar.innerHTML = `@foreach ($brands as $brand)
+                    <option value="{{ $brand['brandName'] }}">
                 @endforeach`
 
         const inputNameListModel = document.createElement('input');
@@ -133,8 +133,8 @@
                     <div class="form-input display-row">
                         <input required class="input form-control caps" list="productNameList-Car" placeholder="{{trans('product.car')}} : PROTON" name="productNameList-Car[]">
                         <datalist id="productNameList-Car">
-                            @foreach ($models as $option)
-                                <option value="{{ $option['modelName'] }}">
+                            @foreach ($brands as $brand)
+                                <option value="{{ $brand['brandName'] }}">
                             @endforeach
                         </datalist>
                         <input required class="input form-control caps" type="text" placeholder="{{trans('product.car-model')}} : SAGA" name="productNameList-Model[]">
@@ -175,7 +175,7 @@
             </div>
         </div>
 
-        {{-- Product Catelog --}}
+        {{-- Product Category --}}
         <div class="form-row">
             <div class="form-row-title">
                 <p class="form-row-title-text request">
@@ -184,11 +184,11 @@
             </div>
             <div class="form-row-body">
                 <div class="form-row-body-input">
-                    <label for="{{ $option['catelogName'] }}">
-                        <input required list="categoryList" class="form-input form-control" type="text" name="productCatelog" placeholder="{{trans('product.catelog')}}">
+                    <label for="">
+                        <input required list="categoryList" class="form-input form-control" type="text" name="productCatelog" placeholder="{{trans('product.category')}}">
                         <datalist id="categoryList">
-                            @foreach ($catelogs as $option) 
-                                <option value="{{ $option['catelogName'] }}">
+                            @foreach ($categories as $category) 
+                                <option value="{{ $categories['categoryName'] }}">
                             @endforeach
                         </datalist>
                     </label>

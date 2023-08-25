@@ -5,15 +5,24 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\backend\AjaxDataController;
 use App\Http\Controllers\backend\ProductController;
+
 use App\Domains\Product\Events\Product\SearchedProductEvent;
 use App\Domains\Product\Events\Product\DeletedProductEvent;
-use App\Domains\Order\Events\Cart\AddToCartEvent;
-use App\Domains\Order\Events\Cart\UpdateCartEvent;
-use App\Domains\Order\Events\Cart\UpdateCartOwnEvent;
+
+// Cart
+use App\Domains\Cart\Events\AddToCartEvent;
+use App\Domains\Cart\Events\UpdateCartEvent;
+
+// Order
 use App\Domains\Order\Events\CreatedOrderEvent;
 use App\Domains\Order\Events\UpdatedOrderEvent;
+use App\Domains\Order\Events\UpdateCartOwnEvent;
 use App\Domains\Order\Events\UserViewOrderEvent;
+
+// Operation
 use App\Domains\Auth\Events\RestoreRecordEvent;
+
+// Email
 use App\Http\Controllers\SubscriberController;
 
 Route::post('/subscribe', [SubscriberController::class, 'sendEmail']);

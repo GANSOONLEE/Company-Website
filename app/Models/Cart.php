@@ -24,36 +24,20 @@ class Cart extends Model
     /**
      * @example
      * {
-     *     "123ABC": {
-     *         "product_category": "Fan Control",
-     *         "cart_content": [
-     *             {
-     *                 "brand": "SWJ",
-     *                 "brand_code": "SWJ-001",
-     *                 "quantity": 4
-     *             },
-     *             {
-     *                 "brand": "AM",
-     *                 "brand_code": "AM-001",
-     *                 "quantity": 2
-     *             }
-     *         ]
-     *     },
-     *     "456EDF": {
-     *         "product_category": "Fan Cover",
-     *         "cart_content": [
-     *             {
-     *                 "brand": "SWJ",
-     *                 "brand_code": "SWJ-00123",
-     *                 "quantity": 4
-     *             },
-     *             {
-     *                 "brand": "AM",
-     *                 "brand_code": "AM-00453",
-     *                 "quantity": 3
-     *             }
-     *         ]
-     *     }
+     *     "product_code" : "12343543ASD",
+     *     "product_category": "Fan Control",
+     *     "cart_content": [
+     *         {
+     *             "brand": "SWJ",
+     *             "brand_code": "SWJ-001",
+     *             "quantity": 4
+     *         },
+     *         {
+     *             "brand": "AM",
+     *             "brand_code": "AM-001",
+     *             "quantity": 2
+     *         }
+     *     ]
      * }
      */
     

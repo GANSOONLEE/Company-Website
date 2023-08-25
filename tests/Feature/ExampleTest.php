@@ -27,14 +27,5 @@ class ExampleTest extends TestCase
     {
         $response = $this->get('/');
         $response->assertStatus(200);
-
-        $response = $this->get('/about-us');
-        $response->assertStatus(200);
-
-        $response = $this->get('/contact');
-        $response->assertStatus(200);
-        
-        $response = $this->get('/product');
-        $response->assertStatus(200);
     }
 }

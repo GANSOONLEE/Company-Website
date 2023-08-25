@@ -5,7 +5,7 @@ namespace App\Domains\Auth\Views;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\User;
-use App\Models\UserOperation;
+use App\Models\Operation;
 use Illuminate\Http\Request;
 
 class ManagerAdminController extends Controller{
@@ -15,7 +15,7 @@ class ManagerAdminController extends Controller{
 
         $user = User::all();
 
-        $operationData = UserOperation::orderBy('created_at', 'desc')
+        $operationData = Operation::orderBy('created_at', 'desc')
             ->get();
 
         return view('backend.admin.managementUser', compact('orderNew', 'user', 'operationData'));

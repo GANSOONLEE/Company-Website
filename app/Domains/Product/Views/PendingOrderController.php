@@ -7,7 +7,7 @@ use App\Models\Order;
 class PendingOrderController extends Controller{
     public function pendingOrder(){
 
-        $orderData = Order::where('orderStatus', 'Pending')
+        $orderData = Order::where('order_status', 'Pending')
             ->orderBy('created_at', 'asc')
             ->get();
 

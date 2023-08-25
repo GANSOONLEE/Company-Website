@@ -16,13 +16,13 @@ class AdminMiddleware
     {
         $email = Cookie::get('email');
         $accessToken = Cookie::get('access_token');
-        $orderNew = Order::where('orderStatus', 'New')
+        $orderNew = Order::where('order_status', 'New')
             ->count();
     
         // 在数据库中查找与 cookie 中的电子邮件匹配的用户
         $user = User::where('email_address', $email)
             // ->where('AccessToken', $accessToken)
-            ->where('Role', 'admin')
+            ->where('role', 'admin')
             ->first();
     
         if (!$user) {

@@ -5,8 +5,7 @@ namespace App\Http\Controllers\frontend;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\backend\ProductController;
 use App\Models\Product;
-use App\Models\productModel;
-use App\Models\productCatelog;
+use App\Models\Category;
 use App\Models\Brand;
 
 class AdminController extends Controller{
@@ -25,16 +24,18 @@ class AdminController extends Controller{
     public function newProduct(): object{
         $products = Product::all();
 
-        // 查询所有车款数据
-        $models = productModel::orderBy('modelName', 'asc')->get();
-
         // 查询所有种类数据
-        $catelogs = productCatelog::orderBy('catelogName', 'asc')->get();
+        $categories = Category::orderBy('categoryName', 'asc')->get();
 
         $brands = Brand::orderBy('brandName', 'asc')->get();
         $orderNew = session('orderNew');
 
-        return view('backend.admin.addProduct',compact('products','models','catelogs','brands', 'orderNew'));
+        return view('backend.admin.addProduct',compact(
+            'products',
+            'categories',
+            'brands', 
+            'orderNew')
+        );
     }
 
     /**

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
-use App\Models\productCatelog;
+use App\Models\Category;
 
 class ViewController extends Controller
 {
@@ -14,7 +14,7 @@ class ViewController extends Controller
     public function type(){return view('frontend.type');}
 
     public function product(){
-        $catelogs = ProductCatelog::orderBy('catelogName', 'asc')->get();
+        $catelogs = Category::orderBy('categoryName', 'asc')->get();
         return view('frontend.catelog',compact('catelogs')); 
     }
 

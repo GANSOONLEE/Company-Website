@@ -12,13 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('orders', function (Blueprint $table) {
-            $table->bigInteger('order_id', 18)
-                ->unsigned()
+            $table->bigInteger('order_id', false, true)
                 ->primary();
-            $table->unsignedBigInteger('user_id');
             $table->string('email_address');
-            $table->timestamps('order_received_date');
-            $table->timestamps('order_received_time');
+            $table->date('order_received_date');
+            $table->date('order_received_time');
             $table->json('order_content');
             $table->enum('order_status',['New', 'Pending', 'Processing', 'On Hold', 'Completed'])
                 ->default('New');
@@ -28,8 +26,8 @@ return new class extends Migration
              *  foreign column 
              */
             
-            $table->foreign('user_id')
-                ->references('id')
+            $table->foreign('email_address')
+                ->references('email_address')
                 ->on('users');
         });
     }

@@ -11,8 +11,7 @@ class UserCartController extends Controller{
 
         $email = auth()->user()->email_address;
     
-        $carts = Cart::where('Email', $email)
-            ->orderBy('productCategory', 'asc')
+        $carts = Cart::where('email_address', $email)
             ->get();
 
         return view('backend.user.cart.cart', compact('carts'));

@@ -4,7 +4,7 @@ namespace App\Domains\Product\Views;
 
 // Model
 use App\Models\Product;
-use App\Models\productCatelog;
+use App\Models\Category;
 use Illuminate\Support\Facades\Request;
 
 class ProductEditController{
@@ -16,7 +16,7 @@ class ProductEditController{
 
         $productData = Product::all();
 
-        $catelogs = productCatelog::all();
+        $catelogs = Category::all();
         $orderNew = session('orderNew');
 
         return view('backend.admin.editProduct', compact('productData', 'catelogs', 'orderNew'));

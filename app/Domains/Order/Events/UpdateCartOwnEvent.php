@@ -1,11 +1,9 @@
 <?php
 
-namespace App\Domains\Order\Events\Cart;
+namespace App\Domains\Order\Events;
 
 use App\Http\Controllers\Controller;
-use App\Models\Product;
 use Illuminate\Http\Request;
-use App\Models\Cart;
 use App\Models\Order;
 
 class UpdateCartOwnEvent extends Controller{
@@ -14,7 +12,8 @@ class UpdateCartOwnEvent extends Controller{
 
         try{
             $orderID = $request->input('orderID');
-            $cartID = $request->input('cartID');
+            $product_code = $request->input('product_code');
+            $product_brand_code = $request->input('product_brand_code');
             $own = $request->input('own');
 
             $order = Order::where('orderID', $orderID)->first();
@@ -22,7 +21,7 @@ class UpdateCartOwnEvent extends Controller{
             $orderContentArray = json_decode($order->orderContent, true); // 將 JSON 轉換為陣列
 
             foreach ($orderContentArray as &$item) {
-                if ($item['cartID'] === $cartID) {
+                if ($item['product_code'] === $product_code && $item['product_brand_code'] === $product_brand_code) {
                     $item['own'] = $own;
                     break;
                 }
