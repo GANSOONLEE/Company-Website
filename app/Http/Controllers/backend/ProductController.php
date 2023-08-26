@@ -5,8 +5,8 @@ namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
-use App\Models\productCatelog;
-use App\Models\productModel;
+use App\Models\Category;
+use App\Models\Brand;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
@@ -15,18 +15,18 @@ class ProductController extends Controller{
     
     public function index($productCatelog, Request $request){
         // 查詢現有的車款
-        $models = productModel::orderBy('modelName', 'asc')->get('modelName');
+        $brands = Brand::orderBy('brandName', 'asc')->get('brandName');
 
         $productType = $request->input('productType');
         $productName = $request->input('productName');
         
-        $productData = Product::where('productCatelog', $productCatelog)
-            ->where('productStatus', 'Public')
-            ->get(['productCatelog', 'productNameList', 'productBrandList', 'productID']);
+        $productData = Product::where('product_category', $productCatelog)
+            ->where('product_status', 'public')
+            ->get(['product_category', 'product_name_list', 'product_brand_list', 'product_id']);
 
-        $catelog = ProductCatelog::where('catelogName', $productCatelog)->first();
+        $categories = Category::where('categoryName', $productCatelog)->first();
 
-        if (!$catelog) {
+        if (!$categories) {
 
             // 若不存在匹配的物品種類记录，重定向至指定路由
             return redirect(route('frontend.catelog'));
@@ -34,11 +34,12 @@ class ProductController extends Controller{
 
         return view('frontend.product', [
             'productData' => $productData,
-            'models' => $models,
-            'productCatelog' => $productCatelog,
+            'brands' => $brands,
+            'categories' => $categories,
         ]);
     }
 
+    // #TODO delete this useless function
     public function model($productType, $productCatelog, $productModel, ){
 
         // 查詢現有的車款
@@ -120,7 +121,7 @@ class ProductController extends Controller{
     public function search(Request $request, $productType = 'all')
     {
         // 查詢現有的車款
-        $models = productModel::orderBy('modelName', 'asc')->get();
+        $models = Brand::orderBy('modelName', 'asc')->get();
 
         $searchbarText = $request->input('searchbarText');
 

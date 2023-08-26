@@ -10,25 +10,28 @@ class AdminViewOrderEvent{
 
     public function adminViewOrder(Request $request, $orderID){
         
-        $order = Order::where('orderID', $orderID)
+        $order = Order::where('order_id', $orderID)
             ->first();
 
-        if($order->orderStatus == 'Received'){
+        if($order->order_status == 'Pending'){
             $order->update([
-                'orderStatus' => 'In Process'
+                'order_status' => 'Processing'
             ]);
         }
 
-        $products = json_decode($order->orderContent);
+        $products = json_decode($order->order_content);
         $productData = [];
         
         // Unit Test
         foreach($products as $product){
-            $productElement = Product::where('productID', $product->id)
-                ->orderBy('productCatelog', 'asc')
+            $productElement = Product::where('product_id', $product->id)
+                ->orderBy('product_category', 'asc')
                 ->first();
             $productData[] = [$productElement , $product];
         }
+
+        // $data = ['productData' => $order];
+        // return response()->json($data);
 
         $productCatelogs = [];
         foreach ($productData as $productItem) {

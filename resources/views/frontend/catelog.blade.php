@@ -28,17 +28,17 @@
         ];
     @endphp
 
-    @foreach($catelogs as $index => $catelog)
+    @foreach($categories as $index => $category)
     @php
         $imageIndex = $index % count($images);
         $imagePath = $images[$imageIndex];
     @endphp
 
-    <a href="catelog/{{$catelog->catelogName}}">
+    <a href="catelog/{{$category->categoryName}}">
         <div class="card">
             <img src="{{ asset($imagePath) }}" class="card-img-top" alt="...">
             <div class="card-body">
-                <h5 class="card-title">{{$catelog->catelogName}}</h5>
+                <h5 class="card-title">{{$category->categoryName}}</h5>
             </div>
         </div>
     </a>

@@ -48,23 +48,23 @@
             <tbody>
 
                 @foreach ($orderData as $order)
-                    <tr href="/{{$order->orderID}}" id="data-row" data-order-id={{"$order->orderID"}} data-status="{{ $order->orderStatus }}" class="order">
+                    <tr href="/{{$order->order_id}}" id="data-row" data-order-id={{"$order->order_id"}} data-status="{{ $order->order_status }}" class="order">
 
-                        <td data-type="orderID">{{ $order->orderID }}</td> 
+                        <td data-type="orderID">{{ $order->order_id }}</td> 
 
                         <td data-type="customerUser">{{ $order->order_to_user()->username }}</td>
 
-                        <td data-type="orderReceivedDate">{{ $order->orderReceivedDate }}</td>
+                        <td data-type="orderReceivedDate">{{ $order->order_received_date }}</td>
 
-                        <td data-type="orderReceivedTime">{{ $order->orderReceivedTime }}</td>
+                        <td data-type="orderReceivedTime">{{ $order->order_received_time }}</td>
 
-                        <td data-type="orderStatus" data-status="{{$order->orderStatus}}">
+                        <td data-type="orderStatus" data-status="{{$order->order_status}}">
                         {{-- <td data-status="Complete"> --}}
                             <span></span>
-                            <div style="display: inline-block">{{ $order->orderStatus }}</div>
+                            <div style="display: inline-block">{{ $order->order_status }}</div>
                         </td>
 
-                        <td data-type="orderContent" style="display: none">{{ $order->orderContent }}</td>
+                        <td data-type="orderContent" style="display: none">{{ $order->order_content }}</td>
                     </tr>
                 @endforeach
 

@@ -19,9 +19,7 @@ html{
     font-size: 67.5%;
     font-family: 'vistol-sans';
 }
-body{
-    cursor: url(../image/snow.cur), auto;
-}
+
 a{
     text-decoration: none;
     color: inherit;

@@ -11,7 +11,7 @@ class UserViewOrderEvent{
 
         try{
             $orderID = $request->orderID;
-            $order = Order::where('orderID', $orderID)
+            $order = Order::where('order_id', $orderID)
                 ->first();
 
             $status = [

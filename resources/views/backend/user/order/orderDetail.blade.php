@@ -39,7 +39,7 @@
             <div class="order-header display-column">
                 <p class="title">FROZEN AIR COND SDN. BHD.</p>
                 <div class="information display-row">
-                    <p>Order ID: <span data-action="clipboard">{{ $orderData->orderID }}</span></p>
+                    <p>Order ID: <span data-action="clipboard">{{ $orderData->order_id }}</span></p>
                     <p>Time/Date: <span>{{ $orderData->created_at }}</span></p>
                 </div>
             </div>

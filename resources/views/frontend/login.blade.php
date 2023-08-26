@@ -18,8 +18,8 @@
     @csrf
     <div class="part" data-index='1' data-visible='true'>
         <div class="section-form">
-            <label for="email"><span class="requird">Name:</label>
-            <input type="email" id="email" name="email" placeholder="Email" required>
+            <label for="email"><span class="requird">Email Address:</label>
+            <input type="email" id="email" name="email_address" placeholder="Email" required>
         </div>
         <div class="section-form">
             <label for="password"><span class="requird">Password:</label>

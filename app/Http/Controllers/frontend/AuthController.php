@@ -52,7 +52,7 @@ class AuthController extends Controller
 
         $user = User::where('email_address', $data['email_address'])->first();
 
-        if ($user && Hash::check($data['password'], $user->Password)) {
+        if ($user && Hash::check($data['password'], $user->password)) {
 
             $newAccessToken = $this->generateAccessToken();
 
@@ -76,7 +76,7 @@ class AuthController extends Controller
         $email = $request->cookie('email');
         $accessToken = $request->cookie('accessToken');
 
-        $user = User::where('Email', $email)->where('AccessToken', $accessToken)->first();
+        $user = User::where('email_address', $email)->where('access_token', $accessToken)->first();
 
         if ($user) {
             if($user->Role == 'admin'){

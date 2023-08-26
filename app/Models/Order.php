@@ -11,7 +11,7 @@ class Order extends Model
 
     protected $table = 'orders';
     public $incrementing = false;
-    protected $primaryKey = 'orderID';
+    protected $primaryKey = 'order_id';
     protected $guarded = [ ];
     public $timestamps = true;
     public $fillable = [
@@ -21,7 +21,7 @@ class Order extends Model
         'order_received_date',
         'order_received_time',
         'order_content',
-        'order_status', // Enum: New, Received, In Process, Complete
+        'order_status', // Enum: New, Pending, Processing, On Hold, Completed
     ];
 
     /**
@@ -30,7 +30,7 @@ class Order extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'Email', 'email_address');
+        return $this->belongsTo(User::class, 'email_address', 'email_address');
     }
 
     public function order_to_user()

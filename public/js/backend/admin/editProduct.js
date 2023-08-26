@@ -331,9 +331,8 @@ function getDataValue(selector) {
 }
 function editProductForm(data) {
   var modal = new bootstrap.Modal(document.querySelector('#editProductForm'));
-  console.log(data.productBrand);
   modal.show();
-  document.querySelector('[name="productID"]').value = data.productID;
+  document.querySelector('[name="product_id"]').value = data.productID;
   // document.querySelector('[name="productName"]').value = data.productName;
   // document.querySelector('[name="productBrand"]').value = data.productBrand;
 
@@ -455,7 +454,6 @@ function EventListener(element, trigger, isSelectedAll, callFunctionName) {
 function getEmail() {
   var name = 'email=';
   var ca = document.cookie.split(';');
-  console.log(ca);
   for (var i = 0; i < ca.length; i++) {
     var c = ca[i].trim();
     if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
@@ -491,7 +489,6 @@ function deleteProduct() {
       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     },
     success: function success(data) {
-      // console.log(data)
       location.reload();
     },
     error: function error(xhr, status, _error) {

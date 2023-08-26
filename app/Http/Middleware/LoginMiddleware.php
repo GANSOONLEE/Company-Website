@@ -18,10 +18,9 @@ class LoginMiddleware
      */
     public function handle($request, Closure $next)
     {
-        $email_address = Cookie::get('email');
+        $email_address = Cookie::get('email_address');
         $access_token = Cookie::get('access_token');
     
-        // 在数据库中查找与 cookie 中的电子邮件匹配的用户
         $user = User::where('email_address', $email_address)
             // ->where('AccessToken', $accessToken)
             ->first();

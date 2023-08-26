@@ -16,10 +16,10 @@ class ProductEditController{
 
         $productData = Product::all();
 
-        $catelogs = Category::all();
+        $categories = Category::all();
         $orderNew = session('orderNew');
 
-        return view('backend.admin.editProduct', compact('productData', 'catelogs', 'orderNew'));
+        return view('backend.admin.editProduct', compact('productData', 'categories', 'orderNew'));
     }
 
 }

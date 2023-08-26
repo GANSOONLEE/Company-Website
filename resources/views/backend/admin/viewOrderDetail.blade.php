@@ -28,26 +28,25 @@
             <!-- Order Information -->
             <div class="order-header card-header display-column">
                 <div class="display-row order-info">
-                    <p id="orderID">{{$order->orderID}}</p>
-                    <p>{{$order->orderStatus}}</p>
+                    <p id="orderID">{{$order->order_id}}</p>
+                    <p>{{$order->order_status}}</p>
                 </div>
                 <div class="display-row customer-info">
-                    <p class="customer-name">{{$order->order_to_user()->Name}}</p>
-                    @php
-                        $propertyName = 'Store / Company Name';
-                    @endphp
-                    <p>{{$order->order_to_user()->$propertyName}}</p>
+                    <p class="customer-name">{{$order->order_to_user()->username}}</p>
+                    <p>{{$order->order_to_user()->company_name}}</p>
                 </div>
             </div>
             <!-- Order Items -->
             <div class="order-body">
+
                 <!-- Units -->
                 @foreach ($productData as $index => $item)
+                    {{-- {{dd($item)}} --}}
                     <div class="order-list display-row" id="item-edit">
                         <p data="index">{{$index+1}}.</p>
-                        <p data="cartID" style="display: none">{{$item[1]->cartID}}</p>
-                        <p data="category">{{$item[0]->productCatelog}}</p>
-                        <p data="name">{{json_decode($item[0]->productNameList)[0]}}</p>
+                        {{-- <p data="cartID" style="display: none">{{$item[1]->cartID}}</p> --}}
+                        <p data="category">{{$item[0]->product_category}}</p>
+                        <p data="name">{{json_decode($item[0]->product_name_list)[0]}}</p>
                         <p data="brand">{{$item[1]->brand}}</p>
                         <p data="quantity">{{$item[1]->quantity}}</p>
                         @if(isset($item[1]->own))
@@ -61,17 +60,17 @@
             <!-- I don't know -->
             <div class="order-footer card-footer">
                 <div class="button-action-area">
-                    @if($order->orderStatus === 'Pending')
-                    <button type="button" class="btn btn-secondary" data-order-id={{$order->orderID}} id="InProcessButton">
+                    @if($order->order_status === 'On Hold')
+                    <button type="button" class="btn btn-secondary" data-order-id="{{$order->order_id}}" id="InProcessButton">
                         {{trans('product.markAtProcess')}}
                     </button>
                     @else
-                    <button type="button" class="btn btn-secondary" data-order-id={{$order->orderID}} id="PendingButton" {{$order->orderStatus == "Complete" ? 'disabled':''}}>
+                    <button type="button" class="btn btn-secondary" data-order-id="{{$order->order_id}}" id="OnHoldButton" {{$order->order_status == "Completed" ? 'disabled':''}}>
                         {{trans('product.markAtPending')}}
                     </button>
                     @endif
-                    <button type="button" class="btn btn-primary" data-button-action="complete" data-order-id={{$order->orderID}} id="CompleteButton" {{$order->orderStatus == "Complete" ? 'disabled':''}}>
-                        @if($order->orderStatus !== 'Complete' )
+                    <button type="button" class="btn btn-primary" data-button-action="complete" data-order-id="{{$order->order_id}}" id="CompleteButton" {{$order->order_status == "Completed" ? 'disabled':''}}>
+                        @if($order->order_status !== 'Completed' )
                             {{ trans('product.complete') }}
                         @else
                             {{ trans('product.already-complete') }}

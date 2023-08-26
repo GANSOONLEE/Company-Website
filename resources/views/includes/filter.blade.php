@@ -42,11 +42,11 @@
                 </label>
                 <div class="filter-section-box">
 
-                    @foreach($models as $model)
+                    @foreach($brands as $brand)
                         <div class="checkbox-section">
-                            <label class="checkbox-box" for="{{ $model->modelName }}">
-                                <input type="checkbox" data-type="model" name={{ $model->modelName }} id="{{ $model->modelName }}" value={{ $model->modelName }} class="checkbox-display">
-                                <p class="checkbox-name">{{ $model->modelName }}</p>
+                            <label class="checkbox-box" for="{{ $brand->brandName }}">
+                                <input type="checkbox" data-type="model" name={{ $brand->brandName }} id="{{ $brand->brandName }}" value={{ $brand->brandName }} class="checkbox-display">
+                                <p class="checkbox-name">{{ $brand->brandName }}</p>
                             </label>
                         </div>
                     @endforeach

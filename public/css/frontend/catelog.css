@@ -1,3 +1,5 @@
+@import url(app.css);
+
 .main{
     display: flex;
     flex-flow: wrap;

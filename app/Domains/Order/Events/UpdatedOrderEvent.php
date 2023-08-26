@@ -2,6 +2,7 @@
 
 namespace App\Domains\Order\Events;
 
+use App\Models\Operation;
 use App\Models\Order;
 use App\Models\UserOperation;
 use Illuminate\Http\Request;
@@ -12,37 +13,48 @@ class UpdatedOrderEvent{
 
     function updateOrder(Request $request){
 
-        $currentOrder = Order::where('orderID',$request->orderID)->first();
+        try{
+            $currentOrder = Order::where('order_id', $request->orderID)
+                            ->first();
+    
+            $order = $currentOrder;
+            
+            if($request->status == 'complete'){
+                $order->update([
+                    'order_status' => 'Completed'
+                ]);
+            }elseif($request->status == 'pending'){
+                $order->update([
+                    'order_status' => 'Pending'
+                ]);
+            }elseif($request->status == 'processing'){
+                $order->update([
+                    'order_status' => 'Processing'
+                ]);
+            }elseif($request->status == 'on hold'){
+                $order->update([
+                    'order_status' => 'On Hold'
+                ]);
+            }
+    
+            // $operation = [
+            //     'userID' => auth()->user()->Name,
+            //     'operationType' => `Update order status from $currentOrder->orderStatus to $request->status`,
+            // ];
+    
+            // Operation::create($operation);
 
-        $order = $currentOrder;
-
-        if($request->status == 'complete'){
-            $order->update([
-                'orderStatus' => 'Complete'
-            ]);
-        }elseif($request->status == 'pending'){
-            $order->update([
-                'orderStatus' => 'Pending'
-            ]);
-        }elseif($request->status == 'in process'){
-            $order->update([
-                'orderStatus' => 'In Process'
-            ]);
+            $response = [
+                'type' => '200',
+                'event' => "The order {$request->orderID} are update!\nFrom {$currentOrder->orderStatus} to {$request->status}"
+            ];
+        }catch(\Exception $e){
+            
+            $response = [
+                'debug' => $e->getMessage(),
+            ];
         }
-
-        $operation = [
-            'userID' => auth()->user()->Name,
-            'operationType' => `Update order status from $currentOrder->orderStatus to $request->status`,
-        ];
-
         
-
-        UserOperation::create($operation);
-        
-        $response = [
-            'type' => '200',
-            'event' => "The order {$request->orderID} are update!\nFrom {$currentOrder->orderStatus} to {$request->status}"
-        ];
 
         return response()->json($response);
 

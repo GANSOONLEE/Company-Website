@@ -188,7 +188,7 @@
                         <input required list="categoryList" class="form-input form-control" type="text" name="productCatelog" placeholder="{{trans('product.category')}}">
                         <datalist id="categoryList">
                             @foreach ($categories as $category) 
-                                <option value="{{ $categories['categoryName'] }}">
+                                <option value="{{ $category->categoryName }}">
                             @endforeach
                         </datalist>
                     </label>

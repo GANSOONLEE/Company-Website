@@ -26,13 +26,13 @@
                         <div class="display-column">
                             <div class="mb-3">
                                 <label for="productIDInput" class="form-label" >{{trans('table.productID')}}</label>
-                                <input type="text" class="form-control" name="productID" required readonly>
+                                <input type="text" class="form-control" name="product_id" required readonly>
                             </div>
                             <div class="mb-3">
                                 <label for="productCatelogInput" class="form-label">{{trans('product.catelog')}}</label>
-                                <select id="productCatelogList" class="form-control" name="productCatelog" required>
-                                    @foreach ($catelogs as $catelog) 
-                                        <option value="{{ $catelog['catelogName'] }}">{{ $catelog['catelogName'] }}</option>
+                                <select id="productCatelogList" class="form-control" name="productCategory" required>
+                                    @foreach ($categories as $category) 
+                                        <option value="{{ $category['categoryName'] }}">{{ $category['categoryName'] }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -47,8 +47,8 @@
                             <div class="mb-3">
                                 <label for="productStatusInput" class="form-label">{{trans('table.productStatus')}}</label>
                                 <select id="productStatusList" class="form-control" name="productStatus">
-                                    <option value="Public">Public</option>
-                                    <option value="Delist">Delist</option>
+                                    <option value="public">Public</option>
+                                    <option value="delist">Delist</option>
                                 </select >
                             </div>
                         </div>

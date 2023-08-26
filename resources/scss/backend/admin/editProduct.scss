@@ -182,11 +182,11 @@
                             border-radius: 50%;
                         }
 
-                        &[data-status="Delist"]>span {
+                        &[data-status="delist"]>span {
                             animation: blindDelist infinite 1s steps(1);
                         }
 
-                        &[data-status="Public"]>span {
+                        &[data-status="public"]>span {
                             animation: blindPublic infinite 1s steps(1);
                         }
                     }

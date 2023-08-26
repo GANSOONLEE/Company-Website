@@ -11,7 +11,7 @@ class UserMiddleware
 {
     public function handle($request, Closure $next)
     {
-        $email = Cookie::get('email');
+        $email = Cookie::get('email_address');
         $access_token = Cookie::get('access_token');
 
         $user = User::where('email_address', $email)

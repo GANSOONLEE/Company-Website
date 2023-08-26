@@ -14,6 +14,7 @@ class UserCartController extends Controller{
         $carts = Cart::where('email_address', $email)
             ->get();
 
+
         return view('backend.user.cart.cart', compact('carts'));
     }
 

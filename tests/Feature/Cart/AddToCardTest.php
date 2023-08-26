@@ -17,16 +17,24 @@ class AddToCardTest extends TestCase
     public function testAddToCart()
     {
         // Simulate a request with email and cart content as a JSON string
+        // $data = [
+        //     'email' => 'axun0402@gmail.com',
+        //     'cart' => [
+        //         "product_code" => "256asd",
+        //         "product_category" => "Fan Motor",
+        //         "brand_code" => "AM-003",
+        //         "quantity" => 4         
+        //     ],
+        // ];
+
         $data = [
-            'email' => 'tester@gmail.com',
-            'cart' => [
-                "product_code" => "256asd",
-                "product_category" => "Fan Motor",
-                "brand" => "SWJ",
-                "brand_code" => "AM-003",
-                "quantity" => 4         
-            ],
+            'email' => 'testing@test.com',
+            'product_code' => '',
+            'brand_code' => '',
+            'quantity' => '',
         ];
+
+
 
         // Make a POST request to your API endpoint
         $response = $this->json('POST', '/api/user/add-to-cart', $data);

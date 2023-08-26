@@ -14,12 +14,13 @@ class UpdateCartEvent extends Controller{
     public function updateCart(Request $request){
 
         try{
-            $email = $request->input('email');
-            $productCode = $request->input('product_code');
+            $cart_ID = $request->input('cartID');
+            $product_id = $request->input('productID');
+            $productBrand = $request->input('productBrand');
             $quantity = $request->input('quantity');
 
             // 查找购物车记录
-            $cart = Cart::where('email_address', $email)->first();
+            $cart = Cart::where('cart_ID', $cart_ID)->first();
 
             if (!$cart) {
                 Log::error('Cart not found');
@@ -28,15 +29,23 @@ class UpdateCartEvent extends Controller{
 
             // 在购物车内容中查找指定商品
             $cartContent = $cart->cart_content ?? [];
+            $debugArray = [];
             $found = false;
 
             foreach ($cartContent as &$item) {
-                if ($item['product_code'] === $productCode) {
-                    $item['cart_content'][0]['quantity'] = $quantity;
-                    $found = true;
-                    break;
+                if ($item['product_code'] !== $product_id) {
+                    continue;
+                }
+                foreach ($item['cart_content'] as &$cartItem) {
+                    if ($cartItem['brand_code'] === $productBrand) {
+                        $cartItem['quantity'] = intval($quantity);
+                        $found = true;
+                        break;
+                    }
                 }
             }
+
+            $debugArray = $cartContent;
 
             if (!$found) {
                 Log::error('Product not found');
@@ -49,9 +58,8 @@ class UpdateCartEvent extends Controller{
             ]);
 
             $data = [
-                'after-quantity' => $quantity,
+                'after-quantity' => $debugArray,
                 'success' => 'update',
-                'quantity' => $quantity,
             ];
             
         }catch(\Exception $e){

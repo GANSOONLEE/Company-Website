@@ -3,6 +3,7 @@
 namespace App\Domains\Product\Events\Product;
 
 
+use App\Models\Operation;
 use App\Models\Product;
 
 use App\Models\UserOperation;
@@ -85,28 +86,31 @@ class CreatedProductEvent{
 
         try{
             $data = [
-                'productID' => $productID,
-                'productCatelog' => $productCatelog,
-                'productType' => $productType,
-                'productNameList' => json_encode($productNameList),
-                'productBrandList' => json_encode($productBrandList,)
+                'product_id' => $productID,
+                'product_category' => $productCatelog,
+                'product_type' => $productType,
+                'product_nameL_list' => json_encode($productNameList),
+                'product_brand_list' => json_encode($productBrandList,)
             ];
 
             Product::create($data);
 
             $operation = [
-                'userID' => auth()->user()->Name,
-                'operationType' => 'Create Product',
-                'ID' => $productID,
+                'email_address' => auth()->user()->email_address,
+                'operation_data' => [
+                    'product' => $productID,
+                ],
+                'operation_type' => 'Create Product',
             ];
 
-            UserOperation::create($operation);
+            Operation::create($operation);
+
+            $this->showAlert('Data sent successfully!', 'success');
 
         } catch (\Exception $e) {
             $this->showAlert('Error occurred while sending data: ' . $e->getMessage(), 'danger');
         }
 
-        $this->showAlert('Data sent successfully!', 'success');
         return redirect()->back();
     }
 
@@ -122,7 +126,7 @@ class CreatedProductEvent{
         $productId = Str::random(12); // 產生指定長度(12)的字串
     
         // 檢查是否已經存在相同的產品ID
-        $productIdAlreadyHave = Product::where('productID', $productId)->exists();
+        $productIdAlreadyHave = Product::where('product_id', $productId)->exists();
     
         if ($productIdAlreadyHave) {
             // 如果已經有相同的產品ID，則重新生成一個新的ID

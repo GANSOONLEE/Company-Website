@@ -13,11 +13,11 @@ class UserOrderController extends Controller{
         $status = $request->status ?? 'New'; // 如果沒有提供狀態，默認為 'New'
 
         $orderData = Order::where('email_address', $email)
-            ->when($status === 'In Process', function ($query) {
+            ->when($status === 'Processing', function ($query) {
                 // 如果狀態為 'In Process'，包括 'In Process' 和 'Pending' 的訂單
-                return $query->whereIn('order_status', ['In Process', 'Pending']);
+                return $query->whereIn('order_status', ['Processing', 'On Hold']);
             })
-            ->when($status !== 'In Process', function ($query) use ($status) {
+            ->when($status !== 'Processing', function ($query) use ($status) {
                 // 其他狀態，只查詢指定狀態的訂單
                 return $query->where('order_status', $status);
             })

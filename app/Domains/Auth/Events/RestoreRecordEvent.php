@@ -4,7 +4,7 @@ namespace App\Domains\Auth\Events;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
-use App\Models\UserOperation;
+use App\Models\Operation;
 use Illuminate\Http\Request;
 
 class RestoreRecordEvent extends Controller{
@@ -14,7 +14,7 @@ class RestoreRecordEvent extends Controller{
             $id = $request->id;
             $operationID = $request->operationID;
 
-            $operation = UserOperation::where('operationID', $operationID)->first();
+            $operation = Operation::where('operation_id', $operationID)->first();
             $operation->delete();
     
             $product = Product::withTrashed()->where('productID', $id)->first();

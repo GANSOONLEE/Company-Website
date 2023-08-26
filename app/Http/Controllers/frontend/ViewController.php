@@ -14,8 +14,8 @@ class ViewController extends Controller
     public function type(){return view('frontend.type');}
 
     public function product(){
-        $catelogs = Category::orderBy('categoryName', 'asc')->get();
-        return view('frontend.catelog',compact('catelogs')); 
+        $categories = Category::orderBy('categoryName', 'asc')->get();
+        return view('frontend.catelog',compact('categories')); 
     }
 
     public function contact(){return view('frontend.contact');}

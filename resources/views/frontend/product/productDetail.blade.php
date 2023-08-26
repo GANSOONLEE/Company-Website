@@ -74,13 +74,13 @@
 
     <div class="detail">
         <div class="detail-header">
-            <input style="display: none" type="text" name="productCategory" id="" value="{{ $product->productCatelog }}">
+            <input style="display: none" type="text" name="productCategory" id="" value="{{ $product->product_category }}">
         </div>
         <div class="detail-body">
             <div class="detail-product-image-area">
                 <div class="product-image-display">
                     <div class="image-display-area">
-                        <img src="{{ asset("storage/{$product->productCatelog}/{$product->getProductID()}/cover.png") }}" alt="image-product" class="product-image-display">
+                        <img src="{{ asset("storage/{$product->product_category}/{$product->product_id}/cover.png") }}" alt="image-product" class="product-image-display">
                     </div>
                 </div>
                 <div class="product-image-selector">
@@ -105,7 +105,7 @@
                     <div class="information-section">
                         <div class="information-section-content">
                             <div class="product-name">
-                                {{ json_decode($product->productNameList)[0] }}
+                                {{ json_decode($product->product_name_list)[0] }}
                             </div>
                         </div>
                     </div>
@@ -120,7 +120,7 @@
                             <div class="section-title">
                                 <p class="">Car Model</p>
                             </div>
-                            @foreach ((json_decode($product->productNameList)) as $name)
+                            @foreach ((json_decode($product->product_name_list)) as $name)
                                 <p>{{ $name }}</p>
                             @endforeach
                         </div>
@@ -135,7 +135,7 @@
                                 <p class="">Brand</p>
                             </div>
                             <div class="brand-list">
-                                @foreach ((json_decode($product->productBrandList)) as $brand)
+                                @foreach ((json_decode($product->product_brand_list)) as $brand)
                                     <input type="radio" name='brand' value="{{$brand->code}}" id="{{$brand->code}}">
                                     <label class="product-brand" for="{{$brand->code}}">
                                         <p>{{$brand->code}}</p>

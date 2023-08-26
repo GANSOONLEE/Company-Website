@@ -50,18 +50,18 @@ class Cart extends Model
      */
 
     public function user(){
-        return $this->hasOne(User::class, 'Email');
+        return $this->hasOne(User::class, 'email_address', 'email_address');
     }
 
-    public function product()
-    {
-        return $this->belongsTo(Product::class, 'productID', 'productID');
-    }
+    // public function product()
+    // {
+    //     return $this->belongsTo(Product::class, 'product_id', 'productID');
+    // }
 
-    public function cart_to_product()
-    {
-        return $this->product()->first(); // 返回关联的User模型
-    }
+    // public function cart_to_product()
+    // {
+    //     return $this->product()->first(); // 返回关联的User模型
+    // }
 
     /**
      *  Function

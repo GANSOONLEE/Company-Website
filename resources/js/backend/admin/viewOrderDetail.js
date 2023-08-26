@@ -22,21 +22,22 @@ $('#CompleteButton').click(function(event){
 
 });
 
-$('#PendingButton').click(function(event){
+$('#OnHoldButton').click(function(event){
     let orderID = $(this).data('order-id');
     $.ajax({
         url: '/api/update-order-status',
-        data: {'orderID': orderID, 'status' : 'pending'},
+        data: {'orderID': orderID, 'status' : 'on hold'},
         dataType: 'json',
         type: 'post',
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
         success: function(data) {
+            // console.log(data)
             location.reload();
         },
         error: function(xhr, status, error) {
-            console.error(xhr,status,error)
+            // console.error(xhr,status,error)
             location.reload();
         }
     });
@@ -46,7 +47,7 @@ $('#InProcessButton').click(function(event){
     let orderID = $(this).data('order-id');
     $.ajax({
         url: '/api/update-order-status',
-        data: {'orderID': orderID, 'status' : 'in process'},
+        data: {'orderID': orderID, 'status' : 'processing'},
         dataType: 'json',
         type: 'post',
         headers: {
@@ -66,31 +67,31 @@ $('#InProcessButton').click(function(event){
 
 $('#updateProductOwn').click(function(event){
 
-    let cartID = $('#editModal #cartID').text();
     let orderID = $('#orderID').text();
     let quantity = $('#editModal #quantity').val();
     let own = $('#editModal #own').val();
+    let brand = $('#brand').val();
 
     if(own >= quantity){
         return false;
     }
-
-    console.log(cartID, orderID, own)
+    
+    console.log(orderID, own, brand)
 
     $.ajax({
         url: '/api/update-cart-own',
-        data: {'cartID': cartID, 'orderID': orderID, 'own':own},
+        data: {'orderID': orderID, 'own':own, 'brand':brand},
         dataType: 'json',
         type: 'post',
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
         success: function(data) {
-            console.log(data)
+            // console.log(data)
             location.reload();
         },
         error: function(xhr, status, error) {
-            console.error(xhr,status,error)
+            // console.error(xhr,status,error)
             location.reload();
         }
     });

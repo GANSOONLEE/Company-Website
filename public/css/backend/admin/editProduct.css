@@ -132,10 +132,10 @@
   margin-right: 1rem;
   border-radius: 50%;
 }
-#myTable_wrapper #myTable tbody tr > td[data-status=Delist] > span {
+#myTable_wrapper #myTable tbody tr > td[data-status=delist] > span {
   animation: blindDelist infinite 1s steps(1);
 }
-#myTable_wrapper #myTable tbody tr > td[data-status=Public] > span {
+#myTable_wrapper #myTable tbody tr > td[data-status=public] > span {
   animation: blindPublic infinite 1s steps(1);
 }
 @keyframes blindDelist {

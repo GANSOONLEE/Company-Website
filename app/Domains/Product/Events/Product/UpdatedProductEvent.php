@@ -3,7 +3,7 @@
 namespace App\Domains\Product\Events\Product;
 
 use App\Models\Product;
-use App\Models\UserOperation;
+use App\Models\Operation;
 use Illuminate\Http\Request;
 use \Illuminate\Database\QueryException;
 use App\Domains\Product\Observer\ProductCreatedNotification;
@@ -22,7 +22,6 @@ class UpdatedProductEvent{
             #region
 
             $productNameCarModel = $request->input('productNameList-CarModel');
-
             #endregion
 
             /**
@@ -56,30 +55,32 @@ class UpdatedProductEvent{
                 $productBrandList[] = array_filter($carBrand);
             }
 
-            $productID = $request->input('productID');
-            $productCatelog = $request->input('productCatelog');
+            $productID = $request->input('product_id');
+            $productCatelog = $request->input('productCategory');
             $productType = $request->input('productType');
             $productStatus = $request->input('productStatus');
 
-            $product = Product::where('productID', $productID)->first();
+            $product = Product::where('product_id', $productID)->first();
 
             if ($product) {
                 
                 $product->update([
-                    'productNameList' => array_filter($productNameCarModel),
-                    'productBrandList' => array_filter($productBrandList),
-                    'productCatelog' => $productCatelog,
-                    'productType' => $productType,
-                    'productStatus' => $productStatus,
+                    'product_name_list' => array_filter($productNameCarModel),
+                    'product_brand_list' => array_filter($productBrandList),
+                    'product_category' => $productCatelog,
+                    'product_type' => $productType,
+                    'product_status' => $productStatus,
                 ]);
 
                 $operation = [
-                    'userID' => auth()->user()->Name,
-                    'operationType' => 'Update Product',
-                    'ID' => $productID,
+                    'email_address' => auth()->user()->email_address,
+                    'operation_data' => [
+                        'product' => $productID,
+                    ],
+                    'operation_type' => 'Update Product',
                 ];
     
-                UserOperation::create($operation);
+                Operation::create($operation);
 
                 $this->showAlert(trans('product.success'), 'success');
                 return redirect()->back();
@@ -90,7 +91,8 @@ class UpdatedProductEvent{
             }
 
         } catch (QueryException $err) {
-            $this->showAlert(trans('product.duplicate'), 'warning');
+            // $this->showAlert(trans('product.duplicate'), 'warning');
+            
             return redirect()->back();
         }   
     }

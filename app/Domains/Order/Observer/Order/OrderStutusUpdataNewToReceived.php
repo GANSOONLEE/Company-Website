@@ -15,12 +15,12 @@ class OrderStutusUpdataNewToReceived extends Controller
     {
         try{
             // Update order status to "Received" in database
-            Order::where('orderID', $orderId)->update(['orderStatus' => 'Received']);
+            Order::where('order_id', $orderId)->update(['order_status' => 'Pending']);
 
-            $orderNewCount = Order::where('orderStatus', 'New')->count();
+            $orderNewCount = Order::where('order_status', 'New')->count();
             event(new NewOrderEvent($orderNewCount));
 
-            return response()->json(['status' => "Received"]);
+            return response()->json(['status' => "Pending, "]);
         }catch(\Exception $err){
             return response()->json(['error' => $err->getMessage()]);
         }

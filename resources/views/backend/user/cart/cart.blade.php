@@ -147,25 +147,22 @@
         </thead>
         <tbody>
             @foreach ($carts as $index => $cart)
-                <tr class="product-card" data-product-id="{{ $cart->productID }}" data-quantity="{{ $cart->quantity }}" data-brand="{{ $cart->productBrand }}" data-cart="{{ $cart->ID }}">
-                    <td data-column="Index">{{ $index+1 }}</td>
-                    <td data-column="Category">{{ $cart->cart_to_product()['productCatelog'] }}</td>
-                    <td data-column="Name">{{ json_decode($cart->cart_to_product()['productNameList'])[0] }}</td>
-                    <td data-column="Brand">{{ $cart->productBrand}}</td>
-                    <td data-column="Quantity">
-
-                    </td>
-                    <td data-column="Checkbox">
-                        <input class="checkbox" type="checkbox" name="productOrder[]" data-cart-id="{{ $cart->ID }}" data-brand="{{ $cart->productBrand }}" data-id="{{ $cart->productID }}">
-                    </td>
-                </tr>
+                @foreach ($cart->cart_content as $content)
+                    <tr class="product-card" data-id="{{ $content['product_code'] }}" data-quantity="{{ $content['cart_content'][0]['quantity'] }}" data-brand="{{ $content['cart_content'][0]['brand_code'] }}">
+                        <td data-column="Index">{{ $index+1 }}</td>
+                        <td data-column="Category">{{ $content['product_category'] }}</td>
+                        <td data-column="Name">{{ $content['product_code'] }}</td>
+                        <td data-column="Brand">{{ $content['cart_content'][0]['brand_code'] }}</td>
+                        <td data-column="Quantity"></td>
+                        <td data-column="Checkbox">
+                            <input class="checkbox" type="checkbox" name="productOrder[]" data-cart-id="{{ $cart->ID }}" data-brand="{{ $cart->productBrand }}" data-id="{{ $cart->productID }}">
+                        </td>
+                    </tr>
+                @endforeach
             @endforeach
         </tbody>
     </table>
-    @php
-        $email = Auth::user()->Email;
-    @endphp
-    <p id="email" style="display: none">{{$email}}</p>
+    <p id="email" style="display: none">{{auth()->user()->email_address}}</p>
 </div>
 
 {{-- <div class="model-background">

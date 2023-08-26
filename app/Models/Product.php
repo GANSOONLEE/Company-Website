@@ -19,7 +19,7 @@ class Product extends Model{
         'product_id',
         'product_category',
         'product_type',
-        'product_nameL_list',
+        'product_name_list',
         'product_brand_list',
         'product_status',
     ];

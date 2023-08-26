@@ -103,7 +103,7 @@ function getQuantity() {
   return parseInt(document.querySelector('#currentQuantity').innerText);
 }
 function getEmail() {
-  var name = 'email=';
+  var name = 'email_address=';
   var ca = document.cookie.split(';');
   console.log(ca);
   for (var i = 0; i < ca.length; i++) {
@@ -116,16 +116,17 @@ function sendData(option, quantity, productID, email) {
     type: 'post',
     url: "/api/user/add-to-cart",
     data: JSON.stringify({
-      "productID": productID,
-      "productBrand": option,
+      "product_code": productID,
+      "brand_code": option,
       "quantity": quantity,
       "email": email
     }),
     contentType: "application/json;charset=utf-8",
     success: function success(Text) {
-      // console.log(Text)
-      location.reload();
+      console.log(Text);
+      // location.reload();
     },
+
     error: function error(XMLHttpRequest, textStatus, errorThrown) {
       console.log(XMLHttpRequest.status);
       console.log(XMLHttpRequest.readyState);

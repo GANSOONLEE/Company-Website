@@ -14,7 +14,7 @@ class AdminMiddleware
     
     public function handle($request, Closure $next)
     {
-        $email = Cookie::get('email');
+        $email = Cookie::get('email_address');
         $accessToken = Cookie::get('access_token');
         $orderNew = Order::where('order_status', 'New')
             ->count();

@@ -56,23 +56,23 @@
                 </a>
                 
                 {{-- Received --}}
-                <a class="order-status {{ request('status') === 'Received' ? ' active' : '' }}" href="{{ route('backend.user.order', ['status' => 'Received']) }}">
-                    <div data-status="Received">
-                        Received
+                <a class="order-status {{ request('status') === 'Pending' ? ' active' : '' }}" href="{{ route('backend.user.order', ['status' => 'Pending']) }}">
+                    <div data-status="Pending">
+                        Pending
                     </div>
                 </a>
                 
                 {{-- In Process --}}
-                <a class="order-status {{ request('status') === 'In Process' ? ' active' : '' }}" href="{{ route('backend.user.order', ['status' => 'In Process']) }}">
-                    <div data-status="In Process">
-                        In Process
+                <a class="order-status {{ request('status') === 'Processing' ? ' active' : '' }}" href="{{ route('backend.user.order', ['status' => 'Processing']) }}">
+                    <div data-status="Processing">
+                        Processing
                     </div>
                 </a>
                 
                 {{-- Complete --}}
-                <a class="order-status {{ request('status') === 'Complete' ? ' active' : '' }}" href="{{ route('backend.user.order', ['status' => 'Complete']) }}">
-                    <div data-status="Complete">
-                        Complete
+                <a class="order-status {{ request('status') === 'Completed' ? ' active' : '' }}" href="{{ route('backend.user.order', ['status' => 'Completed']) }}">
+                    <div data-status="Completed">
+                        Completed
                     </div>
                 </a>
             </div>
@@ -91,11 +91,11 @@
             <div class="order-list display-column">
                 @if(count($orderData) > 0 && isset($orderData))
                     @foreach ($orderData as $index => $order)
-                    <a class="order {{($index+1)%2==0?'even':'odd'}}" href="{{ route('backend.user.orderDetail', ['orderID' => $order->orderID]) }}">
+                    <a class="order {{($index+1)%2==0?'even':'odd'}}" href="{{ route('backend.user.orderDetail', ['orderID' => $order->order_id]) }}">
                         <div class="display-row">
                             <p>{{$order->orderID}}</p>
                             <p>{{$order->created_at}}</p>
-                            <p>{{count(json_decode($order->orderContent))}}</p>
+                            <p>{{count(json_decode($order->order_content))}}</p>
                         </div>
                     </a>
                     @endforeach

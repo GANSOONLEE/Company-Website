@@ -47,36 +47,29 @@
             </thead>
             <tbody>
                 @foreach ($productData as $product)
-                    <tr id="data-row" data-product-id={{"$product->productID"}}>
-                        <td><input type="checkbox" class="inputCheckbox" id={{"$product->productID"}}></td>
+                    <tr id="data-row" data-product-id={{"$product->product_id"}}>
+                        <td><input type="checkbox" class="inputCheckbox" id={{"$product->product_id"}}></td>
 
-                        <td data-type="productID">{{ $product->productID }}</td>      
-                        @if(is_array(json_decode($product->productNameList)))
-                            <td data-type="productName">{{json_decode($product->productNameList)[0]}}</td>
-                        @else
-                            <td data-type="productName" style="color: red">Missing!</td>
-                        @endif
+                        <td data-type="productID">{{ $product->product_id }}</td>      
 
-                        @if(is_array(json_decode($product->productBrandList)))
-                            <td data-type="productBrand">{{json_decode($product->productBrandList)[0]->code}}</td>
-                        @else
-                            <td data-type="productBrand" style="color: red">Missing!</td>
-                        @endif
+                        <td data-type="productName">{{json_decode($product->product_name_list)[0]}}</td>
 
-                        <td data-type="productCatelog">{{ $product->productCatelog }}</td>
+                        <td data-type="productBrand">{{json_decode($product->product_brand_list)[0]->code}}</td>
+
+                        <td data-type="productCatelog">{{ $product->product_category }}</td>
                         
-                        <td data-type="productType">{{ $product->productType }}</td>
+                        <td data-type="productType">{{ $product->product_type }}</td>
                         
-                        <td data-status="{{ $product->productStatus }}">
+                        <td data-status="{{ $product->product_status }}">
                             <span></span>
-                            <div data-type="productStatus" style="display: inline-block">{{ $product->productStatus }}</div>
+                            <div data-type="productStatus" style="display: inline-block">{{ $product->product_status }}</div>
                         </td>
-                        @if(is_array(json_decode($product->productNameList)))
-                            <td style="display: none" data-type="productNameList">{{($product->productNameList)}}</td>
+                        @if(is_array(json_decode($product->product_name_list)))
+                            <td style="display: none" data-type="productNameList">{{($product->product_name_list)}}</td>
                         @endif
 
-                        @if(is_array(json_decode($product->productBrandList)))
-                            <td style="display: none" data-type="productBrandList">{{ ($product->productBrandList)}}</td>
+                        @if(is_array(json_decode($product->product_brand_list)))
+                            <td style="display: none" data-type="productBrandList">{{ ($product->product_brand_list)}}</td>
                         @endif
                         </tr>
                 @endforeach

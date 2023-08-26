@@ -1,4 +1,6 @@
 
+@import url(app.css);
+
 .search{
     display: flex;
     flex-direction: column;

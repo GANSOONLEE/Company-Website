@@ -4,7 +4,7 @@ namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
-use App\Models\productCatelog;
+use App\Models\Category;
 use Illuminate\Support\Facades\Request;
 
 class CatelogController extends Controller
@@ -66,7 +66,7 @@ class CatelogController extends Controller
      */
     public function createCatelog($data){
 
-        productCatelog::create($data);
+        Category::create($data);
     }
 
 }

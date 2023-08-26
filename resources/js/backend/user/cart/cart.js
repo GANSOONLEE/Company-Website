@@ -101,13 +101,19 @@ class CartCard{
         $.ajax({
             type: 'post',
             dataType: 'json',
-            data: {'ID': this.cart_id ,'productID': this.product_id, 'productBrand': this.product_brand, 'quantity': this.product_quantity},
+            data: {
+                'cartID': this.cart_id,
+                'productID': this.product_id,
+                'productBrand': this.product_brand,
+                'quantity': this.product_quantity
+            },
             url: '/api/update-cart-quantity',
             headers: {
               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             success: function(data) {
-                console.log(data)
+                // location.reload()
+                // console.log(data)
             },
             error: function(xhr, status, error) {
                 console.log('AJAX Error:',xhr,status, error);
@@ -139,14 +145,9 @@ function createOrder(){
         return;
     }
 
-
-
     try{
-
         let orderElement = [];
-
         for(i=0;i<selectProduct.length;i++){
-
             let data = [
                 {
                     'productID': selectProduct[i].product_id,
@@ -154,13 +155,8 @@ function createOrder(){
                     'productBrand': selectProduct[i].product_brand,
                 }
             ];
-
             orderElement = data;
-
-            console.log(selectProduct[i]);
-            console.log(data)
         }
-
         generatedOrder(orderElement);
         console.info(orderElement)
     }catch(error){
@@ -217,7 +213,6 @@ function initialization(){
         const cardInstance = new CartCard(cards[i]);
         productCardInstances.push(cardInstance);
     }
-
 }
 
 initialization()
@@ -227,22 +222,6 @@ initialization()
 
 /** ———————————————————————————————————— event listener —————————————————————————————————————————— */
 
-// #region 
-
-/**  */
-
-let checkOrder = document.querySelector('#checkOrder');
-checkOrder.addEventListener('click', checkOrderForm)
-
-function checkOrderForm(){
-    
-}
-
-function generate(){
-    
-}
-
-// #endregion
 
 /** ————————————————————————————— Data Table ————————————————————————————— */
 
@@ -298,11 +277,14 @@ function sendData(){
 
     let selectAllChecked = $('#selectAll').prop('checked');
 
+    
     if (selectAllChecked) {
         itemChecked = $('.checkbox');
     }else{
         itemChecked = $('.checkbox:checked');
     }
+
+    console.log('選中的：',itemChecked)
 
     // console.log(itemChecked)
 
@@ -310,18 +292,17 @@ function sendData(){
     itemChecked.each(function() {
         // let id = $(this).data('id');
         // let quantity = $(this).closest('tr').data('quantity');
-        let id = this.getAttribute('data-id');
-        let brand = this.getAttribute('data-brand');
-        let cartID = this.getAttribute('data-cart-id');
+        let id = this.parentNode.parentNode.getAttribute('data-id');
+        let brand = this.parentNode.parentNode.getAttribute('data-brand');
         let quantity = this.parentNode.parentNode.getAttribute('data-quantity');
 
         selectedProductIds.push({
             id: id,
-            cartID: cartID,
             brand: brand,
             quantity: quantity
         });
     });
+
 
     let email = document.querySelector('#email').innerText;
 
@@ -335,8 +316,8 @@ function sendData(){
         },
         success: function(response) {
             // 处理响应
-            location.reload();
-            // console.log(response);
+            // location.reload();
+            console.log(response);
         },
         error: function(error) {
             // 处理错误

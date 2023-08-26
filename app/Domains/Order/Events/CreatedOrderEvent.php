@@ -23,59 +23,70 @@ class CreatedOrderEvent{
              */
 
             $orderID = $this->generatorOrderID();
-            $Email = $request->input('email');
+            $email = $request->input('email');
             $orderReceivedDate = date('Y-m-d');
             $orderReceivedTime = date('H:i:s');
             $orderContent = $request->input('productIds');
 
             $data = [
-                'orderID' => $orderID,
-                'Email' => $Email,
-                'orderReceivedDate' => $orderReceivedDate,
-                'orderReceivedTime' => $orderReceivedTime,
-                'orderContent' => json_encode($orderContent),
+                'order_id' => $orderID,
+                'email_address' => $email,
+                'order_received_date' => $orderReceivedDate,
+                'order_received_time' => $orderReceivedTime,
+                'order_content' => json_encode($orderContent),
             ];
 
-            foreach( $orderContent as $cart){
-                $productInCart = Cart::where('ID', $cart['cartID'])
-                    ->where('Email', $Email)
-                    ->first();
-
-                if($productInCart->quantity === 0){   
+            foreach($orderContent as $cart){
+                if($cart['quantity'] === 0){
                     throw new Error('Qty can\'t empty! ');
                 }
             }
 
             Order::create($data);
 
-            $orderNewCount = Order::where('orderStatus', 'New')->count();
+            $orderNewCount = Order::where('order_status', 'New')->count();
             event(new NewOrderEvent($orderNewCount));
 
+            $productInCart = Cart::where('email_address', $email)
+                ->first();
+                
+            $cartContent = $productInCart->cart_content ?? [];
+
+
             foreach($orderContent as $cart){
-                $productInCart = Cart::where('ID', $cart['cartID'])
-                    ->where('Email', $Email)
-                    ->first();
 
-                $productInCart->update([
-                    'quantity' => 0,
-                ]);
-
-                // $status = [
-                //     'id' => $cart['id'],
-                //     'cartID' => $cart['cartID'],
-                //     'brand' => $cart['brand'],
-                //     'quantity' => $cart['quantity'],
-                //     'cart' => $productInCart,
-                // ];
-
-                $status = [
-                    'success' => 'success',
-                ];
+                foreach($cartContent as &$cartItem){
+                    if($cartItem['product_code'] !== $cart['id']){
+                        continue;
+                    }
+                    foreach($cartItem->cart_content as &$item){
+                        if($item[0]['brand'] === $cart['brand']){
+                            $item[0]['quantity'] = 0;
+                        }
+                    }
+                }
             }
+
+            $productInCart->cart_content = $cartContent;
+            $productInCart->save();
+
+            // $status = [
+            //     'id' => $cart['id'],
+            //     'cartID' => $cart['cartID'],
+            //     'brand' => $cart['brand'],
+            //     'quantity' => $cart['quantity'],
+            //     'cart' => $productInCart,
+            // ];
+
+            $status = [
+                'success' => 'success',
+            ];
 
         }catch(\Exception $e){
             $status = [
                 'error' => $e->getMessage(),
+                'file' => $e->getFile(),
+                'line' => $e->getLine(),
             ];
         }
 

@@ -35,22 +35,27 @@
             <tbody>
                 @foreach ($operationData as $operation)
                     <tr id="data-row">
-                        <td data-type="userID">{{ $operation->userID }}</td>      
-
-                        <td data-type="ID">{{$operation->ID}}</td>
-
+                        <td data-type="ID">{{$operation->operation_id}}</td>
                         
-                        @if($operation->operationType=='Create Product')
-                            <td data-type="operationType">{{trans('table.create-product')}}</td>
-                        @elseif($operation->operationType=='Update Product')
-                            <td data-type="operationType">{{trans('table.update-product')}}</td>
+                        <td data-type="userID">{{ $operation->operation_to_user()->username }}</td>      
+
+                        @if($operation->operation_type==='create product')
+                            <td data-type="operation_type">
+                                {{trans('table.create-product')}} {{$operation->operation_data['product']}}
+                            </td>
+                        @elseif($operation->operation_type==='update product')
+                            <td data-type="operation_type">
+                                {{trans('table.update-product')}} {{$operation->operation_data['product']}}
+                            </td>
                         @else
-                            <td data-type="operationType">{{trans('table.delete-product')}}</td>    
+                            <td data-type="operation_type">
+                                {{trans('table.delete-product')}} {{$operation->operation_data['product']}}
+                            </td>    
                         @endif
 
                         <td data-type="created_at">{{$operation->created_at}}</td>
                         
-                        @if(stripos($operation->operationType, 'Delete Product') !== false)
+                        @if(stripos($operation->operation_type, 'Delete Product') !== false)
                             <td data-type="button">
                                 <button class="restoreButton" type="button" data-operation-id={{$operation->operationID}} id={{$operation->ID}}>{{trans('table.restore')}}</button>
                             </td>

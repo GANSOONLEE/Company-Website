@@ -104,7 +104,7 @@ var CartCard = /*#__PURE__*/function () {
         type: 'post',
         dataType: 'json',
         data: {
-          'ID': this.cart_id,
+          'cartID': this.cart_id,
           'productID': this.product_id,
           'productBrand': this.product_brand,
           'quantity': this.product_quantity
@@ -114,7 +114,8 @@ var CartCard = /*#__PURE__*/function () {
           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
         success: function success(data) {
-          console.log(data);
+          // location.reload()
+          // console.log(data)
         },
         error: function error(xhr, status, _error) {
           console.log('AJAX Error:', xhr, status, _error);
@@ -148,8 +149,6 @@ function createOrder() {
         'productBrand': selectProduct[i].product_brand
       }];
       orderElement = data;
-      console.log(selectProduct[i]);
-      console.log(data);
     }
     generatedOrder(orderElement);
     console.info(orderElement);
@@ -211,17 +210,6 @@ initialization();
 
 /** ———————————————————————————————————— event listener —————————————————————————————————————————— */
 
-// #region 
-
-/**  */
-
-var checkOrder = document.querySelector('#checkOrder');
-checkOrder.addEventListener('click', checkOrderForm);
-function checkOrderForm() {}
-function generate() {}
-
-// #endregion
-
 /** ————————————————————————————— Data Table ————————————————————————————— */
 
 var table = new DataTable('#myTable', {
@@ -267,6 +255,7 @@ function sendData() {
   } else {
     itemChecked = $('.checkbox:checked');
   }
+  console.log('選中的：', itemChecked);
 
   // console.log(itemChecked)
 
@@ -274,13 +263,11 @@ function sendData() {
   itemChecked.each(function () {
     // let id = $(this).data('id');
     // let quantity = $(this).closest('tr').data('quantity');
-    var id = this.getAttribute('data-id');
-    var brand = this.getAttribute('data-brand');
-    var cartID = this.getAttribute('data-cart-id');
+    var id = this.parentNode.parentNode.getAttribute('data-id');
+    var brand = this.parentNode.parentNode.getAttribute('data-brand');
     var quantity = this.parentNode.parentNode.getAttribute('data-quantity');
     selectedProductIds.push({
       id: id,
-      cartID: cartID,
       brand: brand,
       quantity: quantity
     });
@@ -300,10 +287,9 @@ function sendData() {
     },
     success: function success(response) {
       // 处理响应
-      location.reload();
-      // console.log(response);
+      // location.reload();
+      console.log(response);
     },
-
     error: function error(_error3) {
       // 处理错误
       console.error(_error3);
