@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\DB;
 
 class Product extends Model{
 
@@ -57,4 +58,24 @@ class Product extends Model{
     {
         return self::where('productID', $productID)->delete();
     }
+
+    public function scopeSearchByName($query, $keywords)
+    {
+        $resultsQuery = DB::table('products')->where('id', null);
+
+        foreach ($keywords as $keyword) {
+            $keyword = '%' . $keyword . '%';
+
+            $queryResults = $query->orWhere(function ($subQuery) use ($keyword) {
+                $subQuery->whereRaw("JSON_UNQUOTE(JSON_EXTRACT(product_name_list, '$[*]')) LIKE ?", [$keyword]);
+            });
+    
+            // 将每个查询结果添加到结果查询构建器中
+            $resultsQuery->orWhereExists($queryResults->getQuery());
+        }
+
+        return $resultsQuery;
+    }
+
+
 }

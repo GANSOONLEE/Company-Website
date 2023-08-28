@@ -17,10 +17,10 @@ class CartCard{
 
     constructor(element){
         this.element = element;
-        this.product_id = element.getAttribute('data-product-id')
+        this.product_id = element.getAttribute('data-id')
         this.product_quantity = parseInt(element.getAttribute('data-quantity')); 
         this.product_brand = element.getAttribute('data-brand');
-        this.cart_id = element.getAttribute('data-cart');
+        this.cart_id = element.getAttribute('data-cart-id');
         
         this.structureInit(element);
     }
@@ -97,7 +97,12 @@ class CartCard{
     }
 
     updateQuantity(){
-
+        console.log(
+            this.cart_id,
+            this.product_id,
+            this.product_brand,
+            this.product_quantity
+        )
         $.ajax({
             type: 'post',
             dataType: 'json',
@@ -113,7 +118,7 @@ class CartCard{
             },
             success: function(data) {
                 // location.reload()
-                // console.log(data)
+                
             },
             error: function(xhr, status, error) {
                 console.log('AJAX Error:',xhr,status, error);
@@ -139,11 +144,7 @@ function createOrder(){
     /** @param {Array} selectProduct </br>The set of the select product, sort with category A-Z */
     let selectProduct = document.querySelectorAll('input[type="checkbox"]')
 
-    /** have any product selected? */
-    if(!selectProduct || selectProduct.length === 0){
-        console.log('Can\'t found any product selected')
-        return;
-    }
+    
 
     try{
         let orderElement = [];
@@ -186,6 +187,7 @@ function generatedOrder(orderElement){
             'X-CSRF-TOKEN': csrfToken
             },
             success: function(data) {
+                // location.reload();
                 console.log(data)
             },
             error: function(xhr, status, error) {
@@ -228,6 +230,8 @@ initialization()
 let table = new DataTable('#myTable', {
     "order": [
         [1, "asc"],
+        [2, "asc"],
+        [3, "asc"],
     ]
 });
 
@@ -278,13 +282,14 @@ function sendData(){
     let selectAllChecked = $('#selectAll').prop('checked');
 
     
-    if (selectAllChecked) {
-        itemChecked = $('.checkbox');
-    }else{
-        itemChecked = $('.checkbox:checked');
-    }
+    
+    itemChecked = selectAllChecked ? itemChecked = $('.checkbox') : itemChecked = $('.checkbox:checked');
 
-    console.log('選中的：',itemChecked)
+    /** have any product selected? */
+    if(!itemChecked || itemChecked.length === 0){
+        confirm('Can\'t found any product selected')
+        return;
+    }
 
     // console.log(itemChecked)
 
@@ -295,6 +300,12 @@ function sendData(){
         let id = this.parentNode.parentNode.getAttribute('data-id');
         let brand = this.parentNode.parentNode.getAttribute('data-brand');
         let quantity = this.parentNode.parentNode.getAttribute('data-quantity');
+
+        if(quantity === '0'){
+            confirm('Can\'n select item quantity are 0')
+            throw new Error('Can\'n select item quantity 0');
+            return false;
+        }
 
         selectedProductIds.push({
             id: id,
@@ -316,8 +327,9 @@ function sendData(){
         },
         success: function(response) {
             // 处理响应
-            // location.reload();
-            console.log(response);
+            location.reload();
+            // confirm('Order have been create');
+            // console.log(response);
         },
         error: function(error) {
             // 处理错误

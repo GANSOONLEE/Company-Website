@@ -52,17 +52,21 @@ class CreatedOrderEvent{
                 
             $cartContent = $productInCart->cart_content ?? [];
 
-
-            foreach($orderContent as $cart){
-
-                foreach($cartContent as &$cartItem){
-                    if($cartItem['product_code'] !== $cart['id']){
+            // $debug = [];
+            
+            foreach($cartContent as $index => &$cartItem){
+                foreach(json_decode($data['order_content']) as $order){
+                    if(!isset($order)){
                         continue;
                     }
-                    foreach($cartItem->cart_content as &$item){
-                        if($item[0]['brand'] === $cart['brand']){
-                            $item[0]['quantity'] = 0;
-                        }
+                    if($cartItem['product_code'] !== $order->id){
+                        continue;
+                    }
+                    if($cartItem['cart_content'][0]['brand_code'] !== $order->brand){
+                        continue;
+                    }
+                    foreach($cartItem['cart_content'] as &$item){
+                        $item['quantity'] = 0;
                     }
                 }
             }
@@ -80,6 +84,7 @@ class CreatedOrderEvent{
 
             $status = [
                 'success' => 'success',
+                // 'debug' => $debug,
             ];
 
         }catch(\Exception $e){
@@ -87,6 +92,7 @@ class CreatedOrderEvent{
                 'error' => $e->getMessage(),
                 'file' => $e->getFile(),
                 'line' => $e->getLine(),
+                // '$debug' => $debug,
             ];
         }
 

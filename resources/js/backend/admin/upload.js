@@ -90,13 +90,13 @@ function submitFormData () {
       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     },
     success: function(data) {
-      loadingOverlay.classList.remove('show');
+      // console.log(data)
     },
     error: function(xhr, status, error) {
-      console.log(status, error)
-      loadingOverlay.classList.remove('show');
+      // console.log(status, error)
     }
   });
+  loadingOverlay.classList.remove('show');
 }
 
   /**

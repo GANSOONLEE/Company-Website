@@ -16,7 +16,7 @@ class ProductDetailController extends Controller{
         $product = Product::where('product_id', $productID)
             ->first();
 
-        $directory = $product->productCatelog . '/' . $product->product_id . '/';
+        $directory = $product->product_category . '/' . $product->product_id . '/';
         
         $files = Storage::disk('product')->allFiles($directory);
         $images = [];

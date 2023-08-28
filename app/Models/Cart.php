@@ -72,4 +72,13 @@ class Cart extends Model
         return self::where('ID', $ID)->update($data);
     }
 
+    public function product($field, $value)
+    {
+        return Product::where($field, $value)->first();
+    }
+
+    public function cart_to_product($field, $value)
+    {
+        return $this->product( $field, $value); // 返回关联的User模型
+    }
 }

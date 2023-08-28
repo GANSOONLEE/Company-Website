@@ -24,10 +24,10 @@ var CartCard = /*#__PURE__*/function () {
     _defineProperty(this, "element", void 0);
     _defineProperty(this, "cart_id", void 0);
     this.element = element;
-    this.product_id = element.getAttribute('data-product-id');
+    this.product_id = element.getAttribute('data-id');
     this.product_quantity = parseInt(element.getAttribute('data-quantity'));
     this.product_brand = element.getAttribute('data-brand');
-    this.cart_id = element.getAttribute('data-cart');
+    this.cart_id = element.getAttribute('data-cart-id');
     this.structureInit(element);
   }
   _createClass(CartCard, [{
@@ -100,6 +100,7 @@ var CartCard = /*#__PURE__*/function () {
   }, {
     key: "updateQuantity",
     value: function updateQuantity() {
+      console.log(this.cart_id, this.product_id, this.product_brand, this.product_quantity);
       $.ajax({
         type: 'post',
         dataType: 'json',
@@ -115,7 +116,6 @@ var CartCard = /*#__PURE__*/function () {
         },
         success: function success(data) {
           // location.reload()
-          // console.log(data)
         },
         error: function error(xhr, status, _error) {
           console.log('AJAX Error:', xhr, status, _error);
@@ -134,12 +134,6 @@ var CartCard = /*#__PURE__*/function () {
 function createOrder() {
   /** @param {Array} selectProduct </br>The set of the select product, sort with category A-Z */
   var selectProduct = document.querySelectorAll('input[type="checkbox"]');
-
-  /** have any product selected? */
-  if (!selectProduct || selectProduct.length === 0) {
-    console.log('Can\'t found any product selected');
-    return;
-  }
   try {
     var orderElement = [];
     for (i = 0; i < selectProduct.length; i++) {
@@ -178,6 +172,7 @@ function generatedOrder(orderElement) {
         'X-CSRF-TOKEN': csrfToken
       },
       success: function success(data) {
+        // location.reload();
         console.log(data);
       },
       error: function error(xhr, status, _error2) {
@@ -213,7 +208,7 @@ initialization();
 /** ————————————————————————————— Data Table ————————————————————————————— */
 
 var table = new DataTable('#myTable', {
-  "order": [[1, "asc"]]
+  "order": [[1, "asc"], [2, "asc"], [3, "asc"]]
 });
 $(document).ready(function () {
   // 监听点击事件，选择特定的 <tr> 元素
@@ -250,12 +245,13 @@ function sendData() {
   var itemChecked;
   var selectedProductIds = [];
   var selectAllChecked = $('#selectAll').prop('checked');
-  if (selectAllChecked) {
-    itemChecked = $('.checkbox');
-  } else {
-    itemChecked = $('.checkbox:checked');
+  itemChecked = selectAllChecked ? itemChecked = $('.checkbox') : itemChecked = $('.checkbox:checked');
+
+  /** have any product selected? */
+  if (!itemChecked || itemChecked.length === 0) {
+    confirm('Can\'t found any product selected');
+    return;
   }
-  console.log('選中的：', itemChecked);
 
   // console.log(itemChecked)
 
@@ -266,6 +262,11 @@ function sendData() {
     var id = this.parentNode.parentNode.getAttribute('data-id');
     var brand = this.parentNode.parentNode.getAttribute('data-brand');
     var quantity = this.parentNode.parentNode.getAttribute('data-quantity');
+    if (quantity === '0') {
+      confirm('Can\'n select item quantity are 0');
+      throw new Error('Can\'n select item quantity 0');
+      return false;
+    }
     selectedProductIds.push({
       id: id,
       brand: brand,
@@ -287,9 +288,11 @@ function sendData() {
     },
     success: function success(response) {
       // 处理响应
-      // location.reload();
-      console.log(response);
+      location.reload();
+      // confirm('Order have been create');
+      // console.log(response);
     },
+
     error: function error(_error3) {
       // 处理错误
       console.error(_error3);

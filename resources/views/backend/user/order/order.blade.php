@@ -93,7 +93,7 @@
                     @foreach ($orderData as $index => $order)
                     <a class="order {{($index+1)%2==0?'even':'odd'}}" href="{{ route('backend.user.orderDetail', ['orderID' => $order->order_id]) }}">
                         <div class="display-row">
-                            <p>{{$order->orderID}}</p>
+                            <p>{{$order->order_id}}</p>
                             <p>{{$order->created_at}}</p>
                             <p>{{count(json_decode($order->order_content))}}</p>
                         </div>

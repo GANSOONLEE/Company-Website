@@ -101,10 +101,10 @@
   color: white;
   font-size: var(--font-small);
 }
-.filter .filter-footer .resetButton {
+.filter .filter-footer #resetButton {
   background-color: rgb(255, 114, 53);
 }
-.filter .filter-footer .fetchButton {
+.filter .filter-footer #fetchButton {
   background-color: rgb(69, 116, 255);
 }
 

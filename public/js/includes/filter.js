@@ -1,6 +1,6 @@
 
 $(document).ready(() => {
-  $('.fetchButton').click(()=>{
+  $('#fetchButton').click(()=>{
     selectChecked()
   });
 });
@@ -11,6 +11,9 @@ function selectChecked() {
 
   let checkboxTypeArray = document.querySelectorAll('[type="checkbox"][data-type="type"].checkbox-display');
   let checkboxModelArray = document.querySelectorAll('[type="checkbox"][data-type="model"].checkbox-display');
+
+  console.log('type有：',checkboxTypeArray);
+  console.log('model有：',checkboxModelArray);
 
   checkboxTypeArray.forEach(element => {
     if (element.checked) {
@@ -27,41 +30,39 @@ function selectChecked() {
   sendFilter(checkedTypeArray, checkedModelArray);
 }
 
-function sendFilter(checkedTypeArray, checkedModelArray) {
+function sendFilter(type, model) {
 
-  let currentURL = window.location.href;
-  let urlParts = currentURL.split('/');
-  const catelogName = urlParts[urlParts.length - 1];
-  
+  // 获取当前页面的URL
+  var currentUrl = window.location.href;
+
+  // 使用字符串分割方法获取最后一个字段
+  var segments = currentUrl.split('/');
+  var lastSegment = segments.pop();
+
   FormData = {
-    'productType' : checkedTypeArray,
-    'productName' : checkedModelArray,
+    'productCategory' : decodeURIComponent(lastSegment),
+    'productType' : type,
+    'productName' : model,
   }
 
+  console.log(FormData)
+
   $.ajax({
-    url: `${catelogName}`,
+    url: '/api/search-product',
     data: FormData,
-    type: 'get',
-    dataType: 'json',
+    type: 'post',
     headers: {
       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     },
     success: function (data) {
-      console.log(data);
+      document.open();
+      document.write(data);
+      document.close();
+      console.log(data)
     },
     error: function (xhr, status, error) {
-      // 处理错误
+      
     }
   });
 }
-
-
-
-
-const refreshButton = document.querySelector('.resetButton');
-
-// 添加點擊事件處理函數
-refreshButton.addEventListener('click', function() {
-    location.reload(true); // 刷新當前頁面
-});
 

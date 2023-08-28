@@ -42,8 +42,8 @@
         'batch-operation' => '批量操作',
         'already-complete' => '已完成',
         'complete' => '标记为完成',
-        'markAtPending' => '标记为待定',
-        'markAtProcess' => '标记为处理中',
+        'onHold' => '标记为待定',
+        'processing' => '标记为处理中',
 
         /**
          *  信息

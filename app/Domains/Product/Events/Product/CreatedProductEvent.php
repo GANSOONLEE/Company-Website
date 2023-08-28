@@ -89,7 +89,7 @@ class CreatedProductEvent{
                 'product_id' => $productID,
                 'product_category' => $productCatelog,
                 'product_type' => $productType,
-                'product_nameL_list' => json_encode($productNameList),
+                'product_name_list' => json_encode($productNameList),
                 'product_brand_list' => json_encode($productBrandList,)
             ];
 

@@ -47,4 +47,7 @@ class Order extends Model
     {
         return $this->cart()->first(); // 返回关联的User模型
     }
+
+
+    
 }

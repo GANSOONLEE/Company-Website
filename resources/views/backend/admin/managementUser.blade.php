@@ -41,15 +41,15 @@
 
                         @if($operation->operation_type==='create product')
                             <td data-type="operation_type">
-                                {{trans('table.create-product')}} {{$operation->operation_data['product']}}
+                                {{trans('table.create-product')}} <b>{{$operation->operation_data['product']}}</b>
                             </td>
                         @elseif($operation->operation_type==='update product')
                             <td data-type="operation_type">
-                                {{trans('table.update-product')}} {{$operation->operation_data['product']}}
+                                {{trans('table.update-product')}} <b>{{$operation->operation_data['product']}}</b>
                             </td>
                         @else
                             <td data-type="operation_type">
-                                {{trans('table.delete-product')}} {{$operation->operation_data['product']}}
+                                {{trans('table.delete-product')}} <b>{{$operation->operation_data['product']}}</b>
                             </td>    
                         @endif
 

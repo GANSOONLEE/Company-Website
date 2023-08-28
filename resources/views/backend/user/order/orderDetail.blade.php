@@ -58,10 +58,11 @@
                     </div>
                     @foreach ($productData as $index => $product)
                         <div class="product-information display-row">
-                            <p> {{$product[0]->productCatelog}} </p>
-                            <p> {{json_decode($product[0]->productNameList)[0]}} </p>
-                            <p> {{json_decode($orderData->orderContent)[$index]->brand}} </p>
-                            <p> {{json_decode($orderData->orderContent)[$index]->quantity}} </p>
+                            {{-- {{dd($orderData)}} --}}
+                            <p> {{$product[0]->product_category}} </p>
+                            <p> {{json_decode($product[0]->product_name_list)[0]}} </p>
+                            <p> {{json_decode($orderData->order_content)[$index]->brand}} </p>
+                            <p> {{json_decode($orderData->order_content)[$index]->quantity}} </p>
                         </div>
                     @endforeach
                 </div>

@@ -57,13 +57,8 @@
         </div>
 
         <div class="filter-footer">
-            @php
-                $originalUrl = $_SERVER['REQUEST_URI'];
-                $parts = parse_url($originalUrl);
-                $baseUrl = $parts['path'];
-            @endphp
-            <a href={{$baseUrl}}><button type="reset" class="filter-button resetButton" style="width: 100%">Reset Filter</button></a>
-            <button type="button" class="filter-button fetchButton">Get Data</button>
+            {{-- <button type="reset" class="filter-button" id="resetButton" style="width: 100%">Reset Filter</button> --}}
+            <button type="button" class="filter-button" id="fetchButton">Search</button>
         </div>
     </form>
 </div>

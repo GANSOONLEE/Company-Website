@@ -42,8 +42,8 @@
         'cancel' => 'Cancel',
         'already-complete' => 'Already Done',
         'complete' => 'Mark it Done',
-        'markAtPending' => 'Pending',
-        'markAtProcess' => 'Make it Process',
+        'onHold' => 'On Hold',
+        'processing' => 'Processing',
 
         /**
          *  Information

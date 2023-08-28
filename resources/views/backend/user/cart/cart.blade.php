@@ -19,101 +19,6 @@
 <!-- #TODO fill in the information inside the table -->
 
 @section('content')
-    {{-- <div class="cart-container">
-        <!-- page title and description -->
-        <div class="cart-header">
-            <div class="page-title">Order</div>
-            <button class="button-create-order" id="checkOrder">
-                <div class="center">
-                    <i class="fa-solid fa-plus"></i>
-                </div>
-                <div class="center">
-                    <p>Create Order</p>
-                </div>
-            </button>
-        </div>
-
-        <!-- product cards -->
-        <div class="cart-body">
-
-            <!-- cards list container -->
-            <div class="cards-container">
-
-                <!-- title -->
-                <div class="cards-header">
-
-                </div>
-
-                <!-- list of card -->
-                <div class="cards-body">
-
-                    <!-- card object -->
-                    @foreach ($carts as $cart)
-                        <label for="{{$cart->ID}}">
-                            <input type="checkbox" name="cartToOrder[]" id="{{$cart->ID}}">
-                            <div class="product-card" data-cart="{{$cart->ID}}" data-product-id="{{$cart->productID}}" data-quantity="{{$cart->quantity}}" data-brand="{{$cart->productBrand}}">
-                                <div class="product-card-header">
-                                    <a href={{route('frontend.product.detail',['productCode' => $cart->productID])}}>
-                                        <div class="hover">
-                                            View Product
-                                        </div>
-                                        <img class="product-card-image" src="{{ asset("storage/{$cart->cart_to_product()['productCatelog']}/{$cart->productID}/cover.png") }}" alt="product-image">
-                                    </a>
-                                </div>
-                                <div class="product-card-body">
-                                    <p class="product-brand">{{ $cart->productBrand }}</p>
-                                    <p class="product-category">{{ $cart->cart_to_product()['productCatelog'] }}</p>
-                                </div>
-                                <div class="product-card-footer">  
-                                </div>
-                            </div>
-                        </label>
-                    @endforeach
-                </div>
-
-                <!-- #TODO pagination -->
-                <div class="cards-footer">
-
-                </div>
-            </div>
-        </div>
-
-        <!-- optional -->
-        <div class="cart-footer">
-
-        </div>
-    </div> --}}
-
-    {{-- <div class="checkout-form">
-        
-        <!-- Heading, Title -->
-        <div class="checkout-form-header">
-            
-        </div>
-
-        <!-- Order Content -->
-        <div class="checkout-form-body">
-
-            <!-- Unit of product list -->
-            <div class="product">
-                <div class="product-image">
-
-                </div>
-                <div class="product-infomation">
-
-                </div>
-                <div class="product-action">
-                    
-                </div>
-            </div>
-
-        </div>
-
-        <!-- Action Button -->
-        <div class="checkout-form-footer">
-
-        </div>
-    </div> --}}
 
 <div class="content">
 
@@ -135,10 +40,10 @@
     <table id="myTable">
         <thead>
             <tr>
-                <th></th>
+                {{-- <th></th> --}}
                 <th>Category</th>
-                <th>Car Model</th>
-                <th>Product Code</th>
+                <th>Product Id</th>
+                <th>Product Brand Code</th>
                 <th>Quantity</th>
                 <th data-header="Checkbox">
                     <input class="selectAllCheckbox" id="selectAll" type="checkbox" name="" style="display: block">
@@ -146,16 +51,17 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($carts as $index => $cart)
-                @foreach ($cart->cart_content as $content)
-                    <tr class="product-card" data-id="{{ $content['product_code'] }}" data-quantity="{{ $content['cart_content'][0]['quantity'] }}" data-brand="{{ $content['cart_content'][0]['brand_code'] }}">
-                        <td data-column="Index">{{ $index+1 }}</td>
+            @foreach ($carts as $cart)
+            {{-- {{dd($cart)}} --}}
+                @foreach ($cart->cart_content as $index => $content)
+                    <tr class="product-card" data-cart-id="{{ $cart->cart_ID }}"  data-id="{{ $content['product_code'] }}" data-quantity="{{ $content['cart_content'][0]['quantity'] }}" data-brand="{{ $content['cart_content'][0]['brand_code'] }}">
+                        {{-- <td data-column="Index">{{ $index+1 }}</td> --}}
                         <td data-column="Category">{{ $content['product_category'] }}</td>
-                        <td data-column="Name">{{ $content['product_code'] }}</td>
+                        <td data-column="Name">{{ json_decode($cart->cart_to_product('product_id', $content['product_code'])->product_name_list)[0] }}</td>
                         <td data-column="Brand">{{ $content['cart_content'][0]['brand_code'] }}</td>
                         <td data-column="Quantity"></td>
                         <td data-column="Checkbox">
-                            <input class="checkbox" type="checkbox" name="productOrder[]" data-cart-id="{{ $cart->ID }}" data-brand="{{ $cart->productBrand }}" data-id="{{ $cart->productID }}">
+                            <input class="checkbox" type="checkbox" name="productOrder[]" data-cart-id="{{ $cart->cart_ID }}" data-brand="{{ $cart->productBrand }}" data-id="{{ $cart->productID }}">
                         </td>
                     </tr>
                 @endforeach

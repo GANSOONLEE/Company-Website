@@ -62,11 +62,11 @@
                 <div class="button-action-area">
                     @if($order->order_status === 'On Hold')
                     <button type="button" class="btn btn-secondary" data-order-id="{{$order->order_id}}" id="InProcessButton">
-                        {{trans('product.markAtProcess')}}
+                        {{trans('product.processing')}}
                     </button>
                     @else
                     <button type="button" class="btn btn-secondary" data-order-id="{{$order->order_id}}" id="OnHoldButton" {{$order->order_status == "Completed" ? 'disabled':''}}>
-                        {{trans('product.markAtPending')}}
+                        {{trans('product.onHold')}}
                     </button>
                     @endif
                     <button type="button" class="btn btn-primary" data-button-action="complete" data-order-id="{{$order->order_id}}" id="CompleteButton" {{$order->order_status == "Completed" ? 'disabled':''}}>

@@ -12,16 +12,16 @@ class ViewOrderDetail extends Controller{
     {
 
         /** @de */
-        $orderData = Order::where('orderID', $request->orderID)
+        $orderData = Order::where('order_id', $request->orderID)
                         ->first();
 
-        $products = json_decode($orderData->orderContent);
+        $products = json_decode($orderData->order_content);
         $productData = [];
         
         // Unit Test
         foreach($products as $product){
-            $productElement = Product::where('productID', $product->id)
-                ->orderBy('productCatelog', 'asc')
+            $productElement = Product::where('product_id', $product->id)
+                ->orderBy('product_category', 'asc')
                 ->first();
             $productData[] = [$productElement , $product->quantity];
         }
