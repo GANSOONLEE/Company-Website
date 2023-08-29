@@ -27,6 +27,7 @@
     "/css/festival/festival.css": "/css/festival/festival.css",
     "/css/backend/user/order/orderDetail.css": "/css/backend/user/order/orderDetail.css",
     "/css/backend/user/order/order.css": "/css/backend/user/order/order.css",
+    "/css/backend/user/cart/cartForm.css": "/css/backend/user/cart/cartForm.css",
     "/css/backend/user/cart/cart.css": "/css/backend/user/cart/cart.css",
     "/css/backend/user/app.css": "/css/backend/user/app.css",
     "/css/backend/admin/viewOrderDetail.css": "/css/backend/admin/viewOrderDetail.css"

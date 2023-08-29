@@ -4,6 +4,7 @@
 
 @push('after-style')
     <link rel="stylesheet" href="{{asset('css\backend\user\cart\cart.css')}}">
+    <link rel="stylesheet" href="{{asset('css\backend\user\cart\cartForm.css')}}">
 @endpush
 
 @push('before-body')
@@ -33,7 +34,7 @@
                 <i class="fa-solid fa-plus"></i>
             </div>
             <div class="center">
-                <p>Create Order</p>
+                <p>Generating Order</p>
             </div>
         </button>
     </div>
@@ -69,47 +70,9 @@
         </tbody>
     </table>
     <p id="email" style="display: none">{{auth()->user()->email_address}}</p>
+    @if(isset($cartData))
+        @include('backend.user.cart.cartForm')
+    @endif
 </div>
-
-{{-- <div class="model-background">
-
-    <!-- Model -->
-    <form action="{{route('api.create-order')}}" method="post">
-    <div class="model" id="productModel">
-
-        <!-- Title -->
-        <div class="model-header">
-            <p>Comfirm Order</p>
-            <i class="fa-solid fa-xmark" id="closeModelButton"></i>
-        </div>
-
-        <!-- Cart -->
-        <div class="model-body">
-            <div class="cart-display" id="confirm-order-cart-list">
-                
-                @foreach($carts as $cart)
-                <div class="cart" data-id="1">
-                    <div class="cart-info">
-                        <p class="product-name">Perodua Bezza 1.3 2012</p>
-                        <p class="product-brand">SWJ-PER 005</p>
-                    </div>
-                    <div class="cart-quantity">
-                        <p id="cart-quantity">
-                            12 Qty.
-                        </p>
-                    </div>
-                </div>
-                @endforeach
-
-            </div>
-        </div>
-
-        <!-- Button -->
-        <div class="model-footer">
-
-        </div>
-    </div>
-    </form>
-</div> --}}
 
 @endsection

@@ -263,7 +263,7 @@ p {
 
 .order-list {
   font-size: var(--font-small);
-  margin-top: 1.2rem;
+  margin-top: 0.4rem;
   /* Units of Order */
 }
 .order-list p:first-child {

@@ -26,6 +26,7 @@ class AdminViewOrderEvent{
         foreach($products as $product){
             $productElement = Product::where('product_id', $product->id)
                 ->orderBy('product_category', 'asc')
+                ->orderByRaw("JSON_UNQUOTE(JSON_EXTRACT(product_name_list, '$[0]')) ASC")
                 ->first();
             $productData[] = [$productElement , $product];
         }

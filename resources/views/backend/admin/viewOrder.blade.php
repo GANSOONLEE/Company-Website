@@ -59,7 +59,6 @@
                         <td data-type="orderReceivedTime">{{ $order->order_received_time }}</td>
 
                         <td data-type="orderStatus" data-status="{{$order->order_status}}">
-                        {{-- <td data-status="Complete"> --}}
                             <span></span>
                             <div style="display: inline-block">{{ $order->order_status }}</div>
                         </td>

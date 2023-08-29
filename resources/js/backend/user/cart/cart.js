@@ -266,7 +266,72 @@ $(document).ready(function() {
     })
 });
 
-/* ———————————————————— Model ———————————————————— */
+/* ———————————————————— Send Order ———————————————————— */
+
+
+$(document).ready(function() {
+    $('#generatingOrder').click(function(event){
+        generateData();
+    });
+});
+
+function generateData(){
+    let itemChecked;
+    let selectedProductIds = [];
+
+    let selectAllChecked = $('#selectAll').prop('checked');
+    
+    itemChecked = selectAllChecked ? itemChecked = $('.checkbox') : itemChecked = $('.checkbox:checked');
+
+    /** have any product selected? */
+    if(!itemChecked || itemChecked.length === 0){
+        confirm('Can\'t found any product selected')
+        return;
+    }
+    
+    itemChecked.each(function() {
+        let id = this.parentNode.parentNode.getAttribute('data-id');
+        let brand = this.parentNode.parentNode.getAttribute('data-brand');
+        let quantity = this.parentNode.parentNode.getAttribute('data-quantity');
+
+        if(quantity === '0'){
+            confirm('Can\'n select item quantity are 0')
+            throw new Error('Can\'n select item quantity 0');
+            return false;
+        }
+
+        selectedProductIds.push({
+            id: id,
+            brand: brand,
+            quantity: quantity
+        });
+    });
+
+
+    let email = document.querySelector('#email').innerText;
+
+    // 使用 AJAX 发送数据到指定的路由
+    $.ajax({
+        url: '/api/create-order',
+        type: 'POST',
+        data: { productIds: selectedProductIds , 'email': email},
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        success: function(response) {
+            // 处理响应
+            location.reload();
+            // confirm('Order have been create');
+            // console.log(response);
+        },
+        error: function(error) {
+            // 处理错误
+            console.error(error);
+        }
+    });
+}
+
+/* ———————————————————— Send Order ———————————————————— */
 
 
 $(document).ready(function() {
@@ -278,12 +343,8 @@ $(document).ready(function() {
 function sendData(){
     let itemChecked;
     let selectedProductIds = [];
-
-    let selectAllChecked = $('#selectAll').prop('checked');
-
     
-    
-    itemChecked = selectAllChecked ? itemChecked = $('.checkbox') : itemChecked = $('.checkbox:checked');
+    itemChecked = $('.checkbox:checked');
 
     /** have any product selected? */
     if(!itemChecked || itemChecked.length === 0){

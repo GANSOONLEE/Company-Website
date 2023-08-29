@@ -1,0 +1,57 @@
+div.form-background {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+  background-color: rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+}
+div.form-background.show {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+div.form-background div.form {
+  width: 70%;
+  height: auto;
+  max-height: calc(100vh - 8rem);
+  overflow-y: auto;
+  padding: 3rem 4rem;
+  margin-top: 4rem;
+  background-color: #fff;
+  border-radius: 6px;
+  box-shadow: 0 0 20px 0.5px rgba(0, 0, 0, 0.1333333333);
+}
+div.form-background div.form div.form-header {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #888;
+}
+div.form-background div.form div.form-header p.form-title {
+  font-weight: bold;
+  font-size: var(--font-h1);
+}
+div.form-background div.form div.form-header p.form-description {
+  font-size: var(--font-h6);
+  color: #5b5b5b;
+}
+div.form-background div.form div.form-body {
+  padding: 3rem 0;
+}
+div.form-background div.form div.form-body div.cart-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: spawn-between;
+  row-gap: 1.6rem;
+}
+div.form-background div.form div.form-body div.cart-container div.cart div.cart-information {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--font-h6);
+}
+div.form-background div.form div.form-body div.cart-container div.cart div.cart-information p {
+  margin-bottom: 0;
+}

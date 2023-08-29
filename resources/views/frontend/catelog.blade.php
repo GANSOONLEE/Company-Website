@@ -11,20 +11,20 @@
 @section('content')
     @php
         $images = [
-            'image/Sample/1.png',
-            'image/Sample/2.png',
-            'image/Sample/3.png',
-            'image/Sample/4.png',
-            'image/Sample/5.png',
-            'image/Sample/6.png',
-            'image/Sample/7.png',
-            'image/Sample/8.png',
-            'image/Sample/9.png',
-            'image/Sample/10.png',
-            'image/Sample/11.png',
-            'image/Sample/12.png',
-            'image/Sample/13.png',
-            'image/Sample/14.png',
+            'image/Sample/blower-motor.png',
+            'image/Sample/cabin-air-filters.png',
+            'image/Sample/compressor.png',
+            'image/Sample/condenser.png',
+            'image/Sample/cooling-coil.png',
+            'image/Sample/discharge-hose.png',
+            'image/Sample/expansion-valve.png',
+            'image/Sample/fan-control.png',
+            'image/Sample/fan-motor.png',
+            'image/Sample/liquid-tube.png',
+            'image/Sample/pressure-switch.png',
+            'image/Sample/receiver-drier.png',
+            'image/Sample/resistor.png',
+            'image/Sample/suction-hose.png',
         ];
     @endphp
 

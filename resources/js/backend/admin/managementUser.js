@@ -18,9 +18,11 @@ $(document).ready(() => {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             success: function(data) {
+                // console.log(data)
                 location.reload();
             },
             error: function(xhr, status, error) {
+                // console.log(status, error)
                 location.reload();
             }
         })

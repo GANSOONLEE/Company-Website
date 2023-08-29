@@ -133,20 +133,31 @@
                             margin-right: 1rem;
                             border-radius: 50%;
                         }
-                        &[data-status="Received"] > span{
-                            animation: blindReceived infinite 1s steps(1);
-                        }
-                        &[data-status="In Process"] > span{
-                            animation: blindInProcess infinite 1s steps(1);
+                        &[data-status="New"] > span{
+                            animation: blindNew infinite .5s steps(1);
                         }
                         &[data-status="Pending"] > span{
-                            animation: blindInPending infinite .5s steps(1);
+                            animation: blindPending infinite 1s steps(1);
                         }
-                        &[data-status="Complete"] > span{
-                            animation: blindComplete infinite 1s steps(1);
+                        &[data-status="Processing"] > span{
+                            animation: blindProcessing infinite 1s steps(1);
+                        }
+                        &[data-status="On Hold"] > span{
+                            animation: blindInOnHold infinite .5s steps(1);
+                        }
+                        &[data-status="Completed"] > span{
+                            animation: blindCompleted infinite 1s steps(1);
                         }
                     }
-                    @keyframes blindReceived {
+                     @keyframes blindNew {
+                        0%{
+                            background-color: rgb(0, 251, 255);
+                        }
+                        50%{
+                            background-color: rgb(0, 186, 189);
+                        }
+                    }
+                    @keyframes blindPending {
                         0%{
                             background-color: red;
                         }
@@ -155,7 +166,7 @@
                         }
                     }
 
-                    @keyframes blindInProcess {
+                    @keyframes blindProcessing {
                         0%{
                             background-color: yellow;
                         }
@@ -163,15 +174,17 @@
                             background-color: rgb(187, 187, 0);
                         }
                     }
-                    @keyframes blindInPending {
+                    
+                    @keyframes blindInOnHold {
                         0%{
-                            background-color: rgb(28, 35, 255);
+                            background-color: rgb(58, 64, 255);
                         }
                         50%{
-                            background-color: rgb(4, 0, 129);
+                            background-color: rgb(3, 0, 99);
                         }
                     }
-                    @keyframes blindComplete {
+
+                    @keyframes blindCompleted {
                         0%{
                             background-color: rgb(0, 187, 56);                         
                         }

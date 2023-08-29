@@ -17,10 +17,12 @@ class RestoreRecordEvent extends Controller{
             $operation = Operation::where('operation_id', $operationID)->first();
             $operation->delete();
     
-            $product = Product::withTrashed()->where('productID', $id)->first();
+            $product = Product::withTrashed()->where('product_id', $id)->first();
             $product->restore();
 
-            $status = ['success' => 'success'];
+            $status = [
+                'success' => 'success',
+            ];
         }catch(\Exception $e){
             $status = ['error' => $e->getMessage()];
         }

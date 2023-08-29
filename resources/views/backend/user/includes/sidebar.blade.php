@@ -18,11 +18,11 @@
                 'label' => 'Home'
             ],
             // #TODO user dashboard
-            [
-                'url' => route('backend.user.dashboard'), 
-                'icon' => 'fa-solid fa-chart-line',
-                'label' => 'Dashboard'
-            ],
+            // [
+            //     'url' => route('backend.user.dashboard'), 
+            //     'icon' => 'fa-solid fa-chart-line',
+            //     'label' => 'Dashboard'
+            // ],
             // #TAG Beta-function
             // [
             //     'url' => route('backend.user.favorite'), 

@@ -72,11 +72,11 @@ $('#updateProductOwn').click(function(event){
     let own = $('#editModal #own').val();
     let brand = $('#brand').val();
 
-    if(own >= quantity){
+    if(own > quantity){
         return false;
     }
     
-    console.log(orderID, own, brand)
+    console.log(orderID, own, brand, quantity)
 
     $.ajax({
         url: '/api/update-cart-own',

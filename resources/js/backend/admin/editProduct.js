@@ -194,7 +194,7 @@ class EventListener{
 // #endregion
 
 function getEmail() {
-    var name = 'email=';
+    var name = 'email_address=';
     var ca = document.cookie.split(';');
     for (var i = 0; i < ca.length; i++) {
       var c = ca[i].trim();
@@ -219,7 +219,7 @@ function updateInformation(){
 
 function deleteProduct(){
 
-    const productID = document.querySelector('[name="productID"]').value;
+    const productID = document.querySelector('[name="product_id"]').value;
     const email = updateInformation();
 
     $.ajax({
@@ -231,7 +231,8 @@ function deleteProduct(){
           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
         success: function(data) {
-            location.reload();
+            console.log(data)
+            // location.reload();
         },
         error: function(xhr, status, error) {
             location.reload();

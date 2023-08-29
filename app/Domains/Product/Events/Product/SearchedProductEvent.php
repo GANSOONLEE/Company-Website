@@ -35,7 +35,7 @@ class SearchedProductEvent{
                 $query->searchByName($brand);
             }
 
-            $productData = $query->where('product_category',$category)->get();
+            $productData = $query->where('product_category',"$category")->get();
 
             // $status = [
             //     'success' => 'success',

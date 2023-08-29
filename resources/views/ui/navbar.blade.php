@@ -19,9 +19,9 @@
                         <li class="navbar-link {{ request()->is('login')? 'active' : ''}}"><a href="{{route('frontend.login')}}">LOGIN</a></li>
                     @else
                         @if (auth()->user()->isAdmin())
-                            <li class="navbar-link"><a href="{{ route('backend.admin.dashboard') }}" class="user-link">DASHBOARD</a></li>
+                            <li class="navbar-link"><a href="{{ route('backend.admin.newProduct') }}" class="user-link">DASHBOARD</a></li>
                         @else
-                            <li class="navbar-link"><a href="{{ route('backend.user.dashboard') }}" class="user-link">DASHBOARD</a></li>
+                            <li class="navbar-link"><a href="{{ route('backend.user.cart') }}" class="user-link">DASHBOARD</a></li>
                         @endif
                             <li class="navbar-link"><a href="{{ route('frontend.logout') }}" class="user-link">LOGOUT</a></li>
                     @endguest

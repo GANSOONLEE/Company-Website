@@ -5,7 +5,7 @@ namespace App\Domains\Product\Events\Product;
 use \App\Domains\Product\Events\Notification\ProductDeletedNotification;
 use App\Models\Product;
 use App\Models\User;
-use App\Models\UserOperation;
+use App\Models\Operation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -15,23 +15,25 @@ class DeletedProductEvent{
     public function deleteProduct(Request $request)
     {
         try {
-            $product = Product::where('productID', $request->productID)->first();
+            $product = Product::where('product_id', $request->productID)->first();
 
             $productID = $request->input('productID');
-            $productCatelog = $product->productCatelog;
+            // $productCatelog = $product->productCatelog;
             
             // Storage::disk('product')->deleteDirectory("$productCatelog/$productID");
 
             $email = $request->input('email');
-            $user = User::where('Email', $email)->first();
+            $user = User::where('email_address', $email)->first();
 
             $operation = [
-                'userID' => $user->Name,
-                'operationType' => 'Delete Product',
-                'ID' => $request->productID,
+                'email_address' => $user->email_address,
+                'operation_type' => 'delete product',
+                'operation_data' => [
+                    'product' => $productID,
+                ],
             ];
 
-            UserOperation::create($operation);
+            Operation::create($operation);
 
             $product->delete();
 
@@ -42,6 +44,8 @@ class DeletedProductEvent{
         } catch (\Exception $err) {
             $status = [
                 'error' => $err->getMessage(),
+                'file' => $err->getFile(),
+                'line' => $err->getLine(),
                 'debug' => $request->input('email'),
             ];
         }

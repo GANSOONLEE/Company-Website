@@ -80,13 +80,12 @@ class AuthController extends Controller
 
         if ($user) {
             if($user->Role == 'admin'){
-
                 // 身分組為管理員的邏輯
                 return view('background.admin.dashboard');
             }else{
 
                 // 身分組為普通用戶的邏輯
-                return redirect()->route('frontend.login');
+                return redirect()->route('background.user.cart');
             }
         } else {
             return redirect()->route('frontend.login');

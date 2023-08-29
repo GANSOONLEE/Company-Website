@@ -4,17 +4,6 @@
 
 @push('after-style')
     <link rel="stylesheet" href={{asset('css\backend\admin\pendingOrder.css')}}>
-    <style>
-        a{
-
-        }
-        .class{
-
-        }
-        #id{
-            
-        }
-    </style>
 @endpush
 
 
@@ -49,14 +38,13 @@
 
                         <td data-type="orderID">{{ $order->order_id }}</td> 
 
-                        <td data-type="customerUser">{{ $order->email_address }}</td>
+                        <td data-type="">{{ $order->order_to_user()->username }}</td>
 
                         <td data-type="orderReceivedDate">{{ $order->order_received_date }}</td>
 
                         <td data-type="orderReceivedTime">{{ $order->order_received_time }}</td>
 
                         <td data-type="orderStatus" data-status="{{$order->order_status}}">
-                        {{-- <td data-status="Complete"> --}}
                             <span></span>
                             <div style="display: inline-block">{{ $order->order_status }}</div>
                         </td>

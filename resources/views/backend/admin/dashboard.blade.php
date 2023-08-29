@@ -3,7 +3,7 @@
 @section('title', trans('web.dashboard'))
 
 @push('after-style')
-    <link rel="stylesheet" href="{{asset('css\backend\product.css')}}">
+    <link rel="stylesheet" href="{{asset('css\backend\dashboard.css')}}">
 @endpush
 
 

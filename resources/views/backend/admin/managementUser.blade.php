@@ -57,7 +57,7 @@
                         
                         @if(stripos($operation->operation_type, 'Delete Product') !== false)
                             <td data-type="button">
-                                <button class="restoreButton" type="button" data-operation-id={{$operation->operationID}} id={{$operation->ID}}>{{trans('table.restore')}}</button>
+                                <button class="restoreButton" type="button" data-operation-id="{{$operation->operation_id}}" id="{{$operation->operation_data['product']}}">{{trans('table.restore')}}</button>
                             </td>
                         @else
                             <td data-type="button"></td>

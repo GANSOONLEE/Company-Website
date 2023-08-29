@@ -18,11 +18,11 @@
                 'label' => trans('sidebar.home')
             ],
             // #TODO admin dashboard
-            [
-                'url' => route('backend.admin.dashboard'), 
-                'icon' => 'fa-solid fa-chart-line',
-                'label' => trans('sidebar.dashboard')
-            ],
+            // [
+            //     'url' => route('backend.admin.dashboard'), 
+            //     'icon' => 'fa-solid fa-chart-line',
+            //     'label' => trans('sidebar.dashboard')
+            // ],
             [
                 'section' => trans('sidebar.product'),
                 'icon' => 'fa-solid fa-box',
