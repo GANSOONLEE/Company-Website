@@ -121,10 +121,10 @@
         border-radius: 6px;
         th[data-type="orderID"], td[data-type="orderID"]{
             min-width: auto;
-            max-width: 30px;
+            max-width: 35px;
         }
         th[data-type="customerUser"], td[data-type="customerUser"]{
-            min-width: 100px;
+            min-width: auto;
             max-width: 100px;
         }
         th[data-type="orderReceivedDate"],

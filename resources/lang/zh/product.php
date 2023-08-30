@@ -13,7 +13,7 @@
 
         'name' => '车款型号',
         'code' => '编号',
-        'catelog' => '物品种类',
+        'category' => '物品种类',
         'model' => '',
         'type' => '类型',
         'brand' => '品牌',

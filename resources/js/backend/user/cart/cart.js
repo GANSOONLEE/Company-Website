@@ -397,4 +397,6 @@ function sendData(){
             console.error(error);
         }
     });
+
+    setTime
 }

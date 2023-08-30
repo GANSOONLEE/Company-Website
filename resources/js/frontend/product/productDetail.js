@@ -3,8 +3,8 @@
  *  @method Image-preview
  * 
  */
-var imageHover = document.querySelectorAll('img.product-image-hoverable');
-var imageDisplay = document.querySelector('img.product-image-display');
+let imageHover = document.querySelectorAll('img.product-image-hoverable');
+let imageDisplay = document.querySelector('img.product-image-display');
 
 for(let i = 0; i < imageHover.length; i++){
     imageHover[i].addEventListener('mouseenter', ()=>{
@@ -19,14 +19,36 @@ for(let i = 0; i < imageHover.length; i++){
 }
 
 /**
+ * Double click zoom image
+ * @method zoom-image
+ */
+
+$('img').dblclick(function(event) {
+    let src = this.src;
+    console.log(src);
+    $('#dbl-click-display').attr('src', src); // 設置圖片的src屬性
+    $('.background').show();
+});
+
+$('#dbl-click-display').click(function(event){
+   return false;
+})
+
+$('.background').click(function(event) {
+    $(this).hide(); // 使用$(this)來隱藏背景
+});
+
+
+
+/**
  *  @method Scroll-to-X
  *  
  */
 
-var prevousButton = document.querySelector('.prevous-image');
-var imageSelector = document.querySelector('.image-selector-area');
-var nextButton = document.querySelector('.next-image');
-var moveDistance = (imageSelector.clientWidth / 1);
+let prevousButton = document.querySelector('.prevous-image');
+let imageSelector = document.querySelector('.image-selector-area');
+let nextButton = document.querySelector('.next-image');
+let moveDistance = (imageSelector.clientWidth / 1);
 
 function getScrollX(){
     let scrollX = imageSelector.scrollLeft;
@@ -132,13 +154,14 @@ function sendData(option, quantity, productID, email){
         }),
         contentType : "application/json;charset=utf-8",
         success: function(Text){
-            console.log(Text)
-            // location.reload();
+            // console.log(Text)
+            location.reload();
         },
         error: function (XMLHttpRequest, textStatus, errorThrown){
-            console.log(XMLHttpRequest.status);
-            console.log(XMLHttpRequest.readyState);
-            console.log(textStatus);
+            // console.log(XMLHttpRequest.status);
+            // console.log(XMLHttpRequest.readyState);
+            // console.log(textStatus);
+            location.reload();
         }
     })
     $.ajaxSetup({

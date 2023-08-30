@@ -25,8 +25,8 @@
         <table id="myTable" class="display">
             <thead>
                 <tr>
-                    <th>{{trans('table.userID')}}</th>
                     <th>{{trans('table.ID')}}</th>
+                    <th>{{trans('table.userID')}}</th>
                     <th>{{trans('table.operationType')}}</th>
                     <th>{{trans('table.created_at')}}</th>
                     <th>{{trans('table.restore')}}</th>

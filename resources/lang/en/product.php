@@ -13,7 +13,7 @@
 
         'name' => 'Car Model',
         'code' => 'Code',
-        'catelog' => 'Catelog',
+        'category' => 'Catelog',
         'type' => 'Type',
         'brand' => 'Brand',
         'model' => '',

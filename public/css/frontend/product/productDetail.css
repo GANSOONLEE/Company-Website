@@ -11,7 +11,7 @@
        column-gap: 0;
 }
 
-.back-to-prevous-page {
+.back-to-previous-page {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -20,7 +20,7 @@
   font-size: var(--font-small);
   padding: 3rem 6rem 0.2rem;
 }
-.back-to-prevous-page a {
+.back-to-previous-page a {
   background-color: rgb(255, 77, 0);
   color: white;
   display: flex;
@@ -28,13 +28,13 @@
   padding: 0.8rem 2rem;
   transition: background-color 0.09s ease-in-out;
 }
-.back-to-prevous-page a i {
+.back-to-previous-page a i {
   margin-right: 1rem;
 }
-.back-to-prevous-page a p {
+.back-to-previous-page a p {
   margin: 0;
 }
-.back-to-prevous-page a:hover {
+.back-to-previous-page a:hover {
   background-color: rgb(210, 63, 0);
 }
 
@@ -188,7 +188,10 @@
   color: rgb(22, 22, 22);
 }
 .detail .detail-body .detail-product-information-area .information-section .section-title {
+  width: -moz-max-content;
+  width: max-content;
   font-size: var(--font-h6);
+  white-space: nowrap;
   color: rgba(0, 0, 0, 0.6);
 }
 .detail .detail-body .detail-product-information-area .information-section .section-title ~ p {
@@ -199,7 +202,7 @@
        column-gap: 4rem;
 }
 .detail .detail-body .detail-product-information-area .detail-product-information-subarea .information-section.car-model {
-  padding-right: 16rem;
+  padding-right: 4rem;
   border-right: 1px solid rgba(0, 0, 0, 0.6666666667);
 }
 .detail .detail-body .detail-product-information-area .detail-product-information-subarea .brand-list-container {
@@ -348,4 +351,62 @@
 
 p {
   margin-bottom: 0;
+}
+
+.background {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.8);
+  top: 0;
+  left: 0;
+  z-index: 99999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.background img {
+  cursor: default;
+  width: 40%;
+  height: auto;
+  background-color: white;
+}
+
+@media only screen and (max-width: 970px) {
+  .detail {
+    padding: 1rem 3rem 2rem;
+  }
+  .detail .detail-body {
+    flex-direction: column;
+  }
+  .detail .detail-body .detail-product-image-area {
+    width: 100%;
+  }
+  .detail .detail-body .detail-product-image-area .product-image-display {
+    width: 100%;
+  }
+  .detail .detail-body .detail-product-image-area .product-image-selector {
+    width: 100%;
+  }
+  .detail .detail-body .detail-product-information-area {
+    margin-top: 3rem;
+    width: 100%;
+  }
+  .detail .detail-body .detail-product-information-area .detail-product-information-subarea {
+    display: flex;
+    flex-direction: column;
+    row-gap: 4rem;
+  }
+  .detail .detail-body .detail-product-information-area .detail-product-information-subarea .information-section {
+    width: 100%;
+    border: none;
+  }
+  .detail .detail-body .detail-product-information-area .detail-product-information-subarea .information-section.car-model {
+    border-right: none;
+  }
+  .background img {
+    width: 100%;
+  }
 }

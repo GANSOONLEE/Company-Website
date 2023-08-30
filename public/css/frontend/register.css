@@ -1,112 +1,306 @@
-
-@import url(app.css);
-
-.main{
-    padding: 2rem 0 0;
-    height: 89vh;
-    display: flex;
-    justify-content: center;
-    align-items: self-start;
+div.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow-y: hidden;
 }
 
-.form{
-    width: 40%;
-    display: flex;
+div.navbar {
+  display: none;
 }
 
-.part{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    row-gap: 1.2rem;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+div.website-map {
+  display: none;
 }
 
-.section-form{
-    display: flex;
-    flex-direction: column;
-    row-gap: .7rem;
+div.form {
+  display: flex;
+  width: 60%;
+  min-height: 350px;
+  height: auto;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4666666667);
+  border-radius: 12px;
+  overflow: hidden;
+}
+div.form div.image-display {
+  width: 50%;
+  overflow: hidden;
+}
+div.form div.image-display img.form-image {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  filter: brightness(1);
+  transition: all 0.12s ease-in-out;
+}
+div.form div.image-display img.form-image:hover {
+  transform: scale(1.2);
+  filter: brightness(1.1);
+}
+div.form div.form-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 50%;
+  padding: 0.4rem 4rem;
+}
+div.form div.form-body a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+div.form div.form-body a img.logo {
+  width: 30%;
+  transition: all 0.12s ease-in-out;
+}
+div.form div.form-body a img.logo:hover {
+  transform: scale(1.2);
+}
+div.form div.form-body form {
+  width: 100%;
+}
+div.form div.form-body form .section-form {
+  font-size: var(--font-small);
+  width: 100%;
+  text-align: left;
+}
+div.form div.form-body form .section-form .required::after {
+  content: "*";
+  margin-left: 0.4rem;
+  color: red;
+}
+div.form div.form-body form .section-form input {
+  font-size: var(--font-small);
+}
+div.form div.form-body form .section-form input::-moz-placeholder {
+  font-size: var(--font-small);
+}
+div.form div.form-body form .section-form input::placeholder {
+  font-size: var(--font-small);
+}
+div.form div.form-body form .section-form textarea {
+  font-size: var(--font-small);
+}
+div.form div.form-body form .section-form select {
+  font-size: var(--font-small);
+}
+div.form div.form-body form .section-form select option {
+  font-size: var(--font-small);
+}
+div.form div.form-body form .button-area {
+  padding-top: 2.4rem;
+  padding-bottom: 1.3rem;
+  width: 100%;
+}
+div.form div.form-body form .button-area p {
+  margin-bottom: 0;
+}
+div.form div.form-body form .button-area button {
+  width: 100%;
+  padding: 1rem;
+  background-color: rgb(0, 136, 0);
+  color: white;
+  font-size: var(--font-h6);
+  border-radius: 4px;
+  outline: none;
+  border: none;
+  transition: all 0.21s ease-in-out;
+}
+div.form div.form-body form .button-area button:hover {
+  background-color: rgb(0, 101, 0);
+}
+div.form div.form-body form .button-area button.action-button {
+  background-color: rgb(60, 60, 140);
+}
+div.form div.form-body form .button-area button.action-button:hover {
+  background-color: rgb(60, 60, 101);
+}
+div.form div.form-body form .button-area button.action-button-previous {
+  background-color: rgb(60, 60, 140);
+}
+div.form div.form-body form .button-area button.action-button-previous:hover {
+  background-color: rgb(60, 60, 101);
+}
+div.form div.form-body form .button-area button.disabled {
+  background-color: rgb(63, 63, 63);
+  color: rgb(169, 169, 169);
+  cursor: not-allowed;
+}
+div.form div.form-body form .button-area button.disabled:hover {
+  background-color: rgb(63, 63, 63);
 }
 
-.section-form label{
-    font-size: 1.2rem;
+.display-row {
+  display: flex;
+  -moz-column-gap: 2rem;
+       column-gap: 2rem;
+}
+.display-row > .section-form {
+  width: 50%;
 }
 
-.section-form input, .section-form textarea{ 
-    width: 100%;
-    color: blue;
-    font-size: 1.4rem;
-    outline: 0;
-    border: 1px solid #ccc;;
-    padding: .9rem 2rem;
-    transition: all .2s ease-in-out;
-    appearance: none;
+.display-column {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.4rem;
 }
-.section-form input::-webkit-calendar-picker-indicator{
-    display: none;
-  } 
-.section-form input:focus, textarea:focus{ 
-    border-color: #66afe9;
-    
-    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
-    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+.display-column p {
+  font-size: var(--font-small);
+  display: flex;
+  -moz-column-gap: 0.8rem;
+       column-gap: 0.8rem;
+}
+.display-column p a {
+  color: blue;
+}
+.display-column p a:hover {
+  color: rgb(0, 0, 154);
 }
 
-.requird::before{
-    content: '*';
-    color: red;
+#msform {
+  text-align: center;
+  position: relative;
 }
 
-.part[data-visible = 'false']{
-    display: none;
+#msform fieldset {
+  background: white;
+  border: 0 none;
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  /*stacking fieldsets above each other*/
+  position: relative;
 }
 
-.button-area{
-    display: flex;
-    justify-content: space-between;
-    margin: 2rem 0 0;
+#msform fieldset:not(:first-of-type) {
+  display: none;
 }
 
-.button-area button{
-    outline: none;
-    border: none;
-    font-size: 1.2rem;
-    padding: .7rem 2rem;
-    font-weight: bold;
+/*Icon progressbar*/
+#progressbar {
+  margin-bottom: 10px;
+  overflow: hidden;
+  color: lightgrey;
+  display: flex;
+  align-items: center;
+  justify-content: stretch;
 }
 
-button[data-button-identify="next"]{
-    justify-self: flex-end;
+#progressbar .active {
+  color: #673AB7;
 }
 
-button[data-button-identify="previous"]{
-    transition: all .12s ease-in-out;
-    background-color: rgb(99, 99, 255);
-    color: #fff;
+#progressbar li {
+  list-style-type: none;
+  font-size: 15px;
+  flex: 1;
+  float: left;
+  position: relative;
+  font-weight: 400;
 }
 
-button[data-button-identify="previous"]:hover{
-    background-color: rgb(119, 119, 255);
+/* Icons in the ProgressBar */
+#progressbar #account:before {
+  font-family: FontAwesome;
+  content: "\f13e";
 }
 
-button[data-button-identify="previous"]:active{
-    background-color: rgb(79, 79, 255);
+#progressbar #personal:before {
+  font-family: FontAwesome;
+  content: "\f007";
 }
 
-button[data-button-identify="submit"], button[data-button-identify="next"]{
-    transition: all .12s ease-in-out;
-    background-color: rgb(99, 180, 99);
-    color: #fff;
+/*Icon ProgressBar before any progress*/
+#progressbar li:before {
+  width: 30px;
+  height: 30px;
+  line-height: 27px;
+  display: block;
+  font-size: 12px;
+  color: #ffffff;
+  background: lightgray;
+  border-radius: 50%;
+  margin: 10px auto 10px auto;
+  padding: 2px;
 }
 
-button[data-button-identify="submit"]:hover, button[data-button-identify="next"]:hover{
-    background-color: rgb(119, 180, 119);
+/*ProgressBar connectors*/
+#progressbar li:after {
+  content: "";
+  width: 100%;
+  height: 2px;
+  background: lightgray;
+  position: absolute;
+  left: 0;
+  top: 25px;
+  z-index: -1;
 }
 
-button[data-button-identify="submit"]:active, button[data-button-identify="next"]:active{
-    background-color: rgb(79, 180, 79);
+/*Color number of the step and the connector before it*/
+#progressbar li.active:before, #progressbar li.active:after {
+  background: #673AB7;
 }
-option{
-    padding: 0;
+
+/*Animated Progress Bar*/
+.progress {
+  height: 20px;
+}
+
+.progress-bar {
+  background-color: #673AB7;
+}
+
+@media only screen and (max-width: 970px) {
+  div.form {
+    width: 80%;
     margin: 0;
+    padding: 0;
+  }
+  div.form div.image-display {
+    width: 0;
+    display: none;
+  }
+  div.form div.form-body {
+    width: 100%;
+    margin: 0;
+  }
+  div.form div.form-body div.section-form {
+    font-size: var(--font-h6);
+  }
+  div.form div.form-body div.section-form input {
+    padding: 0.9rem 1.4rem;
+    font-size: var(--font-h6);
+  }
+  div.form div.form-body div.section-form input::-moz-placeholder {
+    font-size: var(--font-h6);
+  }
+  div.form div.form-body div.section-form input::placeholder {
+    font-size: var(--font-h6);
+  }
+  div.form div.form-body div.section-form textarea {
+    font-size: var(--font-h6);
+  }
+  div.form div.form-body div.section-form select {
+    font-size: var(--font-h6);
+  }
+  div.form div.form-body div.section-form select option {
+    font-size: var(--font-h6);
+  }
+  div.form div.form-body form div.button-area {
+    margin-top: 2.4rem;
+    margin-bottom: 0.4rem;
+    width: 100%;
+  }
+  div.form div.form-body form div.button-area button {
+    padding: 1.8rem;
+    font-size: var(--font-h5);
+  }
+  div.form div.form-body form p {
+    margin-top: 1.8rem;
+  }
 }

@@ -1,7 +1,7 @@
 
 @extends('frontend.layouts.app')
 
-@section('title', __('Products'))
+@section('title', __('Register'))
 
 @push('after-style')
     <link rel="stylesheet" href="{{asset('css\frontend\register.css')}}">
@@ -14,61 +14,91 @@
 
 @section('content')
 
-    <form action="{{route('frontend.register.post')}}" method="POST" class="form">
-        @csrf
-        <div class="part" data-index='1' data-visible='true'>
-            <div class="section-form">
-                <label for="name"><span class="requird">Name:</label>
-                <input type="text" id="name" name="username" placeholder="Name" class="requird" required>
-            </div>
+    <div class="form">
 
-            <div class="section-form">
-                <label for="phone"><span class="requird">Phone:</label>
-                <input type="text" id="phone" name="phone_number" placeholder="012 34567890" class="requird" maxlength="13" required>
-            </div>
-            <div class="section-form">
-                <label for="email"><span class="requird">Email:</label>
-                <input type="email" id="email" name="email_address" placeholder="Email" class="requird" required>
-            </div>
-            <div class="button-area">
-                <button type="button" style="visibility: hidden"></button>
-                <button type="button" data-button-identify="next">Next</button>
-            </div>
+        <!-- 照片展示區 -->
+        <div class="image-display">
+            <img class="form-image" src="{{asset('image/frozen air cond.png')}}" alt="">
         </div>
 
-        <div class="part" data-index='2' data-visible='false'>
-            <div class="section-form">
-                <label for="birthday"><span class="requird">Birthday:</span></label>
-                <input type="date" id="birthday"name="birthday" placeholder="Birthday" required>
-            </div>
-            <div class="section-form">
-                <label for="address"><span class="requird">Address:</label>
-                <textarea id="address" name="address" required cols="50" rows="5" placeholder="Your full address"></textarea>
-            </div>
-            <div class="section-form">
-                <label for="occupation"><span class="requird">Profession:</label>
-                <input list="occupationList" id="occupation" name="profession" placeholder="Profession" required>
-                <datalist id="occupationList" class="datalist">
-                    <option value="Maintenance">
-                    <option value="Workshop">
-                    <option value="Ordinary">
-                </datalist>
-            </div>
-            <div class="section-form">
-                <label for="store_name"><span class="requird">Store Name:</label>
-                <input type="text" id="store_name"name="company_name" placeholder="Store Name" required>
-            </div>
-            <div class="section-form">
-                <label for="password"><span class="requird">Password:</label>
-                <input type="password" id="password" name="password" placeholder="Password" autocomplete="off" required>
-            </div>
-            <div class="button-area">
-                <button type="button" data-button-identify="previous">Previous</button>
-                <button type="submit" data-button-identify="submit">Register</button>
-            </div>
-        </div>
+        <div class="form-body">
+            <p class="back-to-home-page"></p>
+            <a href="{{route('frontend.index')}}"><img class="logo" src="{{asset('image/logo.png')}}" alt=""></a>
+            <form action="{{route('frontend.register.post')}}" method="POST" id="msform">
+                <ul id="progressbar">
+                    <li class="active" id="account"><strong>General</strong></li>
+                    <li id="personal"><strong>Personal</strong></li>
+                </ul>
+                @csrf
+                <fieldset id="first">
+                    {{-- <div class="display-row"> --}}
+                        <div class="section-form mb-3">
+                            <label class="form-label" for="name"><span class="required">Name:</label>
+                            <input type="text" id="name" name="username" placeholder="Name" class="requird form-control" required>
+                        </div>
+                        <div class="section-form mb-3">
+                            <label class="form-label" for="phone"><span class="required">Phone:</label>
+                            <input type="text" id="phone" name="phone_number" placeholder="012 34567890" class="requird form-control" maxlength="13" required>
+                        </div>
+                    {{-- </div> --}}
+                    
+                    {{-- <div class="display-row"> --}}
+                        <div class="section-form mb-3">
+                            <label class="form-label" for="email"><span class="required">Email:</label>
+                            <input type="email" id="email" name="email_address" placeholder="Email" class="requird form-control" required>
+                        </div>
+                        <div class="section-form mb-3">
+                            <label class="form-label" for="password"><span class="required">Password:</label>
+                            <input type="password" id="password" name="password" placeholder="Password" autocomplete="off" class="form-control" required>
+                        </div>
+                        <div class="section-form mb-3">
+                            <label class="form-label" for="password_confirm"><span class="required">Password Confirm:</label>
+                            <input type="password" id="password_confirm" name="password_confirm" placeholder="Password " autocomplete="off" class="form-control" required>
+                        </div>
+                        <div class="button-area display-column">
+                            <button type="button" data-button-identify="next" class="action-button next disabled" disabled>Next</button>
+                            <p>
+                                Already have account?
+                                <a href="{{ route('frontend.login') }}">Click here</a>
+                            </p>
+                        </div>
+                    {{-- </div> --}}
+                </fieldset>
+                <fieldset id="secondary">
+                    <div class="section-form mb-3" id="datepicker">
+                        <label class="form-label" for="birthday"><span class="required">Birthday:</span></label>
+                        <input type="date" id="birthday" name="birthday" placeholder="Birthday" class="form-control"required>
+                    </div>
+                    <div class="section-form mb-3">
+                        <label class="form-label" for="address"><span class="required">Address:</label>
+                        <textarea id="address" name="address" class="form-control" required cols="50" rows="3" placeholder="Your full address"></textarea>
+                    </div>
+                    {{-- <div class="display-row"> --}}
+                        <div class="section-form mb-3">
+                            <label class="form-label" for="occupation"><span class="required">Profession:</label>
+                            <select name="profession" id="occupation" class="form-select">
+                                <option value="Personal">Personal</option>
+                                <option value="Workshop">Workshop</option>
+                                <option value="Supplier">Supplier</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="section-form mb-3">
+                            <label class="form-label" for="store_name"><span class="required">Store Name:</label>
+                            <input type="text" id="store_name"name="company_name" placeholder="Store Name" class="form-control" required>
+                        </div>
+                    {{-- </div> --}}
+                    <div class="button-area display-column">
+                        <div class="display-row">
+                            <button type="button" data-button-identify="previous" class="previous action-button-previous">Previous</button>
+                            <button type="submit" data-button-identify="submit" class="register disabled" disabled>Register</button>
+                        </div>
 
-    </form>
+                    </div>
+                <fieldset>
+            </form>
+        </div>
+    </div>
 
 @endsection
 

@@ -119,6 +119,8 @@
   cursor: pointer;
   padding: 1rem;
   font-size: var(--font-h6);
+  width: auto;
+  white-space: nowrap;
 }
 #myTable_wrapper #myTable tbody tr > td .inputCheckbox {
   display: block;

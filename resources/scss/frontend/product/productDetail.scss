@@ -12,7 +12,7 @@
     column-gap: 0;
 }
 
-.back-to-prevous-page{
+.back-to-previous-page{
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -188,7 +188,9 @@
                     color: rgb(22, 22, 22);
                 }
                 .section-title{
+                    width: max-content;
                     font-size: var(--font-h6);
+                    white-space: nowrap;
                     color: #00000099;
                     &~p{
                         font-size: var(--font-h5);
@@ -199,7 +201,7 @@
             .detail-product-information-subarea{
                 column-gap: 4rem;
                 .information-section.car-model{
-                    padding-right: 16rem;
+                    padding-right: 4rem;
                     border-right: 1px solid #000000aa;
                 }
                 .brand-list-container{
@@ -354,6 +356,65 @@
 p{
     margin-bottom: 0;
 }
-@media only screen and (max-width: 720px) {
-    
+
+.background{
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: fixed;
+    background-color: #000000cc;
+    top: 0;
+    left: 0;
+    z-index: 99999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    img{
+        cursor: default;
+        width: 40%;
+        height: auto;
+        background-color: white;
+    }
+}
+
+@media only screen and (max-width: 970px) {
+    .detail{
+        padding: 1rem 3rem 2rem;
+        .detail-body{
+            flex-direction: column;
+            .detail-product-image-area{
+                width: 100%;
+                .product-image-display{
+                    width: 100%;
+                }
+                .product-image-selector{
+                    width: 100%;
+                }
+            }
+            .detail-product-information-area{
+                margin-top: 3rem;
+                width: 100%;
+                .detail-product-information-subarea{
+                    display: flex;
+                    flex-direction: column;
+                    row-gap: 4rem;
+                    .information-section{
+                        width: 100%;
+                        border: none;
+                        &.car-model{
+                            border-right: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .background{
+        img{
+            width: 100%;
+        
+        }
+    }
 }

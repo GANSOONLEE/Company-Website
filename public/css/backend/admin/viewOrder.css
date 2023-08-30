@@ -92,10 +92,10 @@
 }
 #myTable_wrapper > #myTable th[data-type=orderID], #myTable_wrapper > #myTable td[data-type=orderID] {
   min-width: auto;
-  max-width: 30px;
+  max-width: 35px;
 }
 #myTable_wrapper > #myTable th[data-type=customerUser], #myTable_wrapper > #myTable td[data-type=customerUser] {
-  min-width: 100px;
+  min-width: auto;
   max-width: 100px;
 }
 #myTable_wrapper > #myTable th[data-type=orderReceivedDate],

@@ -357,6 +357,7 @@ function sendData() {
       console.error(_error4);
     }
   });
+  setTime;
 }
 /******/ })()
 ;

@@ -25,6 +25,24 @@ for (var _i = 0; _i < imageHover.length; _i++) {
 }
 
 /**
+ * Double click zoom image
+ * @method zoom-image
+ */
+
+$('img').dblclick(function (event) {
+  var src = this.src;
+  console.log(src);
+  $('#dbl-click-display').attr('src', src); // 設置圖片的src屬性
+  $('.background').show();
+});
+$('#dbl-click-display').click(function (event) {
+  return false;
+});
+$('.background').click(function (event) {
+  $(this).hide(); // 使用$(this)來隱藏背景
+});
+
+/**
  *  @method Scroll-to-X
  *  
  */
@@ -123,14 +141,14 @@ function sendData(option, quantity, productID, email) {
     }),
     contentType: "application/json;charset=utf-8",
     success: function success(Text) {
-      console.log(Text);
-      // location.reload();
+      // console.log(Text)
+      location.reload();
     },
-
     error: function error(XMLHttpRequest, textStatus, errorThrown) {
-      console.log(XMLHttpRequest.status);
-      console.log(XMLHttpRequest.readyState);
-      console.log(textStatus);
+      // console.log(XMLHttpRequest.status);
+      // console.log(XMLHttpRequest.readyState);
+      // console.log(textStatus);
+      location.reload();
     }
   });
   $.ajaxSetup({

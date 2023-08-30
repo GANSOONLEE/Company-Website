@@ -1,24 +1,124 @@
 
-function initForm(){
-    var nextBtn = document.querySelector('button[data-button-identify="next"]');
-    var previousBtn = document.querySelector('button[data-button-identify="previous"]');
+$(function(){
+    $('#datepicker').datepicker();
+});
 
-    nextBtn.addEventListener('click', switchToNextPart);
-    previousBtn.addEventListener('click', switchToPreviousPart);
+var current = 1;
+var steps = $("fieldset").length;
 
+console.log(steps)
+
+setProgressBar(current);
+
+$(".next").click(function(){
+    
+    current_fs = $(this).parent().parent();
+    next_fs = $(this).parent().parent().next();
+
+    console.log(current_fs, next_fs)
+    
+    //Add Class Active
+    $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+    
+    //show the next fieldset
+    next_fs.show(); 
+    //hide the current fieldset with style
+    current_fs.animate({opacity: 0}, {
+        step: function(now) {
+            // for making fielset appear animation
+            opacity = 1 - now;
+
+            current_fs.css({
+                'display': 'none',
+                'position': 'relative'
+            });
+            next_fs.css({'opacity': opacity});
+        }, 
+        duration: 500
+    });
+    setProgressBar(++current);
+});
+
+$(".previous").click(function(){
+    
+    current_fs = $(this).parent().parent().parent();
+    previous_fs = $(this).parent().parent().parent().prev();
+    
+    //Remove class active
+    $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
+    
+    //show the previous fieldset
+    previous_fs.show();
+
+    //hide the current fieldset with style
+    current_fs.animate({opacity: 0}, {
+        step: function(now) {
+            // for making fielset appear animation
+            opacity = 1 - now;
+
+            current_fs.css({
+                'display': 'none',
+                'position': 'relative'
+            });
+            previous_fs.css({'opacity': opacity});
+        }, 
+        duration: 500
+    });
+    setProgressBar(--current);
+});
+
+function setProgressBar(curStep){
+    let percent = parseFloat(100 / steps) * curStep;
+    percent = percent.toFixed();
+    $(".progress-bar").css("width",percent+"%")
 }
 
-function switchToNextPart(){
-    firstPart.setAttribute('data-visible', 'false');
-    secondPart.setAttribute('data-visible', 'true');
-}
+// sensor text input
 
-function switchToPreviousPart(){
-    firstPart.setAttribute('data-visible', 'true');
-    secondPart.setAttribute('data-visible', 'false');
-}
+$('input').on("input", function() {
 
-var firstPart = document.querySelector('div[data-index="1"]');
-var secondPart = document.querySelector('div[data-index="2"]');
+    var parentElement = $(this).closest("fieldset#first");
 
-initForm()
+    var inputElements = parentElement.find("input");
+
+    var isAnyInputEmpty = false;
+
+    inputElements.each(function() {
+        if ($(this).val() === '') {
+            isAnyInputEmpty = true;
+            return false;
+        }
+    });
+
+    if (isAnyInputEmpty) {
+        $(".next").prop('disabled', true);
+        $(".next").addClass('disabled');
+    } else {
+        $(".next").prop('disabled', false);
+        $(".next").removeClass('disabled');
+    }
+});
+
+$('input').on("input", function() {
+
+    var parentElement = $(this).closest("fieldset#secondary");
+
+    var inputElements = parentElement.find("input");
+
+    var isAnyInputEmpty = false;
+
+    inputElements.each(function() {
+        if ($(this).val() === '') {
+            isAnyInputEmpty = true;
+            return false;
+        }
+    });
+
+    if (isAnyInputEmpty) {
+        $(".register").prop('disabled', true);
+        $(".register").addClass('disabled');
+    } else {
+        $(".register").prop('disabled', false);
+        $(".register").removeClass('disabled');
+    }
+});

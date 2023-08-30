@@ -32,15 +32,18 @@ class AuthController extends Controller
             'profession' => $request->input('profession'),
             'company_name' => $request->input('company_name'),
             'password' => Hash::make($request->input('password')),
+            'password_confirm' => Hash::make($request->input('password_confirm')),
             'access_token' => $accessToken,
         ];
         
-        User::create($data);        
+        $user = User::create($data);        
 
         cookie()->queue('access_token', $accessToken, 0, null, null, false, false, True);
-        cookie()->queue('email', $data['email_address'], 0, null, null, false, false, True);
+        cookie()->queue('email_address', $data['email_address'], 0, null, null, false, false, True);
 
-        return redirect()->back();
+        Auth::login($user);
+
+        return redirect()->route('backend.user.cart');
     }
 
     public function login(Request $request){
@@ -65,7 +68,11 @@ class AuthController extends Controller
 
             Auth::login($user, false);
 
-            return redirect()->route('backend.admin.dashboard');
+            if($user->role=="customer"){
+                return redirect()->route('backend.user.cart');
+            }else{
+                return redirect()->route('backend.admin.newProduct');
+            }
         } else {
             return redirect()->route('frontend.login')->with('error', 'Invalid credentials');
         }
