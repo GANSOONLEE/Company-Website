@@ -23,6 +23,8 @@
 
 <div class="content">
 
+    @include('backend.user.includes.modal')
+
     <!-- page title and description -->
     <div class="page-header">
         <div class="page-title">

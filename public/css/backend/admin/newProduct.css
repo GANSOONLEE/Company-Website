@@ -46,7 +46,7 @@
   min-width: calc(25% - 20px);
   max-width: calc(25% - 20px);
 }
-.content .content-body .form .form-row .form-row-body #inputContainerBrand .form-input > * {
+.content .content-body .form .form-row .form-row-body #inputContainerBrand .form-input > .input {
   min-width: calc(25% - 20px);
   max-width: calc(25% - 20px);
 }
@@ -246,6 +246,10 @@ input[required]::placeholder {
   font-size: var(--font-h5);
 }
 
+img.brand-logo {
+  width: 30px;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .fade {
     transition: none;
@@ -383,6 +387,42 @@ input[required]::placeholder {
     content: "Processing...";
   }
 }
+.modal-dialog {
+  margin-top: 10rem;
+  padding-top: 2rem;
+}
+
+label.brand-image-label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  height: 30px;
+  width: 30px;
+  padding: 0.4rem;
+  background-color: rgb(232, 232, 232);
+  border-radius: 4px;
+}
+label.brand-image-label:hover {
+  background-color: rgb(208, 208, 208);
+}
+label.brand-image-label i {
+  font-size: var(--font-h6);
+}
+
+.image-brand {
+  display: flex;
+  align-items: center;
+}
+
+.image-brand input {
+  display: none;
+}
+
+img[src=""] {
+  display: none;
+}
+
 /* ====================== RWD Design ====================== */
 @media only screen and (max-width: 790px) {
   .content {
@@ -398,7 +438,7 @@ input[required]::placeholder {
     min-width: calc(33.3333333333% - 1.2rem);
     max-width: calc(33.3333333333% - 10px);
   }
-  .content .content-body .form .form-row .form-row-body #inputContainerBrand .form-input > * {
+  .content .content-body .form .form-row .form-row-body #inputContainerBrand .form-input > .input {
     min-width: calc(25% - 10px);
     max-width: calc(25% - 10px);
   }
@@ -461,8 +501,4 @@ input[required]::placeholder {
   .content .content-body .form .form-row .form-row-body.buttonArea button.resetButton {
     margin-right: 0;
   }
-}
-.modal-dialog {
-  margin-top: 10rem;
-  padding-top: 2rem;
 }

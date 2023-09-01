@@ -188,7 +188,7 @@ function generatedOrder(orderElement){
             },
             success: function(data) {
                 // location.reload();
-                console.log(data)
+                // console.log(data)
             },
             error: function(xhr, status, error) {
                 console.error(`Server status: ${status}\nError: ${error}`);
@@ -321,6 +321,7 @@ function generateData(){
         success: function(response) {
             // 处理响应
             location.reload();
+            test.autoShow(5000);
             // confirm('Order have been create');
             // console.log(response);
         },
@@ -387,16 +388,19 @@ function sendData(){
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
         success: function(response) {
-            // 处理响应
-            location.reload();
-            // confirm('Order have been create');
-            // console.log(response);
+            notification.setUp('Thank you, we will process your order as soon as possible', 'fa-solid fa-circle-check', 3000);
+            notification.autoShow(5000);
+            setTimeout(function() {
+                location.reload();
+            }, 6500);
         },
         error: function(error) {
-            // 处理错误
-            console.error(error);
+            notification.setUp('Sorry! Something went wrong!', 'fa-solid fa-circle-xmark', 3000);
+            notification.autoShow(5000);
+            setTimeout(function() {
+                // location.reload();
+            }, 6500);
+            // console.error(error);
         }
     });
-
-    setTime
 }

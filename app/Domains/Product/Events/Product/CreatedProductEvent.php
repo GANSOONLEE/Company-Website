@@ -70,11 +70,13 @@ class CreatedProductEvent{
 
         $uploadedFiles = $request->allFiles();
 
-        $array = [];
+        // dd($uploadedFiles);
+
+        // $array = [];
 
         foreach ($uploadedFiles['uploadFiles'] as $index => $image) {
             $fileName = $index === 0 ? 'cover.png' : $image->getClientOriginalName();
-            $array[] = $image;
+            // $array[] = $image;
 
             $directory = "$productCatelog/$productID/$fileName";
 
@@ -82,6 +84,25 @@ class CreatedProductEvent{
                 $directory,
                 file_get_contents($image)
             );
+        }
+
+        foreach ($uploadedFiles['image-brand'] as $index => $brand_image){
+
+            $fileName = 'brand.png';
+
+            // if(!isset($productBrandList[$index])){
+            //     break;
+            // }
+
+            $brand = $productBrandList[$index]['code'];
+
+            $directoryBrandImage = "$productCatelog/$productID/$brand/$fileName";
+
+            Storage::disk('product')->put(
+                $directoryBrandImage,
+                file_get_contents($brand_image)
+            );
+
         }
 
         try{

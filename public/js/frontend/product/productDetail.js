@@ -23,6 +23,18 @@ var _loop = function _loop(_i) {
 for (var _i = 0; _i < imageHover.length; _i++) {
   _loop(_i);
 }
+var productBrand = document.querySelectorAll('.product-brand');
+var _loop2 = function _loop2(l) {
+  productBrand[l].addEventListener('click', function () {
+    var category = productBrand[l].getAttribute('data-category');
+    var id = productBrand[l].getAttribute('data-id');
+    var brand = productBrand[l].getAttribute('data-brand');
+    imageDisplay.src = "http://192.168.68.104/storage/".concat(category, "/").concat(id, "/").concat(brand, "/brand.png");
+  });
+};
+for (var l = 0; l < productBrand.length; l++) {
+  _loop2(l);
+}
 
 /**
  * Double click zoom image

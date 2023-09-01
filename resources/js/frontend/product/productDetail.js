@@ -18,6 +18,16 @@ for(let i = 0; i < imageHover.length; i++){
     })
 }
 
+let productBrand = document.querySelectorAll('.product-brand');
+for(let l = 0; l < productBrand.length; l++){
+    productBrand[l].addEventListener('click',()=>{
+        let category = productBrand[l].getAttribute('data-category');
+        let id = productBrand[l].getAttribute('data-id');
+        let brand = productBrand[l].getAttribute('data-brand');
+        imageDisplay.src = `http://192.168.68.104/storage/${category}/${id}/${brand}/brand.png`;
+    })
+}
+
 /**
  * Double click zoom image
  * @method zoom-image

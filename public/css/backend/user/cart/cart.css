@@ -457,3 +457,11 @@
 #myTable_wrapper input[type=checkbox] {
   width: 30px;
 }
+
+#modal modal-dialog i.fa-circle-xmark {
+  color: red;
+}
+
+#modal modal-dialog i.fa-circle-check {
+  color: #009912;
+}

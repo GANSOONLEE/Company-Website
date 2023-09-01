@@ -37,6 +37,8 @@
 
     }
 
+    let i = 0;
+
 
     function addInputBrandList(){
 
@@ -65,9 +67,44 @@
                 inputBrandListBrandText.classList.add('form-control');
                 inputBrandListBrandText.placeholder = (`{{trans('product.brand')}}`);
                 inputBrandListBrandText.name = ('productBrandList-Brand[]');
+                inputBrandListBrandText.addEventListener('keyup', changeIcon)
 
-            inputBrandListBrand.classList.add('input');
+                var imgElement = document.createElement('img');
+
+                imgElement.setAttribute('class', 'brand-logo');
+                imgElement.setAttribute('style', 'width: 50px; margin-left: auto; outline: none; border: none;');
+                imgElement.setAttribute('src', '');
+                imgElement.setAttribute('alt', '');
+            
+            inputBrandListBrand.classList.add('input', 'display-row');
             inputBrandListBrand.appendChild(inputBrandListBrandText);
+            inputBrandListBrand.appendChild(imgElement);
+
+        const inputBrandListImage = document.createElement('div');
+            inputBrandListImage.classList.add('image-brand');
+            
+            const inputBrandListImageLabel = document.createElement('label');
+                inputBrandListImageLabel.classList.add('brand-image-label');
+                inputBrandListImageLabel.setAttribute('for', `brand-image-${i}`);
+                inputBrandListImageLabel.innerHTML = '<i class="fa-solid fa-upload"></i>';
+
+            const inputBrandListImageContainer = document.createElement('input');
+                inputBrandListImageContainer.name = 'image-brand[]';
+                inputBrandListImageContainer.id = `brand-image-${i}`;
+                inputBrandListImageContainer.setAttribute('type', 'file');
+                inputBrandListImageContainer.setAttribute('accept', '.jpg, .png, .jpeg, .bmp');
+
+        i++;
+
+        inputBrandListImage.appendChild(inputBrandListImageLabel);
+        inputBrandListImage.appendChild(inputBrandListImageContainer);
+            
+        // <div class="image-brand">
+        //     <label class="brand-image-label" for="brand-image">
+        //         <i class="fa-solid fa-upload"></i>
+        //     </label>
+        //     <input name="image-brand[]" id="brand-image" type="file" accept=".jpg, .png, .jpeg, bmp">
+        // </div>
 
 
         const inputBrandListFZCode = document.createElement('div');
@@ -85,10 +122,99 @@
         addInputBrand.appendChild(inputBrandListCode);
         addInputBrand.appendChild(inputBrandListBrand);
         addInputBrand.appendChild(inputBrandListFZCode);
+        addInputBrand.appendChild(inputBrandListImage);
         inputContainerBrand.appendChild(addInputBrand);
-
         
+        function changeIcon(){
+            let closestBrandLogo = inputBrandListBrand.querySelector('.brand-logo');
+            if (closestBrandLogo) {
+                let brand = inputBrandListBrandText.value;
+                switch (brand.toLowerCase()){
+
+
+                    case 'swj':
+                        closestBrandLogo.src = '{{asset("images/brand logo/swj.svg")}}'
+                        break;
+    
+                    case 'amaire':
+                        closestBrandLogo.src = '{{asset("images/brand logo/amaire.svg")}}'
+                        break;
+    
+                    case 'sanden':
+                        closestBrandLogo.src = '{{asset("images/brand logo/sanden.svg")}}'
+                        break;
+    
+                    case 'denso':
+                        closestBrandLogo.src = '{{asset("images/brand logo/denso.svg")}}'
+                        break;
+    
+                    case 'patco':
+                        closestBrandLogo.src = '{{asset("images/brand logo/patco.svg")}}'
+                        break;
+    
+                    case 'hanon':
+                        closestBrandLogo.src = '{{asset("images/brand logo/hanon.svg")}}'
+                        break;
+    
+                    case 'valeo':
+                        closestBrandLogo.src = '{{asset("images/brand logo/valeo.svg")}}'
+                        break;
+    
+                    case 'doowon':
+                        closestBrandLogo.src = '{{asset("images/brand logo/doowon.svg")}}'
+                        break;
+    
+                    case 'tff':
+                        closestBrandLogo.src = '{{asset("images/brand logo/tff.svg")}}'
+                        break;
+    
+                    default:
+                        closestBrandLogo.src = '';
+                        break;
+                }
+            }
+        }
     }
+    
+
+    window.addEventListener('load', function () {
+        let brandTextInput = document.querySelector('[name="productBrandList-Brand[]"]');
+        console.log(brandTextInput);
+        brandTextInput.addEventListener('keyup', changeIcon)
+
+        function changeIcon() {
+        let closestBrandLogo = this.parentElement.querySelector('.brand-logo');
+        if (closestBrandLogo) {
+            let brand = this.value;
+            switch (brand.toLowerCase()) {
+                case 'swj':
+                    closestBrandLogo.src = '{{asset("images/brand logo/swj.svg")}}';
+                    break;
+
+                case 'amaire':
+                    closestBrandLogo.src = '{{asset("images/brand logo/amaire.svg")}}';
+                    break;
+
+                case 'zetwind':
+                    closestBrandLogo.src = '{{asset("images/brand logo/zetwind.svg")}}';
+                    break;
+
+                case 'sanden':
+                    closestBrandLogo.src = '{{asset("images/brand logo/sanden.svg")}}';
+                    break;
+
+                case 'tff':
+                    closestBrandLogo.src = '{{asset("images/brand logo/tff.svg")}}';
+                    break;
+
+                default:
+                    closestBrandLogo.src = '';
+                    break;
+            }
+        }
+    }
+    })
+
 
 </script>
 
@@ -160,11 +286,18 @@
                         <div class="input">
                             <input class="form-control" type="text" placeholder={{trans('product.code')}}  name="productBrandList-Code[]" required>
                         </div>
-                        <div class="input">
+                        <div class="input display-row">
                             <input class="form-control" type="text" placeholder={{trans('product.brand')}}  name="productBrandList-Brand[]" required>
+                            <img class="brand-logo" style="width: 50px;margin-left:auto" src="" alt="">
                         </div>
                         <div class="input">
                             <input class="form-control" type="text" placeholder="{{trans('product.fzcode')}}"  name="productBrandList-FZcode[]">
+                        </div>
+                        <div class="image-brand">
+                            <label class="brand-image-label" for="brand-image">
+                                <i class="fa-solid fa-upload"></i>
+                            </label>
+                            <input name="image-brand[]" id="brand-image" type="file" accept=".jpg, .png, .jpeg, .bmp">
                         </div>
                         <button id="addInputBrandListBtn" type="button" class="form-control">
                             <i class="fa-solid fa-plus"></i>
@@ -233,9 +366,10 @@
         </div>
 
     <script>
-        var buttonNameList = document.querySelector('#addInputNameListBtn');
+        let buttonNameList = document.querySelector('#addInputNameListBtn');
         buttonNameList.addEventListener('click', addInputNameList);
 
-        var buttonBrandList = document.querySelector('#addInputBrandListBtn');
+        let buttonBrandList = document.querySelector('#addInputBrandListBtn');
         buttonBrandList.addEventListener('click', addInputBrandList);
+
     </script>

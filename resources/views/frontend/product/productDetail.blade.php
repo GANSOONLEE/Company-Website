@@ -10,10 +10,14 @@
 @section('content')
 
     <div class="back-to-previous-page">
-        <a href={{ URL::previous() }}>
+        {{-- <a href={{ URL::previous() }}>
             <i class="fa-solid fa-arrow-left"></i>
             <p>Back</p>
-        </a>
+        </a> --}}
+        <p>You are here:</p>
+        <a href="{{ route('frontend.product')}}">Category</a>>
+        <a href="{{ route('frontend.catelog.index',['catelogName' => $product->product_category]) }}">{{ $product->product_category }}</a>>
+        <a href="#">{{ json_decode($product->product_name_list)[0] }}</a>
     </div>
 
     <div class="background" style="display: none">
@@ -85,8 +89,9 @@
                             <div class="brand-list">
                                 @foreach ((json_decode($product->product_brand_list)) as $brand)
                                     <input type="radio" name='brand' value="{{$brand->code}}" id="{{$brand->code}}">
-                                    <label class="product-brand" for="{{$brand->code}}">
+                                    <label class="product-brand display-row" for="{{$brand->code}}" data-id="{{$product->product_id}}" data-brand="{{$brand->code}}" data-category="{{$product->product_category}}">
                                         <p>{{$brand->code}}</p>
+                                        <img class="brand-image" src="{{asset('images/brand logo/' . $brand->brand . '.svg')}}" alt="">
                                     </label>
                                 @endforeach
                             </div>

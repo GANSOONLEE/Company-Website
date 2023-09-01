@@ -16,26 +16,17 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-
     background-color: white;
     width: 100%;
-    font-size: var(--font-small);
+    font-size: var(--font-h6);
     padding: 3rem 6rem .2rem;
     a{
-        background-color: rgb(255, 77, 0);
-        color: white;
         display: flex;
         align-items: center;
-        padding: .8rem 2rem;
+        padding: .8rem 1rem;
         transition: background-color .09s ease-in-out;
-        i{
-            margin-right: 1rem;
-        }
-        p{
-            margin: 0;
-        }
         &:hover{
-            background-color: rgb(210, 63, 0);
+            color: blue;
         }
     }
         
@@ -177,7 +168,13 @@
                             font-size: var(--font-h6);
                             border: #ff6f00 2px solid;
                             background-color: #fdfdfd;
-                            padding: .9rem 2rem;
+                            min-height: min-content;
+                            height: 5rem;
+                            max-height: max-content;
+                            padding: 0 0 0 2rem;
+                            img{
+                                height: 100%;
+                            }
                         }
                     }
                 }   
@@ -377,6 +374,22 @@ p{
         background-color: white;
     }
 }
+
+label.product-brand{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 2.4rem;
+}
+
+.brand-image{
+    width: 60px;
+    height: auto;
+    padding: .3rem;
+    background-color: white;
+    object-fit: fill;
+}
+
 
 @media only screen and (max-width: 970px) {
     .detail{

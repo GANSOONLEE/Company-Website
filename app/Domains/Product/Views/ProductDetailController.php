@@ -18,7 +18,7 @@ class ProductDetailController extends Controller{
 
         $directory = $product->product_category . '/' . $product->product_id . '/';
         
-        $files = Storage::disk('product')->allFiles($directory);
+        $files = Storage::disk('product')->files($directory);
         $images = [];
 
         foreach ($files as $file) {
