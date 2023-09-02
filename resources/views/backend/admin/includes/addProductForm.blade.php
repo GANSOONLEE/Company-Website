@@ -168,6 +168,10 @@
                         closestBrandLogo.src = '{{asset("images/brand logo/tff.svg")}}'
                         break;
     
+                    case 'maxcool':
+                        closestBrandLogo.src = '{{asset("images/brand logo/maxcool.svg")}}'
+                        break;
+    
                     default:
                         closestBrandLogo.src = '';
                         break;

@@ -14,10 +14,10 @@
             <i class="fa-solid fa-arrow-left"></i>
             <p>Back</p>
         </a> --}}
-        <p>You are here:</p>
-        <a href="{{ route('frontend.product')}}">Category</a>>
-        <a href="{{ route('frontend.catelog.index',['catelogName' => $product->product_category]) }}">{{ $product->product_category }}</a>>
-        <a href="#">{{ json_decode($product->product_name_list)[0] }}</a>
+        <a href="{{route('frontend.index')}}">Home</a>>
+        <a href="{{route('frontend.product')}}">Category</a>>
+        <a href="{{route('frontend.catelog.index',['catelogName' => $product->product_category]) }}">{{ $product->product_category }}</a>>
+        <a href="#">{{json_decode($product->product_name_list)[0]}}</a>
     </div>
 
     <div class="background" style="display: none">

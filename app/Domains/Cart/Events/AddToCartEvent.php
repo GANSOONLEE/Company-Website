@@ -7,17 +7,20 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Mockery\Undefined;
 
 class AddToCartEvent
 {
     public function addToCart(Request $request)
     {
+        
         try {
             // 获取请求中的数据
             $email = $request->input('email');
             $productCode = $request->input('product_code');
             $brandCode = $request->input('brand_code');
             $quantity = $request->input('quantity');
+
 
             // 获取产品的分类
             $product = Product::where('product_id', $productCode)->first();
@@ -27,6 +30,11 @@ class AddToCartEvent
             if (!$productCategory) {
                 Log::error('Error! This is not a valid JSON format.');
                 throw new \Exception('NOT_VALID_JSON');
+            }
+
+            // 用戶是否登入
+            if($email === 'undefined'){
+                return $status = ['redirect' => '/login'];
             }
 
             // 获取用户购物车
@@ -77,6 +85,7 @@ class AddToCartEvent
 
             $status = [
                 'success' => 'success',
+                'debug' => Auth::check()
             ];
         } catch (\Exception $e) {
             $status = ['error' => $e->getMessage()];
@@ -84,5 +93,6 @@ class AddToCartEvent
         }
 
         return response()->json($status);
+        // return redirect()->back();
     }
 }

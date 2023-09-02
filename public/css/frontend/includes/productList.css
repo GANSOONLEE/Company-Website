@@ -13,15 +13,20 @@
 .product-list .product-list-body .product-list-section {
   display: flex;
   flex-wrap: wrap;
-  -moz-column-gap: 120px;
-       column-gap: 120px;
+  -moz-column-gap: 80px;
+       column-gap: 80px;
   row-gap: 5rem;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: stretch;
 }
 .product-list .product-list-body .product-list-section a {
-  min-width: calc((100% - 240px) / 3);
-  max-width: calc((100% - 240px) / 3);
+  display: flex;
+  flex-direction: column;
+  min-width: calc((100% - 180px) / 3);
+  max-width: calc((100% - 180px) / 3);
+  border: 1px solid rgba(0, 0, 0, 0.1333333333);
+  border-radius: 2px;
+  padding: 3rem;
 }
 .product-list .product-list-body .product-list-section a .product-list-box .product-list-product-image .product-img {
   width: 100%;
@@ -29,10 +34,21 @@
 .product-list .product-list-body .product-list-section a .product-list-box .product-list-product-name {
   font-size: var(--font-h6);
 }
+.product-list .product-list-body .product-list-section a .product-list-box .product-list-product-brand-code {
+  color: grey;
+  font-size: var(--font-small);
+  width: 100%;
+}
+.product-list .product-list-body .product-list-section a .product-list-box .product-list-product-brand-code p {
+  margin-bottom: 0;
+}
+.product-list .product-list-body .product-list-section a:hover {
+  box-shadow: 0 0 20px 4px rgba(0, 0, 0, 0.1333333333);
+}
 @media only screen and (max-width: 720px) {
   .product-list {
     margin: 2rem 2.8rem;
-    padding: 0 6rem;
+    padding: 0 2rem;
   }
   .product-list .product-list-header {
     font-size: var(--font-h3);
@@ -52,7 +68,7 @@
     align-items: flex-start;
   }
   .product-list .product-list-body .product-list-section a {
-    min-width: calc((100% - 60px) / 2);
-    max-width: calc((100% - 60px) / 2);
+    min-width: calc((100% - 20px) / 2);
+    max-width: calc((100% - 20px) / 2);
   }
 }

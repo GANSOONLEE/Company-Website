@@ -23,6 +23,11 @@
                             <div class="product-list-product-name">
                                 {{ $productName }}
                             </div>
+                            <div class="product-list-product-brand-code">
+                                @foreach (json_decode($product->product_brand_list) as $productBrandCode)
+                                    <p>{{ $productBrandCode->code }}</p>
+                                @endforeach
+                            </div>
                         </div>
                     </a>
                 @endforeach

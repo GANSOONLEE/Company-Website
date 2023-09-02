@@ -4,6 +4,7 @@ var __webpack_exports__ = {};
   !*** ./resources/js/backend/admin/viewOrder.js ***!
   \*************************************************/
 var table = new DataTable('#myTable', {
+  "scrollX": true,
   "order": [[2, "desc"], [3, "desc"]]
 });
 

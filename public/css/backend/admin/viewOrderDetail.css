@@ -93,6 +93,7 @@
 .order .order-body .order-list p:not(:first-child) {
   min-width: calc(20% - 60px);
   max-width: calc(20% - 60px);
+  margin-right: 0.8rem;
 }
 .order .order-body .order-list p[data=own] {
   margin-left: 1.2rem;
@@ -209,5 +210,85 @@
   }
   100% {
     transform: scaleY(1);
+  }
+}
+/* ==================== RWD (Response Web Design) ==================== */
+@media only screen and (max-width: 790px) {
+  /* ———————————————————— Layouts ———————————————————— */
+  .main .section {
+    margin-left: 0;
+    margin-top: 4rem;
+    padding: 2rem;
+    width: 100vw;
+  }
+  /* ———————————————————— Order ———————————————————— */
+  .order {
+    max-width: 100%;
+  }
+  .order .order-header {
+    justify-content: flex-start;
+    align-items: center;
+    padding-right: 2.5rem;
+    row-gap: 0.7rem;
+  }
+  .order .order-header .order-info {
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+  }
+  .order .order-header p {
+    margin-bottom: 0;
+    font-size: var(--font-h6);
+  }
+  .order .order-header .customer-info {
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    -moz-column-gap: 2rem;
+         column-gap: 2rem;
+  }
+  .order .order-header .customer-info .customer-name {
+    font-weight: bold;
+    color: rgb(0, 0, 147);
+    text-align: left;
+  }
+  .order .order-body {
+    font-size: var(--font-h5);
+    overflow-x: auto;
+  }
+  .order .order-body .order-list {
+    padding: 2rem 1.2rem;
+    justify-content: flex-start;
+    align-items: center;
+    -moz-column-gap: 0;
+         column-gap: 0;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .order .order-body .order-list:hover {
+    color: blue;
+  }
+  .order .order-body .order-list:not(:last-child) {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1333333333);
+  }
+  .order .order-body .order-list p {
+    margin-bottom: 0;
+  }
+  .order .order-body .order-list p:first-child {
+    max-width: 20px;
+    margin-right: 3rem;
+  }
+  .order .order-body .order-list p:last-child {
+    padding-right: 3rem;
+  }
+  .order .order-body .order-list p:not(:first-child) {
+    min-width: auto;
+    max-width: -moz-max-content;
+    max-width: max-content;
+    margin-right: 2rem;
+  }
+  .order .order-body .order-list p[data=own] {
+    margin-left: 1.2rem;
+    color: red;
   }
 }

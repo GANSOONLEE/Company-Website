@@ -38,19 +38,21 @@
                 ]
             ],
             [                
-                'section' => trans('sidebar.order'),
+                'url' => route('backend.admin.viewOrder'),
                 'icon' => 'fa-regular fa-file-lines',
-                'link' => [
-                    [
-                        'url' => route('backend.admin.viewOrder'),
-                        'label' => trans('sidebar.viewOrder'),
-                        'notification' => 'notification',
-                    ],
-                    [
-                        'url' => route('backend.admin.pendingOrder'),
-                        'label' => trans('sidebar.pendingOrder')
-                    ],
-                ]
+                'label' => trans('sidebar.viewOrder'),
+                // 'section' => trans('sidebar.order'),
+                // 'link' => [
+                //     [
+                //         'url' => route('backend.admin.viewOrder'),
+                //         'label' => trans('sidebar.viewOrder'),
+                //         'notification' => 'notification',
+                //     ],
+                //     [
+                //         'url' => route('backend.admin.pendingOrder'),
+                //         'label' => trans('sidebar.pendingOrder')
+                //     ],
+                // ]
             ],
             [
                 'url' => route('backend.admin.managerAccount'),

@@ -163,15 +163,19 @@ function sendData(option, quantity, productID, email){
             "email": email
         }),
         contentType : "application/json;charset=utf-8",
-        success: function(Text){
-            // console.log(Text)
-            location.reload();
+        success: function(response){
+            if (response.redirect) {
+                window.location.href = response.redirect;
+            }else{
+                // console.log(response)
+                location.reload();
+            }
         },
         error: function (XMLHttpRequest, textStatus, errorThrown){
-            // console.log(XMLHttpRequest.status);
-            // console.log(XMLHttpRequest.readyState);
-            // console.log(textStatus);
-            location.reload();
+            console.log(XMLHttpRequest.status);
+            console.log(XMLHttpRequest.readyState);
+            console.log(textStatus);
+            // location.reload();
         }
     })
     $.ajaxSetup({

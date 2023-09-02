@@ -152,17 +152,22 @@ function sendData(option, quantity, productID, email) {
       "email": email
     }),
     contentType: "application/json;charset=utf-8",
-    success: function success(Text) {
-      // console.log(Text)
-      location.reload();
+    success: function success(response) {
+      if (response.redirect) {
+        window.location.href = response.redirect;
+      } else {
+        // console.log(response)
+        location.reload();
+      }
     },
     error: function error(XMLHttpRequest, textStatus, errorThrown) {
-      // console.log(XMLHttpRequest.status);
-      // console.log(XMLHttpRequest.readyState);
-      // console.log(textStatus);
-      location.reload();
+      console.log(XMLHttpRequest.status);
+      console.log(XMLHttpRequest.readyState);
+      console.log(textStatus);
+      // location.reload();
     }
   });
+
   $.ajaxSetup({
     headers: {
       'X-CSRF-Token': $('meta[name=_token]').attr('content')

@@ -80,7 +80,7 @@
             </div>
 
         </div>
-        <p style="font-size: var(--font-small);padding-top: .4rem">{!!trans('product.pending')!!}</p>
+        {{-- <p style="font-size: var(--font-small);padding-top: .4rem">{!!trans('product.pending')!!}</p> --}}
         <div class="modal-background" id="backgroundModal" style="display: none">
             <div class="modal" id="editModal" style="display: block">
                 <div class="modal-header display-row">
