@@ -128,54 +128,22 @@
         function changeIcon(){
             let closestBrandLogo = inputBrandListBrand.querySelector('.brand-logo');
             if (closestBrandLogo) {
-                let brand = inputBrandListBrandText.value;
-                switch (brand.toLowerCase()){
+                const brand = inputBrandListBrandText.value;
+                const svgUrl = `/images/brand logo/${brand}.svg`;
 
-
-                    case 'swj':
-                        closestBrandLogo.src = '{{asset("images/brand logo/swj.svg")}}'
-                        break;
-    
-                    case 'amaire':
-                        closestBrandLogo.src = '{{asset("images/brand logo/amaire.svg")}}'
-                        break;
-    
-                    case 'sanden':
-                        closestBrandLogo.src = '{{asset("images/brand logo/sanden.svg")}}'
-                        break;
-    
-                    case 'denso':
-                        closestBrandLogo.src = '{{asset("images/brand logo/denso.svg")}}'
-                        break;
-    
-                    case 'patco':
-                        closestBrandLogo.src = '{{asset("images/brand logo/patco.svg")}}'
-                        break;
-    
-                    case 'hanon':
-                        closestBrandLogo.src = '{{asset("images/brand logo/hanon.svg")}}'
-                        break;
-    
-                    case 'valeo':
-                        closestBrandLogo.src = '{{asset("images/brand logo/valeo.svg")}}'
-                        break;
-    
-                    case 'doowon':
-                        closestBrandLogo.src = '{{asset("images/brand logo/doowon.svg")}}'
-                        break;
-    
-                    case 'tff':
-                        closestBrandLogo.src = '{{asset("images/brand logo/tff.svg")}}'
-                        break;
-    
-                    case 'maxcool':
-                        closestBrandLogo.src = '{{asset("images/brand logo/maxcool.svg")}}'
-                        break;
-    
-                    default:
-                        closestBrandLogo.src = '';
-                        break;
-                }
+                fetch(svgUrl, { method: 'HEAD' })
+                .then(response => {
+                    if (response.ok) {
+                        closestBrandLogo.src = svgUrl;
+                    } else {
+                        closestBrandLogo.src ='';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error: ', error);
+                });
+            }else{
+                closestBrandLogo.src = ''
             }
         }
     }
@@ -187,36 +155,28 @@
         brandTextInput.addEventListener('keyup', changeIcon)
 
         function changeIcon() {
-        let closestBrandLogo = this.parentElement.querySelector('.brand-logo');
-        if (closestBrandLogo) {
-            let brand = this.value;
-            switch (brand.toLowerCase()) {
-                case 'swj':
-                    closestBrandLogo.src = '{{asset("images/brand logo/swj.svg")}}';
-                    break;
-
-                case 'amaire':
-                    closestBrandLogo.src = '{{asset("images/brand logo/amaire.svg")}}';
-                    break;
-
-                case 'zetwind':
-                    closestBrandLogo.src = '{{asset("images/brand logo/zetwind.svg")}}';
-                    break;
-
-                case 'sanden':
-                    closestBrandLogo.src = '{{asset("images/brand logo/sanden.svg")}}';
-                    break;
-
-                case 'tff':
-                    closestBrandLogo.src = '{{asset("images/brand logo/tff.svg")}}';
-                    break;
-
-                default:
-                    closestBrandLogo.src = '';
-                    break;
+            let closestBrandLogo = this.parentElement.querySelector('.brand-logo');
+            if (closestBrandLogo) {
+                let brand = this.value;
+                let svgUrl = `/images/brand logo/${brand}.svg`;
+                if (svgUrl) {
+                    console.log(brand, svgUrl)
+                    fetch(svgUrl, { method: 'HEAD' })
+                    .then(response => {
+                        if (response.ok) {
+                            closestBrandLogo.src = svgUrl;
+                        } else {
+                            closestBrandLogo.src = '';
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error: ', error);
+                    });
+                }
+            }else{
+                closestBrandLogo.src = ''
             }
         }
-    }
     })
 
 

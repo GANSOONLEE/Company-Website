@@ -153,12 +153,14 @@ function sendData(option, quantity, productID, email) {
     }),
     contentType: "application/json;charset=utf-8",
     success: function success(response) {
-      if (response.redirect) {
-        window.location.href = response.redirect;
-      } else {
-        // console.log(response)
-        location.reload();
-      }
+      notification.autoShow(2000);
+      setTimeout(function () {
+        if (response.redirect) {
+          window.location.href = response.redirect;
+        } else {
+          location.reload();
+        }
+      }, 3500);
     },
     error: function error(XMLHttpRequest, textStatus, errorThrown) {
       console.log(XMLHttpRequest.status);

@@ -5,22 +5,23 @@
 <body>
     @section('navbar')
         <div class="navbar">
-            <a href="/" class="logo-container"><img src="{{asset('image\logo.png')}}" alt="" class="logo"></a>
+            <a href="/" class="logo-container"><img src="{{asset('images\logo without text.svg')}}" alt="" class="logo"></a>
             <input type="checkbox" id="menubtn" class="btn">
             <div class="menu">
-                <ul class="navbar-links center" class="menubtn">
+                <ul class="navbar-links center">
                     <li class="navbar-link {{ request()->is('/')? 'active' : ''}}"><a href="{{route('frontend.index')}}">HOME</a></li>
                     {{-- <li class="navbar-link {{ request()->is('about')? 'active' : ''}}"><a href="{{route('frontend.about')}}">ABOUT US</a></li> --}}
-                    <li class="navbar-link {{ request()->is('type')? 'active' : ''}}"><a href="{{route('frontend.product')}}">PRODUCT</a></li>
+                    <li class="navbar-link {{ request()->is('product')? 'active' : ''}}"><a href="{{route('frontend.product')}}">PRODUCT</a></li>
                     <li class="navbar-link {{ request()->is('contact')? 'active' : ''}}"><a href="{{route('frontend.contact')}}">CONTACT</a></li>
                 </ul>
-                <ul class="navbar-links bottom" class="menubtn">
+                <ul class="navbar-links bottom">
                     @guest
                         <li class="navbar-link register {{ request()->is('register')? 'active' : ''}}"><a href="{{route('frontend.register')}}">REGISTER</a></li>
                         <li class="navbar-link login {{ request()->is('login')? 'active' : ''}}"><a href="{{route('frontend.login')}}">LOGIN</a></li>
                     @else
                         @if (auth()->user()->isAdmin())
-                            <li class="navbar-link dashboard"><a href="{{ route('backend.admin.newProduct') }}" class="user-link">DASHBOARD</a></li>
+                            <li class="navbar-link dashboard"><a href="{{ route('backend.admin.newProduct') }}" class="user-link">
+                           DASHBOARD</a></li>
                         @else
                             <li class="navbar-link dashboard"><a href="{{ route('backend.user.cart') }}" class="user-link">DASHBOARD</a></li>
                         @endif

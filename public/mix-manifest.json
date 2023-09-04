@@ -16,6 +16,7 @@
     "/css/backend/admin/managementUser.css": "/css/backend/admin/managementUser.css",
     "/css/backend/admin/editProduct.css": "/css/backend/admin/editProduct.css",
     "/css/ui/sidebar.css": "/css/ui/sidebar.css",
+    "/css/ui/navbar.css": "/css/ui/navbar.css",
     "/css/ui/footer.css": "/css/ui/footer.css",
     "/css/includes/filter.css": "/css/includes/filter.css",
     "/css/frontend/type.css": "/css/frontend/type.css",

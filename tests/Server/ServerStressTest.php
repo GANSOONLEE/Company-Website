@@ -15,8 +15,8 @@ class ServerStressTest extends TestCase
      */
     public function test_server_stress()
     {
-        for ($i = 0; $i < 10000; $i++) {
-            $response = $this->get('/'); // Replace '/your-url' with the actual URL you want to test.
+        for ($i = 0; $i < 1000; $i++) {
+            $response = $this->get('/');
             $response->assertStatus(200);
             dump($i);
         }

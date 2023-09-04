@@ -24,6 +24,8 @@
         <img src="" alt="" id="dbl-click-display">
     </div>
 
+    @include('frontend.product.productDetailNotification')
+
     <div class="detail">
         <div class="detail-header">
             <input style="display: none" type="text" name="productCategory" id="" value="{{ $product->product_category }}">

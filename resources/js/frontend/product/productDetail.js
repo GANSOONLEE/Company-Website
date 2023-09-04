@@ -160,16 +160,18 @@ function sendData(option, quantity, productID, email){
             "product_code": productID,
             "brand_code": option,
             "quantity": quantity,
-            "email": email
+            "email": email,
         }),
         contentType : "application/json;charset=utf-8",
         success: function(response){
-            if (response.redirect) {
-                window.location.href = response.redirect;
-            }else{
-                // console.log(response)
-                location.reload();
-            }
+            notification.autoShow(2000);
+            setTimeout(()=>{
+                if (response.redirect) {
+                    window.location.href = response.redirect
+                }else{
+                    location.reload()
+                }
+            },3500)
         },
         error: function (XMLHttpRequest, textStatus, errorThrown){
             console.log(XMLHttpRequest.status);
