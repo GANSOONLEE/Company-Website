@@ -92,8 +92,8 @@ div.form div.form-body form .section-form select option {
   font-size: var(--font-small);
 }
 div.form div.form-body form .button-area {
-  padding-top: 2.4rem;
-  padding-bottom: 1.3rem;
+  padding-top: 1rem;
+  padding-bottom: 0.3rem;
   width: 100%;
 }
 div.form div.form-body form .button-area p {

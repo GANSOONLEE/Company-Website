@@ -41,6 +41,7 @@
                 'url' => route('backend.admin.viewOrder'),
                 'icon' => 'fa-regular fa-file-lines',
                 'label' => trans('sidebar.viewOrder'),
+                'notification' => 'notification',
                 // 'section' => trans('sidebar.order'),
                 // 'link' => [
                 //     [
@@ -85,13 +86,7 @@
                                         <p class="link-label">
                                             {{$secondary_link['label']}}
                                         </p>
-                                        @if(isset($secondary_link['notification']))
-                                        <div class="notification-order" data-number={{ $orderNew }}>
-                                            <p id="order-new">
-                                                {{ $orderNew }}
-                                            </p>
-                                        </div>
-                                        @endif
+                                        
                                     </a>
                                 @endforeach
                             </div>
@@ -102,6 +97,13 @@
                             <p class="link-label">
                                 {{$link['label']}}
                             </p>
+                            @if(isset($link['notification']))
+                                <div class="notification-order" data-number={{ $orderNew }}>
+                                    <p id="order-new">
+                                        {{ $orderNew }}
+                                    </p>
+                                </div>
+                            @endif
                         </a>
                     @endif
                 @endforeach

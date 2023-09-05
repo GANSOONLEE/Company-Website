@@ -99,6 +99,10 @@
   margin-left: 1.2rem;
   color: red;
 }
+.order .order-body .order-list p[data=quantity] {
+  font-weight: bold;
+  color: rgb(0, 141, 21);
+}
 /* ———————————————————— General ———————————————————— */
 .display-row {
   display: flex;
@@ -290,5 +294,48 @@
   .order .order-body .order-list p[data=own] {
     margin-left: 1.2rem;
     color: red;
+  }
+  /* ———————————————————— Modal ———————————————————— */
+  #backgroundModal {
+    padding-top: 8rem;
+  }
+  #backgroundModal #editModal {
+    min-width: 70%;
+    max-width: 70%;
+    height: auto;
+    padding: 1rem;
+    background-color: #fff;
+    border-radius: 6px;
+    position: relative;
+    top: 3rem;
+  }
+  #backgroundModal #editModal .modal-header {
+    font-size: var(--font-h5);
+    background-color: #fafafa;
+  }
+  #backgroundModal #editModal .modal-header p {
+    margin-bottom: 0;
+  }
+  #backgroundModal #editModal .modal-header #backgroundModalButton {
+    cursor: pointer;
+    color: #1E3050;
+  }
+  #backgroundModal #editModal .modal-header #backgroundModalButton:hover {
+    color: red;
+  }
+  #backgroundModal #editModal .modal-body {
+    font-size: var(--font-h6);
+  }
+  #backgroundModal #editModal .modal-body input {
+    font-size: var(--font-h6);
+  }
+  #backgroundModal #editModal .modal-body input#own {
+    padding: 1rem 0.75rem;
+  }
+  #backgroundModal #editModal .modal-footer {
+    background-color: #fafafa;
+  }
+  #backgroundModal #editModal .modal-footer button {
+    font-size: var(--font-h6);
   }
 }

@@ -26,6 +26,7 @@ class AuthController extends Controller
         $data = [
             'username' => $request->input('username'),
             'phone_number' => $request->input('phone_number'),
+            'phone_number_whatapps' => $request->input('phone_number_whatapps'),
             'email_address' => $request->input('email_address'),
             'birthday' => $request->input('birthday'),
             'address' => $request->input('address'),

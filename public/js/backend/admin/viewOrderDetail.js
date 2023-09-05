@@ -71,79 +71,76 @@ $('#CompleteButton').click(function (event) {
 
 /* ———————————————————— Update own ———————————————————— */
 
-// $('#updateProductOwn').click(function(event){
-
-//     let orderID = $('#orderID').text();
-//     let quantity = $('#editModal #quantity').val();
-//     let own = $('#editModal #own').val();
-//     let brand = $('#brand').val();
-
-//     if(own > quantity){
-//         return false;
-//     }
-
-//     console.log(orderID, own, brand, quantity)
-
-//     $.ajax({
-//         url: '/api/update-cart-own',
-//         data: {'orderID': orderID, 'own':own, 'brand':brand},
-//         dataType: 'json',
-//         type: 'post',
-//         headers: {
-//             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-//         },
-//         success: function(data) {
-//             // console.log(data)
-//             location.reload();
-//         },
-//         error: function(xhr, status, error) {
-//             // console.error(xhr,status,error)
-//             location.reload();
-//         }
-//     });
-// });
+$('#updateProductOwn').click(function (event) {
+  var orderID = $('#orderID').text();
+  var quantity = $('#editModal #quantity').val();
+  var own = $('#editModal #own').val();
+  var brand = $('#brand').val();
+  if (own > quantity) {
+    return false;
+  }
+  console.log(orderID, own, brand, quantity);
+  $.ajax({
+    url: '/api/update-cart-own',
+    data: {
+      'orderID': orderID,
+      'own': own,
+      'brand': brand
+    },
+    dataType: 'json',
+    type: 'post',
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    },
+    success: function success(data) {
+      // console.log(data)
+      location.reload();
+    },
+    error: function error(xhr, status, _error2) {
+      // console.error(xhr,status,error)
+      location.reload();
+    }
+  });
+});
 
 /* —————————————————————— Creating forms with data —————————————————————— */
 
-// $('.order-list').click(function() {
-//     let quantity = $(this).find('p[data="quantity"]').text();
-//     let index = $(this).find('p[data="index"]').text();
-//     let cartID = $(this).find('p[data="cartID"]').text();
-//     let category = $(this).find('p[data="category"]').text();
-//     let name = $(this).find('p[data="name"]').text();
-//     let brand = $(this).find('p[data="brand"]').text();
-//     let own = $(this).find('p[data="own"]').text();
+$('.order-list').click(function () {
+  var quantity = $(this).find('p[data="quantity"]').text();
+  var index = $(this).find('p[data="index"]').text();
+  var cartID = $(this).find('p[data="cartID"]').text();
+  var category = $(this).find('p[data="category"]').text();
+  var name = $(this).find('p[data="name"]').text();
+  var brand = $(this).find('p[data="brand"]').text();
+  var own = $(this).find('p[data="own"]').text();
+  $('#editModal').click(function (event) {
+    event.stopPropagation();
+  });
+  $('#editModal #index').empty();
+  $('#editModal #own').val('');
+  $('#editModal #index').text(index);
+  $('#editModal #cartID').text(cartID);
+  $('#editModal #category').val(category);
+  $('#editModal #name').val(name);
+  $('#editModal #quantity').val(quantity);
+  $('#editModal #own').val(own);
+  $('#editModal #brand').val(brand);
 
-//     $('#editModal').click(function(event){
-//         event.stopPropagation();
-//     })
+  // 显示模态框
+  $('#backgroundModal').show();
+});
 
-//     $('#editModal #index').empty();
-//     $('#editModal #own').val('');
+// Close the modal
+$('#backgroundModalButton').click(function () {
+  $('#backgroundModal').hide();
+});
 
-//     $('#editModal #index').text(index);
-//     $('#editModal #cartID').text(cartID);
-//     $('#editModal #category').val(category);
-//     $('#editModal #name').val(name);
-//     $('#editModal #quantity').val(quantity);
-//     $('#editModal #own').val(own);
-//     $('#editModal #brand').val(brand);
-
-//     // 显示模态框
-//     $('#backgroundModal').show();
-// });
-
-// // Close the modal
-// $('#backgroundModalButton').click(function(){
-//     $('#backgroundModal').hide();
-// });
-
-// // Animation
-// $('#backgroundModal').click(function(){
-//     $('#editModal').addClass('shake');
-//     setTimeout(()=>{
-//         $('#editModal').removeClass('shake');
-//     }, 2000)
-// });
+// Animation
+$('#backgroundModal').click(function () {
+  $('#editModal').addClass('shake');
+  setTimeout(function () {
+    $('#editModal').removeClass('shake');
+  }, 2000);
+});
 /******/ })()
 ;

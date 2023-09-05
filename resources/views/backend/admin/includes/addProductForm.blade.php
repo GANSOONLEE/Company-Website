@@ -261,7 +261,7 @@
                             <label class="brand-image-label" for="brand-image">
                                 <i class="fa-solid fa-upload"></i>
                             </label>
-                            <input name="image-brand[]" id="brand-image" type="file" accept=".jpg, .png, .jpeg, .bmp">
+                            <input name="image-brand[]" id="brand-image" type="file" accept=".jpg, .png, .jpeg, .bmp" required>
                         </div>
                         <button id="addInputBrandListBtn" type="button" class="form-control">
                             <i class="fa-solid fa-plus"></i>

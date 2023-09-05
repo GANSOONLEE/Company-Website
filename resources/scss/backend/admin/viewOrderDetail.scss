@@ -96,6 +96,10 @@
                     margin-left: 1.2rem;
                     color: red;
                 }
+                &[data="quantity"]{
+                    font-weight: bold;
+                    color: rgb(0, 141, 21);
+                }
             }
         }
     }
@@ -307,5 +311,49 @@
     
         }
     }
+
+    /* ———————————————————— Modal ———————————————————— */
+#backgroundModal{
+    padding-top: 8rem;
+    #editModal{
+        min-width: 70%;
+        max-width: 70%;
+        height: auto;
+        padding: 1rem;
+        background-color: #fff;
+        border-radius: 6px;
+        position: relative;
+        top: 3rem;
+        .modal-header{
+            font-size: var(--font-h5);
+            background-color: #fafafa;
+            p{
+                margin-bottom: 0;
+            }
+            #backgroundModalButton{
+                cursor: pointer;
+                color: #1E3050;
+                &:hover{
+                    color: red;
+                }
+            }
+        }
+        .modal-body{
+            font-size: var(--font-h6);
+            input{
+                font-size: var(--font-h6);
+                &#own{
+                    padding: 1rem .75rem;
+                }
+            }
+        }
+        .modal-footer{
+            background-color: #fafafa;
+            button{
+                font-size: var(--font-h6);
+            }
+        }
+    }
+}
 
 }

@@ -89,7 +89,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label for="category">{{trans('product.catelog')}}</label>
+                        <label for="category">{{trans('product.category')}}</label>
                         <input required readonly class="form-control" type="text" name="" id="category" value="">
                     </div>
                     <div class="mb-3">

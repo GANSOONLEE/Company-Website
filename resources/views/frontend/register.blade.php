@@ -26,8 +26,8 @@
             <a href="{{route('frontend.index')}}"><img class="logo" src="{{asset('image/logo.png')}}" alt=""></a>
             <form action="{{route('frontend.register.post')}}" method="POST" id="msform">
                 <ul id="progressbar">
-                    <li class="active" id="account"><strong>General</strong></li>
-                    <li id="personal"><strong>Personal</strong></li>
+                    <li class="active" id="account"><strong>Personal</strong></li>
+                    <li id="personal"><strong>Shop</strong></li>
                 </ul>
                 @csrf
                 <fieldset id="first">
@@ -36,9 +36,15 @@
                             <label class="form-label" for="name"><span class="required">Name:</label>
                             <input type="text" id="name" name="username" placeholder="Name" class="requird form-control" required>
                         </div>
-                        <div class="section-form mb-3">
-                            <label class="form-label" for="phone"><span class="required">Phone:</label>
-                            <input type="text" id="phone" name="phone_number" placeholder="012 34567890" class="requird form-control" maxlength="13" required>
+                        <div class="section-form mb-3 display-row">
+                            <div class="mb-3">
+                                <label class="form-label" for="phone"><span class="required">Phone (Handphone):</label>
+                                <input type="text" id="phone" name="phone_number" placeholder="012 34567890" class="requird form-control" maxlength="13" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="phone"><span class="required">Phone (Whatapps):</label>
+                                <input type="text" id="phone" name="phone_number_whatapps" placeholder="012 34567890" class="requird form-control" maxlength="13" required>
+                            </div>
                         </div>
                     {{-- </div> --}}
                     

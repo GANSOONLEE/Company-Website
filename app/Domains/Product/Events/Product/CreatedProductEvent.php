@@ -32,7 +32,7 @@ class CreatedProductEvent{
             $car = $productNameCar;
             $model = $productNameModels[$index];
             $carModel = $car . ' ' . $model;
-            $productNameList[] = $carModel;
+            $productNameList[] = strtoupper($carModel);
         }
 
         #endregion

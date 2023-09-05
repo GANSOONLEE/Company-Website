@@ -1,6 +1,7 @@
 .product-list {
   margin: 2rem 2.8rem;
-  padding: 0 6rem;
+  padding: 0 2rem;
+  width: 100%;
 }
 .product-list .product-list-header {
   font-size: var(--font-h3);

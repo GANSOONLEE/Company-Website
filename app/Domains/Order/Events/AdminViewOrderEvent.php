@@ -36,7 +36,7 @@ class AdminViewOrderEvent{
 
         $productCatelogs = [];
         foreach ($productData as $productItem) {
-            $productCatelogs[] = $productItem[0]->productCatelog;
+            $productCatelogs[] = $productItem[0]->productCategory;
         }
 
         array_multisort($productCatelogs, SORT_ASC, $productData);
