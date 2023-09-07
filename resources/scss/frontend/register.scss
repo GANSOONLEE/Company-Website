@@ -155,6 +155,17 @@ div.form{
     }
 }
 
+label[for="password_confirm"]::after{
+    content: 'Password aren\'t same';
+    color: red;
+    margin-left: 1.4rem;
+    display: none;
+}
+
+label[for="password_confirm"].password_not_same::after{
+    display: inline;
+}
+
 #msform {
     text-align: center;
     position: relative;

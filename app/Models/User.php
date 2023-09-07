@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
+use App\Models\ApproveUser;
+
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -65,6 +67,12 @@ class User extends Authenticatable
     public static function updateUser($email_address, $data)
     {
         return self::where('email_address', $email_address)->update($data);
+    }
+
+    public function is_approve_user($email_address)
+    {
+        $result = ApproveUser::where('email_address', $email_address)->exists();
+        return $result;
     }
 
 }

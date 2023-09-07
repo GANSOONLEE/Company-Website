@@ -94,8 +94,7 @@ $('input').on("input", function() {
         $(".next").prop('disabled', true);
         $(".next").addClass('disabled');
     } else {
-        $(".next").prop('disabled', false);
-        $(".next").removeClass('disabled');
+        check_password()
     }
 });
 
@@ -122,3 +121,21 @@ $('input').on("input", function() {
         $(".register").removeClass('disabled');
     }
 });
+
+function check_password(){
+    let input = document.querySelectorAll('input');
+    for(let i = 0; i < input.length; i++){
+        input[i].addEventListener('keyup',()=>{
+            if($('[name="password"]').val() !== $('[name="password_confirm"]').val()){
+                $('label[for="password_confirm"]').addClass('password_not_same');
+                $(".next").prop('disabled', true);
+                $(".next").addClass('disabled');
+            }else{
+                $('label[for="password_confirm"]').removeClass('password_not_same');
+                $(".next").prop('disabled', false);
+                $(".next").removeClass('disabled');
+            }
+            console.log($('[name="password_confirm"]').val())
+        })
+    }
+}

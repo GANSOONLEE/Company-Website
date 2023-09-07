@@ -164,6 +164,7 @@
                         }
                         input[type="radio"]:checked + label{
                             background: rgb(255, 115, 64);
+                            border-color: rgb(255, 115, 64);
                             color: #fafafa;
                         }
                         label{
@@ -171,7 +172,7 @@
                             cursor: pointer;
                             border-radius: 2px;
                             font-size: var(--font-h6);
-                            border: #ff6f00 2px solid;
+                            border: #acacac 1px solid;
                             background-color: #fdfdfd;
                             min-height: min-content;
                             height: 5rem;
@@ -440,6 +441,55 @@ label.product-brand{
                                 }
                             }
                         }
+                        
+                    }
+                }
+                .action-section{
+                    row-gap: 3rem;
+                    .action-title{
+                        width: 21.8%;
+                        color: rgb(52, 52, 52);
+                        font-size: var(--font-h6);
+                    }
+                    .add-to-cart-area{
+                        display: flex;
+                        column-gap: 3rem;
+                        .quantity-select-area{
+                            border-radius: 2px;
+                            border: 1px solid #E2E2E2;
+                            display: flex;
+                            align-items: center;
+                            justify-content: flex-start;
+                            .quantityButton{
+                                padding: 1.6rem;
+                                width: 5rem;
+                                i{
+                                    width: .9rem;
+                                    height: .9rem;
+                                    font-size: var(--font-h6);
+                                }
+                            }
+                            button.add-quantity{
+                                
+                            }
+                            .display-current-quantity-box{
+                                font-size: var(--font-h6);
+                                padding: 0 3rem;
+                                p{
+
+                                }
+                            }
+                            button.remove-quantity{
+
+                            }
+                        }
+                        button.add-to-cart{
+                            padding: 2rem 3rem;
+                            font-size: var(--font-h6);
+                            &:hover{
+
+                            }
+                        }
                     }
                 }
             }
@@ -450,6 +500,33 @@ label.product-brand{
         img{
             width: 100%;
         
+        }
+    }
+
+    .user-action{
+        row-gap: 3rem;
+        right: 1rem;
+        .user-action-button{
+            height: 8rem;
+            width: 8rem;
+            i{
+                font-size: var(--font-h2);
+            }
+        }
+        .notification{
+            height: 3.2rem;
+            width: 3.2rem;
+            left: .3rem;
+            top: 1.8rem;
+            font-size: var(--font-h5);
+        }
+        .view-cart{
+
+        }
+        .whatapps{
+            i{
+                font-size: var(--font-big);
+            }
         }
     }
 }

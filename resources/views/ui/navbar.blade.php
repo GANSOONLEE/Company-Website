@@ -23,7 +23,9 @@
                             <li class="navbar-link dashboard"><a href="{{ route('backend.admin.newProduct') }}" class="user-link">
                            DASHBOARD</a></li>
                         @else
+                            @if(auth()->user()->is_approve_user(auth()->user()->email_address))
                             <li class="navbar-link dashboard"><a href="{{ route('backend.user.cart') }}" class="user-link">DASHBOARD</a></li>
+                            @endif
                         @endif
                             <li class="navbar-link"><a href="{{ route('frontend.logout') }}" class="user-link">LOGOUT</a></li>
                     @endguest

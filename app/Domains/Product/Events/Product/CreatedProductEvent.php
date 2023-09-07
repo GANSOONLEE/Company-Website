@@ -6,7 +6,6 @@ namespace App\Domains\Product\Events\Product;
 use App\Models\Operation;
 use App\Models\Product;
 
-use App\Models\UserOperation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;

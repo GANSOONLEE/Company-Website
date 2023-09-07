@@ -2,7 +2,7 @@
 
 return [
     'feature' => [
-        'email_verify' => true,
+        'email_verify' => false,
         '2fa' => false,
     ],
     'debug' => [
@@ -20,4 +20,5 @@ return [
     'setting' => [
         'restrict_multiple_logins' => false,
     ],
+    'multi_subdomains' => false,
 ];

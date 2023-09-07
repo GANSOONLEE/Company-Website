@@ -100,93 +100,35 @@
                         </div>
 
                         <!-- cart -->
-                        <div class="information-section display-column">
-                            <div class="action-section display-column">
-                                <div class="action-title">
-                                    Quantity
-                                </div>
-                                <div class="add-to-cart-area">
-                                    <div class="quantity-select-area">
-                                        <button id="removeQuantity" class="remove-quantity quantityButton">
-                                            <i class="fa-solid fa-minus"></i>
-                                        </button>
-                                        <div id="displayCurrentQuantity" class="display-current-quantity-box">
-                                            <p id="currentQuantity">1</p>
+                        @auth
+                            @if(auth()->user()->is_approve_user(auth()->user()->email_address))
+                            <div class="information-section display-column">
+                                <div class="action-section display-column">
+                                    <div class="action-title">
+                                        Quantity
+                                    </div>
+                                    <div class="add-to-cart-area">
+                                        <div class="quantity-select-area">
+                                            <button id="removeQuantity" class="remove-quantity quantityButton">
+                                                <i class="fa-solid fa-minus"></i>
+                                            </button>
+                                            <div id="displayCurrentQuantity" class="display-current-quantity-box">
+                                                <p id="currentQuantity">1</p>
+                                            </div>
+                                            <button id="addQuantity" class="add-quantity quantityButton">
+                                                <i class="fa-solid fa-plus"></i>
+                                            </button>
                                         </div>
-                                        <button id="addQuantity" class="add-quantity quantityButton">
-                                            <i class="fa-solid fa-plus"></i>
+                                        <button class="add-to-cart" id="addToCart">
+                                            <i class="fa-solid fa-cart-shopping"></i>
+                                            Add to cart
                                         </button>
                                     </div>
-                                    <button class="add-to-cart" id="addToCart">
-                                        <i class="fa-solid fa-cart-shopping"></i>
-                                        Add to cart
-                                    </button>
                                 </div>
                             </div>
-                        </div>
+                            @endif
+                        @endauth
                     </div>
-
-                {{-- <div class="information-section">
-                    <div class="information-section-title">
-
-                    </div>
-                    <div class="information-section-content">
-                        <div class="product-name">
-                            {{ $product->productName }}
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="information-section">
-                    <div class="information-section-title">
-                        
-                    </div>
-                    <div class="information-section-content">
-                        <div class="product-description-content">
-                            Description
-                        </div>
-                    </div>
-                </div>
-
-                <div class="information-section">
-                    <div class="information-section-title">
-                        Available Brand:
-                    </div>
-                    <div class="information-section-content">
-                        @if($product->productBrandList)
-                            @foreach ((json_decode($product->productBrandList)) as $brand)
-                                <input type="radio" name='brand' value="{{$brand->code}}" id="{{$brand->code}}">
-                                <label class="product-brand disable-order-function" for="{{$brand->code}}">
-                                    <p>{{$brand->code}}</p>
-                                </label>
-                            @endforeach
-                        @endif
-                    </div>
-                </div>
-
-                <div class="action-section adisable-funciton">
-                    <div class="action-title">
-                        Quantity
-                    </div>
-                    <div class="add-to-cart-area">
-                        <div class="quantity-select-area">
-                            <button id="removeQuantity" class="remove-quantity quantityButton">
-                                <i class="fa-solid fa-minus"></i>
-                            </button>
-                            <div id="displayCurrentQuantity" class="display-current-quantity-box">
-                                <p id="currentQuantity">1</p>
-                            </div>
-                            <button id="addQuantity" class="add-quantity quantityButton">
-                                <i class="fa-solid fa-plus"></i>
-                            </button>
-                        </div>
-                        <button class="add-to-cart" id="addToCart">
-                            <i class="fa-solid fa-cart-shopping" style="color: #ee3211;"></i>
-                            Add to cart
-                        </button>
-                    </div>
-                </div> --}}
 
             </div>
         </div>
@@ -197,12 +139,14 @@
 
     <div class="user-action">
         @auth
+            @if(auth()->user()->is_approve_user(auth()->user()->email_address))
             <a href={{ route('backend.user.cart') }} target="_new">
                 <div class="notification">{{ $cart }}</div>
                 <div class="view-cart user-action-button">
                     <i class="fa-solid fa-cart-shopping"></i>
                 </div>
             </a>
+            @endif
         @endauth
         <a href="https://www.wasap.my/60172430100" target="_new">
             <div class="whatapps user-action-button">

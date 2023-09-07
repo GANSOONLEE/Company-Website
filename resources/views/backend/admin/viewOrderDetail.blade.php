@@ -49,6 +49,12 @@
                         <p data="name">{{json_decode($item[0]->product_name_list)[0]}}</p>
                         <p data="brand">{{$item[1]->brand}}</p>
                         <p data="quantity">{{$item[1]->quantity}}</p>
+                        <p data="id" style="display: none">{{$item[1]->id}}</p>
+                        <a class="view" href="{{ route('frontend.product.detail',['productCode'=>$item[1]->id]) }}">
+                            <button>
+                                view
+                            </button>
+                        </a>
                         @if(isset($item[1]->own))
                             {{trans('product.own')}} <p data="own">{{$item[1]->own}}</p>
                         @endif

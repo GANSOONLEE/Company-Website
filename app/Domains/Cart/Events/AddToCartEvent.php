@@ -21,7 +21,6 @@ class AddToCartEvent
             $brandCode = $request->input('brand_code');
             $quantity = $request->input('quantity');
 
-
             // 获取产品的分类
             $product = Product::where('product_id', $productCode)->first();
             $productCategory = $product ? $product->product_category : null;

@@ -161,6 +161,17 @@ div.form div.form-body form .button-area button.disabled:hover {
   color: rgb(0, 0, 154);
 }
 
+label[for=password_confirm]::after {
+  content: "Password aren't same";
+  color: red;
+  margin-left: 1.4rem;
+  display: none;
+}
+
+label[for=password_confirm].password_not_same::after {
+  display: inline;
+}
+
 #msform {
   text-align: center;
   position: relative;

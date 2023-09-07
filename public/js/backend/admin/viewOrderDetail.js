@@ -105,6 +105,9 @@ $('#updateProductOwn').click(function (event) {
 
 /* —————————————————————— Creating forms with data —————————————————————— */
 
+$('.view').click(function (event) {
+  event.stopPropagation();
+});
 $('.order-list').click(function () {
   var quantity = $(this).find('p[data="quantity"]').text();
   var index = $(this).find('p[data="index"]').text();

@@ -169,6 +169,7 @@
 }
 .detail .detail-body .detail-product-information-area .information-section .information-section-content .brand-list input[type=radio]:checked + label {
   background: rgb(255, 115, 64);
+  border-color: rgb(255, 115, 64);
   color: #fafafa;
 }
 .detail .detail-body .detail-product-information-area .information-section .information-section-content .brand-list label {
@@ -176,7 +177,7 @@
   cursor: pointer;
   border-radius: 2px;
   font-size: var(--font-h6);
-  border: #ff6f00 2px solid;
+  border: #acacac 1px solid;
   background-color: #fdfdfd;
   min-height: -moz-min-content;
   min-height: min-content;
@@ -440,7 +441,65 @@ label.product-brand {
     height: 7rem;
     padding: 0 0 0 3rem;
   }
+  .detail .detail-body .detail-product-information-area .action-section {
+    row-gap: 3rem;
+  }
+  .detail .detail-body .detail-product-information-area .action-section .action-title {
+    width: 21.8%;
+    color: rgb(52, 52, 52);
+    font-size: var(--font-h6);
+  }
+  .detail .detail-body .detail-product-information-area .action-section .add-to-cart-area {
+    display: flex;
+    -moz-column-gap: 3rem;
+         column-gap: 3rem;
+  }
+  .detail .detail-body .detail-product-information-area .action-section .add-to-cart-area .quantity-select-area {
+    border-radius: 2px;
+    border: 1px solid #E2E2E2;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .detail .detail-body .detail-product-information-area .action-section .add-to-cart-area .quantity-select-area .quantityButton {
+    padding: 1.6rem;
+    width: 5rem;
+  }
+  .detail .detail-body .detail-product-information-area .action-section .add-to-cart-area .quantity-select-area .quantityButton i {
+    width: 0.9rem;
+    height: 0.9rem;
+    font-size: var(--font-h6);
+  }
+  .detail .detail-body .detail-product-information-area .action-section .add-to-cart-area .quantity-select-area .display-current-quantity-box {
+    font-size: var(--font-h6);
+    padding: 0 3rem;
+  }
+  .detail .detail-body .detail-product-information-area .action-section .add-to-cart-area button.add-to-cart {
+    padding: 2rem 3rem;
+    font-size: var(--font-h6);
+  }
   .background img {
     width: 100%;
+  }
+  .user-action {
+    row-gap: 3rem;
+    right: 1rem;
+  }
+  .user-action .user-action-button {
+    height: 8rem;
+    width: 8rem;
+  }
+  .user-action .user-action-button i {
+    font-size: var(--font-h2);
+  }
+  .user-action .notification {
+    height: 3.2rem;
+    width: 3.2rem;
+    left: 0.3rem;
+    top: 1.8rem;
+    font-size: var(--font-h5);
+  }
+  .user-action .whatapps i {
+    font-size: var(--font-big);
   }
 }

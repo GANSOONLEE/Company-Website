@@ -6,6 +6,7 @@ use App\Domains\Product\Events\Product\CreatedProductEvent;
 use App\Domains\Product\Events\Product\UpdatedProductEvent;
 use App\Domains\Product\Events\Product\DeletedProductEvent;
 use App\Http\Controllers\backend\ProductController;
+use App\Http\Controllers\frontend\ViewController;
 
 use App\Models\Product;
 use App\Models\productCatelog;
@@ -33,31 +34,35 @@ Route::get('lang/{lang}', [LocaleController::class, 'change'])->name('locale.cha
 /**
  * 前端頁面
  */
+// Route::domain('frozen.com')->group(function(){
+    Route::group(['as' => 'frontend.', 'middleware' => 'login'], function () {
+        includeRouteFiles(__DIR__ . '/frontend/');
+    });
 
-Route::group(['as' => 'frontend.', 'middleware' => 'login'], function () {
-    includeRouteFiles(__DIR__ . '/frontend/');
-});
-
-Route::get('/back',function(){
-    return redirect()->route('frontend.index');
-})->name('back');
-
+    Route::get('/back',function(){
+        return redirect()->route('frontend.index');
+    })->name('back');
+// });
 
 /**
  * 後端頁面
  */
 
-Route::group(['as' => 'backend.', 'middleware' => 'user'], function () {
-    includeRouteFiles(__DIR__ . '/backend/public/');
-});
+    Route::group(['as' => 'backend.', 'middleware' => 'user'], function () {
+        includeRouteFiles(__DIR__ . '/backend/public/');
+    });
 
-Route::group(['prefix' => 'user', 'as' => 'backend.user.', 'middleware' => 'user'], function () {
-    includeRouteFiles(__DIR__ . '/backend/user/');
-});
+// Route::domain('customer.frozen.com')->group(function(){
+    Route::group(['prefix' => 'user', 'as' => 'backend.user.', 'middleware' => 'user'], function () {
+        includeRouteFiles(__DIR__ . '/backend/user/');
+    });
+// });
 
-Route::group(['prefix' => 'admin', 'as' => 'backend.admin.', 'middleware' => 'admin'], function () {
-    includeRouteFiles(__DIR__ . '/backend/admin/');
-});
+// Route::domain('admin.frozen.com')->group(function(){
+    Route::group(['prefix' => 'admin', 'as' => 'backend.admin.', 'middleware' => 'admin'], function () {
+        includeRouteFiles(__DIR__ . '/backend/admin/');
+    });
+// });
 
 /**
  * API Pusher
@@ -85,6 +90,15 @@ Route::get('/product/search/',[SearchedProductEvent::class,'searchProductByModal
 //     return "Event has been sent!";
 // });
 
-// Route::get('/view', function () {
+// Route::get('/', function () {
 //     return View('welcome');
+// });
+
+// Multi domains
+// Route::group(['domain' => 'example.com'], function(){
+//     Route::get('/domain', [ViewController::class, 'product']);
+// });
+
+// Route::domain('admin.example.com')->group(function(){
+//     Route::get('/domain', [ViewController::class, 'register']);
 // });
