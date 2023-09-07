@@ -276,7 +276,7 @@
         <div class="form-row">
             <div class="form-row-title">
                 <p class="form-row-title-text request">
-                    {{ trans('product.catelog') }}
+                    {{ trans('product.category') }}
                 </p>
             </div>
             <div class="form-row-body">

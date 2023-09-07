@@ -33,14 +33,13 @@ class AuthController extends Controller
             'profession' => $request->input('profession'),
             'company_name' => $request->input('company_name'),
             'password' => Hash::make($request->input('password')),
-            'password_confirm' => Hash::make($request->input('password_confirm')),
             'access_token' => $accessToken,
         ];
         
         $user = User::create($data);        
 
-        cookie()->queue('access_token', $accessToken, 0, null, null, false, false, True);
-        cookie()->queue('email_address', $data['email_address'], 0, null, null, false, false, True);
+        cookie()->queue('access_token', $accessToken, null, false, false, false, false);
+        cookie()->queue('email_address', $data['email_address'], null, false, false, false, false);
 
         Auth::login($user);
 
@@ -64,8 +63,13 @@ class AuthController extends Controller
 
             User::updateUser($request->input('email_address'), $updateData);
 
-            cookie()->queue('access_token', $newAccessToken, 60*24*180, null, null, false, false);
-            cookie()->queue('email_address', $data['email_address'], 60*24*180, null, null, false, false);
+            if(config('website.multi_subdomains')){
+                cookie()->queue('access_token', $newAccessToken, 60*24*180, '/', 'frozen.com', false, false);
+                cookie()->queue('email_address', $data['email_address'], 60*24*180, '/', 'frozen.com', false, false);
+            }else{
+                cookie()->queue('access_token', $newAccessToken, 60*24*180, false, false, false, false);
+                cookie()->queue('email_address', $data['email_address'], 60*24*180, false, false, false, false);
+            }
 
             Auth::login($user, false);
 
@@ -102,12 +106,14 @@ class AuthController extends Controller
 
     function logout(Request $request){
 
-        $response = back()
-            ->withCookie(Cookie::forget('email_address'))
-            ->withCookie(Cookie::forget('access_token'));
-
+        if(config('website.multi_subdomains')){
+            setcookie('email_address', '', time() - 3600, '/', '.frozen.com');
+        }else{
+            setcookie('email_address', '', time() - 3600);
+        }
+        
         Auth::logout();
-
-        return $response;
+        
+        return back();
     }
 }

@@ -99,7 +99,10 @@
                             <button type="button" data-button-identify="previous" class="previous action-button-previous">Previous</button>
                             <button type="submit" data-button-identify="submit" class="register disabled" disabled>Register</button>
                         </div>
-
+                        <p>
+                             
+                            <a href="{{ route('frontend.login') }}"></a>
+                        </p>
                     </div>
                 <fieldset>
             </form>
