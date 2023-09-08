@@ -7,14 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class ApproveUser extends Model
 {
-    // use HasFactory;
+
+    use HasFactory;
 
     protected $table = "approve_users";
     protected $primaryKey = "id";
-    protected $fillable = [
-        'email_address'
-    ];
-    
+    protected $fillable = "email_address";
+
     public function cancel_approve(){
         $this->delete();
     }
@@ -23,7 +22,7 @@ class ApproveUser extends Model
 
         $user = User::where('email_address', $email_address)
             ->first();
-            
+
         if(!$user){
             return 'Unknown user!';
         }
@@ -39,5 +38,6 @@ class ApproveUser extends Model
         ]);
     
         return $approveUser;
+
     }
 }
