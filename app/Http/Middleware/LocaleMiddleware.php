@@ -12,6 +12,8 @@ class LocaleMiddleware
     {
         $lang = $request->query('lang') ?: Cookie::get('lang', 'en');
         App()->setLocale($lang);
+
+        
         
         return $next($request);
     }

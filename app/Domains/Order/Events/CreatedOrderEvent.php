@@ -2,18 +2,17 @@
 
 namespace App\Domains\Order\Events;
 
-use App\Events\NewOrderEvent;
 use App\Models\Cart;
 use App\Models\Order;
-use App\Events\Order\NewOrderNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use PhpParser\Error;
+use App\Events\NewOrderEvent;
 
 
-class CreatedOrderEvent{
+class CreateOrderEvent{
 
     function createOrder(Request $request){
 
@@ -42,10 +41,11 @@ class CreatedOrderEvent{
                 }
             }
 
+            $orderNewCount = Order::where('order_status', 'New')->count(); 
+            event(new NewOrderEvent($orderNewCount));
+            
             Order::create($data);
 
-            $orderNewCount = Order::where('order_status', 'New')->count();
-            event(new NewOrderEvent($orderNewCount));
 
             $productInCart = Cart::where('email_address', $email)
                 ->first();

@@ -53,14 +53,10 @@ class User extends Authenticatable
     ];
 
     public function isAdmin(){
-
-        // 根据你的用户模型中的字段来判断是否为管理员
         return $this->role === 'admin';
     }
 
     public function isUser(){
-
-        // 根据你的用户模型中的字段来判断是否为管理员
         return $this->role === 'customer';
     }
 
@@ -71,7 +67,7 @@ class User extends Authenticatable
 
     public function is_approve_user($email_address)
     {
-        $result = ApproveUser::where('email_address', $email_address)->exists();
+        $result = 2 ;
         return $result;
     }
 
